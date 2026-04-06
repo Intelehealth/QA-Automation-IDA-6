@@ -45,3 +45,6 @@ npx playwright install
 
 Test Execution
 npx playwright test
+
+To open report:
+npx allure open
