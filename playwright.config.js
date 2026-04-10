@@ -24,7 +24,7 @@ export default defineConfig({
   use: {
     baseURL: 'https://dev.intelehealth.org',
 
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',   //  Video (for better CI debugging)
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
 

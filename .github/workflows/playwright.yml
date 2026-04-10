@@ -24,31 +24,39 @@ jobs:
           }" \
           ${{ secrets.SLACK_WEBHOOK_URL }}
 
-      #  Checkout Code
+      # 📥 Checkout Code
       - uses: actions/checkout@v4
 
-      #  Setup Node
+      # ⚙️ Setup Node
       - uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      #  Install Dependencies
+      # 📦 Install Dependencies
       - name: Install Dependencies
         run: npm install
 
-      #  Install Playwright Browsers
+      # 🌐 Install Playwright Browsers
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      #  Run Tests (Do not fail pipeline)
+      # 🧪 Run Tests (Do not fail pipeline)
       - name: Run Playwright Tests
         run: npx playwright test || true
 
-      #  Debug JSON (optional)
+      # 🎥 Upload ONLY Failed Test Videos
+      - name: Upload Failed Test Videos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: failed-test-videos
+          path: test-results/**/*.webm
+
+      # 🔍 Debug JSON (optional)
       - name: Debug JSON
         run: cat results.json || echo "No results.json found"
 
-      #  Parse Test Results
+      # 📊 Parse Test Results
       - name: Parse Test Results
         id: results
         run: |
@@ -56,7 +64,6 @@ jobs:
           sudo apt-get install -y jq
 
           if [ ! -f results.json ]; then
-            echo "⚠️ results.json not found"
             echo "passed=0" >> $GITHUB_OUTPUT
             echo "failed=0" >> $GITHUB_OUTPUT
             echo "total=0" >> $GITHUB_OUTPUT
@@ -71,26 +78,26 @@ jobs:
           echo "failed=$FAILED" >> $GITHUB_OUTPUT
           echo "total=$TOTAL" >> $GITHUB_OUTPUT
 
-      #  Install Allure
+      # 📦 Install Allure
       - name: Install Allure
         run: npm install -g allure-commandline --save-dev
 
-      #  Generate Allure Report
+      # 📊 Generate Allure Report
       - name: Generate Allure Report
         run: allure generate allure-results --clean || true
 
-      #  Deploy Report to GitHub Pages
+      # 🚀 Deploy Report to GitHub Pages
       - name: Deploy Report
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: allure-report
 
-      #  Print Report URL
+      # 🔗 Print Report URL
       - name: Print Report URL
         run: echo "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
 
-      #  Slack Final Notification (IST TIME)
+      # 📣 Slack Final Notification (IST TIME)
       - name: Slack Final Notification
         if: always()
         run: |
