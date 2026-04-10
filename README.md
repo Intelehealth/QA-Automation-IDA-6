@@ -32,7 +32,6 @@ Ensure the following are installed:
 - Node.js (v16 or higher)
 - npm
 
-##  Setup Instructions
 
 ### Clone Repository
 ```bash
