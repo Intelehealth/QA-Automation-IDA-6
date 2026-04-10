@@ -13,16 +13,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 🚀 Slack Start Notification
+      # 🚀 Slack Start Notification (IST TIME)
       - name: Slack Start Notification
         run: |
+          IST_TIME=$(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M:%S IST')
+
           curl -X POST -H 'Content-type: application/json' \
           --data "{
-            \"text\": \"🚀 Automation Test Started\nRepo: ${{ github.repository }}\nBranch: ${{ github.ref_name }}\nBy: ${{ github.actor }}\nCommit: ${{ github.sha }}\nMessage: ${{ github.event.head_commit.message }}\nTime: $(date)\"
+            \"text\": \"🚀 Automation Test Started\nRepo: ${{ github.repository }}\nBranch: ${{ github.ref_name }}\nBy: ${{ github.actor }}\nCommit: ${{ github.sha }}\nMessage: ${{ github.event.head_commit.message }}\nTime: ${IST_TIME}\"
           }" \
           ${{ secrets.SLACK_WEBHOOK_URL }}
 
-      #  Checkout
+      #  Checkout Code
       - uses: actions/checkout@v4
 
       #  Setup Node
@@ -30,23 +32,23 @@ jobs:
         with:
           node-version: 18
 
-      #  Install
+      #  Install Dependencies
       - name: Install Dependencies
         run: npm install
 
-      #  Install Browsers
+      #  Install Playwright Browsers
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      #  Run Tests (IMPORTANT: never fail pipeline)
+      #  Run Tests (Do not fail pipeline)
       - name: Run Playwright Tests
         run: npx playwright test || true
 
-      #  Debug JSON (optional but useful)
+      #  Debug JSON (optional)
       - name: Debug JSON
         run: cat results.json || echo "No results.json found"
 
-      #  Parse Results (FIXED)
+      #  Parse Test Results
       - name: Parse Test Results
         id: results
         run: |
@@ -77,21 +79,23 @@ jobs:
       - name: Generate Allure Report
         run: allure generate allure-results --clean || true
 
-      #  Deploy Report
-      - name: Deploy Report to GitHub Pages
+      #  Deploy Report to GitHub Pages
+      - name: Deploy Report
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: allure-report
 
-      #  Report URL
+      #  Print Report URL
       - name: Print Report URL
         run: echo "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
 
-      #  Slack Final Notification (ALWAYS RUNS)
+      #  Slack Final Notification (IST TIME)
       - name: Slack Final Notification
         if: always()
         run: |
+          IST_TIME=$(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M:%S IST')
+
           STATUS="✅ Passed"
           if [ "${{ steps.results.outputs.failed }}" != "0" ]; then
             STATUS="❌ Failed"
@@ -102,7 +106,7 @@ jobs:
             \"blocks\": [
               {
                 \"type\": \"header\",
-                \"text\": { \"type\": \"plain_text\", \"text\": \"$STATUS Test Execution\" }
+                \"text\": { \"type\": \"plain_text\", \"text\": \"${STATUS} Test Execution\" }
               },
               {
                 \"type\": \"section\",
@@ -125,6 +129,13 @@ jobs:
                 \"text\": {
                   \"type\": \"mrkdwn\",
                   \"text\": \"*Commit:* https://github.com/${{ github.repository }}/commit/${{ github.sha }}\"
+                }
+              },
+              {
+                \"type\": \"section\",
+                \"text\": {
+                  \"type\": \"mrkdwn\",
+                  \"text\": \"*Time:* ${IST_TIME}\"
                 }
               },
               {
