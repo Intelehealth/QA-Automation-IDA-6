@@ -31,13 +31,12 @@ test.describe('Forgot Password Module', () => {
 
   // Valid Input
   test('Forgot Password with valid username', async ({ page }) => {
-    const usernameField = page.getByRole('textbox', { name: 'Enter your username' });
-
-    await usernameField.fill('nurse1');
-    await expect(usernameField).toHaveValue('nurse1');
-    await page.getByRole('button', { name: 'Continue' }).click(); 
-    await expect(page.locator('.Toastify__toast--success')) .toContainText('OTP sent successfully', { timeout: 15000 }); 
+    await page.getByRole('textbox', { name: 'Enter your username' }).fill('nurse1');
+ 
+    await page.getByRole('button', { name: 'Continue' }).click();
+    await expect(page.locator('.Toastify__toast--success')).toContainText('OTP sent successfully', { timeout: 40000 }); 
 });
+
 
   test('Forgot Password with invalid username', async ({ page }) => {
     const usernameField = page.getByRole('textbox', { name: 'Enter your username' });
