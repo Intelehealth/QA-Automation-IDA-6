@@ -24,9 +24,9 @@ test.describe('Patient Creation Module', () => {
 
 
 
-        await page.getByRole('button', {
-      name: 'Allow Notifications'
-    }).click();
+    //     await page.getByRole('button', {
+    //   name: 'Allow Notifications'
+    // }).click();
 
     await page.getByRole('button', {
       name: 'Add Patients'
@@ -210,6 +210,26 @@ test('TC_08_Verify_District_Selection', async ({ page }) => {
   await page.getByRole('textbox', {
     name: 'Postal Code*'
   }).fill('751002');
+
+    // State
+  await page.locator('text=Select State').click({
+    force: true
+  });
+
+  await page.getByRole('textbox', {
+    name: 'Search options...'
+  }).click();
+
+  await page.getByPlaceholder('Search options...')
+    .fill('Odisha');
+
+  await page.getByText('Odisha', {
+    exact: true
+  }).click();
+
+  await expect(
+    page.getByText('Odisha')
+  ).toBeVisible();
 
   await page.waitForTimeout(5000);
 
@@ -461,6 +481,27 @@ test('TC_16_Verify_Successful_Patient_Creation', async ({ page }) => {
     name: 'Postal Code*'
   }).fill('751002');
 
+  // State
+  await page.locator('text=Select State').click({
+    force: true
+  });
+
+  await page.getByRole('textbox', {
+    name: 'Search options...'
+  }).click();
+
+  await page.getByPlaceholder('Search options...')
+    .fill('Odisha');
+
+  await page.getByText('Odisha', {
+    exact: true
+  }).click();
+
+  await expect(
+    page.getByText('Odisha')
+  ).toBeVisible();
+
+
   await page.waitForTimeout(5000);
 
   // District
@@ -549,150 +590,3 @@ test('TC_16_Verify_Successful_Patient_Creation', async ({ page }) => {
 
 });
 });
-
-
-     
-
-//     // Update locator as per your application
-//     await expect(
-//       page.getByRole('button', { name: 'Add Patients' })
-//     ).toBeVisible();
-//   });
-
-//   test('Add Patient Successfully', async ({ page }) => {
-
-//     await page.getByRole('button', { name: 'Allow Notifications' }).click();
-    
-
-//     await page.getByRole('button', { name: 'Add Patients' }).click();
-
-//     await page.getByRole('button', { name: 'Accept' }).click(({ timeout: 10000 }));
-//     await page.getByRole('button', { name: 'Accept' }).click(({ timeout: 1000 }));
-
-//     // Verify Add Patient Page
-//     await expect(
-//       page.getByRole('textbox', { name: 'First Name*' })
-//     ).toBeVisible();
-
-  
-
-//     // Patient Details
-//     await page.getByRole('textbox', { name: 'First Name*' }).fill('Automation');
-
-//     await expect(
-//       page.getByRole('textbox', { name: 'First Name*' })
-//     ).toHaveValue('Automation');
-
-//     await page.getByRole('textbox', { name: 'Last Name*' }).fill('Test');
-
-//     await expect(
-//       page.getByRole('textbox', { name: 'Last Name*' })
-//     ).toHaveValue('Test');
-
-//     await page.getByRole('radio', { name: 'Male', exact: true }).check();
-
-//     await expect(
-//       page.getByRole('radio', { name: 'Male', exact: true })
-//     ).toBeChecked();
-
-//     // DOB Selection
-//     await page.getByRole('textbox', { name: 'Enter Date Of Birth' }).click();
-//     await page.getByRole('button', { name: 'MON JUN 15' }).click();
-//     await page.getByRole('button').nth(3).click();
-//     await page.getByRole('button').nth(3).click();
-//     await page.getByRole('button', { name: '2000' }).click();
-//     await page.getByRole('button', { name: 'FEB' }).click();
-// await page.getByRole('option', { name: /Choose Friday, February 4th/i }).click();
-
-// // Close calendar
-// await page.keyboard.press('Escape');
-
-// const phoneNumber = page.getByRole('textbox', { name: 'Enter phone number' });
-
-// await phoneNumber.click();
-// await phoneNumber.fill('9090909090');
-
-// await expect(phoneNumber).toHaveValue('9090909090');
-
-//     // Emergency Contact
-//     await page.getByRole('textbox', { name: 'Emergency Contact Name*' })
-//       .fill('Test User');
-
-//     await page.getByRole('textbox', { name: 'Enter Emergency Contact Number' })
-//       .fill('9090909090');
-
-//     // Country
-//     await page.getByRole('button', { name: 'Country*' }).click();
-//     await page.getByRole('textbox', { name: 'Search options...' }).fill('India');
-//     await page.getByRole('option', { name: 'India', exact: true }).click();
-
-//     // Postal Code
-//     await page.getByRole('textbox', { name: 'Postal Code*' }).fill('751002');
-//     await page.waitForTimeout(10000);
-
- 
-// // Open District dropdown
-//   await page.locator('text=Select District').click({
-//   force: true
-// });
-//   await page.getByRole('textbox', { name: 'Search options...' }).click();
-
-// // Search District
-// await page.getByPlaceholder('Search options...').fill('Khordha');
-// // Select District
-// await page.getByText('Khordha', { exact: true }).click();
-//     // Address
-//     await page.getByRole('textbox', { name: 'Village/Town/City*' })
-//       .fill('Bhubaneswar');
-
-//     await page.getByRole('textbox', { name: 'Corresponding Address*' })
-//       .fill('Automation Address');
-
-//     await page.getByRole('textbox', { name: 'Corresponding Address 2*' })
-//       .fill('Automation Address 2');
-//         await page.getByRole('button', { name: 'Contact Type*' }).click();
-//   await page.getByText('Family').click();
-
-
-//     // Next Button
-//     await expect(
-//       page.getByRole('button', { name: 'Next' })
-//     ).toBeEnabled();
-
-//     await page.getByRole('button', { name: 'Next' }).click();
-
-//     // Education
-//     await page.getByRole('button', { name: 'Education*' }).click();
-//     await page.getByRole('option', { name: 'Primary' }).click();
-
-//     await page.getByRole('button', { name: 'Next' }).click();
-
-//     // SUCCESS ASSERTIONS
-//     await expect(
-//       page.getByText('Patient Added Successfully')
-//     ).toBeVisible({ timeout: 15000 });
-
-//     await expect(
-//       page.getByText('Automation TestM')
-//     ).toBeVisible();
-
-//     await expect(
-//       page.locator('text=ID:')
-//     ).toBeVisible();
-
-
-// await expect(page.getByText('2000-02-04')).toBeVisible();
-// await expect(page.getByText('+91 9090909090')).toBeVisible();
-
-// // Address Details
-// await expect(page.getByText('751002')).toBeVisible();
-// await expect(page.getByText('India')).toBeVisible();
-// await expect(page.getByText('Odisha')).toBeVisible();
-// await expect(page.getByText('Khordha')).toBeVisible();
-// await expect(page.getByText('Bhubaneswar')).toBeVisible();
-// await expect(page.getByText('Automation Address')).toBeVisible();
-
-
-// });
-
-//   });
