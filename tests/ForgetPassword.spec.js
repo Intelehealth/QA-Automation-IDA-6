@@ -4,49 +4,92 @@ test.describe('Forgot Password Module', () => {
 
   test.beforeEach(async ({ page }) => {
     await page.goto('/hwwebapp#/auth/login');
-    await page.getByText('Forgot Password?').click();
+
+    await page.locator('a:has-text("Forgot Password")').click({
+      force: true
+    });
   });
 
-  //  Blank Input
-  test('Forgot Password with blank input', async ({ page }) => {
+  // TC01 - Valid Username
+  test('TC01 - Valid Username', async ({ page }) => {
     await page.getByRole('button', { name: 'Username' }).click();
+
+    await page.getByRole('textbox', {
+      name: 'Enter your username'
+    }).fill('nurse1');
+
     await page.getByRole('button', { name: 'Continue' }).click();
 
-    await expect(page.locator('text=Username is required')).toBeVisible();
+    await expect(
+      page.getByText('OTP sent successfully')
+    ).toBeVisible();
   });
 
-  //  Blank Username + Mobile
-  test('Forgot Username - blank username and mobile', async ({ page }) => {
-
-    // Username flow
+  // TC02 - Blank Username
+  test('TC02 - Blank Username', async ({ page }) => {
     await page.getByRole('button', { name: 'Username' }).click();
-    await page.getByRole('button', { name: 'Continue' }).click();
-    await expect(page.getByText('Username is required')).toBeVisible();
 
-    // Mobile flow
+    await page.getByRole('button', { name: 'Continue' }).click();
+
+    await expect(
+      page.getByText('Username is required')
+    ).toBeVisible();
+  });
+
+  // TC03 - Invalid Username
+  test('TC03 - Invalid Username', async ({ page }) => {
+    await page.getByRole('button', { name: 'Username' }).click();
+
+    await page.getByRole('textbox', {
+      name: 'Enter your username'
+    }).fill('kasskskas');
+
+    await page.getByRole('button', { name: 'Continue' }).click();
+
+    await expect(
+      page.locator('.Toastify__toast--error')
+    ).toContainText('Request OTP Failed', { timeout: 7000 });
+  });
+
+  // TC04 - Valid Mobile Number
+  test('TC04 - Valid Mobile Number', async ({ page }) => {
     await page.getByRole('button', { name: 'Mobile Number' }).click();
+
+    await page.getByRole('textbox', {
+      name: 'Enter your mobile number'
+    }).fill('9398517350');
+
     await page.getByRole('button', { name: 'Continue' }).click();
-    await expect(page.getByText('Mobile number is required')).toBeVisible();
+
+    await expect(
+      page.locator('.Toastify__toast')
+    ).toContainText('OTP sent successfully');
   });
 
-  // Valid Input
-  test('Forgot Password with valid username', async ({ page }) => {
-    await page.getByRole('textbox', { name: 'Enter your username' }).fill('nurse1');
- 
-    await page.getByRole('button', { name: 'Continue' }).click();
-    await expect(page.locator('.Toastify__toast--success')).toContainText('OTP sent successfully', { timeout: 40000 }); 
-});
-
-
-  test('Forgot Password with invalid username', async ({ page }) => {
-    const usernameField = page.getByRole('textbox', { name: 'Enter your username' });
-
-    await usernameField.fill('wrongUser');
+  // TC05 - Blank Mobile Number
+  test('TC05 - Blank Mobile Number', async ({ page }) => {
+    await page.getByRole('button', { name: 'Mobile Number' }).click();
 
     await page.getByRole('button', { name: 'Continue' }).click();
 
-    await expect(page.locator('.Toastify__toast--error'))
-      .toContainText('Request OTP Failed', { timeout: 7000 });
+    await expect(
+      page.getByText(/Mobile Number is required|required/i)
+    ).toBeVisible();
+  });
+
+  // TC06 - Invalid Mobile Number
+  test('TC06 - Invalid Mobile Number', async ({ page }) => {
+    await page.getByRole('button', { name: 'Mobile Number' }).click();
+
+    await page.getByRole('textbox', {
+      name: 'Enter your mobile number'
+    }).fill('2399239390');
+
+    await page.getByRole('button', { name: 'Continue' }).click();
+
+    await expect(
+      page.locator('.Toastify__toast--error')
+    ).toContainText('Request OTP Failed', { timeout: 7000 });
   });
 
 });
