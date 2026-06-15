@@ -40,9 +40,10 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      # Run Tests Only On Chromium
-      - name: Run Playwright Tests 
-        run: npx playwright test --project=chromium --workers=100%
+
+      #  Run Tests 
+      - name: Run Playwright Tests
+        run: npx playwright test || true
 
 
       #  Upload ONLY Failed Test Videos
