@@ -1,0 +1,275 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e6]:
+      - img [ref=e9]
+      - generic [ref=e12]:
+        - heading "Enable Notifications" [level=3] [ref=e13]
+        - paragraph [ref=e14]: Stay updated with important alerts and messages. We'll send you notifications about new updates and important information.
+        - generic [ref=e15]:
+          - button "Not Now" [disabled]
+          - button "Enabling..." [disabled]:
+            - generic:
+              - img
+              - generic: Enabling...
+    - generic [ref=e17]:
+      - complementary [ref=e18]:
+        - button [ref=e19]
+        - generic [ref=e21]:
+          - img "hero" [ref=e23]
+          - link "Add Patients" [ref=e25] [cursor=pointer]:
+            - /url: "#/patient/add"
+            - generic [ref=e29]: Add Patients
+          - navigation [ref=e30]:
+            - generic [ref=e31]:
+              - link "Home Home" [ref=e32] [cursor=pointer]:
+                - /url: "#/dashboard"
+                - img "Home" [ref=e33]
+                - generic [ref=e34]: Home
+              - link "Achievements Achievements" [ref=e35] [cursor=pointer]:
+                - /url: "#/achievement-ui"
+                - img "Achievements" [ref=e36]
+                - generic [ref=e37]: Achievements
+              - link "Help & Support Help & Support" [ref=e38] [cursor=pointer]:
+                - /url: "#/help"
+                - img "Help & Support" [ref=e39]
+                - generic [ref=e40]: Help & Support
+              - link "Educational Videos Educational Videos" [ref=e41] [cursor=pointer]:
+                - /url: "#/educational-videos"
+                - img "Educational Videos" [ref=e42]
+                - generic [ref=e43]: Educational Videos
+              - link "Settings Settings" [ref=e44] [cursor=pointer]:
+                - /url: "#/settings"
+                - img "Settings" [ref=e45]
+                - generic [ref=e46]: Settings
+              - link "About us About us" [ref=e47] [cursor=pointer]:
+                - /url: "#/about-us"
+                - img "About us" [ref=e48]
+                - generic [ref=e49]: About us
+          - navigation [ref=e51]:
+            - generic [ref=e52] [cursor=pointer]:
+              - img [ref=e53]
+              - generic [ref=e54]: Log-out
+      - main [ref=e55]:
+        - generic [ref=e57]:
+          - generic [ref=e60]:
+            - generic [ref=e64]:
+              - generic:
+                - generic:
+                  - img "search"
+              - combobox "Patient Search" [ref=e65]
+            - generic [ref=e67]:
+              - img "Location" [ref=e68]
+              - generic [ref=e69]: Telemedicine Clinic 3
+            - generic [ref=e70]:
+              - link "Notification" [ref=e71] [cursor=pointer]:
+                - /url: "#/notifications"
+                - img "Notification" [ref=e72]
+              - link "Profile" [ref=e73] [cursor=pointer]:
+                - /url: "#/profile"
+                - img "Profile" [ref=e74]
+          - generic [ref=e76]:
+            - generic [ref=e77]:
+              - generic [ref=e79] [cursor=pointer]:
+                - generic [ref=e80]:
+                  - generic [ref=e81]:
+                    - heading "Prescriptions" [level=2] [ref=e82]
+                    - paragraph [ref=e83]:
+                      - strong [ref=e84]: "40"
+                      - text: out of
+                      - strong [ref=e85]: "73"
+                      - text: received
+                  - img [ref=e87]
+                - img [ref=e89]
+              - generic [ref=e92] [cursor=pointer]:
+                - generic [ref=e93]:
+                  - heading "Open visits" [level=2] [ref=e94]
+                  - paragraph [ref=e95]:
+                    - strong [ref=e96]: "101"
+                    - text: Unclosed visits
+                - img [ref=e98]
+              - generic [ref=e99]:
+                - generic [ref=e102] [cursor=pointer]:
+                  - generic [ref=e103]:
+                    - heading "Appointments" [level=2] [ref=e104]
+                    - paragraph [ref=e105]:
+                      - strong [ref=e106]: "0"
+                      - text: Upcoming
+                  - img [ref=e108]
+                - button "Follow-up visits 0 Pending" [ref=e109] [cursor=pointer]:
+                  - generic [ref=e111]:
+                    - generic [ref=e112]:
+                      - heading "Follow-up visits" [level=2] [ref=e113]
+                      - paragraph [ref=e114]:
+                        - strong [ref=e115]: "0"
+                        - text: Pending
+                    - img [ref=e117]
+            - generic [ref=e118]:
+              - generic [ref=e119]:
+                - generic [ref=e120]:
+                  - button "Add Patients" [ref=e121] [cursor=pointer]:
+                    - generic [ref=e122]:
+                      - img [ref=e124]
+                      - generic [ref=e125]: Add Patients
+                    - img [ref=e126]
+                  - generic [ref=e127]:
+                    - img [ref=e129]
+                    - paragraph [ref=e130]:
+                      - generic [ref=e131]: 40 Patients
+                      - text: are waiting their Pending Prescriptions
+                - generic [ref=e136]:
+                  - generic [ref=e137]:
+                    - generic [ref=e138]:
+                      - img [ref=e140]
+                      - heading "Prescriptions" [level=2] [ref=e141]
+                    - generic [ref=e142]:
+                      - img "filter" [ref=e144] [cursor=pointer]
+                      - generic [ref=e145]:
+                        - img "search"
+                        - textbox "Find patient" [ref=e146]
+                  - generic [ref=e148]:
+                    - button "Received" [ref=e149]:
+                      - img [ref=e150]
+                      - text: Received
+                    - button "Pending" [ref=e151]:
+                      - img [ref=e152]
+                      - text: Pending
+                  - generic [ref=e153]:
+                    - generic [ref=e154]:
+                      - generic [ref=e155] [cursor=pointer]:
+                        - text: Patient
+                        - img "sort-asc" [ref=e156]
+                      - generic [ref=e157] [cursor=pointer]:
+                        - text: Age
+                        - img "sort-asc" [ref=e158]
+                      - generic [ref=e159] [cursor=pointer]:
+                        - text: Visit created
+                        - img "sort-asc" [ref=e160]
+                      - generic [ref=e161] [cursor=pointer]:
+                        - text: Clinic
+                        - img "sort-asc" [ref=e162]
+                      - generic [ref=e163] [cursor=pointer]:
+                        - text: Gender
+                        - img "sort-asc" [ref=e164]
+                      - generic [ref=e165] [cursor=pointer]:
+                        - text: Prescription
+                        - img "sort-asc" [ref=e166]
+                    - generic [ref=e167]:
+                      - generic [ref=e169] [cursor=pointer]:
+                        - generic [ref=e171]:
+                          - img [ref=e172]
+                          - paragraph [ref=e173]: Ayu ayu
+                        - generic [ref=e174]: "26"
+                        - generic [ref=e175]: 2026-06-04 10:22:56
+                        - generic [ref=e176]: Telemedicine Clinic 3
+                        - generic [ref=e177]: F
+                        - generic [ref=e179]:
+                          - img [ref=e180]
+                          - paragraph [ref=e181]: 2026-06-05 12:32:29
+                      - generic [ref=e183] [cursor=pointer]:
+                        - generic [ref=e185]:
+                          - img [ref=e186]
+                          - paragraph [ref=e187]: Picture Upload
+                        - generic [ref=e188]: "5"
+                        - generic [ref=e189]: 2026-06-03 17:09:29
+                        - generic [ref=e190]: Telemedicine Clinic 3
+                        - generic [ref=e191]: F
+                        - generic [ref=e193]:
+                          - img [ref=e194]
+                          - paragraph [ref=e195]: 2026-06-05 11:56:06
+                      - generic [ref=e197] [cursor=pointer]:
+                        - generic [ref=e199]:
+                          - img [ref=e200]
+                          - paragraph [ref=e201]: K Shaan
+                        - generic [ref=e202]: "25"
+                        - generic [ref=e203]: 2026-04-29 08:57:20
+                        - generic [ref=e204]: Telemedicine Clinic 3
+                        - generic [ref=e205]: M
+                        - generic [ref=e207]:
+                          - img [ref=e208]
+                          - paragraph [ref=e209]: 2026-04-29 09:18:09
+                      - generic [ref=e211] [cursor=pointer]:
+                        - generic [ref=e213]:
+                          - img [ref=e214]
+                          - paragraph [ref=e215]: Visit Test
+                        - generic [ref=e216]: "35"
+                        - generic [ref=e217]: 2026-03-17 12:53:55
+                        - generic [ref=e218]: Telemedicine Clinic 3
+                        - generic [ref=e219]: F
+                        - generic [ref=e221]:
+                          - img [ref=e222]
+                          - paragraph [ref=e223]: 2026-03-17 13:04:07
+                      - generic [ref=e225] [cursor=pointer]:
+                        - generic [ref=e227]:
+                          - img [ref=e228]
+                          - paragraph [ref=e229]: Test Heyy
+                        - generic [ref=e230]: "1"
+                        - generic [ref=e231]: 2025-01-15 15:47:05
+                        - generic [ref=e232]: Telemedicine Clinic 3
+                        - generic [ref=e233]: F
+                        - generic [ref=e235]:
+                          - img [ref=e236]
+                          - paragraph [ref=e237]: 2026-03-12 18:08:34
+                      - generic [ref=e239] [cursor=pointer]:
+                        - generic [ref=e241]:
+                          - img [ref=e242]
+                          - paragraph [ref=e243]: Test User parent
+                        - generic [ref=e244]: "7"
+                        - generic [ref=e245]: 2025-01-21 13:40:33
+                        - generic [ref=e246]: Telemedicine Clinic 3
+                        - generic [ref=e247]: F
+                        - generic [ref=e249]:
+                          - img [ref=e250]
+                          - paragraph [ref=e251]: 2026-03-12 15:40:22
+                    - paragraph [ref=e253] [cursor=pointer]: Show all →
+              - generic [ref=e254]:
+                - generic [ref=e255]:
+                  - img "achievements" [ref=e256]
+                  - generic [ref=e257]: Achievements
+                - generic [ref=e258]:
+                  - generic [ref=e259]:
+                    - generic [ref=e260]:
+                      - img "Doctor Visits" [ref=e261]
+                      - img "info" [ref=e262] [cursor=pointer]
+                    - generic [ref=e263]:
+                      - generic [ref=e264]: Doctor Visits
+                      - generic [ref=e265]: "0"
+                  - generic [ref=e266]:
+                    - generic [ref=e267]:
+                      - img "Beneficiary Registered" [ref=e268]
+                      - img "info" [ref=e269] [cursor=pointer]
+                    - generic [ref=e270]:
+                      - generic [ref=e271]: Beneficiary Registered
+                      - generic [ref=e272]: "0"
+                  - generic [ref=e273]:
+                    - generic [ref=e274]:
+                      - img "Daily time spent" [ref=e275]
+                      - img "info" [ref=e276] [cursor=pointer]
+                    - generic [ref=e277]:
+                      - generic [ref=e278]: Daily time spent
+                      - generic [ref=e279]: 0m
+                  - generic [ref=e280]:
+                    - generic [ref=e281]:
+                      - img "Sevika/ NCD Visits" [ref=e282]
+                      - img "info" [ref=e283] [cursor=pointer]
+                    - generic [ref=e284]:
+                      - generic [ref=e285]: Sevika/ NCD Visits
+                      - generic [ref=e286]: "0"
+                  - generic [ref=e287]:
+                    - generic [ref=e288]:
+                      - img "Household Registered" [ref=e289]
+                      - img "info" [ref=e290] [cursor=pointer]
+                    - generic [ref=e291]:
+                      - generic [ref=e292]: Household Registered
+                      - generic [ref=e293]: "0"
+                  - generic [ref=e294]:
+                    - generic [ref=e295]:
+                      - img "Status" [ref=e296]
+                      - img "info" [ref=e297] [cursor=pointer]
+                    - generic [ref=e298]:
+                      - generic [ref=e299]: Status
+                      - generic [ref=e300]: Active
+  - region "Notifications Alt+T"
+```
