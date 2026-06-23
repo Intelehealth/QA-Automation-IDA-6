@@ -1,0 +1,273 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - generic [ref=e5]:
+    - complementary [ref=e6]:
+      - button [ref=e7]
+      - generic [ref=e9]:
+        - img "hero" [ref=e11]
+        - link "Add Patients" [ref=e13] [cursor=pointer]:
+          - /url: "#/patient/add"
+          - generic [ref=e17]: Add Patients
+        - navigation [ref=e18]:
+          - generic [ref=e19]:
+            - link "Home Home" [ref=e20] [cursor=pointer]:
+              - /url: "#/dashboard"
+              - img "Home" [ref=e21]
+              - generic [ref=e22]: Home
+            - link "Achievements Achievements" [ref=e23] [cursor=pointer]:
+              - /url: "#/achievement-ui"
+              - img "Achievements" [ref=e24]
+              - generic [ref=e25]: Achievements
+            - link "Help & Support Help & Support" [ref=e26] [cursor=pointer]:
+              - /url: "#/help"
+              - img "Help & Support" [ref=e27]
+              - generic [ref=e28]: Help & Support
+            - link "Educational Videos Educational Videos" [ref=e29] [cursor=pointer]:
+              - /url: "#/educational-videos"
+              - img "Educational Videos" [ref=e30]
+              - generic [ref=e31]: Educational Videos
+            - link "Settings Settings" [ref=e32] [cursor=pointer]:
+              - /url: "#/settings"
+              - img "Settings" [ref=e33]
+              - generic [ref=e34]: Settings
+            - link "About us About us" [ref=e35] [cursor=pointer]:
+              - /url: "#/about-us"
+              - img "About us" [ref=e36]
+              - generic [ref=e37]: About us
+        - navigation [ref=e39]:
+          - generic [ref=e40] [cursor=pointer]:
+            - img [ref=e41]
+            - generic [ref=e42]: Log-out
+    - main [ref=e43]:
+      - generic [ref=e45]:
+        - generic [ref=e48]:
+          - generic [ref=e52]:
+            - generic:
+              - generic:
+                - img "search"
+            - combobox "Patient Search" [ref=e53]
+          - generic [ref=e55]:
+            - img "Location" [ref=e56]
+            - generic [ref=e57]: Telemedicine Clinic 3
+          - generic [ref=e58]:
+            - link "Notification" [ref=e59] [cursor=pointer]:
+              - /url: "#/notifications"
+              - img "Notification" [ref=e60]
+            - link "Profile" [ref=e61] [cursor=pointer]:
+              - /url: "#/profile"
+              - img "Profile" [ref=e62]
+        - generic [ref=e64]:
+          - generic [ref=e65]:
+            - img [ref=e66]
+            - generic [ref=e67]: Add Patient
+          - separator [ref=e68]
+          - generic [ref=e70]:
+            - generic [ref=e72]:
+              - img "Profile" [ref=e74]
+              - button [ref=e75]
+            - generic [ref=e77]:
+              - img "Personal" [ref=e78]
+              - heading "Personal" [level=3] [ref=e79]
+            - generic [ref=e80]:
+              - generic [ref=e82]:
+                - generic [ref=e83]: First Name*
+                - textbox "First Name*" [ref=e85]:
+                  - /placeholder: Enter First Name
+                  - text: Automation
+              - generic [ref=e87]:
+                - generic [ref=e88]: Middle Name
+                - textbox "Middle Name" [ref=e90]:
+                  - /placeholder: Enter Middle Name
+              - generic [ref=e92]:
+                - generic [ref=e93]: Last Name*
+                - textbox "Last Name*" [ref=e95]:
+                  - /placeholder: Enter Last Name
+                  - text: Test
+            - generic [ref=e97]:
+              - generic [ref=e98]: Gender*
+              - radiogroup [ref=e100]:
+                - generic [ref=e101]:
+                  - generic [ref=e103]:
+                    - radio "Male" [checked] [ref=e105] [cursor=pointer]
+                    - generic [ref=e107] [cursor=pointer]: Male
+                  - img "Male" [ref=e108]
+                - generic [ref=e109]:
+                  - generic [ref=e111]:
+                    - radio "Female" [ref=e113] [cursor=pointer]
+                    - generic [ref=e115] [cursor=pointer]: Female
+                  - img "Female" [ref=e116]
+                - generic [ref=e117]:
+                  - generic [ref=e119]:
+                    - radio "Other" [ref=e121] [cursor=pointer]
+                    - generic [ref=e123] [cursor=pointer]: Other
+                  - img "Other" [ref=e124]
+            - generic [ref=e125]:
+              - generic [ref=e127]:
+                - generic [ref=e128]: Date Of Birth*
+                - generic [ref=e129]:
+                  - textbox "Enter Date Of Birth" [active] [ref=e132] [cursor=pointer]
+                  - generic [ref=e133]:
+                    - dialog "Choose Date" [ref=e135]:
+                      - alert [ref=e136]
+                      - generic [ref=e137]:
+                        - generic [ref=e138]:
+                          - generic [ref=e140]:
+                            - button [ref=e141]
+                            - button "TUE JUN 23 2026" [ref=e143]: TUE JUN 23 2026
+                            - button [ref=e145]
+                          - generic [ref=e147]:
+                            - generic "Sunday" [ref=e148]: Su
+                            - generic "Monday" [ref=e149]: Mo
+                            - generic "Tuesday" [ref=e150]: Tu
+                            - generic "Wednesday" [ref=e151]: We
+                            - generic "Thursday" [ref=e152]: Th
+                            - generic "Friday" [ref=e153]: Fr
+                            - generic "Saturday" [ref=e154]: Sa
+                        - listbox "Month June, 2026" [ref=e155]:
+                          - generic [ref=e156]:
+                            - option "Choose Sunday, May 31st, 2026" [ref=e157] [cursor=pointer]: "31"
+                            - option "Choose Monday, June 1st, 2026" [ref=e158] [cursor=pointer]: "1"
+                            - option "Choose Tuesday, June 2nd, 2026" [ref=e159] [cursor=pointer]: "2"
+                            - option "Choose Wednesday, June 3rd, 2026" [ref=e160] [cursor=pointer]: "3"
+                            - option "Choose Thursday, June 4th, 2026" [ref=e161] [cursor=pointer]: "4"
+                            - option "Choose Friday, June 5th, 2026" [ref=e162] [cursor=pointer]: "5"
+                            - option "Choose Saturday, June 6th, 2026" [ref=e163] [cursor=pointer]: "6"
+                          - generic [ref=e164]:
+                            - option "Choose Sunday, June 7th, 2026" [ref=e165] [cursor=pointer]: "7"
+                            - option "Choose Monday, June 8th, 2026" [ref=e166] [cursor=pointer]: "8"
+                            - option "Choose Tuesday, June 9th, 2026" [ref=e167] [cursor=pointer]: "9"
+                            - option "Choose Wednesday, June 10th, 2026" [ref=e168] [cursor=pointer]: "10"
+                            - option "Choose Thursday, June 11th, 2026" [ref=e169] [cursor=pointer]: "11"
+                            - option "Choose Friday, June 12th, 2026" [ref=e170] [cursor=pointer]: "12"
+                            - option "Choose Saturday, June 13th, 2026" [ref=e171] [cursor=pointer]: "13"
+                          - generic [ref=e172]:
+                            - option "Choose Sunday, June 14th, 2026" [ref=e173] [cursor=pointer]: "14"
+                            - option "Choose Monday, June 15th, 2026" [ref=e174] [cursor=pointer]: "15"
+                            - option "Choose Tuesday, June 16th, 2026" [ref=e175] [cursor=pointer]: "16"
+                            - option "Choose Wednesday, June 17th, 2026" [ref=e176] [cursor=pointer]: "17"
+                            - option "Choose Thursday, June 18th, 2026" [ref=e177] [cursor=pointer]: "18"
+                            - option "Choose Friday, June 19th, 2026" [ref=e178] [cursor=pointer]: "19"
+                            - option "Choose Saturday, June 20th, 2026" [ref=e179] [cursor=pointer]: "20"
+                          - generic [ref=e180]:
+                            - option "Choose Sunday, June 21st, 2026" [ref=e181] [cursor=pointer]: "21"
+                            - option "Choose Monday, June 22nd, 2026" [ref=e182] [cursor=pointer]: "22"
+                            - option "Choose Tuesday, June 23rd, 2026" [ref=e183] [cursor=pointer]: "23"
+                            - option "Choose Wednesday, June 24th, 2026" [ref=e184] [cursor=pointer]: "24"
+                            - option "Choose Thursday, June 25th, 2026" [ref=e185] [cursor=pointer]: "25"
+                            - option "Choose Friday, June 26th, 2026" [ref=e186] [cursor=pointer]: "26"
+                            - option "Choose Saturday, June 27th, 2026" [ref=e187] [cursor=pointer]: "27"
+                          - generic [ref=e188]:
+                            - option "Choose Sunday, June 28th, 2026" [ref=e189] [cursor=pointer]: "28"
+                            - option "Choose Monday, June 29th, 2026" [ref=e190] [cursor=pointer]: "29"
+                            - option "Choose Tuesday, June 30th, 2026" [ref=e191] [cursor=pointer]: "30"
+                            - option "Choose Wednesday, July 1st, 2026" [ref=e192] [cursor=pointer]: "1"
+                            - option "Choose Thursday, July 2nd, 2026" [ref=e193] [cursor=pointer]: "2"
+                            - option "Choose Friday, July 3rd, 2026" [ref=e194] [cursor=pointer]: "3"
+                            - option "Choose Saturday, July 4th, 2026" [ref=e195] [cursor=pointer]: "4"
+                    - img
+                  - button "calendar":
+                    - img "calendar"
+              - generic [ref=e197]:
+                - generic [ref=e198]: Or Age
+                - spinbutton "Or Age" [ref=e200]
+              - generic [ref=e201]:
+                - generic [ref=e202]: Phone Number*
+                - generic [ref=e203]:
+                  - button "India +91" [ref=e206]:
+                    - generic [ref=e207]:
+                      - img "India" [ref=e208]
+                      - generic [ref=e209]: "+91"
+                    - img [ref=e210]
+                  - textbox "Enter phone number" [ref=e214]
+            - generic [ref=e215]:
+              - generic [ref=e217]:
+                - generic [ref=e218]: Contact Type*
+                - button "Contact Type*" [ref=e220]:
+                  - generic [ref=e221]: Select Contact Type
+                  - img [ref=e223]
+              - generic [ref=e226]:
+                - generic [ref=e227]: Emergency Contact Name*
+                - textbox "Emergency Contact Name*" [ref=e229]:
+                  - /placeholder: Enter Emergency Contact Name
+              - generic [ref=e230]:
+                - generic [ref=e231]: Emergency Contact Number *
+                - generic [ref=e232]:
+                  - button "India +91" [ref=e235]:
+                    - generic [ref=e236]:
+                      - img "India" [ref=e237]
+                      - generic [ref=e238]: "+91"
+                    - img [ref=e239]
+                  - textbox "Enter Emergency Contact Number" [ref=e243]
+            - generic [ref=e244]:
+              - img "Address" [ref=e245]
+              - heading "Address" [level=3] [ref=e246]
+            - generic [ref=e247]:
+              - generic [ref=e249]:
+                - generic [ref=e250]: Country*
+                - button "Country*" [ref=e252]:
+                  - generic [ref=e253]: Select Country
+                  - img [ref=e255]
+              - generic [ref=e258]:
+                - generic [ref=e259]: Postal Code*
+                - textbox "Postal Code*" [ref=e261]:
+                  - /placeholder: Enter Postal Code
+              - generic [ref=e263]:
+                - generic [ref=e264]: State*
+                - button "State*" [ref=e266]:
+                  - generic [ref=e267]: Select State
+                  - img [ref=e269]
+            - generic [ref=e271]:
+              - generic [ref=e273]:
+                - generic [ref=e274]: District*
+                - button "District*" [ref=e276]:
+                  - generic [ref=e277]: Select District
+                  - img [ref=e279]
+              - generic [ref=e282]:
+                - generic [ref=e283]: Village/Town/City*
+                - textbox "Village/Town/City*" [ref=e285]:
+                  - /placeholder: Enter Village/Town/City
+            - generic [ref=e288]:
+              - generic [ref=e289]: Corresponding Address*
+              - textbox "Corresponding Address*" [ref=e291]:
+                - /placeholder: Enter Corresponding Address 1
+            - generic [ref=e294]:
+              - generic [ref=e295]: Corresponding Address 2*
+              - textbox "Corresponding Address 2*" [ref=e297]:
+                - /placeholder: Enter Corresponding Address 2
+            - generic [ref=e298]:
+              - img "Other" [ref=e299]
+              - heading "Other" [level=3] [ref=e300]
+            - generic [ref=e301]:
+              - generic [ref=e303]:
+                - generic [ref=e304]: Enter Son/Daughter/Wife Of
+                - textbox "Enter Son/Daughter/Wife Of" [ref=e306]
+              - generic [ref=e308]:
+                - generic [ref=e309]: Occupation
+                - button "Occupation" [ref=e311]:
+                  - generic [ref=e312]: Select Occupation
+                  - img [ref=e314]
+              - generic [ref=e317]:
+                - generic [ref=e318]: Caste
+                - button "Caste" [ref=e320]:
+                  - generic [ref=e321]: Select Caste
+                  - img [ref=e323]
+            - generic [ref=e325]:
+              - generic [ref=e327]:
+                - generic [ref=e328]: Education*
+                - button "Education*" [ref=e330]:
+                  - generic [ref=e331]: Select Education
+                  - img [ref=e333]
+              - generic [ref=e336]:
+                - generic [ref=e337]: Economic Status
+                - button "Economic Status" [ref=e339]:
+                  - generic [ref=e340]: Select Economic Status
+                  - img [ref=e342]
+            - generic [ref=e344]:
+              - button "Back" [ref=e345] [cursor=pointer]:
+                - generic [ref=e346]: Back
+              - button "Next" [ref=e347] [cursor=pointer]:
+                - generic [ref=e348]: Next
+  - region "Notifications Alt+T"
+```
