@@ -422,17 +422,21 @@ test('TC_16_Verify_Successful_Patient_Creation', async ({ page }) => {
   ).toBeChecked();
 
   // Open DOB calendar
-  await page.getByRole('textbox', { name: 'Enter Date Of Birth' }).click();
-  await page.locator('button:has(i.fa-chevron-down)').click();
-  await page.getByRole('button').filter({ hasText: /^$/ }).nth(3).click();
-  await page.getByRole('button').filter({ hasText: /^$/ }).nth(3).click();
-  await page.getByRole('button', { name: '2000' }).click();
-  await page.getByRole('button', { name: 'JAN' }).click();
-  await page.getByRole('option', { name: 'Choose Tuesday, January 4th,' }).click();
-  //  await page.getByPlaceholder('Enter Date Of Birth').click();
+  await page.getByPlaceholder('Enter Date Of Birth').click();
 
-  // // Select first date visible in calendar
-  //  await page.locator('.react-datepicker__day').first().click();
+  await page.locator('button:has(i.fa-chevron-down)').click();
+
+  const previousDecade = page.getByRole('button').filter({ hasText: /^$/ }).nth(3);
+
+   await previousDecade.click();
+   await previousDecade.click();
+
+  await page.getByRole('button', { name: '2000' }).click();
+
+  await page.getByRole('button', { name: 'JAN' }).click();
+
+  // Select January 1st
+ await page.locator('.react-datepicker__day--001:not(.react-datepicker__day--outside-month)').click();
 
   // Phone Number
   const phoneNumber = page.getByRole('textbox', {
@@ -562,7 +566,7 @@ test('TC_16_Verify_Successful_Patient_Creation', async ({ page }) => {
   ).toBeVisible();
 
   await expect(
-    page.getByText('2000-01-04')
+    page.getByText('2000-01-01')
   ).toBeVisible();
 
   await expect(

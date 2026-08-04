@@ -19,11 +19,14 @@ test.describe('Forgot Password Module', () => {
     }).fill('nurse1');
 
     await page.getByRole('button', { name: 'Continue' }).click();
+    const toast = page.locator('.Toastify__toast');
+    await expect(toast).toBeVisible({
+    timeout: 15000,
+    });
 
-    await expect(
-      page.getByText('OTP sent successfully')
-    ).toBeVisible();
-  });
+await expect(toast).toContainText('OTP sent successfully');
+});
+
 
   // TC02 - Blank Username
   test('TC02 - Blank Username', async ({ page }) => {
@@ -32,7 +35,7 @@ test.describe('Forgot Password Module', () => {
     await page.getByRole('button', { name: 'Continue' }).click();
 
     await expect(
-      page.getByText('Username is required')
+    page.getByText('Username is required')
     ).toBeVisible();
   });
 
@@ -61,20 +64,27 @@ test.describe('Forgot Password Module', () => {
 
     await page.getByRole('button', { name: 'Continue' }).click();
 
-    await expect(
-      page.locator('.Toastify__toast')
-    ).toContainText('OTP sent successfully');
+    const toast = page.locator('.Toastify__toast');
+
+    await expect(toast).toBeVisible({ timeout: 15000 });
+
+    await expect(toast).toContainText('OTP sent successfully');
   });
 
   // TC05 - Blank Mobile Number
-  test('TC05 - Blank Mobile Number', async ({ page }) => {
-    await page.getByRole('button', { name: 'Mobile Number' }).click();
+test('TC05 - Blank Mobile Number', async ({ page }) => {
+  await page.getByRole('button', { name: 'Mobile Number' }).click();
 
-    await page.getByRole('button', { name: 'Continue' }).click();
+  await page.getByRole('button', { name: 'Continue' }).click();
 
-    await expect(
-      page.getByText(/Mobile Number is required|required/i)
-    ).toBeVisible();
+  const error = page.getByText(/Mobile Number is required|required/i);
+
+  await error.waitFor({
+  state: 'visible',
+  timeout: 15000,
+  });
+
+ await expect(error).toBeVisible();
   });
 
   // TC06 - Invalid Mobile Number
@@ -91,5 +101,4 @@ test.describe('Forgot Password Module', () => {
       page.locator('.Toastify__toast--error')
     ).toContainText('Request OTP Failed', { timeout: 7000 });
   });
-
 });
