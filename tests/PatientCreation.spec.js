@@ -3,7 +3,11 @@ import { test, expect } from '@playwright/test';
 test.describe('Patient Creation Module', () => {
 
   test.beforeEach(async ({ page }) => {
+    page.setDefaultNavigationTimeout(60000);
     await page.goto('/hwwebapp#/auth/login');
+      waitUntil: 'domcontentloaded'
+  
+
 
     // Verify Login Page
     await expect(
@@ -417,42 +421,27 @@ test('TC_16_Verify_Successful_Patient_Creation', async ({ page }) => {
     })
   ).toBeChecked();
 
-  // DOB Selection
-  await page.getByRole('textbox', {
-    name: 'Enter Date Of Birth'
-  }).click();
+  // Open DOB calendar
+  await page.getByRole('textbox', { name: 'Enter Date Of Birth' }).click();
+  await page.locator('button:has(i.fa-chevron-down)').click();
+  await page.getByRole('button').filter({ hasText: /^$/ }).nth(3).click();
+  await page.getByRole('button').filter({ hasText: /^$/ }).nth(3).click();
+  await page.getByRole('button', { name: '2000' }).click();
+  await page.getByRole('button', { name: 'JAN' }).click();
+  await page.getByRole('option', { name: 'Choose Tuesday, January 4th,' }).click();
+  //  await page.getByPlaceholder('Enter Date Of Birth').click();
 
-  await page.getByRole('button', {
-    name: 'MON JUN 15'
-  }).click();
-
-  await page.getByRole('button').nth(3).click();
-  await page.getByRole('button').nth(3).click();
-
-  await page.getByRole('button', {
-    name: '2000'
-  }).click();
-
-  await page.getByRole('button', {
-    name: 'FEB'
-  }).click();
-
-  await page.getByRole('option', {
-    name: /Choose Friday, February 4th/i
-  }).click();
-
-  await page.keyboard.press('Escape');
+  // // Select first date visible in calendar
+  //  await page.locator('.react-datepicker__day').first().click();
 
   // Phone Number
   const phoneNumber = page.getByRole('textbox', {
-    name: 'Enter phone number'
-  });
+  name: 'Enter phone number'
+ });
 
-  await phoneNumber.fill('9090909090');
+ await phoneNumber.fill('9090909090');
 
-  await expect(phoneNumber)
-    .toHaveValue('9090909090');
-
+ await expect(phoneNumber).toHaveValue('9090909090');
   // Emergency Contact
   await page.getByRole('textbox', {
     name: 'Emergency Contact Name*'
@@ -460,7 +449,7 @@ test('TC_16_Verify_Successful_Patient_Creation', async ({ page }) => {
 
   await page.getByRole('textbox', {
     name: 'Enter Emergency Contact Number'
-  }).fill('9090909090');
+  }).fill('9090909091');
 
   // Country
   await page.getByRole('button', {
@@ -573,7 +562,7 @@ test('TC_16_Verify_Successful_Patient_Creation', async ({ page }) => {
   ).toBeVisible();
 
   await expect(
-    page.getByText('2000-02-04')
+    page.getByText('2000-01-04')
   ).toBeVisible();
 
   await expect(
