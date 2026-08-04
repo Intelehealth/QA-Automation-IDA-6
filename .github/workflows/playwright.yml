@@ -57,10 +57,10 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-         name: results-json
-         path: results.json
+          name: results-json
+          path: results.json
 
-      #  Parse Test Results
+      # Parse Test Results
       - name: Parse Test Results
         id: results
         run: |
@@ -70,16 +70,19 @@ jobs:
           if [ ! -f results.json ]; then
             echo "passed=0" >> $GITHUB_OUTPUT
             echo "failed=0" >> $GITHUB_OUTPUT
+            echo "flaky=0" >> $GITHUB_OUTPUT
             echo "total=0" >> $GITHUB_OUTPUT
             exit 0
           fi
 
-          PASSED=$(jq '[.. | objects | select(.status?=="passed")] | length' results.json)
-          FAILED=$(jq '[.. | objects | select(.status?=="failed")] | length' results.json)
-          TOTAL=$((PASSED + FAILED))
+          PASSED=$(jq '.stats.expected' results.json)
+          FAILED=$(jq '.stats.unexpected' results.json)
+          FLAKY=$(jq '.stats.flaky' results.json)
+          TOTAL=$((PASSED + FAILED + FLAKY))
 
           echo "passed=$PASSED" >> $GITHUB_OUTPUT
           echo "failed=$FAILED" >> $GITHUB_OUTPUT
+          echo "flaky=$FLAKY" >> $GITHUB_OUTPUT
           echo "total=$TOTAL" >> $GITHUB_OUTPUT
 
       #  Install Allure
@@ -108,8 +111,11 @@ jobs:
           IST_TIME=$(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M:%S IST')
 
           STATUS="✅ Passed"
+
           if [ "${{ steps.results.outputs.failed }}" != "0" ]; then
             STATUS="❌ Failed"
+          elif [ "${{ steps.results.outputs.flaky }}" != "0" ]; then
+            STATUS="⚠️ Passed with Flaky Tests"
           fi
 
           curl -X POST -H 'Content-type: application/json' \
@@ -130,9 +136,10 @@ jobs:
               {
                 \"type\": \"section\",
                 \"fields\": [
-                  { \"type\": \"mrkdwn\", \"text\": \"*Total:*\n${{ steps.results.outputs.total }}\" },
-                  { \"type\": \"mrkdwn\", \"text\": \"*Passed:*\n${{ steps.results.outputs.passed }}\" },
-                  { \"type\": \"mrkdwn\", \"text\": \"*Failed:*\n${{ steps.results.outputs.failed }}\" }
+                  { "type": "mrkdwn", "text": "*Passed:*\n${{ steps.results.outputs.passed }}" },
+                  { "type": "mrkdwn", "text": "*Failed:*\n${{ steps.results.outputs.failed }}" },
+                  { "type": "mrkdwn", "text": "*Flaky:*\n${{ steps.results.outputs.flaky }}" },
+                  { "type": "mrkdwn", "text": "*Total:*\n${{ steps.results.outputs.total }}" }
                 ]
               },
               {
