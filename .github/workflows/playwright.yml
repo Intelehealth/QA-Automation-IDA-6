@@ -53,8 +53,12 @@ jobs:
           path: test-results/**/*.webm
 
       #  Debug JSON (optional)
-      - name: Debug JSON
-        run: cat results.json || echo "No results.json found"
+      - name: Upload results.json
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+         name: results-json
+         path: results.json
 
       #  Parse Test Results
       - name: Parse Test Results
