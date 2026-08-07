@@ -285,22 +285,22 @@ jobs:
 
                   {
                     \"type\": \"mrkdwn\",
-                    \"text\": \"*📦 Repository:*\n${{ github.repository }}\"
+                    \"text\": \"* Repository:*\n${{ github.repository }}\"
                   },
 
                   {
                     \"type\": \"mrkdwn\",
-                    \"text\": \"*🌿 Branch:*\n${{ github.ref_name }}\"
+                    \"text\": \"* Branch:*\n${{ github.ref_name }}\"
                   },
 
                   {
                     \"type\": \"mrkdwn\",
-                    \"text\": \"*👤 Triggered By:*\n${{ github.actor }}\"
+                    \"text\": \"* Triggered By:*\n${{ github.actor }}\"
                   },
 
                   {
                     \"type\": \"mrkdwn\",
-                    \"text\": \"*🔢 Run Number:*\n#${{ github.run_number }}\"
+                    \"text\": \"* Run Number:*\n#${{ github.run_number }}\"
                   }
 
                 ]
