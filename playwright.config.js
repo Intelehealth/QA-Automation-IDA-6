@@ -40,10 +40,8 @@ export default defineConfig({
 
     ignoreHTTPSErrors: true,
 
-    // Allow browser notification permission
     permissions: ['notifications'],
 
-    // Normal browser window size
     viewport: { width: 1280, height: 720 },
   },
 

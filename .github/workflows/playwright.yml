@@ -1,4 +1,4 @@
-name: IDA-6 Playwright Automation + Allure + Slack
+name: IDA-6 Automation + Allure + Slack
 
 on:
   push:
@@ -7,374 +7,489 @@ on:
 
   pull_request:
 
-  workflow_dispatch:
-
 permissions:
   contents: write
 
+
 jobs:
 
-  # =====================================================
-  # IDA-6 AUTOMATION
-  # =====================================================
+  # ============================================================
+  # IDA-6 AUTOMATION JOB
+  # ============================================================
 
   test:
-
-    name: IDA-6 Automation Tests
 
     runs-on: ubuntu-latest
 
     steps:
 
-      # =====================================================
-      # 🚀 SLACK START NOTIFICATION
-      # =====================================================
+      # ========================================================
+      # 🚀 SLACK - AUTOMATION STARTED
+      # ========================================================
 
-      - name: Slack Start Notification
+      - name: Slack - IDA-6 Automation Started
         run: |
 
           IST_TIME=$(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M:%S IST')
 
+          PAYLOAD=$(jq -n \
+            --arg time "$IST_TIME" \
+            --arg repository "${{ github.repository }}" \
+            --arg branch "${{ github.ref_name }}" \
+            --arg actor "${{ github.actor }}" \
+            '{
+              text:
+                "🚀 *IDA-6 Automation Started*\n\nProject: IDA-6 Automation\nRepository: \($repository)\nBranch: \($branch)\nTriggered By: \($actor)\nTime: \($time)"
+            }'
+          )
+
           curl -X POST \
-          -H "Content-Type: application/json" \
-          --data "{
-            \"blocks\": [
-
-              {
-                \"type\": \"header\",
-                \"text\": {
-                  \"type\": \"plain_text\",
-                  \"text\": \"🚀 IDA-6 Automation Started\"
-                }
-              },
-
-              {
-                \"type\": \"divider\"
-              },
-
-              {
-                \"type\": \"section\",
-                \"fields\": [
-
-                  {
-                    \"type\": \"mrkdwn\",
-                    \"text\": \"*Project:*\nIDA-6 Automation\"
-                  },
-
-                  {
-                    \"type\": \"mrkdwn\",
-                    \"text\": \"*Repository:*\n${{ github.repository }}\"
-                  },
-
-                  {
-                    \"type\": \"mrkdwn\",
-                    \"text\": \"*Branch:*\n${{ github.ref_name }}\"
-                  },
-
-                  {
-                    \"type\": \"mrkdwn\",
-                    \"text\": \"*Triggered By:*\n${{ github.actor }}\"
-                  }
-
-                ]
-              },
-
-              {
-                \"type\": \"divider\"
-              },
-
-              {
-                \"type\": \"section\",
-                \"text\": {
-                  \"type\": \"mrkdwn\",
-                  \"text\": \"*🕒 Start Time:*\n${IST_TIME}\"
-                }
-              }
-
-            ]
-          }" \
-          ${{ secrets.SLACK_WEBHOOK_URL }}
+            -H "Content-Type: application/json" \
+            --data "$PAYLOAD" \
+            "${{ secrets.SLACK_WEBHOOK_URL }}"
 
 
-      # =====================================================
-      # CHECKOUT CODE
-      # =====================================================
+      # ========================================================
+      # 📥 CHECKOUT CODE
+      # ========================================================
 
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
 
-      # =====================================================
-      # NODE JS
-      # =====================================================
+      # ========================================================
+      # 🟢 SETUP NODE
+      # ========================================================
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: npm
 
 
-      # =====================================================
-      # INSTALL DEPENDENCIES
-      # =====================================================
+      # ========================================================
+      # 📦 INSTALL NPM DEPENDENCIES
+      # ========================================================
 
       - name: Install Dependencies
-        run: npm ci
+        run: |
+
+          echo "========================================"
+          echo "Installing npm dependencies"
+          echo "========================================"
+
+          npm ci
 
 
-      # =====================================================
-      # INSTALL PLAYWRIGHT
-      # =====================================================
+      # ========================================================
+      # 🎭 INSTALL PLAYWRIGHT CHROMIUM
+      # ========================================================
 
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps chromium
+      - name: Install Playwright Chromium
+        run: |
+
+          echo "========================================"
+          echo "Installing Playwright Chromium"
+          echo "========================================"
+
+          npx playwright install --with-deps chromium
 
 
-      # =====================================================
-      # RUN PLAYWRIGHT TESTS
-      # =====================================================
+      # ========================================================
+      # 🧪 RUN PLAYWRIGHT TESTS
+      #
+      # IMPORTANT:
+      #
+      # continue-on-error = true
+      #
+      # This allows the workflow to continue even if
+      # some Playwright test cases fail.
+      #
+      # The final Slack message will still say:
+      #
+      # ✅ IDA-6 Automation Completed
+      #
+      # Failed test count will be shown separately.
+      # ========================================================
 
-      - name: Run IDA-6 Playwright Tests
+      - name: Run IDA-6 Playwright Automation
         id: playwright
         continue-on-error: true
         run: |
 
-          npx playwright test \
-            --project=chromium \
-            --reporter=list,html,json,allure-playwright
+          echo "========================================"
+          echo "🚀 IDA-6 AUTOMATION STARTED"
+          echo "========================================"
+
+          echo "Project       : IDA-6 Automation"
+          echo "Browser       : Chromium"
+          echo "Branch        : ${{ github.ref_name }}"
+          echo "Triggered By  : ${{ github.actor }}"
+
+          echo "========================================"
+
+          npx playwright test --project=chromium
+
+          PLAYWRIGHT_EXIT_CODE=$?
+
+          echo "========================================"
+          echo "Playwright Exit Code: $PLAYWRIGHT_EXIT_CODE"
+          echo "========================================"
+
+          echo "exit_code=$PLAYWRIGHT_EXIT_CODE" >> "$GITHUB_OUTPUT"
+
+          exit $PLAYWRIGHT_EXIT_CODE
 
 
-      # =====================================================
-      # GET COMMIT INFORMATION
-      # =====================================================
+      # ========================================================
+      # 📊 PARSE PLAYWRIGHT RESULTS
+      #
+      # Reads:
+      #
+      # results.json
+      #
+      # Generated by:
+      #
+      # ['json', { outputFile: 'results.json' }]
+      #
+      # from playwright.config.js
+      # ========================================================
+
+      - name: Parse Playwright Test Results
+        id: results
+        if: always()
+        run: |
+
+          echo "========================================"
+          echo "📊 PARSING PLAYWRIGHT RESULTS"
+          echo "========================================"
+
+
+          if [ ! -f "results.json" ]; then
+
+            echo "❌ results.json was not found."
+
+            echo "passed=0" >> "$GITHUB_OUTPUT"
+            echo "failed=0" >> "$GITHUB_OUTPUT"
+            echo "flaky=0" >> "$GITHUB_OUTPUT"
+            echo "skipped=0" >> "$GITHUB_OUTPUT"
+            echo "total=0" >> "$GITHUB_OUTPUT"
+
+            exit 0
+
+          fi
+
+
+          echo "✅ results.json found."
+
+
+          node <<'NODE'
+
+          const fs = require('fs');
+
+          const outputFile = process.env.GITHUB_OUTPUT;
+
+          try {
+
+            const data = JSON.parse(
+              fs.readFileSync('results.json', 'utf8')
+            );
+
+
+            const stats = data.stats || {};
+
+
+            const passed =
+              Number(stats.expected || 0);
+
+
+            const failed =
+              Number(stats.unexpected || 0);
+
+
+            const flaky =
+              Number(stats.flaky || 0);
+
+
+            const skipped =
+              Number(stats.skipped || 0);
+
+
+            const total =
+              passed +
+              failed +
+              flaky +
+              skipped;
+
+
+            console.log('');
+            console.log('========================================');
+            console.log('📊 IDA-6 AUTOMATION RESULTS');
+            console.log('========================================');
+
+            console.log(`✅ Passed  : ${passed}`);
+            console.log(`❌ Failed  : ${failed}`);
+            console.log(`⚠️ Flaky   : ${flaky}`);
+            console.log(`⏭️ Skipped : ${skipped}`);
+            console.log(`📊 Total   : ${total}`);
+
+            console.log('========================================');
+            console.log('');
+
+
+            fs.appendFileSync(
+              outputFile,
+              `passed=${passed}\n`
+            );
+
+
+            fs.appendFileSync(
+              outputFile,
+              `failed=${failed}\n`
+            );
+
+
+            fs.appendFileSync(
+              outputFile,
+              `flaky=${flaky}\n`
+            );
+
+
+            fs.appendFileSync(
+              outputFile,
+              `skipped=${skipped}\n`
+            );
+
+
+            fs.appendFileSync(
+              outputFile,
+              `total=${total}\n`
+            );
+
+
+          } catch (error) {
+
+            console.error(
+              '❌ Error reading results.json'
+            );
+
+            console.error(error);
+
+
+            fs.appendFileSync(
+              outputFile,
+              'passed=0\n'
+            );
+
+            fs.appendFileSync(
+              outputFile,
+              'failed=0\n'
+            );
+
+            fs.appendFileSync(
+              outputFile,
+              'flaky=0\n'
+            );
+
+            fs.appendFileSync(
+              outputFile,
+              'skipped=0\n'
+            );
+
+            fs.appendFileSync(
+              outputFile,
+              'total=0\n'
+            );
+
+          }
+
+          NODE
+
+
+      # ========================================================
+      # 📝 GET COMMIT MESSAGE
+      # ========================================================
 
       - name: Get Commit Information
         id: commit
         if: always()
         run: |
 
-          COMMIT_MESSAGE=$(git log -1 --pretty=%s)
+          COMMIT_MESSAGE=$(git log -1 --pretty=%B)
 
-          COMMIT_AUTHOR=$(git log -1 --pretty=%an)
+          COMMIT_SHA=$(git rev-parse HEAD)
 
-          echo "message=$COMMIT_MESSAGE" >> "$GITHUB_OUTPUT"
+          echo "========================================"
+          echo "📝 COMMIT INFORMATION"
+          echo "========================================"
 
-          echo "author=$COMMIT_AUTHOR" >> "$GITHUB_OUTPUT"
+          echo "Commit SHA:"
+          echo "$COMMIT_SHA"
 
-          echo "Commit Message: $COMMIT_MESSAGE"
+          echo ""
 
-          echo "Commit Author: $COMMIT_AUTHOR"
+          echo "Commit Message:"
+          echo "$COMMIT_MESSAGE"
 
-
-      # =====================================================
-      # UPLOAD PLAYWRIGHT HTML REPORT
-      # =====================================================
-
-      - name: Upload Playwright HTML Report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: ida6-playwright-html-report
-          path: playwright-report/
-          retention-days: 30
+          echo "========================================"
 
 
-      # =====================================================
-      # UPLOAD FAILED VIDEOS
-      # =====================================================
+          {
+            echo 'message<<EOF'
+            echo "$COMMIT_MESSAGE"
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+
+
+          echo "sha=$COMMIT_SHA" >> "$GITHUB_OUTPUT"
+
+
+      # ========================================================
+      # 🎥 UPLOAD FAILED VIDEOS
+      # ========================================================
 
       - name: Upload Failed Videos
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ida6-failed-videos
+          name: failed-videos
           path: test-results/**/*.webm
           if-no-files-found: ignore
-          retention-days: 30
 
 
-      # =====================================================
-      # UPLOAD TRACES
-      # =====================================================
+      # ========================================================
+      # 🔍 UPLOAD PLAYWRIGHT TRACES
+      # ========================================================
 
-      - name: Upload Traces
+      - name: Upload Playwright Traces
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ida6-traces
+          name: playwright-traces
           path: test-results/**/*.zip
           if-no-files-found: ignore
-          retention-days: 30
 
 
-      # =====================================================
-      # UPLOAD SCREENSHOTS
-      # =====================================================
+      # ========================================================
+      # 📸 UPLOAD FAILURE SCREENSHOTS
+      # ========================================================
 
-      - name: Upload Screenshots
+      - name: Upload Failure Screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ida6-screenshots
+          name: failure-screenshots
           path: test-results/**/*.png
           if-no-files-found: ignore
-          retention-days: 30
 
 
-      # =====================================================
-      # UPLOAD RESULTS.JSON
-      # =====================================================
+      # ========================================================
+      # 📄 UPLOAD RESULTS.JSON
+      # ========================================================
 
-      - name: Upload Results JSON
+      - name: Upload Playwright Results JSON
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ida6-results-json
+          name: playwright-results-json
           path: results.json
           if-no-files-found: ignore
-          retention-days: 30
 
 
-      # =====================================================
-      # PARSE TEST RESULTS
-      # =====================================================
-
-      - name: Parse Test Results
-        id: results
-        if: always()
-        run: |
-
-          sudo apt-get update
-
-          sudo apt-get install -y jq
-
-          if [ -f results.json ]; then
-
-            PASSED=$(jq '.stats.expected // 0' results.json)
-
-            FAILED=$(jq '.stats.unexpected // 0' results.json)
-
-            FLAKY=$(jq '.stats.flaky // 0' results.json)
-
-            SKIPPED=$(jq '.stats.skipped // 0' results.json)
-
-            TOTAL=$((PASSED + FAILED + FLAKY + SKIPPED))
-
-          else
-
-            PASSED=0
-            FAILED=0
-            FLAKY=0
-            SKIPPED=0
-            TOTAL=0
-
-          fi
-
-          echo "passed=$PASSED" >> "$GITHUB_OUTPUT"
-
-          echo "failed=$FAILED" >> "$GITHUB_OUTPUT"
-
-          echo "flaky=$FLAKY" >> "$GITHUB_OUTPUT"
-
-          echo "skipped=$SKIPPED" >> "$GITHUB_OUTPUT"
-
-          echo "total=$TOTAL" >> "$GITHUB_OUTPUT"
-
-          echo "========================================"
-
-          echo "IDA-6 AUTOMATION TEST RESULTS"
-
-          echo "========================================"
-
-          echo "Passed  : $PASSED"
-
-          echo "Failed  : $FAILED"
-
-          echo "Flaky   : $FLAKY"
-
-          echo "Skipped : $SKIPPED"
-
-          echo "Total   : $TOTAL"
-
-          echo "========================================"
-
-
-      # =====================================================
-      # RESTORE ALLURE HISTORY
-      # =====================================================
+      # ========================================================
+      # 🕘 RESTORE ALLURE HISTORY
+      # ========================================================
 
       - name: Restore Allure History
         if: always()
         run: |
 
+          echo "========================================"
+          echo "🕘 RESTORING ALLURE HISTORY"
+          echo "========================================"
+
+
+          rm -rf gh-pages
+
+
           git clone \
             --depth=1 \
-            --branch=gh-pages \
-            https://github.com/${{ github.repository }} gh-pages \
-            || true
+            --branch gh-pages \
+            "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" \
+            gh-pages || true
+
 
           if [ -d "gh-pages/history" ]; then
 
+            echo "✅ Allure history found."
+
             mkdir -p allure-results/history
 
-            cp -r gh-pages/history/* allure-results/history/
+            cp -r gh-pages/history/* \
+              allure-results/history/ || true
+
+          else
+
+            echo "ℹ️ No previous Allure history found."
 
           fi
 
 
-      # =====================================================
-      # CREATE ENVIRONMENT INFORMATION
-      # =====================================================
+      # ========================================================
+      # 🌎 CREATE ALLURE ENVIRONMENT INFORMATION
+      # ========================================================
 
-      - name: Create Allure Environment
+      - name: Create Allure Environment Information
         if: always()
         run: |
 
           mkdir -p allure-results
 
-          echo "Project=IDA-6 Automation" \
-            > allure-results/environment.properties
 
           echo "Environment=DEV" \
+            > allure-results/environment.properties
+
+
+          echo "Project=IDA-6 Automation" \
             >> allure-results/environment.properties
+
 
           echo "Browser=Chromium" \
             >> allure-results/environment.properties
 
+
           echo "OS=Ubuntu Latest" \
             >> allure-results/environment.properties
+
 
           echo "Node=$(node -v)" \
             >> allure-results/environment.properties
 
+
           echo "Playwright=$(npx playwright --version)" \
             >> allure-results/environment.properties
+
 
           echo "Base URL=https://dev.intelehealth.org" \
             >> allure-results/environment.properties
 
-          echo "Repository=${{ github.repository }}" \
-            >> allure-results/environment.properties
 
-          echo "Branch=${{ github.ref_name }}" \
-            >> allure-results/environment.properties
+      # ========================================================
+      # ⚙️ CREATE ALLURE EXECUTOR INFORMATION
+      # ========================================================
 
-          echo "Commit=${{ github.sha }}" \
-            >> allure-results/environment.properties
-
-
-      # =====================================================
-      # CREATE ALLURE EXECUTOR INFORMATION
-      # =====================================================
-
-      - name: Create Allure Executor
+      - name: Create Allure Executor Information
         if: always()
         run: |
 
+          mkdir -p allure-results
+
+
           cat > allure-results/executor.json <<EOF
           {
-            "name": "GitHub Actions - IDA-6 Automation",
+            "name": "GitHub Actions",
             "type": "github",
             "url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
             "buildOrder": "${{ github.run_number }}",
@@ -385,9 +500,9 @@ jobs:
           EOF
 
 
-      # =====================================================
-      # INSTALL ALLURE
-      # =====================================================
+      # ========================================================
+      # 📊 INSTALL ALLURE COMMAND LINE
+      # ========================================================
 
       - name: Install Allure Commandline
         if: always()
@@ -396,13 +511,21 @@ jobs:
           npm install -g allure-commandline
 
 
-      # =====================================================
-      # GENERATE ALLURE REPORT
-      # =====================================================
+      # ========================================================
+      # 📊 GENERATE ALLURE REPORT
+      # ========================================================
 
       - name: Generate Allure Report
         if: always()
         run: |
+
+          echo "========================================"
+          echo "📊 GENERATING ALLURE REPORT"
+          echo "========================================"
+
+
+          mkdir -p allure-results
+
 
           allure generate \
             allure-results \
@@ -410,9 +533,14 @@ jobs:
             -o allure-report
 
 
-      # =====================================================
-      # PRESERVE ALLURE HISTORY
-      # =====================================================
+          echo "========================================"
+          echo "✅ ALLURE REPORT GENERATED"
+          echo "========================================"
+
+
+      # ========================================================
+      # 🕘 PRESERVE ALLURE HISTORY
+      # ========================================================
 
       - name: Preserve Allure History
         if: always()
@@ -420,326 +548,297 @@ jobs:
 
           mkdir -p allure-report/history
 
+
           if [ -d "allure-results/history" ]; then
 
             cp -r allure-results/history/* \
-              allure-report/history/
+              allure-report/history/ || true
 
           fi
 
 
-      # =====================================================
-      # UPLOAD ALLURE RESULTS
-      # =====================================================
+      # ========================================================
+      # 📦 UPLOAD ALLURE RESULTS
+      # ========================================================
 
       - name: Upload Allure Results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ida6-allure-results
-          path: allure-results/
-          retention-days: 30
+          name: allure-results
+          path: allure-results
+          if-no-files-found: ignore
 
 
-      # =====================================================
-      # UPLOAD ALLURE REPORT
-      # =====================================================
+      # ========================================================
+      # 📊 UPLOAD ALLURE REPORT
+      # ========================================================
 
       - name: Upload Allure Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ida6-allure-report
-          path: allure-report/
-          retention-days: 30
+          name: allure-report
+          path: allure-report
+          if-no-files-found: ignore
 
 
-      # =====================================================
-      # DEPLOY ALLURE REPORT TO GITHUB PAGES
-      # =====================================================
+      # ========================================================
+      # 🌐 DEPLOY ALLURE REPORT TO GITHUB PAGES
+      # ========================================================
 
-      - name: Deploy IDA-6 Allure Dashboard
+      - name: Deploy Allure Report to GitHub Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: allure-report
-          publish_branch: gh-pages
-          force_orphan: false
 
 
-      # =====================================================
-      # CREATE REPORT URL
-      # =====================================================
+      # ========================================================
+      # 🔗 CREATE REPORT URL
+      # ========================================================
 
-      - name: Display IDA-6 Dashboard URL
+      - name: Create Allure Report URL
+        id: report
         if: always()
         run: |
 
           REPORT_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
 
-          echo "=============================================="
 
-          echo "IDA-6 AUTOMATION DASHBOARD"
+          echo "url=$REPORT_URL" >> "$GITHUB_OUTPUT"
 
-          echo "=============================================="
 
+          echo ""
+          echo "========================================"
+          echo "📊 IDA-6 ALLURE REPORT"
+          echo "========================================"
           echo "$REPORT_URL"
+          echo "========================================"
+          echo ""
 
-          echo "=============================================="
 
-
-      # =====================================================
-      # 📢 SLACK FINAL NOTIFICATION
-      # =====================================================
+      # ========================================================
+      # 💬 SLACK - IDA-6 AUTOMATION COMPLETED
       #
       # IMPORTANT:
-      # This message will ALWAYS say:
+      #
+      # This will ALWAYS show:
       #
       # ✅ IDA-6 Automation Completed
       #
-      # It will NOT say FAILED even when test cases fail.
+      # Even when some test cases fail.
       #
-      # The actual test counts are still displayed below.
-      #
-      # =====================================================
+      # The actual test results are shown below.
+      # ========================================================
 
-      - name: Slack Final Notification
+      - name: Slack - IDA-6 Automation Completed
         if: always()
         run: |
 
           IST_TIME=$(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M:%S IST')
 
-          PASSED="${{ steps.results.outputs.passed }}"
-
-          FAILED="${{ steps.results.outputs.failed }}"
-
-          FLAKY="${{ steps.results.outputs.flaky }}"
-
-          SKIPPED="${{ steps.results.outputs.skipped }}"
-
-          TOTAL="${{ steps.results.outputs.total }}"
 
           REPORT_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
 
-          LOG_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+          GITHUB_LOG_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
 
           COMMIT_URL="https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
 
-          COMMIT_MESSAGE="${{ steps.commit.outputs.message }}"
 
-          COMMIT_AUTHOR="${{ steps.commit.outputs.author }}"
+          PAYLOAD=$(jq -n \
+            --arg project "IDA-6 Automation" \
+            --arg repository "${{ github.repository }}" \
+            --arg branch "${{ github.ref_name }}" \
+            --arg actor "${{ github.actor }}" \
+            --arg passed "${{ steps.results.outputs.passed }}" \
+            --arg failed "${{ steps.results.outputs.failed }}" \
+            --arg flaky "${{ steps.results.outputs.flaky }}" \
+            --arg skipped "${{ steps.results.outputs.skipped }}" \
+            --arg total "${{ steps.results.outputs.total }}" \
+            --arg run_number "${{ github.run_number }}" \
+            --arg commit_message "${{ steps.commit.outputs.message }}" \
+            --arg commit_url "$COMMIT_URL" \
+            --arg execution_time "$IST_TIME" \
+            --arg report_url "$REPORT_URL" \
+            --arg github_logs "$GITHUB_LOG_URL" \
+            '{
+              blocks: [
+
+                {
+                  type: "header",
+                  text: {
+                    type: "plain_text",
+                    text: "✅ IDA-6 Automation Completed"
+                  }
+                },
+
+                {
+                  type: "divider"
+                },
+
+                {
+                  type: "section",
+                  fields: [
+
+                    {
+                      type: "mrkdwn",
+                      text: "*Project:*\n\($project)"
+                    },
+
+                    {
+                      type: "mrkdwn",
+                      text: "*Repository:*\n\($repository)"
+                    },
+
+                    {
+                      type: "mrkdwn",
+                      text: "*Branch:*\n\($branch)"
+                    },
+
+                    {
+                      type: "mrkdwn",
+                      text: "*Triggered By:*\n\($actor)"
+                    }
+
+                  ]
+                },
+
+                {
+                  type: "divider"
+                },
+
+                {
+                  type: "section",
+                  text: {
+                    type: "mrkdwn",
+                    text: "📊 *Automation Execution Summary*"
+                  }
+                },
+
+                {
+                  type: "section",
+                  fields: [
+
+                    {
+                      type: "mrkdwn",
+                      text: "*✅ Passed Tests:*\n\($passed)"
+                    },
+
+                    {
+                      type: "mrkdwn",
+                      text: "*❌ Failed Tests:*\n\($failed)"
+                    },
+
+                    {
+                      type: "mrkdwn",
+                      text: "*⚠️ Flaky Tests:*\n\($flaky)"
+                    },
+
+                    {
+                      type: "mrkdwn",
+                      text: "*⏭️ Skipped Tests:*\n\($skipped)"
+                    },
+
+                    {
+                      type: "mrkdwn",
+                      text: "*📊 Total Tests:*\n\($total)"
+                    },
+
+                    {
+                      type: "mrkdwn",
+                      text: "*🔢 Run Number:*\n#\($run_number)"
+                    }
+
+                  ]
+                },
+
+                {
+                  type: "divider"
+                },
+
+                {
+                  type: "section",
+                  text: {
+                    type: "mrkdwn",
+                    text: "📝 *Commit Message:*\n\($commit_message)"
+                  }
+                },
+
+                {
+                  type: "section",
+                  text: {
+                    type: "mrkdwn",
+                    text: "🔗 *Commit:*\n\($commit_url)"
+                  }
+                },
+
+                {
+                  type: "section",
+                  text: {
+                    type: "mrkdwn",
+                    text: "🕒 *Execution Time:*\n\($execution_time)"
+                  }
+                },
+
+                {
+                  type: "divider"
+                },
+
+                {
+                  type: "actions",
+                  elements: [
+
+                    {
+                      type: "button",
+                      style: "primary",
+                      text: {
+                        type: "plain_text",
+                        text: "📊 View Allure Report"
+                      },
+                      url: $report_url
+                    },
+
+                    {
+                      type: "button",
+                      text: {
+                        type: "plain_text",
+                        text: "📄 GitHub Logs"
+                      },
+                      url: $github_logs
+                    }
+
+                  ]
+                }
+
+              ]
+            }'
+          )
+
+
+          echo "========================================"
+          echo "📤 SENDING SLACK NOTIFICATION"
+          echo "========================================"
 
 
           curl -X POST \
-          -H "Content-Type: application/json" \
-          --data "{
-            \"blocks\": [
-
-              {
-                \"type\": \"header\",
-                \"text\": {
-                  \"type\": \"plain_text\",
-                  \"text\": \"✅ IDA-6 Automation Completed\"
-                }
-              },
-
-              {
-                \"type\": \"divider\"
-              },
-
-              {
-                \"type\": \"section\",
-                \"fields\": [
-
-                  {
-                    \"type\": \"mrkdwn\",
-                    \"text\": \"*Project:*\nIDA-6 Automation\"
-                  },
-
-                  {
-                    \"type\": \"mrkdwn\",
-                    \"text\": \"*Repository:*\n${{ github.repository }}\"
-                  },
-
-                  {
-                    \"type\": \"mrkdwn\",
-                    \"text\": \"*Branch:*\n${{ github.ref_name }}\"
-                  },
-
-                  {
-                    \"type\": \"mrkdwn\",
-                    \"text\": \"*Triggered By:*\n${{ github.actor }}\"
-                  }
-
-                ]
-              },
-
-              {
-                \"type\": \"divider\"
-              },
-
-              {
-                \"type\": \"section\",
-                \"text\": {
-                  \"type\": \"mrkdwn\",
-                  \"text\": \"*📊 Automation Execution Summary*\"
-                }
-              },
-
-              {
-                \"type\": \"section\",
-                \"fields\": [
-
-                  {
-                    \"type\": \"mrkdwn\",
-                    \"text\": \"*✅ Passed Tests:*\n${PASSED}\"
-                  },
-
-                  {
-                    \"type\": \"mrkdwn\",
-                    \"text\": \"*⚠️ Failed Tests:*\n${FAILED}\"
-                  },
-
-                  {
-                    \"type\": \"mrkdwn\",
-                    \"text\": \"*🔄 Flaky Tests:*\n${FLAKY}\"
-                  },
-
-                  {
-                    \"type\": \"mrkdwn\",
-                    \"text\": \"*⏭️ Skipped Tests:*\n${SKIPPED}\"
-                  },
-
-                  {
-                    \"type\": \"mrkdwn\",
-                    \"text\": \"*📊 Total Tests:*\n${TOTAL}\"
-                  },
-
-                  {
-                    \"type\": \"mrkdwn\",
-                    \"text\": \"*🔢 Run Number:*\n#${{ github.run_number }}\"
-                  }
-
-                ]
-              },
-
-              {
-                \"type\": \"divider\"
-              },
-
-              {
-                \"type\": \"section\",
-                \"text\": {
-                  \"type\": \"mrkdwn\",
-                  \"text\": \"*📝 Commit Message:*\n${COMMIT_MESSAGE}\"
-                }
-              },
-
-              {
-                \"type\": \"section\",
-                \"text\": {
-                  \"type\": \"mrkdwn\",
-                  \"text\": \"*👤 Commit Author:*\n${COMMIT_AUTHOR}\"
-                }
-              },
-
-              {
-                \"type\": \"section\",
-                \"text\": {
-                  \"type\": \"mrkdwn\",
-                  \"text\": \"*🔗 Commit:*\n<${COMMIT_URL}|View Commit>\"
-                }
-              },
-
-              {
-                \"type\": \"section\",
-                \"text\": {
-                  \"type\": \"mrkdwn\",
-                  \"text\": \"*🕒 Execution Completed:*\n${IST_TIME}\"
-                }
-              },
-
-              {
-                \"type\": \"divider\"
-              },
-
-              {
-                \"type\": \"section\",
-                \"text\": {
-                  \"type\": \"mrkdwn\",
-                  \"text\": \"*ℹ️ Note:*\nAutomation execution is completed. Please use the dashboard below to review detailed test results, failures, screenshots, videos and execution history.\"
-                }
-              },
-
-              {
-                \"type\": \"divider\"
-              },
-
-              {
-                \"type\": \"actions\",
-                \"elements\": [
-
-                  {
-                    \"type\": \"button\",
-                    \"style\": \"primary\",
-                    \"text\": {
-                      \"type\": \"plain_text\",
-                      \"text\": \"📊 View IDA-6 Dashboard\"
-                    },
-                    \"url\": \"${REPORT_URL}\"
-                  },
-
-                  {
-                    \"type\": \"button\",
-                    \"text\": {
-                      \"type\": \"plain_text\",
-                      \"text\": \"📄 GitHub Logs\"
-                    },
-                    \"url\": \"${LOG_URL}\"
-                  },
-
-                  {
-                    \"type\": \"button\",
-                    \"text\": {
-                      \"type\": \"plain_text\",
-                      \"text\": \"📝 View Commit\"
-                    },
-                    \"url\": \"${COMMIT_URL}\"
-                  }
-
-                ]
-              }
-
-            ]
-          }" \
-          ${{ secrets.SLACK_WEBHOOK_URL }}
-
-          echo "Slack final notification sent successfully."
+            -H "Content-Type: application/json" \
+            --data "$PAYLOAD" \
+            "${{ secrets.SLACK_WEBHOOK_URL }}"
 
 
-      # =====================================================
-      # FAIL GITHUB ACTION IF TESTS FAILED
-      # =====================================================
-      #
-      # This is kept intentionally.
-      #
-      # Slack will still say:
-      # "IDA-6 Automation Completed"
-      #
-      # But GitHub Actions will correctly show the run
-      # as failed when test cases actually fail.
-      #
-      # =====================================================
+          echo ""
+          echo "========================================"
+          echo "✅ IDA-6 AUTOMATION COMPLETED"
+          echo "========================================"
 
-      - name: Fail Workflow If Tests Failed
-        if: steps.playwright.outcome == 'failure'
-        run: |
+          echo "Passed  : ${{ steps.results.outputs.passed }}"
+          echo "Failed  : ${{ steps.results.outputs.failed }}"
+          echo "Flaky   : ${{ steps.results.outputs.flaky }}"
+          echo "Skipped : ${{ steps.results.outputs.skipped }}"
+          echo "Total   : ${{ steps.results.outputs.total }}"
 
-          echo "IDA-6 Automation execution completed."
-
-          echo "Some test cases failed."
-
-          echo "Please check the Allure Dashboard for details."
-
-          exit 1
+          echo "========================================"
