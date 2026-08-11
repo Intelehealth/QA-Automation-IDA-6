@@ -103,6 +103,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+
       # =====================================================
       # NODE JS
       # =====================================================
@@ -113,12 +114,14 @@ jobs:
           node-version: 18
           cache: npm
 
+
       # =====================================================
       # INSTALL DEPENDENCIES
       # =====================================================
 
       - name: Install Dependencies
         run: npm ci
+
 
       # =====================================================
       # INSTALL PLAYWRIGHT
@@ -140,6 +143,28 @@ jobs:
           npx playwright test \
             --project=chromium \
             --reporter=list,html,json,allure-playwright
+
+
+      # =====================================================
+      # GET COMMIT INFORMATION
+      # =====================================================
+
+      - name: Get Commit Information
+        id: commit
+        if: always()
+        run: |
+
+          COMMIT_MESSAGE=$(git log -1 --pretty=%s)
+
+          COMMIT_AUTHOR=$(git log -1 --pretty=%an)
+
+          echo "message=$COMMIT_MESSAGE" >> "$GITHUB_OUTPUT"
+
+          echo "author=$COMMIT_AUTHOR" >> "$GITHUB_OUTPUT"
+
+          echo "Commit Message: $COMMIT_MESSAGE"
+
+          echo "Commit Author: $COMMIT_AUTHOR"
 
 
       # =====================================================
@@ -221,6 +246,7 @@ jobs:
         run: |
 
           sudo apt-get update
+
           sudo apt-get install -y jq
 
           if [ -f results.json ]; then
@@ -256,13 +282,21 @@ jobs:
           echo "total=$TOTAL" >> "$GITHUB_OUTPUT"
 
           echo "========================================"
+
           echo "IDA-6 AUTOMATION TEST RESULTS"
+
           echo "========================================"
+
           echo "Passed  : $PASSED"
+
           echo "Failed  : $FAILED"
+
           echo "Flaky   : $FLAKY"
+
           echo "Skipped : $SKIPPED"
+
           echo "Total   : $TOTAL"
+
           echo "========================================"
 
 
@@ -445,14 +479,29 @@ jobs:
           REPORT_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
 
           echo "=============================================="
+
           echo "IDA-6 AUTOMATION DASHBOARD"
+
           echo "=============================================="
+
           echo "$REPORT_URL"
+
           echo "=============================================="
 
 
       # =====================================================
-      # SLACK FINAL NOTIFICATION
+      # 📢 SLACK FINAL NOTIFICATION
+      # =====================================================
+      #
+      # IMPORTANT:
+      # This message will ALWAYS say:
+      #
+      # ✅ IDA-6 Automation Completed
+      #
+      # It will NOT say FAILED even when test cases fail.
+      #
+      # The actual test counts are still displayed below.
+      #
       # =====================================================
 
       - name: Slack Final Notification
@@ -462,9 +511,13 @@ jobs:
           IST_TIME=$(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M:%S IST')
 
           PASSED="${{ steps.results.outputs.passed }}"
+
           FAILED="${{ steps.results.outputs.failed }}"
+
           FLAKY="${{ steps.results.outputs.flaky }}"
+
           SKIPPED="${{ steps.results.outputs.skipped }}"
+
           TOTAL="${{ steps.results.outputs.total }}"
 
           REPORT_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
@@ -473,20 +526,9 @@ jobs:
 
           COMMIT_URL="https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
 
+          COMMIT_MESSAGE="${{ steps.commit.outputs.message }}"
 
-          if [ "$FAILED" != "0" ]; then
-
-            STATUS="❌ IDA-6 AUTOMATION FAILED"
-
-          elif [ "$FLAKY" != "0" ]; then
-
-            STATUS="⚠️ IDA-6 AUTOMATION PASSED WITH FLAKY TESTS"
-
-          else
-
-            STATUS="✅ IDA-6 AUTOMATION PASSED"
-
-          fi
+          COMMIT_AUTHOR="${{ steps.commit.outputs.author }}"
 
 
           curl -X POST \
@@ -498,7 +540,7 @@ jobs:
                 \"type\": \"header\",
                 \"text\": {
                   \"type\": \"plain_text\",
-                  \"text\": \"${STATUS}\"
+                  \"text\": \"✅ IDA-6 Automation Completed\"
                 }
               },
 
@@ -512,22 +554,22 @@ jobs:
 
                   {
                     \"type\": \"mrkdwn\",
-                    \"text\": \"* Project:*\nIDA-6 Automation\"
+                    \"text\": \"*Project:*\nIDA-6 Automation\"
                   },
 
                   {
                     \"type\": \"mrkdwn\",
-                    \"text\": \"* Repository:*\n${{ github.repository }}\"
+                    \"text\": \"*Repository:*\n${{ github.repository }}\"
                   },
 
                   {
                     \"type\": \"mrkdwn\",
-                    \"text\": \"* Branch:*\n${{ github.ref_name }}\"
+                    \"text\": \"*Branch:*\n${{ github.ref_name }}\"
                   },
 
                   {
                     \"type\": \"mrkdwn\",
-                    \"text\": \"* Triggered By:*\n${{ github.actor }}\"
+                    \"text\": \"*Triggered By:*\n${{ github.actor }}\"
                   }
 
                 ]
@@ -539,31 +581,39 @@ jobs:
 
               {
                 \"type\": \"section\",
+                \"text\": {
+                  \"type\": \"mrkdwn\",
+                  \"text\": \"*📊 Automation Execution Summary*\"
+                }
+              },
+
+              {
+                \"type\": \"section\",
                 \"fields\": [
 
                   {
                     \"type\": \"mrkdwn\",
-                    \"text\": \"*✅ Passed*\n${PASSED}\"
+                    \"text\": \"*✅ Passed Tests:*\n${PASSED}\"
                   },
 
                   {
                     \"type\": \"mrkdwn\",
-                    \"text\": \"*❌ Failed*\n${FAILED}\"
+                    \"text\": \"*⚠️ Failed Tests:*\n${FAILED}\"
                   },
 
                   {
                     \"type\": \"mrkdwn\",
-                    \"text\": \"*⚠️ Flaky*\n${FLAKY}\"
+                    \"text\": \"*🔄 Flaky Tests:*\n${FLAKY}\"
                   },
 
                   {
                     \"type\": \"mrkdwn\",
-                    \"text\": \"*⏭️ Skipped*\n${SKIPPED}\"
+                    \"text\": \"*⏭️ Skipped Tests:*\n${SKIPPED}\"
                   },
 
                   {
                     \"type\": \"mrkdwn\",
-                    \"text\": \"*📊 Total*\n${TOTAL}\"
+                    \"text\": \"*📊 Total Tests:*\n${TOTAL}\"
                   },
 
                   {
@@ -582,7 +632,7 @@ jobs:
                 \"type\": \"section\",
                 \"text\": {
                   \"type\": \"mrkdwn\",
-                  \"text\": \"*📝 Commit:*\n<${COMMIT_URL}|View Commit>\"
+                  \"text\": \"*📝 Commit Message:*\n${COMMIT_MESSAGE}\"
                 }
               },
 
@@ -590,7 +640,35 @@ jobs:
                 \"type\": \"section\",
                 \"text\": {
                   \"type\": \"mrkdwn\",
-                  \"text\": \"*🕒 Execution Time:*\n${IST_TIME}\"
+                  \"text\": \"*👤 Commit Author:*\n${COMMIT_AUTHOR}\"
+                }
+              },
+
+              {
+                \"type\": \"section\",
+                \"text\": {
+                  \"type\": \"mrkdwn\",
+                  \"text\": \"*🔗 Commit:*\n<${COMMIT_URL}|View Commit>\"
+                }
+              },
+
+              {
+                \"type\": \"section\",
+                \"text\": {
+                  \"type\": \"mrkdwn\",
+                  \"text\": \"*🕒 Execution Completed:*\n${IST_TIME}\"
+                }
+              },
+
+              {
+                \"type\": \"divider\"
+              },
+
+              {
+                \"type\": \"section\",
+                \"text\": {
+                  \"type\": \"mrkdwn\",
+                  \"text\": \"*ℹ️ Note:*\nAutomation execution is completed. Please use the dashboard below to review detailed test results, failures, screenshots, videos and execution history.\"
                 }
               },
 
@@ -619,6 +697,15 @@ jobs:
                       \"text\": \"📄 GitHub Logs\"
                     },
                     \"url\": \"${LOG_URL}\"
+                  },
+
+                  {
+                    \"type\": \"button\",
+                    \"text\": {
+                      \"type\": \"plain_text\",
+                      \"text\": \"📝 View Commit\"
+                    },
+                    \"url\": \"${COMMIT_URL}\"
                   }
 
                 ]
@@ -628,17 +715,31 @@ jobs:
           }" \
           ${{ secrets.SLACK_WEBHOOK_URL }}
 
-          echo "Slack final notification sent."
+          echo "Slack final notification sent successfully."
 
 
       # =====================================================
       # FAIL GITHUB ACTION IF TESTS FAILED
+      # =====================================================
+      #
+      # This is kept intentionally.
+      #
+      # Slack will still say:
+      # "IDA-6 Automation Completed"
+      #
+      # But GitHub Actions will correctly show the run
+      # as failed when test cases actually fail.
+      #
       # =====================================================
 
       - name: Fail Workflow If Tests Failed
         if: steps.playwright.outcome == 'failure'
         run: |
 
-          echo "IDA-6 Automationtests failed."
+          echo "IDA-6 Automation execution completed."
+
+          echo "Some test cases failed."
+
+          echo "Please check the Allure Dashboard for details."
 
           exit 1
