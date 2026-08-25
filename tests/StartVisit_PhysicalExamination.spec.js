@@ -48,8 +48,22 @@ async function setupToPhysicalExamination(page) {
   ).toBeVisible({ timeout: 15000 });
 
   // 3. PATIENT DETAILS
+  //
+  // Use a unique Last Name per test (timestamp + random suffix)
+  // instead of a static "Test". Running the full 51-test suite
+  // creates many patients over time - if they all shared the
+  // exact same name, the patientCard locator below would match
+  // MULTIPLE accumulated "Automation Test" cards from earlier
+  // tests in the same run, causing a Playwright strict-mode
+  // violation ("locator resolved to multiple elements") on
+  // whichever test happened to run once enough duplicates had
+  // piled up. This was intermittent and looked unrelated to the
+  // actual test logic, which is exactly what was happening with
+  // TC_PE_012/020/023 failing only in the full suite run.
+  const uniqueLastName = `Test${Date.now()}${Math.floor(Math.random() * 1000)}`;
+
   await page.getByRole('textbox', { name: 'First Name*' }).fill('Automation');
-  await page.getByRole('textbox', { name: 'Last Name*' }).fill('Test');
+  await page.getByRole('textbox', { name: 'Last Name*' }).fill(uniqueLastName);
   await page.getByRole('radio', { name: 'Male', exact: true }).check();
 
   // 4. DATE OF BIRTH
@@ -111,9 +125,16 @@ async function setupToPhysicalExamination(page) {
   await page.waitForTimeout(5000);
 
   // 15. START VISIT
+  //
+  // Scoped to THIS test's unique patient name (First + unique
+  // Last Name generated above), so it matches exactly one card
+  // even after many prior tests have created their own
+  // "Automation Test..." patients in the same dashboard.
+  const patientFullName = `Automation ${uniqueLastName}`;
+
   const patientCard = page
     .locator('div.bg-white.rounded-xl.border')
-    .filter({ has: page.locator('p.font-semibold', { hasText: 'Automation Test' }) });
+    .filter({ has: page.locator('p.font-semibold', { hasText: patientFullName }) });
 
   await expect(patientCard).toBeVisible({ timeout: 30000 });
 
