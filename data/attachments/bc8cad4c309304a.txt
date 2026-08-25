@@ -1,0 +1,1 @@
+TC_PE_032 — "Change" clicked; manual/DOM-specific follow-up selection would be required to complete a full re-edit flow for this app build.
