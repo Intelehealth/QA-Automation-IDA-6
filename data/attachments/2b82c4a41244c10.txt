@@ -1,0 +1,38 @@
+MH_006 — Reached Medical History summary. Full observed question sequence:
+[
+  {
+    "step": 1,
+    "questionMarker": null,
+    "questionHeading": "4/4 Medical History : Patient History"
+  },
+  {
+    "step": 2,
+    "questionMarker": null,
+    "questionHeading": "4/4 Medical History : Patient History"
+  },
+  {
+    "step": 3,
+    "questionMarker": null,
+    "questionHeading": "4/4 Medical History : Patient History"
+  },
+  {
+    "step": 4,
+    "questionMarker": null,
+    "questionHeading": "4/4 Medical History : Patient History"
+  },
+  {
+    "step": 5,
+    "questionMarker": null,
+    "questionHeading": "4/4 Medical History : Patient History"
+  },
+  {
+    "step": 6,
+    "questionMarker": null,
+    "questionHeading": "4/4 Medical History : Patient History"
+  },
+  {
+    "step": 7,
+    "questionMarker": null,
+    "questionHeading": "4/4 Medical History : Family History"
+  }
+]
