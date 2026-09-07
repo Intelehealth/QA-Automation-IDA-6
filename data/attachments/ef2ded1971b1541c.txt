@@ -1,1 +1,0 @@
-TC_PE_039 — Edit icon on Jaundice card visible from summary screen: true
