@@ -56,6 +56,24 @@ function titleCase(str) {
 }
 
 /**
+ * Trims boilerplate wording from describe() titles so the dropdown stays readable.
+ *   "Physical Examination Module - Full Test Suite"  ->  "Physical Examination"
+ *   "Start Visit Module"                             ->  "Start Visit"
+ * Delete this function's body (return name) to keep titles verbatim.
+ */
+function cleanModuleName(name) {
+  var cleaned = String(name)
+    .replace(/\s*[-–—:]\s*(full\s+)?test\s+suite\s*$/i, '')
+    .replace(/\s*[-–—:]\s*test\s+cases?\s*$/i, '')
+    .replace(/\s+module\s*$/i, '')
+    .replace(/\s+suite\s*$/i, '')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+
+  return cleaned || String(name).trim();
+}
+
+/**
  * Module name resolution order:
  *   1. A tag written as @module:Start Visit  (or @module=StartVisit)
  *   2. The outermost describe() block inside the spec file
@@ -66,14 +84,14 @@ function resolveModule(fileTitle, describeChain, tags) {
     .map((t) => String(t))
     .find((t) => /^@?module[:=]/i.test(t));
 
-  if (tagged) return titleCase(tagged.replace(/^@?module[:=]/i, ''));
-  if (describeChain.length) return describeChain[0];
+  if (tagged) return cleanModuleName(titleCase(tagged.replace(/^@?module[:=]/i, '')));
+  if (describeChain.length) return cleanModuleName(describeChain[0]);
 
   const base = path.basename(fileTitle || 'unknown')
     .replace(/\.(spec|test)\.(t|j)sx?$/i, '')
     .replace(/\.(t|j)sx?$/i, '');
 
-  return titleCase(base);
+  return cleanModuleName(titleCase(base));
 }
 
 /* ------------------------------------------------------------------ *
