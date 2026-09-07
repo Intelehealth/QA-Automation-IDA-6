@@ -185,7 +185,7 @@ jobs:
       #
       # Pulls two things out of the published site:
       #   gh-pages/allure/history  -> Allure trend graphs
-      #   gh-pages/history.json    -> dashboard "Results across runs"
+      #   gh-pages/history.json    -> dashboard "Results per run"
       # ========================================================
 
       - name: Restore History From GitHub Pages
@@ -254,12 +254,13 @@ jobs:
         if: ${{ !cancelled() }}
         env:
           RESULTS_FILE: results.json
-          TEMPLATE_FILE: .github/dashboard/template.html
           OUTPUT_DIR: dashboard
           HISTORY_FILE: dashboard-history.json
           HISTORY_LIMIT: 20
+          PROJECT_NAME: IDA-6 Automation
+          ENVIRONMENT: DEV
+          BASE_URL: https://dev.intelehealth.org
           RUN_NUMBER: ${{ github.run_number }}
-          RUN_ID: ${{ github.run_id }}
           REPOSITORY: ${{ github.repository }}
           BRANCH: ${{ github.ref_name }}
           ACTOR: ${{ github.actor }}
@@ -308,6 +309,7 @@ jobs:
               echo "total=0"
               echo "pass_rate=0"
               echo "modules=0"
+              echo "failing_modules=Unknown"
             } >> "$GITHUB_OUTPUT"
 
             exit 0
@@ -329,6 +331,14 @@ jobs:
             (data.tests || []).map(x => x.module)
           );
 
+          const failing = (data.modules || [])
+            .filter(m => m.failed > 0)
+            .map(m => `${m.name} (${m.failed})`);
+
+          const failingText = failing.length
+            ? failing.join(', ')
+            : 'None — all modules green';
+
           console.log('========================================');
           console.log('📊 IDA-6 AUTOMATION RESULTS');
           console.log('========================================');
@@ -339,6 +349,7 @@ jobs:
           console.log(`📊 Total     : ${t.total || 0}`);
           console.log(`📈 Pass rate : ${t.passRate || 0}%`);
           console.log(`🧩 Modules   : ${modules.size}`);
+          console.log(`🔴 Failing   : ${failingText}`);
           console.log('========================================');
 
           const out = [
@@ -348,7 +359,8 @@ jobs:
             `skipped=${t.skipped || 0}`,
             `total=${t.total || 0}`,
             `pass_rate=${t.passRate || 0}`,
-            `modules=${modules.size}`
+            `modules=${modules.size}`,
+            `failing_modules=${failingText}`
           ];
 
           fs.appendFileSync(
@@ -557,10 +569,12 @@ jobs:
           TOTAL: ${{ steps.results.outputs.total }}
           PASS_RATE: ${{ steps.results.outputs.pass_rate }}
           MODULES: ${{ steps.results.outputs.modules }}
+          FAILING_MODULES: ${{ steps.results.outputs.failing_modules }}
           RUN_NUMBER: ${{ github.run_number }}
           COMMIT_MESSAGE: ${{ steps.commit.outputs.message }}
           COMMIT_URL: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
           DASHBOARD_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+          FAILED_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/?status=unexpected
           ALLURE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allure/
           GITHUB_LOG_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
@@ -568,7 +582,16 @@ jobs:
           IST_TIME=$(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M:%S IST')
 
 
+          # Header reflects the actual outcome instead of always saying "Completed".
+          if [ "$FAILED" = "0" ]; then
+            HEADER="✅ IDA-6 Automation Completed"
+          else
+            HEADER="⚠️ IDA-6 Automation Completed — $FAILED Failed"
+          fi
+
+
           PAYLOAD=$(jq -n \
+            --arg header "$HEADER" \
             --arg project "$PROJECT" \
             --arg repository "$REPOSITORY" \
             --arg branch "$BRANCH" \
@@ -580,11 +603,13 @@ jobs:
             --arg total "$TOTAL" \
             --arg pass_rate "$PASS_RATE" \
             --arg modules "$MODULES" \
+            --arg failing_modules "$FAILING_MODULES" \
             --arg run_number "$RUN_NUMBER" \
             --arg commit_message "$COMMIT_MESSAGE" \
             --arg commit_url "$COMMIT_URL" \
             --arg execution_time "$IST_TIME" \
             --arg dashboard_url "$DASHBOARD_URL" \
+            --arg failed_url "$FAILED_URL" \
             --arg allure_url "$ALLURE_URL" \
             --arg github_logs "$GITHUB_LOG_URL" \
             '{
@@ -594,7 +619,7 @@ jobs:
                   type: "header",
                   text: {
                     type: "plain_text",
-                    text: "✅ IDA-6 Automation Completed"
+                    text: $header
                   }
                 },
 
@@ -639,6 +664,14 @@ jobs:
                 },
 
                 {
+                  type: "section",
+                  text: {
+                    type: "mrkdwn",
+                    text: "🔴 *Modules With Failures:*\n\($failing_modules)"
+                  }
+                },
+
+                {
                   type: "divider"
                 },
 
@@ -679,6 +712,13 @@ jobs:
                       style: "primary",
                       text: { type: "plain_text", text: "📈 IDA-6 Test Dashboard" },
                       url: $dashboard_url
+                    },
+
+                    {
+                      type: "button",
+                      style: "danger",
+                      text: { type: "plain_text", text: "❌ Failed Tests" },
+                      url: $failed_url
                     },
 
                     {
