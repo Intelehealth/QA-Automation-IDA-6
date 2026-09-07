@@ -4,22 +4,27 @@ on:
   push:
     branches:
       - main
+
   pull_request:
-  workflow_dispatch:
 
 permissions:
   contents: write
 
+# Only one deploy to gh-pages at a time, so two runs never fight over the branch.
+concurrency:
+  group: ida6-pages
+  cancel-in-progress: false
+
+
 jobs:
+
+  # ============================================================
+  # IDA-6 AUTOMATION JOB
+  # ============================================================
 
   test:
 
     runs-on: ubuntu-latest
-
-    env:
-      PROJECT_NAME: IDA-6 Automation
-      ENVIRONMENT: DEV
-      APP_BASE_URL: https://dev.intelehealth.org
 
     steps:
 
@@ -28,33 +33,41 @@ jobs:
       # ========================================================
 
       - name: Slack - IDA-6 Automation Started
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          REPOSITORY: ${{ github.repository }}
+          BRANCH: ${{ github.ref_name }}
+          ACTOR: ${{ github.actor }}
         run: |
+
           IST_TIME=$(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M:%S IST')
 
           PAYLOAD=$(jq -n \
             --arg time "$IST_TIME" \
-            --arg repository "${{ github.repository }}" \
-            --arg branch "${{ github.ref_name }}" \
-            --arg actor "${{ github.actor }}" \
+            --arg repository "$REPOSITORY" \
+            --arg branch "$BRANCH" \
+            --arg actor "$ACTOR" \
             '{
               text:
                 "🚀 *IDA-6 Automation Started*\n\nProject: IDA-6 Automation\nRepository: \($repository)\nBranch: \($branch)\nTriggered By: \($actor)\nTime: \($time)"
             }'
           )
 
-          curl -sS -X POST \
+          curl -X POST \
             -H "Content-Type: application/json" \
             --data "$PAYLOAD" \
-            "${{ secrets.SLACK_WEBHOOK_URL }}"
+            "$SLACK_WEBHOOK_URL"
+
 
       # ========================================================
-      # 📥 CHECKOUT
+      # 📥 CHECKOUT CODE
       # ========================================================
 
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
 
       # ========================================================
       # 🟢 SETUP NODE
@@ -64,54 +77,98 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: npm
+
+
+      # ========================================================
+      # 📦 INSTALL NPM DEPENDENCIES
+      # ========================================================
 
       - name: Install Dependencies
-        run: npm ci
+        run: |
+
+          echo "========================================"
+          echo "Installing npm dependencies"
+          echo "========================================"
+
+          npm ci
+
+
+      # ========================================================
+      # 🎭 INSTALL PLAYWRIGHT CHROMIUM
+      # ========================================================
 
       - name: Install Playwright Chromium
-        run: npx playwright install --with-deps chromium
+        run: |
+
+          echo "========================================"
+          echo "Installing Playwright Chromium"
+          echo "========================================"
+
+          npx playwright install --with-deps chromium
+
 
       # ========================================================
       # 🧪 RUN PLAYWRIGHT TESTS
       #
-      # continue-on-error keeps the pipeline going when tests
-      # fail, so the dashboard and Slack summary still publish.
+      # continue-on-error keeps the workflow going when tests
+      # fail, so the dashboard and Slack summary are still built.
+      #
+      # NOTE: the exit code is captured with "|| CODE=$?" because
+      # the shell runs with -e and would otherwise abort the step
+      # before the exit code was ever written.
       # ========================================================
 
       - name: Run IDA-6 Playwright Automation
         id: playwright
         continue-on-error: true
-        env:
-          PLAYWRIGHT_JSON_OUTPUT_NAME: results.json
         run: |
+
           echo "========================================"
           echo "🚀 IDA-6 AUTOMATION STARTED"
           echo "========================================"
-          echo "Project      : $PROJECT_NAME"
-          echo "Browser      : Chromium"
-          echo "Branch       : ${{ github.ref_name }}"
-          echo "Triggered By : ${{ github.actor }}"
+
+          echo "Project       : IDA-6 Automation"
+          echo "Browser       : Chromium"
+          echo "Branch        : ${{ github.ref_name }}"
+          echo "Triggered By  : ${{ github.actor }}"
+
           echo "========================================"
 
           PLAYWRIGHT_EXIT_CODE=0
+
           npx playwright test --project=chromium || PLAYWRIGHT_EXIT_CODE=$?
 
+          echo "========================================"
           echo "Playwright Exit Code: $PLAYWRIGHT_EXIT_CODE"
+          echo "========================================"
+
           echo "exit_code=$PLAYWRIGHT_EXIT_CODE" >> "$GITHUB_OUTPUT"
 
           exit $PLAYWRIGHT_EXIT_CODE
 
+
       # ========================================================
-      # 📝 COMMIT INFORMATION
+      # 📝 GET COMMIT INFORMATION
       # ========================================================
 
       - name: Get Commit Information
         id: commit
-        if: always()
+        if: ${{ !cancelled() }}
         run: |
+
           COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+
           COMMIT_SHA=$(git rev-parse HEAD)
+
+          echo "========================================"
+          echo "📝 COMMIT INFORMATION"
+          echo "========================================"
+
+          echo "$COMMIT_SHA"
+          echo "$COMMIT_MESSAGE"
+
+          echo "========================================"
+
 
           {
             echo 'message<<COMMIT_EOF'
@@ -119,71 +176,222 @@ jobs:
             echo 'COMMIT_EOF'
           } >> "$GITHUB_OUTPUT"
 
+
           echo "sha=$COMMIT_SHA" >> "$GITHUB_OUTPUT"
 
+
       # ========================================================
-      # 🕘 RESTORE PREVIOUS PUBLISHED SITE
+      # 🕘 RESTORE HISTORY FROM GH-PAGES
       #
-      # Pulls back two things from the gh-pages branch:
-      #   1. Allure history  (allure/history)
-      #   2. Dashboard run trend  (trend.json)
+      # Pulls two things out of the published site:
+      #   gh-pages/allure/history  -> Allure trend graphs
+      #   gh-pages/history.json    -> dashboard "Results across runs"
       # ========================================================
 
-      - name: Restore Allure History and Dashboard Trend
-        if: always()
+      - name: Restore History From GitHub Pages
+        if: ${{ !cancelled() }}
         run: |
+
+          echo "========================================"
+          echo "🕘 RESTORING HISTORY"
+          echo "========================================"
+
+
           rm -rf gh-pages
 
-          git clone --depth=1 --branch gh-pages \
+
+          git clone \
+            --depth=1 \
+            --branch gh-pages \
             "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" \
             gh-pages || true
 
-          mkdir -p allure-results
 
+          # ---- Allure history ----
           if [ -d "gh-pages/allure/history" ]; then
+
             echo "✅ Allure history found."
             mkdir -p allure-results/history
             cp -r gh-pages/allure/history/* allure-results/history/ || true
+
           elif [ -d "gh-pages/history" ]; then
-            echo "✅ Allure history found (legacy root layout)."
+
+            echo "✅ Allure history found (old layout)."
             mkdir -p allure-results/history
             cp -r gh-pages/history/* allure-results/history/ || true
+
           else
-            echo "ℹ️ No previous Allure history."
+
+            echo "ℹ️ No previous Allure history found."
+
           fi
 
-          if [ -f "gh-pages/trend.json" ]; then
-            echo "✅ Dashboard trend found."
-            cp gh-pages/trend.json trend.json
+
+          # ---- Dashboard history ----
+          if [ -f "gh-pages/history.json" ]; then
+
+            echo "✅ Dashboard history found."
+            cp gh-pages/history.json dashboard-history.json
+
           else
-            echo "ℹ️ No previous dashboard trend — starting a new one."
+
+            echo "ℹ️ No previous dashboard history found."
+
           fi
+
 
       # ========================================================
-      # 🌎 ALLURE ENVIRONMENT + EXECUTOR
+      # 📈 BUILD IDA-6 TEST DASHBOARD
+      #
+      # Reads results.json and writes:
+      #   dashboard/index.html
+      #   dashboard/data.json
+      #   dashboard/history.json
+      # ========================================================
+
+      - name: Build IDA-6 Test Dashboard
+        id: dashboard
+        if: ${{ !cancelled() }}
+        env:
+          RESULTS_FILE: results.json
+          TEMPLATE_FILE: .github/dashboard/template.html
+          OUTPUT_DIR: dashboard
+          HISTORY_FILE: dashboard-history.json
+          HISTORY_LIMIT: 20
+          RUN_NUMBER: ${{ github.run_number }}
+          RUN_ID: ${{ github.run_id }}
+          REPOSITORY: ${{ github.repository }}
+          BRANCH: ${{ github.ref_name }}
+          ACTOR: ${{ github.actor }}
+          COMMIT_SHA: ${{ steps.commit.outputs.sha }}
+          COMMIT_MESSAGE: ${{ steps.commit.outputs.message }}
+          COMMIT_URL: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          ALLURE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allure/
+        run: |
+
+          echo "========================================"
+          echo "📈 BUILDING IDA-6 DASHBOARD"
+          echo "========================================"
+
+          export RUN_TIME="$(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M:%S IST')"
+
+          node .github/dashboard/build-dashboard.js
+
+
+      # ========================================================
+      # 📊 PARSE RESULTS FOR SLACK
+      #
+      # Reads dashboard/data.json, which the builder already
+      # normalised, so Slack and the dashboard always agree.
+      # ========================================================
+
+      - name: Parse Test Results
+        id: results
+        if: ${{ !cancelled() }}
+        run: |
+
+          echo "========================================"
+          echo "📊 PARSING TEST RESULTS"
+          echo "========================================"
+
+
+          if [ ! -f "dashboard/data.json" ]; then
+
+            echo "❌ dashboard/data.json not found."
+
+            {
+              echo "passed=0"
+              echo "failed=0"
+              echo "flaky=0"
+              echo "skipped=0"
+              echo "total=0"
+              echo "pass_rate=0"
+              echo "modules=0"
+            } >> "$GITHUB_OUTPUT"
+
+            exit 0
+
+          fi
+
+
+          node <<'NODE'
+
+          const fs = require('fs');
+
+          const data = JSON.parse(
+            fs.readFileSync('dashboard/data.json', 'utf8')
+          );
+
+          const t = data.totals || {};
+
+          const modules = new Set(
+            (data.tests || []).map(x => x.module)
+          );
+
+          console.log('========================================');
+          console.log('📊 IDA-6 AUTOMATION RESULTS');
+          console.log('========================================');
+          console.log(`✅ Passed    : ${t.passed || 0}`);
+          console.log(`❌ Failed    : ${t.failed || 0}`);
+          console.log(`⚠️ Flaky     : ${t.flaky || 0}`);
+          console.log(`⏭️ Skipped   : ${t.skipped || 0}`);
+          console.log(`📊 Total     : ${t.total || 0}`);
+          console.log(`📈 Pass rate : ${t.passRate || 0}%`);
+          console.log(`🧩 Modules   : ${modules.size}`);
+          console.log('========================================');
+
+          const out = [
+            `passed=${t.passed || 0}`,
+            `failed=${t.failed || 0}`,
+            `flaky=${t.flaky || 0}`,
+            `skipped=${t.skipped || 0}`,
+            `total=${t.total || 0}`,
+            `pass_rate=${t.passRate || 0}`,
+            `modules=${modules.size}`
+          ];
+
+          fs.appendFileSync(
+            process.env.GITHUB_OUTPUT,
+            out.join('\n') + '\n'
+          );
+
+          NODE
+
+
+      # ========================================================
+      # 🌎 ALLURE ENVIRONMENT INFORMATION
       # ========================================================
 
       - name: Create Allure Environment Information
-        if: always()
+        if: ${{ !cancelled() }}
         run: |
+
           mkdir -p allure-results
 
           {
-            echo "Environment=$ENVIRONMENT"
-            echo "Project=$PROJECT_NAME"
+            echo "Environment=DEV"
+            echo "Project=IDA-6 Automation"
             echo "Browser=Chromium"
             echo "OS=Ubuntu Latest"
             echo "Node=$(node -v)"
             echo "Playwright=$(npx playwright --version)"
-            echo "Base URL=$APP_BASE_URL"
+            echo "Base URL=https://dev.intelehealth.org"
           } > allure-results/environment.properties
 
+
+      # ========================================================
+      # ⚙️ ALLURE EXECUTOR INFORMATION
+      # ========================================================
+
       - name: Create Allure Executor Information
-        if: always()
+        if: ${{ !cancelled() }}
         run: |
+
           mkdir -p allure-results
 
-          cat > allure-results/executor.json <<EOF
+
+          cat > allure-results/executor.json <<EXECUTOR_EOF
           {
             "name": "GitHub Actions",
             "type": "github",
@@ -193,114 +401,96 @@ jobs:
             "buildUrl": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
             "reportUrl": "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allure/"
           }
-          EOF
+          EXECUTOR_EOF
+
+
+      # ========================================================
+      # 📊 INSTALL ALLURE COMMAND LINE
+      # ========================================================
+
+      - name: Install Allure Commandline
+        if: ${{ !cancelled() }}
+        run: npm install -g allure-commandline
+
 
       # ========================================================
       # 📊 GENERATE ALLURE REPORT
       # ========================================================
 
-      - name: Install Allure Commandline
-        if: always()
-        run: npm install -g allure-commandline
-
       - name: Generate Allure Report
-        if: always()
+        if: ${{ !cancelled() }}
         run: |
+
+          echo "========================================"
+          echo "📊 GENERATING ALLURE REPORT"
+          echo "========================================"
+
+
           mkdir -p allure-results
+
           allure generate allure-results --clean -o allure-report
 
-      - name: Preserve Allure History
-        if: always()
-        run: |
+
           mkdir -p allure-report/history
+
           if [ -d "allure-results/history" ]; then
             cp -r allure-results/history/* allure-report/history/ || true
           fi
 
+
       # ========================================================
-      # 📈 BUILD THE DASHBOARD
+      # 🧩 ASSEMBLE THE PUBLISHED SITE
       #
-      # Produces:
-      #   public/index.html          <- the dashboard
-      #   public/dashboard-data.json <- raw parsed data
-      #   public/trend.json          <- run history for the trend chart
-      #   public/allure/             <- full Allure report
+      # public/
+      #   index.html    -> IDA-6 dashboard (landing page)
+      #   data.json     -> raw run data
+      #   history.json  -> trend across runs
+      #   allure/       -> full Allure report
       # ========================================================
 
-      - name: Build Automation Dashboard
-        id: dashboard
-        if: always()
-        env:
-          RESULTS_FILE: results.json
-          OUT_DIR: public
-          TREND_FILE: trend.json
-          REPO: ${{ github.repository }}
-          BRANCH: ${{ github.ref_name }}
-          ACTOR: ${{ github.actor }}
-          RUN_NUMBER: ${{ github.run_number }}
-          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          COMMIT_SHA: ${{ github.sha }}
-          COMMIT_MESSAGE: ${{ steps.commit.outputs.message }}
-          COMMIT_URL: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
-          ALLURE_URL: allure/
-          BASE_URL: ${{ env.APP_BASE_URL }}
+      - name: Assemble GitHub Pages Site
+        if: ${{ !cancelled() }}
         run: |
-          node .github/dashboard/generate-dashboard.js
+
+          rm -rf public
+          mkdir -p public
+
+          cp -r dashboard/. public/
 
           mkdir -p public/allure
-          cp -r allure-report/* public/allure/ || true
+          cp -r allure-report/. public/allure/
 
-          # Stops GitHub Pages from stripping folders that start with "_"
+          # keeps GitHub Pages from running the files through Jekyll
           touch public/.nojekyll
 
-      # ========================================================
-      # 📊 READ COUNTS FOR SLACK
-      # ========================================================
+          echo "========================================"
+          echo "📁 SITE CONTENTS"
+          echo "========================================"
+          ls -la public
 
-      - name: Read Dashboard Summary
-        id: results
-        if: always()
-        run: |
-          node <<'NODE'
-          const fs = require('fs');
-          const out = process.env.GITHUB_OUTPUT;
-          let s = { passed:0, failed:0, flaky:0, skipped:0, total:0 };
-          let modules = 'n/a';
-          let rate = '0';
-
-          try {
-            const d = JSON.parse(fs.readFileSync('public/dashboard-data.json', 'utf8'));
-            s = d.stats || s;
-            const executed = (s.total || 0) - (s.skipped || 0);
-            rate = executed > 0
-              ? (((s.passed + s.flaky) / executed) * 100).toFixed(1)
-              : '0';
-            const failing = (d.modules || []).filter(m => m.failed > 0);
-            modules = failing.length
-              ? failing.map(m => `${m.name} (${m.failed})`).join(', ')
-              : 'None — all modules green';
-          } catch (e) {
-            console.error('Could not read dashboard data:', e.message);
-          }
-
-          fs.appendFileSync(out, `passed=${s.passed}\n`);
-          fs.appendFileSync(out, `failed=${s.failed}\n`);
-          fs.appendFileSync(out, `flaky=${s.flaky}\n`);
-          fs.appendFileSync(out, `skipped=${s.skipped}\n`);
-          fs.appendFileSync(out, `total=${s.total}\n`);
-          fs.appendFileSync(out, `rate=${rate}\n`);
-          fs.appendFileSync(out, `failing_modules=${modules}\n`);
-
-          console.log('Passed', s.passed, '| Failed', s.failed, '| Flaky', s.flaky,
-                      '| Skipped', s.skipped, '| Total', s.total, '| Pass rate', rate + '%');
-          NODE
 
       # ========================================================
-      # 📦 ARTIFACTS
+      # 📦 UPLOAD ARTIFACTS
       # ========================================================
+
+      - name: Upload Dashboard
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ida6-dashboard
+          path: dashboard
+          if-no-files-found: ignore
+
+      - name: Upload Playwright Results JSON
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-results-json
+          path: results.json
+          if-no-files-found: ignore
 
       - name: Upload Failed Videos
-        if: always()
+        if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
           name: failed-videos
@@ -308,7 +498,7 @@ jobs:
           if-no-files-found: ignore
 
       - name: Upload Playwright Traces
-        if: always()
+        if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
           name: playwright-traces
@@ -316,90 +506,102 @@ jobs:
           if-no-files-found: ignore
 
       - name: Upload Failure Screenshots
-        if: always()
+        if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
           name: failure-screenshots
           path: test-results/**/*.png
           if-no-files-found: ignore
 
-      - name: Upload Playwright Results JSON
-        if: always()
+      - name: Upload Allure Report
+        if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-results-json
-          path: results.json
+          name: allure-report
+          path: allure-report
           if-no-files-found: ignore
 
-      - name: Upload Dashboard Site
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: automation-dashboard
-          path: public
-          if-no-files-found: ignore
 
       # ========================================================
-      # 🌐 DEPLOY (dashboard at /, Allure at /allure/)
+      # 🌐 DEPLOY DASHBOARD + ALLURE TO GITHUB PAGES
+      #
+      # Pull requests from forks cannot push to gh-pages,
+      # so this only runs for pushes.
       # ========================================================
 
-      - name: Deploy Dashboard and Allure Report
-        if: always() && github.event_name != 'pull_request'
+      - name: Deploy to GitHub Pages
+        if: ${{ !cancelled() && github.event_name == 'push' }}
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: public
           keep_files: false
 
+
       # ========================================================
-      # 💬 SLACK - COMPLETED
+      # 💬 SLACK - IDA-6 AUTOMATION COMPLETED
       # ========================================================
 
       - name: Slack - IDA-6 Automation Completed
-        if: always()
+        if: ${{ !cancelled() }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          PROJECT: IDA-6 Automation
+          REPOSITORY: ${{ github.repository }}
+          BRANCH: ${{ github.ref_name }}
+          ACTOR: ${{ github.actor }}
+          PASSED: ${{ steps.results.outputs.passed }}
+          FAILED: ${{ steps.results.outputs.failed }}
+          FLAKY: ${{ steps.results.outputs.flaky }}
+          SKIPPED: ${{ steps.results.outputs.skipped }}
+          TOTAL: ${{ steps.results.outputs.total }}
+          PASS_RATE: ${{ steps.results.outputs.pass_rate }}
+          MODULES: ${{ steps.results.outputs.modules }}
+          RUN_NUMBER: ${{ github.run_number }}
+          COMMIT_MESSAGE: ${{ steps.commit.outputs.message }}
+          COMMIT_URL: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
+          DASHBOARD_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+          ALLURE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allure/
+          GITHUB_LOG_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
+
           IST_TIME=$(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M:%S IST')
 
-          PAGES_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
-          DASHBOARD_URL="$PAGES_URL/"
-          ALLURE_URL="$PAGES_URL/allure/"
-          FAILED_URL="$PAGES_URL/?status=unexpected"
-          GITHUB_LOG_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          COMMIT_URL="https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
-
-          FAILED_COUNT="${{ steps.results.outputs.failed }}"
-
-          if [ "$FAILED_COUNT" = "0" ]; then
-            HEADER="✅ IDA-6 Automation Completed"
-          else
-            HEADER="⚠️ IDA-6 Automation Completed with $FAILED_COUNT failed test(s)"
-          fi
 
           PAYLOAD=$(jq -n \
-            --arg header "$HEADER" \
-            --arg project "$PROJECT_NAME" \
-            --arg repository "${{ github.repository }}" \
-            --arg branch "${{ github.ref_name }}" \
-            --arg actor "${{ github.actor }}" \
-            --arg passed "${{ steps.results.outputs.passed }}" \
-            --arg failed "${{ steps.results.outputs.failed }}" \
-            --arg flaky "${{ steps.results.outputs.flaky }}" \
-            --arg skipped "${{ steps.results.outputs.skipped }}" \
-            --arg total "${{ steps.results.outputs.total }}" \
-            --arg rate "${{ steps.results.outputs.rate }}" \
-            --arg failing_modules "${{ steps.results.outputs.failing_modules }}" \
-            --arg run_number "${{ github.run_number }}" \
-            --arg commit_message "${{ steps.commit.outputs.message }}" \
+            --arg project "$PROJECT" \
+            --arg repository "$REPOSITORY" \
+            --arg branch "$BRANCH" \
+            --arg actor "$ACTOR" \
+            --arg passed "$PASSED" \
+            --arg failed "$FAILED" \
+            --arg flaky "$FLAKY" \
+            --arg skipped "$SKIPPED" \
+            --arg total "$TOTAL" \
+            --arg pass_rate "$PASS_RATE" \
+            --arg modules "$MODULES" \
+            --arg run_number "$RUN_NUMBER" \
+            --arg commit_message "$COMMIT_MESSAGE" \
             --arg commit_url "$COMMIT_URL" \
             --arg execution_time "$IST_TIME" \
             --arg dashboard_url "$DASHBOARD_URL" \
-            --arg failed_url "$FAILED_URL" \
             --arg allure_url "$ALLURE_URL" \
             --arg github_logs "$GITHUB_LOG_URL" \
             '{
               blocks: [
-                { type: "header", text: { type: "plain_text", text: $header } },
-                { type: "divider" },
+
+                {
+                  type: "header",
+                  text: {
+                    type: "plain_text",
+                    text: "✅ IDA-6 Automation Completed"
+                  }
+                },
+
+                {
+                  type: "divider"
+                },
+
                 {
                   type: "section",
                   fields: [
@@ -409,71 +611,117 @@ jobs:
                     { type: "mrkdwn", text: "*Triggered By:*\n\($actor)" }
                   ]
                 },
-                { type: "divider" },
+
+                {
+                  type: "divider"
+                },
+
                 {
                   type: "section",
-                  text: { type: "mrkdwn", text: "📊 *Execution Summary — \($rate)% pass rate*" }
+                  text: {
+                    type: "mrkdwn",
+                    text: "📊 *Automation Execution Summary*"
+                  }
                 },
+
                 {
                   type: "section",
                   fields: [
-                    { type: "mrkdwn", text: "*✅ Passed:*\n\($passed)" },
-                    { type: "mrkdwn", text: "*❌ Failed:*\n\($failed)" },
-                    { type: "mrkdwn", text: "*⚠️ Flaky:*\n\($flaky)" },
-                    { type: "mrkdwn", text: "*⏭️ Skipped:*\n\($skipped)" },
-                    { type: "mrkdwn", text: "*📊 Total:*\n\($total)" },
-                    { type: "mrkdwn", text: "*🔢 Run:*\n#\($run_number)" }
+                    { type: "mrkdwn", text: "*✅ Passed Tests:*\n\($passed)" },
+                    { type: "mrkdwn", text: "*❌ Failed Tests:*\n\($failed)" },
+                    { type: "mrkdwn", text: "*⚠️ Flaky Tests:*\n\($flaky)" },
+                    { type: "mrkdwn", text: "*⏭️ Skipped Tests:*\n\($skipped)" },
+                    { type: "mrkdwn", text: "*📊 Total Tests:*\n\($total)" },
+                    { type: "mrkdwn", text: "*📈 Pass Rate:*\n\($pass_rate)%" },
+                    { type: "mrkdwn", text: "*🧩 Modules Covered:*\n\($modules)" },
+                    { type: "mrkdwn", text: "*🔢 Run Number:*\n#\($run_number)" }
                   ]
                 },
+
+                {
+                  type: "divider"
+                },
+
                 {
                   type: "section",
-                  text: { type: "mrkdwn", text: "🧩 *Modules with failures:*\n\($failing_modules)" }
+                  text: {
+                    type: "mrkdwn",
+                    text: "📝 *Commit Message:*\n\($commit_message)"
+                  }
                 },
-                { type: "divider" },
+
                 {
                   type: "section",
-                  text: { type: "mrkdwn", text: "📝 *Commit:* <\($commit_url)|view>\n\($commit_message)" }
+                  text: {
+                    type: "mrkdwn",
+                    text: "🔗 *Commit:*\n\($commit_url)"
+                  }
                 },
+
                 {
                   type: "section",
-                  text: { type: "mrkdwn", text: "🕒 *Execution Time:*\n\($execution_time)" }
+                  text: {
+                    type: "mrkdwn",
+                    text: "🕒 *Execution Time:*\n\($execution_time)"
+                  }
                 },
-                { type: "divider" },
+
+                {
+                  type: "divider"
+                },
+
                 {
                   type: "actions",
                   elements: [
+
                     {
                       type: "button",
                       style: "primary",
-                      text: { type: "plain_text", text: "📊 Automation Dashboard" },
+                      text: { type: "plain_text", text: "📈 IDA-6 Test Dashboard" },
                       url: $dashboard_url
                     },
+
                     {
                       type: "button",
-                      style: "danger",
-                      text: { type: "plain_text", text: "❌ Failed Tests" },
-                      url: $failed_url
-                    },
-                    {
-                      type: "button",
-                      text: { type: "plain_text", text: "🔍 Allure Report" },
+                      text: { type: "plain_text", text: "📊 Allure Report" },
                       url: $allure_url
                     },
+
                     {
                       type: "button",
                       text: { type: "plain_text", text: "📄 GitHub Logs" },
                       url: $github_logs
                     }
+
                   ]
                 }
+
               ]
             }'
           )
 
-          curl -sS -X POST \
+
+          echo "========================================"
+          echo "📤 SENDING SLACK NOTIFICATION"
+          echo "========================================"
+
+
+          curl -X POST \
             -H "Content-Type: application/json" \
             --data "$PAYLOAD" \
-            "${{ secrets.SLACK_WEBHOOK_URL }}"
+            "$SLACK_WEBHOOK_URL"
 
+
+          echo ""
+          echo "========================================"
+          echo "✅ IDA-6 AUTOMATION COMPLETED"
+          echo "========================================"
           echo "Dashboard : $DASHBOARD_URL"
           echo "Allure    : $ALLURE_URL"
+          echo "Passed    : $PASSED"
+          echo "Failed    : $FAILED"
+          echo "Flaky     : $FLAKY"
+          echo "Skipped   : $SKIPPED"
+          echo "Total     : $TOTAL"
+          echo "Pass Rate : $PASS_RATE%"
+          echo "========================================"
