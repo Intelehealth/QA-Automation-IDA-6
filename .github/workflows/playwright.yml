@@ -426,6 +426,48 @@ jobs:
 
 
       # ========================================================
+      # 🧹 PRUNE HEAVY ALLURE ATTACHMENTS
+      #
+      # Allure embeds videos (.webm) and Playwright traces (.zip)
+      # as attachments. On a 269-test run that pushes the report
+      # past 2 GB, which breaks both the gh-pages push and the
+      # 1 GB GitHub Pages limit.
+      #
+      # Videos and traces are still uploaded as build artifacts,
+      # so nothing is lost -- they just aren't embedded in the
+      # published report. Screenshots are kept.
+      # ========================================================
+
+      - name: Prune Heavy Allure Attachments
+        if: ${{ !cancelled() }}
+        run: |
+
+          echo "========================================"
+          echo "🧹 PRUNING ALLURE ATTACHMENTS"
+          echo "========================================"
+
+          if [ ! -d "allure-results" ]; then
+            echo "ℹ️ No allure-results directory."
+            exit 0
+          fi
+
+          echo "Before : $(du -sh allure-results | cut -f1)"
+
+          # videos
+          find allure-results -type f -name "*.webm" -delete || true
+
+          # traces (Playwright trace zips)
+          find allure-results -type f -name "*.zip" -delete || true
+
+          # any single attachment over 5 MB
+          find allure-results -type f -size +5M -delete || true
+
+          echo "After  : $(du -sh allure-results | cut -f1)"
+
+          echo "========================================"
+
+
+      # ========================================================
       # 📊 GENERATE ALLURE REPORT
       # ========================================================
 
@@ -479,6 +521,17 @@ jobs:
           echo "📁 SITE CONTENTS"
           echo "========================================"
           ls -la public
+
+          SITE_SIZE=$(du -sm public | cut -f1)
+
+          echo "Site size: ${SITE_SIZE} MB"
+
+          if [ "$SITE_SIZE" -gt 900 ]; then
+            echo "⚠️ WARNING: the site is over 900 MB."
+            echo "GitHub Pages caps sites at 1 GB and the push will fail."
+          fi
+
+          echo "========================================"
 
 
       # ========================================================
