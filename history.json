@@ -1,0 +1,12 @@
+[
+  {
+    "run": 39,
+    "date": "2026-09-08",
+    "passed": 169,
+    "failed": 97,
+    "flaky": 3,
+    "skipped": 0,
+    "total": 269,
+    "duration": 19793554
+  }
+]
