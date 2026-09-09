@@ -8,5 +8,15 @@
     "skipped": 0,
     "total": 269,
     "duration": 19793554
+  },
+  {
+    "run": 40,
+    "date": "2026-09-09",
+    "passed": 252,
+    "failed": 17,
+    "flaky": 0,
+    "skipped": 0,
+    "total": 269,
+    "duration": 14646889
   }
 ]

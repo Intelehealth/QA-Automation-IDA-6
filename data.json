@@ -4,75 +4,55 @@
     "repo": "Intelehealth/QA-Automation-IDA-6",
     "branch": "main",
     "actor": "sambit-QA",
-    "runNumber": "39",
-    "runUrl": "https://github.com/Intelehealth/QA-Automation-IDA-6/actions/runs/34215586522",
-    "commitSha": "5d16356",
-    "commitMessage": "Prune heavy Allure attachments before publishing",
-    "commitUrl": "https://github.com/Intelehealth/QA-Automation-IDA-6/commit/5d163568bec11846d3bc9d8dd015f142782c4cc1",
+    "runNumber": "40",
+    "runUrl": "https://github.com/Intelehealth/QA-Automation-IDA-6/actions/runs/34315078950",
+    "commitSha": "a85a357",
+    "commitMessage": "Fixed test and Yml fixed",
+    "commitUrl": "https://github.com/Intelehealth/QA-Automation-IDA-6/commit/a85a3577171cbcfca98a14c813dea6cacf1e7e7a",
     "allureUrl": "https://Intelehealth.github.io/QA-Automation-IDA-6/allure/",
     "baseUrl": "https://dev.intelehealth.org",
     "environment": "DEV",
-    "runTime": "2026-09-08 21:40:14 IST",
-    "generatedAt": "2026-09-08T16:10:14.972Z"
+    "runTime": "2026-09-09 15:09:07 IST",
+    "generatedAt": "2026-09-09T09:39:07.753Z"
   },
   "totals": {
-    "passed": 169,
-    "failed": 97,
-    "flaky": 3,
+    "passed": 252,
+    "failed": 17,
+    "flaky": 0,
     "skipped": 0,
     "total": 269,
-    "duration": 19793554,
-    "passRate": 63.9
+    "duration": 14646889,
+    "passRate": 93.7
   },
   "stats": {
-    "passed": 169,
-    "failed": 97,
-    "flaky": 3,
+    "passed": 252,
+    "failed": 17,
+    "flaky": 0,
     "skipped": 0,
     "total": 269,
-    "duration": 19793554,
-    "wallClock": 20441374.626000002
+    "duration": 14646889,
+    "wallClock": 14767256.047999999
   },
   "modules": [
     {
-      "name": "Physical Examination",
+      "name": "Forgot Password",
       "passed": 0,
-      "failed": 51,
+      "failed": 6,
       "flaky": 0,
       "skipped": 0,
-      "total": 51,
-      "duration": 5552557,
+      "total": 6,
+      "duration": 391851,
       "passRate": 0
-    },
-    {
-      "name": "Start Visit - Visit Reason",
-      "passed": 0,
-      "failed": 20,
-      "flaky": 0,
-      "skipped": 0,
-      "total": 20,
-      "duration": 2180521,
-      "passRate": 0
-    },
-    {
-      "name": "Medical History",
-      "passed": 7,
-      "failed": 13,
-      "flaky": 0,
-      "skipped": 0,
-      "total": 20,
-      "duration": 4241334,
-      "passRate": 35
     },
     {
       "name": "Start Visit - Vitals",
-      "passed": 38,
-      "failed": 6,
-      "flaky": 1,
+      "passed": 40,
+      "failed": 5,
+      "flaky": 0,
       "skipped": 0,
       "total": 45,
-      "duration": 2069564,
-      "passRate": 86.7
+      "duration": 2293237,
+      "passRate": 88.9
     },
     {
       "name": "Start Visit",
@@ -81,18 +61,8 @@
       "flaky": 0,
       "skipped": 0,
       "total": 75,
-      "duration": 3370493,
+      "duration": 3864070,
       "passRate": 94.7
-    },
-    {
-      "name": "Forgot Password",
-      "passed": 2,
-      "failed": 2,
-      "flaky": 2,
-      "skipped": 0,
-      "total": 6,
-      "duration": 193949,
-      "passRate": 66.7
     },
     {
       "name": "Abdominal Distention Protocol",
@@ -101,8 +71,38 @@
       "flaky": 0,
       "skipped": 0,
       "total": 31,
-      "duration": 1929439,
+      "duration": 2159682,
       "passRate": 96.8
+    },
+    {
+      "name": "Medical History",
+      "passed": 19,
+      "failed": 1,
+      "flaky": 0,
+      "skipped": 0,
+      "total": 20,
+      "duration": 2062606,
+      "passRate": 95
+    },
+    {
+      "name": "Physical Examination",
+      "passed": 51,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "total": 51,
+      "duration": 2747391,
+      "passRate": 100
+    },
+    {
+      "name": "Start Visit - Visit Reason",
+      "passed": 20,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "total": 20,
+      "duration": 795289,
+      "passRate": 100
     },
     {
       "name": "Patient Creation",
@@ -111,7 +111,7 @@
       "flaky": 0,
       "skipped": 0,
       "total": 16,
-      "duration": 224250,
+      "duration": 290961,
       "passRate": 100
     },
     {
@@ -121,7 +121,7 @@
       "flaky": 0,
       "skipped": 0,
       "total": 5,
-      "duration": 31447,
+      "duration": 41802,
       "passRate": 100
     }
   ],
@@ -134,10 +134,10 @@
       "file": "ForgetPassword.spec.js",
       "line": 15,
       "project": "chromium",
-      "status": "expected",
-      "duration": 11873,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 65435,
+      "retries": 2,
+      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })"
     },
     {
       "id": "t1",
@@ -147,10 +147,10 @@
       "file": "ForgetPassword.spec.js",
       "line": 38,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 26275,
-      "retries": 1,
-      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })"
+      "status": "unexpected",
+      "duration": 65533,
+      "retries": 2,
+      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })"
     },
     {
       "id": "t2",
@@ -160,10 +160,10 @@
       "file": "ForgetPassword.spec.js",
       "line": 59,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 27662,
-      "retries": 1,
-      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })"
+      "status": "unexpected",
+      "duration": 65612,
+      "retries": 2,
+      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })"
     },
     {
       "id": "t3",
@@ -174,7 +174,7 @@
       "line": 74,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 60200,
+      "duration": 64963,
       "retries": 2,
       "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })"
     },
@@ -187,7 +187,7 @@
       "line": 92,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 60503,
+      "duration": 65428,
       "retries": 2,
       "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })"
     },
@@ -199,10 +199,10 @@
       "file": "ForgetPassword.spec.js",
       "line": 120,
       "project": "chromium",
-      "status": "expected",
-      "duration": 7436,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 64880,
+      "retries": 2,
+      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })"
     },
     {
       "id": "t6",
@@ -213,7 +213,7 @@
       "line": 21,
       "project": "chromium",
       "status": "expected",
-      "duration": 8345,
+      "duration": 10314,
       "retries": 0,
       "error": ""
     },
@@ -226,7 +226,7 @@
       "line": 46,
       "project": "chromium",
       "status": "expected",
-      "duration": 4967,
+      "duration": 7330,
       "retries": 0,
       "error": ""
     },
@@ -239,7 +239,7 @@
       "line": 62,
       "project": "chromium",
       "status": "expected",
-      "duration": 6067,
+      "duration": 7989,
       "retries": 0,
       "error": ""
     },
@@ -252,7 +252,7 @@
       "line": 92,
       "project": "chromium",
       "status": "expected",
-      "duration": 6027,
+      "duration": 7932,
       "retries": 0,
       "error": ""
     },
@@ -265,7 +265,7 @@
       "line": 126,
       "project": "chromium",
       "status": "expected",
-      "duration": 6041,
+      "duration": 8237,
       "retries": 0,
       "error": ""
     },
@@ -278,7 +278,7 @@
       "line": 58,
       "project": "chromium",
       "status": "expected",
-      "duration": 11727,
+      "duration": 17312,
       "retries": 0,
       "error": ""
     },
@@ -291,7 +291,7 @@
       "line": 77,
       "project": "chromium",
       "status": "expected",
-      "duration": 13492,
+      "duration": 17201,
       "retries": 0,
       "error": ""
     },
@@ -304,7 +304,7 @@
       "line": 93,
       "project": "chromium",
       "status": "expected",
-      "duration": 12919,
+      "duration": 17245,
       "retries": 0,
       "error": ""
     },
@@ -317,7 +317,7 @@
       "line": 108,
       "project": "chromium",
       "status": "expected",
-      "duration": 13147,
+      "duration": 17275,
       "retries": 0,
       "error": ""
     },
@@ -330,7 +330,7 @@
       "line": 127,
       "project": "chromium",
       "status": "expected",
-      "duration": 12501,
+      "duration": 17238,
       "retries": 0,
       "error": ""
     },
@@ -343,7 +343,7 @@
       "line": 142,
       "project": "chromium",
       "status": "expected",
-      "duration": 13259,
+      "duration": 16981,
       "retries": 0,
       "error": ""
     },
@@ -356,7 +356,7 @@
       "line": 169,
       "project": "chromium",
       "status": "expected",
-      "duration": 12943,
+      "duration": 17653,
       "retries": 0,
       "error": ""
     },
@@ -369,7 +369,7 @@
       "line": 193,
       "project": "chromium",
       "status": "expected",
-      "duration": 18962,
+      "duration": 22962,
       "retries": 0,
       "error": ""
     },
@@ -382,7 +382,7 @@
       "line": 266,
       "project": "chromium",
       "status": "expected",
-      "duration": 13020,
+      "duration": 17261,
       "retries": 0,
       "error": ""
     },
@@ -395,7 +395,7 @@
       "line": 280,
       "project": "chromium",
       "status": "expected",
-      "duration": 14300,
+      "duration": 17772,
       "retries": 0,
       "error": ""
     },
@@ -408,7 +408,7 @@
       "line": 298,
       "project": "chromium",
       "status": "expected",
-      "duration": 12921,
+      "duration": 17187,
       "retries": 0,
       "error": ""
     },
@@ -421,7 +421,7 @@
       "line": 316,
       "project": "chromium",
       "status": "expected",
-      "duration": 13927,
+      "duration": 16894,
       "retries": 0,
       "error": ""
     },
@@ -434,7 +434,7 @@
       "line": 334,
       "project": "chromium",
       "status": "expected",
-      "duration": 12266,
+      "duration": 17326,
       "retries": 0,
       "error": ""
     },
@@ -447,7 +447,7 @@
       "line": 352,
       "project": "chromium",
       "status": "expected",
-      "duration": 13975,
+      "duration": 17400,
       "retries": 0,
       "error": ""
     },
@@ -460,7 +460,7 @@
       "line": 366,
       "project": "chromium",
       "status": "expected",
-      "duration": 12602,
+      "duration": 17354,
       "retries": 0,
       "error": ""
     },
@@ -473,7 +473,7 @@
       "line": 388,
       "project": "chromium",
       "status": "expected",
-      "duration": 22289,
+      "duration": 25900,
       "retries": 0,
       "error": ""
     },
@@ -486,7 +486,7 @@
       "line": 1638,
       "project": "chromium",
       "status": "expected",
-      "duration": 30177,
+      "duration": 36129,
       "retries": 0,
       "error": ""
     },
@@ -499,7 +499,7 @@
       "line": 1651,
       "project": "chromium",
       "status": "expected",
-      "duration": 31455,
+      "duration": 37052,
       "retries": 0,
       "error": ""
     },
@@ -512,7 +512,7 @@
       "line": 1665,
       "project": "chromium",
       "status": "expected",
-      "duration": 32443,
+      "duration": 39247,
       "retries": 0,
       "error": ""
     },
@@ -525,7 +525,7 @@
       "line": 1682,
       "project": "chromium",
       "status": "expected",
-      "duration": 35402,
+      "duration": 40591,
       "retries": 0,
       "error": ""
     },
@@ -538,7 +538,7 @@
       "line": 1700,
       "project": "chromium",
       "status": "expected",
-      "duration": 35254,
+      "duration": 41262,
       "retries": 0,
       "error": ""
     },
@@ -551,7 +551,7 @@
       "line": 1718,
       "project": "chromium",
       "status": "expected",
-      "duration": 36892,
+      "duration": 42742,
       "retries": 0,
       "error": ""
     },
@@ -564,7 +564,7 @@
       "line": 1738,
       "project": "chromium",
       "status": "expected",
-      "duration": 35854,
+      "duration": 43835,
       "retries": 0,
       "error": ""
     },
@@ -577,7 +577,7 @@
       "line": 1757,
       "project": "chromium",
       "status": "expected",
-      "duration": 40909,
+      "duration": 49015,
       "retries": 0,
       "error": ""
     },
@@ -590,7 +590,7 @@
       "line": 1773,
       "project": "chromium",
       "status": "expected",
-      "duration": 41237,
+      "duration": 47864,
       "retries": 0,
       "error": ""
     },
@@ -603,7 +603,7 @@
       "line": 1796,
       "project": "chromium",
       "status": "expected",
-      "duration": 40839,
+      "duration": 48345,
       "retries": 0,
       "error": ""
     },
@@ -616,7 +616,7 @@
       "line": 1827,
       "project": "chromium",
       "status": "expected",
-      "duration": 42738,
+      "duration": 49664,
       "retries": 0,
       "error": ""
     },
@@ -629,7 +629,7 @@
       "line": 1843,
       "project": "chromium",
       "status": "expected",
-      "duration": 44673,
+      "duration": 50333,
       "retries": 0,
       "error": ""
     },
@@ -642,7 +642,7 @@
       "line": 1865,
       "project": "chromium",
       "status": "expected",
-      "duration": 47006,
+      "duration": 54390,
       "retries": 0,
       "error": ""
     },
@@ -655,7 +655,7 @@
       "line": 1890,
       "project": "chromium",
       "status": "expected",
-      "duration": 48201,
+      "duration": 54934,
       "retries": 0,
       "error": ""
     },
@@ -668,7 +668,7 @@
       "line": 1903,
       "project": "chromium",
       "status": "expected",
-      "duration": 47424,
+      "duration": 54572,
       "retries": 0,
       "error": ""
     },
@@ -681,7 +681,7 @@
       "line": 1925,
       "project": "chromium",
       "status": "expected",
-      "duration": 44942,
+      "duration": 52088,
       "retries": 0,
       "error": ""
     },
@@ -694,7 +694,7 @@
       "line": 1969,
       "project": "chromium",
       "status": "expected",
-      "duration": 59383,
+      "duration": 66569,
       "retries": 0,
       "error": ""
     },
@@ -707,7 +707,7 @@
       "line": 1991,
       "project": "chromium",
       "status": "expected",
-      "duration": 61436,
+      "duration": 68856,
       "retries": 0,
       "error": ""
     },
@@ -720,7 +720,7 @@
       "line": 2021,
       "project": "chromium",
       "status": "expected",
-      "duration": 65061,
+      "duration": 72382,
       "retries": 0,
       "error": ""
     },
@@ -733,7 +733,7 @@
       "line": 2041,
       "project": "chromium",
       "status": "expected",
-      "duration": 66523,
+      "duration": 73331,
       "retries": 0,
       "error": ""
     },
@@ -746,7 +746,7 @@
       "line": 2062,
       "project": "chromium",
       "status": "expected",
-      "duration": 67940,
+      "duration": 74766,
       "retries": 0,
       "error": ""
     },
@@ -759,7 +759,7 @@
       "line": 2073,
       "project": "chromium",
       "status": "expected",
-      "duration": 66838,
+      "duration": 74682,
       "retries": 0,
       "error": ""
     },
@@ -772,7 +772,7 @@
       "line": 2090,
       "project": "chromium",
       "status": "expected",
-      "duration": 67631,
+      "duration": 74811,
       "retries": 0,
       "error": ""
     },
@@ -785,7 +785,7 @@
       "line": 2106,
       "project": "chromium",
       "status": "expected",
-      "duration": 67760,
+      "duration": 74706,
       "retries": 0,
       "error": ""
     },
@@ -798,7 +798,7 @@
       "line": 2121,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 262518,
+      "duration": 284478,
       "retries": 2,
       "error": "Error: Physical Examination summary did not show \"Lumps\" = \"Yes\" as expected\n\nexpect(locator).toBeVisible() failed\n\nLocator: locator('div.bg-white.shadow-xl.flex.flex-col').filter({ has: getByText('Physical examination summary') }).first().locator('div').filter({ hasText: 'Lumps' }).filter({ hasText: 'Yes' }).last()\nExpected: visible\nTimeout: 8000ms\nError: element(s) not found\n\nCall log:\n  - Physical Examination summary did not show \"Lumps\" = \"Yes\" as expected with timeout 8000ms\n  - waiting for locator('div.bg-white.shadow-xl.flex.flex-col').filter({ has: getByText('Physical examination summary') }).first().locator('div').filter({ hasText: 'Lumps' }).filter({ hasText: 'Yes' }).last()\n\nError: Physical Examination summary did not show \"Lumps\" = \"Yes\" as expected\n\nexpect(locator).toBeVisible() failed\n\nLocator: locator('div.bg-white.shadow-xl.flex.flex-col').filter({ has: getByText('Physica"
     },
@@ -811,7 +811,7 @@
       "line": 2141,
       "project": "chromium",
       "status": "expected",
-      "duration": 63768,
+      "duration": 71040,
       "retries": 0,
       "error": ""
     },
@@ -824,7 +824,7 @@
       "line": 2179,
       "project": "chromium",
       "status": "expected",
-      "duration": 70229,
+      "duration": 76272,
       "retries": 0,
       "error": ""
     },
@@ -837,7 +837,7 @@
       "line": 2192,
       "project": "chromium",
       "status": "expected",
-      "duration": 91243,
+      "duration": 98549,
       "retries": 0,
       "error": ""
     },
@@ -850,7 +850,7 @@
       "line": 2206,
       "project": "chromium",
       "status": "expected",
-      "duration": 92800,
+      "duration": 101537,
       "retries": 0,
       "error": ""
     },
@@ -863,7 +863,7 @@
       "line": 2221,
       "project": "chromium",
       "status": "expected",
-      "duration": 93522,
+      "duration": 99907,
       "retries": 0,
       "error": ""
     },
@@ -876,7 +876,7 @@
       "line": 2242,
       "project": "chromium",
       "status": "expected",
-      "duration": 97341,
+      "duration": 105733,
       "retries": 0,
       "error": ""
     },
@@ -886,10 +886,10 @@
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
-      "line": 1164,
+      "line": 1282,
       "project": "chromium",
       "status": "expected",
-      "duration": 47884,
+      "duration": 53293,
       "retries": 0,
       "error": ""
     },
@@ -899,10 +899,10 @@
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
-      "line": 1175,
+      "line": 1293,
       "project": "chromium",
       "status": "expected",
-      "duration": 46726,
+      "duration": 53291,
       "retries": 0,
       "error": ""
     },
@@ -912,10 +912,10 @@
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
-      "line": 1199,
+      "line": 1317,
       "project": "chromium",
       "status": "expected",
-      "duration": 47911,
+      "duration": 54604,
       "retries": 0,
       "error": ""
     },
@@ -925,10 +925,10 @@
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
-      "line": 1215,
+      "line": 1333,
       "project": "chromium",
       "status": "expected",
-      "duration": 54888,
+      "duration": 61092,
       "retries": 0,
       "error": ""
     },
@@ -938,10 +938,10 @@
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
-      "line": 1244,
+      "line": 1362,
       "project": "chromium",
       "status": "expected",
-      "duration": 53533,
+      "duration": 58889,
       "retries": 0,
       "error": ""
     },
@@ -951,10 +951,10 @@
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
-      "line": 1299,
+      "line": 1417,
       "project": "chromium",
       "status": "expected",
-      "duration": 68970,
+      "duration": 73575,
       "retries": 0,
       "error": ""
     },
@@ -964,12 +964,12 @@
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
-      "line": 1344,
+      "line": 1462,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 220047,
-      "retries": 2,
-      "error": "Error: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen."
+      "status": "expected",
+      "duration": 73558,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t65",
@@ -977,10 +977,10 @@
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
-      "line": 1355,
+      "line": 1473,
       "project": "chromium",
       "status": "expected",
-      "duration": 48279,
+      "duration": 55469,
       "retries": 0,
       "error": ""
     },
@@ -990,12 +990,12 @@
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
-      "line": 1409,
+      "line": 1527,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 215518,
-      "retries": 2,
-      "error": "Error: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen."
+      "status": "expected",
+      "duration": 73738,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t67",
@@ -1003,12 +1003,12 @@
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
-      "line": 1428,
+      "line": 1546,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 214471,
-      "retries": 2,
-      "error": "Error: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen."
+      "status": "expected",
+      "duration": 72557,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t68",
@@ -1016,12 +1016,12 @@
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
-      "line": 1449,
+      "line": 1567,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 321023,
-      "retries": 2,
-      "error": "Error: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen."
+      "status": "expected",
+      "duration": 111327,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t69",
@@ -1029,12 +1029,12 @@
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
-      "line": 1461,
+      "line": 1579,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 324326,
-      "retries": 2,
-      "error": "Error: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen."
+      "status": "expected",
+      "duration": 115844,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t70",
@@ -1042,12 +1042,12 @@
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
-      "line": 1473,
+      "line": 1591,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 323704,
+      "duration": 408726,
       "retries": 2,
-      "error": "Error: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen."
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  getByText('Height(cm)').first()\nExpected: visible\nReceived: hidden\nTimeout:  20000ms\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 20000ms\n  - waiting for getByText('Height(cm)').first()\n    24 × locator resolved to <span class=\"text-[#7F7B92] flex items-center gap-2 w-1/2 shrink-0\">…</span>\n       - unexpected value \"hidden\"\n\nError: expect(locator).toBeVisible() failed\n\nLocator:  getByText('Height(cm)').first()\nExpected: visible\nReceived: hidden\nTimeout:  20000ms\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 20000ms\n  - waiting for getByText('Height(cm)').first()\n    24 × locator resolved to <span class=\"text-[#7F7B92] flex items-center gap-2 w-1/2 shrink-0\">…</span>\n       - unexpected value \"hidden\"\n\nError: expect(locator).toBeVisible() failed\n\nLocator:  getByText('Height(cm)').first()\nExpected: visible\nReceived: hidden\nTime"
     },
     {
       "id": "t71",
@@ -1055,12 +1055,12 @@
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
-      "line": 1488,
+      "line": 1606,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 320595,
-      "retries": 2,
-      "error": "Error: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen."
+      "status": "expected",
+      "duration": 111684,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t72",
@@ -1068,12 +1068,12 @@
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
-      "line": 1507,
+      "line": 1624,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 324999,
-      "retries": 2,
-      "error": "Error: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen."
+      "status": "expected",
+      "duration": 112544,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t73",
@@ -1081,12 +1081,12 @@
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
-      "line": 1527,
+      "line": 1643,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 322285,
-      "retries": 2,
-      "error": "Error: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen."
+      "status": "expected",
+      "duration": 112201,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t74",
@@ -1094,12 +1094,12 @@
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
-      "line": 1541,
+      "line": 1657,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 321643,
-      "retries": 2,
-      "error": "Error: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen."
+      "status": "expected",
+      "duration": 113502,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t75",
@@ -1107,12 +1107,12 @@
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
-      "line": 1561,
+      "line": 1676,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 319566,
-      "retries": 2,
-      "error": "Error: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen."
+      "status": "expected",
+      "duration": 111855,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t76",
@@ -1120,12 +1120,12 @@
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
-      "line": 1574,
+      "line": 1689,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 323170,
-      "retries": 2,
-      "error": "Error: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen."
+      "status": "expected",
+      "duration": 116862,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t77",
@@ -1133,12 +1133,12 @@
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
-      "line": 1598,
+      "line": 1714,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 321796,
-      "retries": 2,
-      "error": "Error: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen.\nError: completeMedicalHistoryGeneric — did not reach the Medical History summary within 12 steps. The flow may have more questions than expected, or gotten stuck on an unrecognized screen."
+      "status": "expected",
+      "duration": 117995,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t78",
@@ -1148,10 +1148,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 507,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 109700,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 42240,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t79",
@@ -1161,10 +1161,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 534,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 109534,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 38389,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t80",
@@ -1174,10 +1174,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 544,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108408,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 38503,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t81",
@@ -1187,10 +1187,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 557,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108510,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 42117,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t82",
@@ -1200,10 +1200,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 576,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 109513,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 40618,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t83",
@@ -1213,10 +1213,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 590,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 110836,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 41957,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t84",
@@ -1226,10 +1226,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 602,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108561,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 43497,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t85",
@@ -1239,10 +1239,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 628,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108247,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 47125,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t86",
@@ -1252,10 +1252,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 643,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108082,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 45300,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t87",
@@ -1265,10 +1265,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 657,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108850,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 42937,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t88",
@@ -1278,10 +1278,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 677,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 107094,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 46702,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t89",
@@ -1291,10 +1291,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 695,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108552,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 46100,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t90",
@@ -1304,10 +1304,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 708,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108909,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 48506,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t91",
@@ -1317,10 +1317,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 721,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108382,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 49672,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t92",
@@ -1330,10 +1330,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 748,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 107809,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 46700,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t93",
@@ -1343,10 +1343,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 792,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108667,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 45748,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t94",
@@ -1356,10 +1356,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 812,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 110076,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 48574,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t95",
@@ -1369,10 +1369,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 831,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108143,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 50506,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t96",
@@ -1382,10 +1382,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 845,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108848,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 78570,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t97",
@@ -1395,10 +1395,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 855,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108245,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 50544,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t98",
@@ -1408,10 +1408,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 875,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 107916,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 50537,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t99",
@@ -1421,10 +1421,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 896,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108329,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 75723,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t100",
@@ -1434,10 +1434,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 906,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108503,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 77654,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t101",
@@ -1447,10 +1447,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 916,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 106980,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 53014,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t102",
@@ -1460,10 +1460,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 952,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 107126,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 77936,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t103",
@@ -1473,10 +1473,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 963,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108908,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 75945,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t104",
@@ -1486,10 +1486,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 978,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 107572,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 77197,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t105",
@@ -1499,10 +1499,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 989,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108868,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 77816,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t106",
@@ -1512,10 +1512,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1001,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108172,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 76856,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t107",
@@ -1525,10 +1525,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1013,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 110288,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 77628,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t108",
@@ -1538,10 +1538,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1029,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 107278,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 76032,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t109",
@@ -1551,10 +1551,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1051,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 107743,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 77036,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t110",
@@ -1564,10 +1564,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1070,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 107156,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 42514,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t111",
@@ -1577,10 +1577,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1094,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 107209,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 47127,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t112",
@@ -1590,10 +1590,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1116,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 106774,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 40449,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t113",
@@ -1603,10 +1603,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1136,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 110596,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 45723,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t114",
@@ -1616,10 +1616,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1159,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 107080,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 44382,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t115",
@@ -1629,10 +1629,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1197,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108032,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 45788,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t116",
@@ -1642,10 +1642,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1214,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108154,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 76266,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t117",
@@ -1655,10 +1655,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1229,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 109693,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 76648,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t118",
@@ -1668,10 +1668,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1246,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 109252,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 77082,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t119",
@@ -1681,10 +1681,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1269,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108644,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 49274,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t120",
@@ -1694,10 +1694,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1293,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 107315,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 39304,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t121",
@@ -1707,10 +1707,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1318,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 107910,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 44151,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t122",
@@ -1720,10 +1720,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1359,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108352,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 39026,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t123",
@@ -1733,10 +1733,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1385,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108132,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 39995,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t124",
@@ -1746,10 +1746,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1400,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 108574,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 40841,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t125",
@@ -1759,10 +1759,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1415,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 107749,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 42208,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t126",
@@ -1772,10 +1772,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1434,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 107333,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 47292,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t127",
@@ -1785,10 +1785,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1454,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 107121,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 48539,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t128",
@@ -1798,10 +1798,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1475,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 134832,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div.bg-white.rounded-xl.border').filter({ has: locator('p.font-semibold').filter({ hasText: 'Automation Test1788875927901456' }) })\nExpected: visible\nTimeout: 30000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 30000ms\n  - waiting for locator('div.bg-white.rounded-xl.border').filter({ has: locator('p.font-semibold').filter({ hasText: 'Automation Test1788875927901456' }) })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div.bg-white.rounded-xl.border').filter({ has: locator('p.font-semi"
+      "status": "expected",
+      "duration": 53103,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t129",
@@ -1811,10 +1811,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 508,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 160440,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div.bg-white.rounded-xl.border').filter({ has: locator('p.font-semibold').filter({ hasText: 'Automation Test' }) })\nExpected: visible\nTimeout: 30000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 30000ms\n  - waiting for locator('div.bg-white.rounded-xl.border').filter({ has: locator('p.font-semibold').filter({ hasText: 'Automation Test' }) })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div.bg-white.rounded-xl.border').filter({ has: locator('p.font-semibold').filter({ hasText: 'Automation Test' }) })\nExpected: visible\nTimeout: 30000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 30000ms\n  - waiting for locator('div.bg-white.rounded-xl.border').filter({ has: locator('p.font-semibold').filter({ hasText: 'Automation Test' }) })\n\nError: expect(loca"
+      "status": "expected",
+      "duration": 37870,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t130",
@@ -1824,10 +1824,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 534,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 110245,
-      "retries": 2,
-      "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Accept' })\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
+      "status": "expected",
+      "duration": 38822,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t131",
@@ -1837,10 +1837,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 557,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 106039,
-      "retries": 2,
-      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login"
+      "status": "expected",
+      "duration": 38968,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t132",
@@ -1850,10 +1850,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 589,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 105711,
-      "retries": 2,
-      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login"
+      "status": "expected",
+      "duration": 39179,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t133",
@@ -1863,10 +1863,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 634,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 105239,
-      "retries": 2,
-      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login"
+      "status": "expected",
+      "duration": 39470,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t134",
@@ -1876,10 +1876,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 680,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 104932,
-      "retries": 2,
-      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login"
+      "status": "expected",
+      "duration": 39816,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t135",
@@ -1889,10 +1889,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 700,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 106140,
-      "retries": 2,
-      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login"
+      "status": "expected",
+      "duration": 40172,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t136",
@@ -1902,10 +1902,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 725,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 106176,
-      "retries": 2,
-      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login"
+      "status": "expected",
+      "duration": 38849,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t137",
@@ -1915,10 +1915,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 779,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 106587,
-      "retries": 2,
-      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login"
+      "status": "expected",
+      "duration": 38289,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t138",
@@ -1928,10 +1928,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 808,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 106747,
-      "retries": 2,
-      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login"
+      "status": "expected",
+      "duration": 40547,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t139",
@@ -1941,10 +1941,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 837,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 105726,
-      "retries": 2,
-      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login"
+      "status": "expected",
+      "duration": 38467,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t140",
@@ -1954,10 +1954,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 868,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 104797,
-      "retries": 2,
-      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login"
+      "status": "expected",
+      "duration": 38803,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t141",
@@ -1967,10 +1967,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 899,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 105384,
-      "retries": 2,
-      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login"
+      "status": "expected",
+      "duration": 41111,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t142",
@@ -1980,10 +1980,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 940,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 105792,
-      "retries": 2,
-      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login"
+      "status": "expected",
+      "duration": 39935,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t143",
@@ -1993,10 +1993,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 965,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 109028,
-      "retries": 2,
-      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login"
+      "status": "expected",
+      "duration": 39935,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t144",
@@ -2006,10 +2006,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 993,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 106552,
-      "retries": 2,
-      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login"
+      "status": "expected",
+      "duration": 39711,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t145",
@@ -2019,10 +2019,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 1023,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 106125,
-      "retries": 2,
-      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login"
+      "status": "expected",
+      "duration": 41174,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t146",
@@ -2032,10 +2032,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 1065,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 106210,
-      "retries": 2,
-      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login"
+      "status": "expected",
+      "duration": 40508,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t147",
@@ -2045,10 +2045,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 1104,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 106348,
-      "retries": 2,
-      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login"
+      "status": "expected",
+      "duration": 41155,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t148",
@@ -2058,10 +2058,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 1151,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 106303,
-      "retries": 2,
-      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login"
+      "status": "expected",
+      "duration": 42508,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t149",
@@ -2071,10 +2071,10 @@
       "file": "StartVisit_Vitals.spec.js",
       "line": 309,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 107603,
-      "retries": 2,
-      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login"
+      "status": "expected",
+      "duration": 37785,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t150",
@@ -2084,10 +2084,10 @@
       "file": "StartVisit_Vitals.spec.js",
       "line": 336,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 65711,
-      "retries": 1,
-      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
+      "status": "expected",
+      "duration": 38043,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t151",
@@ -2098,7 +2098,7 @@
       "line": 369,
       "project": "chromium",
       "status": "expected",
-      "duration": 29218,
+      "duration": 37766,
       "retries": 0,
       "error": ""
     },
@@ -2111,7 +2111,7 @@
       "line": 402,
       "project": "chromium",
       "status": "expected",
-      "duration": 29800,
+      "duration": 37690,
       "retries": 0,
       "error": ""
     },
@@ -2124,7 +2124,7 @@
       "line": 420,
       "project": "chromium",
       "status": "expected",
-      "duration": 30301,
+      "duration": 38400,
       "retries": 0,
       "error": ""
     },
@@ -2137,7 +2137,7 @@
       "line": 454,
       "project": "chromium",
       "status": "expected",
-      "duration": 29699,
+      "duration": 37841,
       "retries": 0,
       "error": ""
     },
@@ -2150,7 +2150,7 @@
       "line": 477,
       "project": "chromium",
       "status": "expected",
-      "duration": 29476,
+      "duration": 38054,
       "retries": 0,
       "error": ""
     },
@@ -2163,7 +2163,7 @@
       "line": 498,
       "project": "chromium",
       "status": "expected",
-      "duration": 30815,
+      "duration": 39157,
       "retries": 0,
       "error": ""
     },
@@ -2176,7 +2176,7 @@
       "line": 519,
       "project": "chromium",
       "status": "expected",
-      "duration": 28715,
+      "duration": 38078,
       "retries": 0,
       "error": ""
     },
@@ -2189,7 +2189,7 @@
       "line": 540,
       "project": "chromium",
       "status": "expected",
-      "duration": 29659,
+      "duration": 37592,
       "retries": 0,
       "error": ""
     },
@@ -2202,7 +2202,7 @@
       "line": 575,
       "project": "chromium",
       "status": "expected",
-      "duration": 29346,
+      "duration": 38132,
       "retries": 0,
       "error": ""
     },
@@ -2215,7 +2215,7 @@
       "line": 610,
       "project": "chromium",
       "status": "expected",
-      "duration": 29587,
+      "duration": 37685,
       "retries": 0,
       "error": ""
     },
@@ -2228,7 +2228,7 @@
       "line": 628,
       "project": "chromium",
       "status": "expected",
-      "duration": 29085,
+      "duration": 36770,
       "retries": 0,
       "error": ""
     },
@@ -2241,7 +2241,7 @@
       "line": 662,
       "project": "chromium",
       "status": "expected",
-      "duration": 29668,
+      "duration": 37855,
       "retries": 0,
       "error": ""
     },
@@ -2254,7 +2254,7 @@
       "line": 697,
       "project": "chromium",
       "status": "expected",
-      "duration": 29213,
+      "duration": 36933,
       "retries": 0,
       "error": ""
     },
@@ -2267,7 +2267,7 @@
       "line": 732,
       "project": "chromium",
       "status": "expected",
-      "duration": 29536,
+      "duration": 37948,
       "retries": 0,
       "error": ""
     },
@@ -2280,7 +2280,7 @@
       "line": 761,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 90722,
+      "duration": 117174,
       "retries": 2,
       "error": "Error: expect(received).toBeCloseTo(expected, precision)\n\nExpected: 21.35\nReceived: 21.3\n\nExpected precision:    1\nExpected difference: < 0.05\nReceived difference:   0.05000000000000071\nError: expect(received).toBeCloseTo(expected, precision)\n\nExpected: 21.35\nReceived: 21.3\n\nExpected precision:    1\nExpected difference: < 0.05\nReceived difference:   0.05000000000000071\nError: expect(received).toBeCloseTo(expected, precision)\n\nExpected: 21.35\nReceived: 21.3\n\nExpected precision:    1\nExpected difference: < 0.05\nReceived difference:   0.05000000000000071"
     },
@@ -2293,7 +2293,7 @@
       "line": 793,
       "project": "chromium",
       "status": "expected",
-      "duration": 30458,
+      "duration": 38143,
       "retries": 0,
       "error": ""
     },
@@ -2306,7 +2306,7 @@
       "line": 812,
       "project": "chromium",
       "status": "expected",
-      "duration": 29297,
+      "duration": 37822,
       "retries": 0,
       "error": ""
     },
@@ -2319,7 +2319,7 @@
       "line": 831,
       "project": "chromium",
       "status": "expected",
-      "duration": 29900,
+      "duration": 38311,
       "retries": 0,
       "error": ""
     },
@@ -2332,7 +2332,7 @@
       "line": 859,
       "project": "chromium",
       "status": "expected",
-      "duration": 28087,
+      "duration": 37686,
       "retries": 0,
       "error": ""
     },
@@ -2345,7 +2345,7 @@
       "line": 887,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 184607,
+      "duration": 184743,
       "retries": 2,
       "error": "Test timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded."
     },
@@ -2358,7 +2358,7 @@
       "line": 915,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 183442,
+      "duration": 183863,
       "retries": 2,
       "error": "Test timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded."
     },
@@ -2371,7 +2371,7 @@
       "line": 953,
       "project": "chromium",
       "status": "expected",
-      "duration": 32739,
+      "duration": 37927,
       "retries": 0,
       "error": ""
     },
@@ -2384,7 +2384,7 @@
       "line": 978,
       "project": "chromium",
       "status": "expected",
-      "duration": 33203,
+      "duration": 38260,
       "retries": 0,
       "error": ""
     },
@@ -2397,7 +2397,7 @@
       "line": 1004,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 130271,
+      "duration": 146733,
       "retries": 2,
       "error": "Error: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n       - unexpected value \"21.8\"\n\nError: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 "
     },
@@ -2410,7 +2410,7 @@
       "line": 1037,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 127943,
+      "duration": 147126,
       "retries": 2,
       "error": "Error: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n       - unexpected value \"21.8\"\n\nError: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 "
     },
@@ -2423,7 +2423,7 @@
       "line": 1070,
       "project": "chromium",
       "status": "expected",
-      "duration": 32185,
+      "duration": 37947,
       "retries": 0,
       "error": ""
     },
@@ -2436,7 +2436,7 @@
       "line": 1103,
       "project": "chromium",
       "status": "expected",
-      "duration": 32779,
+      "duration": 37827,
       "retries": 0,
       "error": ""
     },
@@ -2449,7 +2449,7 @@
       "line": 1136,
       "project": "chromium",
       "status": "expected",
-      "duration": 31904,
+      "duration": 37792,
       "retries": 0,
       "error": ""
     },
@@ -2462,7 +2462,7 @@
       "line": 1176,
       "project": "chromium",
       "status": "expected",
-      "duration": 31195,
+      "duration": 37783,
       "retries": 0,
       "error": ""
     },
@@ -2475,7 +2475,7 @@
       "line": 1197,
       "project": "chromium",
       "status": "expected",
-      "duration": 32733,
+      "duration": 38184,
       "retries": 0,
       "error": ""
     },
@@ -2488,7 +2488,7 @@
       "line": 1214,
       "project": "chromium",
       "status": "expected",
-      "duration": 31669,
+      "duration": 38205,
       "retries": 0,
       "error": ""
     },
@@ -2501,7 +2501,7 @@
       "line": 1231,
       "project": "chromium",
       "status": "expected",
-      "duration": 32584,
+      "duration": 36645,
       "retries": 0,
       "error": ""
     },
@@ -2514,7 +2514,7 @@
       "line": 1248,
       "project": "chromium",
       "status": "expected",
-      "duration": 32679,
+      "duration": 37650,
       "retries": 0,
       "error": ""
     },
@@ -2527,7 +2527,7 @@
       "line": 1265,
       "project": "chromium",
       "status": "expected",
-      "duration": 32087,
+      "duration": 37787,
       "retries": 0,
       "error": ""
     },
@@ -2540,7 +2540,7 @@
       "line": 1305,
       "project": "chromium",
       "status": "expected",
-      "duration": 33766,
+      "duration": 37866,
       "retries": 0,
       "error": ""
     },
@@ -2553,7 +2553,7 @@
       "line": 1345,
       "project": "chromium",
       "status": "expected",
-      "duration": 32001,
+      "duration": 37714,
       "retries": 0,
       "error": ""
     },
@@ -2566,7 +2566,7 @@
       "line": 1365,
       "project": "chromium",
       "status": "expected",
-      "duration": 33205,
+      "duration": 38622,
       "retries": 0,
       "error": ""
     },
@@ -2579,7 +2579,7 @@
       "line": 1385,
       "project": "chromium",
       "status": "expected",
-      "duration": 31899,
+      "duration": 37839,
       "retries": 0,
       "error": ""
     },
@@ -2592,7 +2592,7 @@
       "line": 1425,
       "project": "chromium",
       "status": "expected",
-      "duration": 32718,
+      "duration": 38169,
       "retries": 0,
       "error": ""
     },
@@ -2605,7 +2605,7 @@
       "line": 1465,
       "project": "chromium",
       "status": "expected",
-      "duration": 31990,
+      "duration": 36606,
       "retries": 0,
       "error": ""
     },
@@ -2618,7 +2618,7 @@
       "line": 1483,
       "project": "chromium",
       "status": "expected",
-      "duration": 33104,
+      "duration": 36665,
       "retries": 0,
       "error": ""
     },
@@ -2631,7 +2631,7 @@
       "line": 1501,
       "project": "chromium",
       "status": "expected",
-      "duration": 30548,
+      "duration": 38607,
       "retries": 0,
       "error": ""
     },
@@ -2644,7 +2644,7 @@
       "line": 1530,
       "project": "chromium",
       "status": "expected",
-      "duration": 32417,
+      "duration": 37812,
       "retries": 0,
       "error": ""
     },
@@ -2657,7 +2657,7 @@
       "line": 420,
       "project": "chromium",
       "status": "expected",
-      "duration": 36018,
+      "duration": 42813,
       "retries": 0,
       "error": ""
     },
@@ -2670,7 +2670,7 @@
       "line": 447,
       "project": "chromium",
       "status": "expected",
-      "duration": 36916,
+      "duration": 42892,
       "retries": 0,
       "error": ""
     },
@@ -2683,7 +2683,7 @@
       "line": 464,
       "project": "chromium",
       "status": "expected",
-      "duration": 37818,
+      "duration": 43242,
       "retries": 0,
       "error": ""
     },
@@ -2696,7 +2696,7 @@
       "line": 481,
       "project": "chromium",
       "status": "expected",
-      "duration": 36798,
+      "duration": 43331,
       "retries": 0,
       "error": ""
     },
@@ -2709,7 +2709,7 @@
       "line": 504,
       "project": "chromium",
       "status": "expected",
-      "duration": 37643,
+      "duration": 42884,
       "retries": 0,
       "error": ""
     },
@@ -2722,7 +2722,7 @@
       "line": 521,
       "project": "chromium",
       "status": "expected",
-      "duration": 37253,
+      "duration": 42100,
       "retries": 0,
       "error": ""
     },
@@ -2735,7 +2735,7 @@
       "line": 538,
       "project": "chromium",
       "status": "expected",
-      "duration": 37598,
+      "duration": 41910,
       "retries": 0,
       "error": ""
     },
@@ -2748,7 +2748,7 @@
       "line": 555,
       "project": "chromium",
       "status": "expected",
-      "duration": 37655,
+      "duration": 43262,
       "retries": 0,
       "error": ""
     },
@@ -2761,7 +2761,7 @@
       "line": 574,
       "project": "chromium",
       "status": "expected",
-      "duration": 36873,
+      "duration": 43155,
       "retries": 0,
       "error": ""
     },
@@ -2774,7 +2774,7 @@
       "line": 591,
       "project": "chromium",
       "status": "expected",
-      "duration": 35401,
+      "duration": 42902,
       "retries": 0,
       "error": ""
     },
@@ -2787,7 +2787,7 @@
       "line": 608,
       "project": "chromium",
       "status": "expected",
-      "duration": 38585,
+      "duration": 42864,
       "retries": 0,
       "error": ""
     },
@@ -2800,7 +2800,7 @@
       "line": 625,
       "project": "chromium",
       "status": "expected",
-      "duration": 36692,
+      "duration": 43382,
       "retries": 0,
       "error": ""
     },
@@ -2813,7 +2813,7 @@
       "line": 642,
       "project": "chromium",
       "status": "expected",
-      "duration": 37403,
+      "duration": 43383,
       "retries": 0,
       "error": ""
     },
@@ -2826,7 +2826,7 @@
       "line": 659,
       "project": "chromium",
       "status": "expected",
-      "duration": 37025,
+      "duration": 42841,
       "retries": 0,
       "error": ""
     },
@@ -2839,7 +2839,7 @@
       "line": 676,
       "project": "chromium",
       "status": "expected",
-      "duration": 37111,
+      "duration": 42754,
       "retries": 0,
       "error": ""
     },
@@ -2852,7 +2852,7 @@
       "line": 699,
       "project": "chromium",
       "status": "expected",
-      "duration": 36665,
+      "duration": 42898,
       "retries": 0,
       "error": ""
     },
@@ -2865,7 +2865,7 @@
       "line": 715,
       "project": "chromium",
       "status": "expected",
-      "duration": 40289,
+      "duration": 48015,
       "retries": 0,
       "error": ""
     },
@@ -2878,7 +2878,7 @@
       "line": 802,
       "project": "chromium",
       "status": "expected",
-      "duration": 39830,
+      "duration": 48725,
       "retries": 0,
       "error": ""
     },
@@ -2891,7 +2891,7 @@
       "line": 894,
       "project": "chromium",
       "status": "expected",
-      "duration": 41387,
+      "duration": 47492,
       "retries": 0,
       "error": ""
     },
@@ -2904,7 +2904,7 @@
       "line": 997,
       "project": "chromium",
       "status": "expected",
-      "duration": 41225,
+      "duration": 48253,
       "retries": 0,
       "error": ""
     },
@@ -2917,7 +2917,7 @@
       "line": 1134,
       "project": "chromium",
       "status": "expected",
-      "duration": 40089,
+      "duration": 48240,
       "retries": 0,
       "error": ""
     },
@@ -2930,7 +2930,7 @@
       "line": 1224,
       "project": "chromium",
       "status": "expected",
-      "duration": 40177,
+      "duration": 48872,
       "retries": 0,
       "error": ""
     },
@@ -2943,7 +2943,7 @@
       "line": 1258,
       "project": "chromium",
       "status": "expected",
-      "duration": 40226,
+      "duration": 48347,
       "retries": 0,
       "error": ""
     },
@@ -2956,7 +2956,7 @@
       "line": 1287,
       "project": "chromium",
       "status": "expected",
-      "duration": 39921,
+      "duration": 48251,
       "retries": 0,
       "error": ""
     },
@@ -2969,7 +2969,7 @@
       "line": 1316,
       "project": "chromium",
       "status": "expected",
-      "duration": 39839,
+      "duration": 48631,
       "retries": 0,
       "error": ""
     },
@@ -2982,7 +2982,7 @@
       "line": 1341,
       "project": "chromium",
       "status": "expected",
-      "duration": 41091,
+      "duration": 47648,
       "retries": 0,
       "error": ""
     },
@@ -2995,7 +2995,7 @@
       "line": 1366,
       "project": "chromium",
       "status": "expected",
-      "duration": 40633,
+      "duration": 48388,
       "retries": 0,
       "error": ""
     },
@@ -3008,7 +3008,7 @@
       "line": 1392,
       "project": "chromium",
       "status": "expected",
-      "duration": 40410,
+      "duration": 48447,
       "retries": 0,
       "error": ""
     },
@@ -3021,7 +3021,7 @@
       "line": 1417,
       "project": "chromium",
       "status": "expected",
-      "duration": 45482,
+      "duration": 48562,
       "retries": 0,
       "error": ""
     },
@@ -3034,7 +3034,7 @@
       "line": 1442,
       "project": "chromium",
       "status": "expected",
-      "duration": 40140,
+      "duration": 48417,
       "retries": 0,
       "error": ""
     },
@@ -3047,7 +3047,7 @@
       "line": 1467,
       "project": "chromium",
       "status": "expected",
-      "duration": 40346,
+      "duration": 48291,
       "retries": 0,
       "error": ""
     },
@@ -3060,7 +3060,7 @@
       "line": 1493,
       "project": "chromium",
       "status": "expected",
-      "duration": 39097,
+      "duration": 48646,
       "retries": 0,
       "error": ""
     },
@@ -3073,7 +3073,7 @@
       "line": 1518,
       "project": "chromium",
       "status": "expected",
-      "duration": 39944,
+      "duration": 42879,
       "retries": 0,
       "error": ""
     },
@@ -3086,7 +3086,7 @@
       "line": 1538,
       "project": "chromium",
       "status": "expected",
-      "duration": 37988,
+      "duration": 42830,
       "retries": 0,
       "error": ""
     },
@@ -3099,7 +3099,7 @@
       "line": 1576,
       "project": "chromium",
       "status": "expected",
-      "duration": 37153,
+      "duration": 43980,
       "retries": 0,
       "error": ""
     },
@@ -3112,7 +3112,7 @@
       "line": 1622,
       "project": "chromium",
       "status": "expected",
-      "duration": 37778,
+      "duration": 43008,
       "retries": 0,
       "error": ""
     },
@@ -3125,7 +3125,7 @@
       "line": 1668,
       "project": "chromium",
       "status": "expected",
-      "duration": 36888,
+      "duration": 42759,
       "retries": 0,
       "error": ""
     },
@@ -3138,7 +3138,7 @@
       "line": 1688,
       "project": "chromium",
       "status": "expected",
-      "duration": 37020,
+      "duration": 43005,
       "retries": 0,
       "error": ""
     },
@@ -3151,7 +3151,7 @@
       "line": 1722,
       "project": "chromium",
       "status": "expected",
-      "duration": 36448,
+      "duration": 42897,
       "retries": 0,
       "error": ""
     },
@@ -3164,7 +3164,7 @@
       "line": 1768,
       "project": "chromium",
       "status": "expected",
-      "duration": 39078,
+      "duration": 43372,
       "retries": 0,
       "error": ""
     },
@@ -3177,7 +3177,7 @@
       "line": 1814,
       "project": "chromium",
       "status": "expected",
-      "duration": 40114,
+      "duration": 47735,
       "retries": 0,
       "error": ""
     },
@@ -3190,7 +3190,7 @@
       "line": 1883,
       "project": "chromium",
       "status": "expected",
-      "duration": 42937,
+      "duration": 48754,
       "retries": 0,
       "error": ""
     },
@@ -3203,7 +3203,7 @@
       "line": 1953,
       "project": "chromium",
       "status": "expected",
-      "duration": 36905,
+      "duration": 43409,
       "retries": 0,
       "error": ""
     },
@@ -3216,7 +3216,7 @@
       "line": 2011,
       "project": "chromium",
       "status": "expected",
-      "duration": 37867,
+      "duration": 43084,
       "retries": 0,
       "error": ""
     },
@@ -3229,7 +3229,7 @@
       "line": 2040,
       "project": "chromium",
       "status": "expected",
-      "duration": 37071,
+      "duration": 42856,
       "retries": 0,
       "error": ""
     },
@@ -3242,7 +3242,7 @@
       "line": 2069,
       "project": "chromium",
       "status": "expected",
-      "duration": 37355,
+      "duration": 42698,
       "retries": 0,
       "error": ""
     },
@@ -3255,7 +3255,7 @@
       "line": 2102,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 184657,
+      "duration": 184559,
       "retries": 2,
       "error": "Test timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded."
     },
@@ -3268,7 +3268,7 @@
       "line": 2128,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 184414,
+      "duration": 184378,
       "retries": 2,
       "error": "Test timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded."
     },
@@ -3281,7 +3281,7 @@
       "line": 2153,
       "project": "chromium",
       "status": "expected",
-      "duration": 37137,
+      "duration": 43067,
       "retries": 0,
       "error": ""
     },
@@ -3294,7 +3294,7 @@
       "line": 2170,
       "project": "chromium",
       "status": "expected",
-      "duration": 37242,
+      "duration": 43249,
       "retries": 0,
       "error": ""
     },
@@ -3307,7 +3307,7 @@
       "line": 2187,
       "project": "chromium",
       "status": "expected",
-      "duration": 36733,
+      "duration": 43614,
       "retries": 0,
       "error": ""
     },
@@ -3320,7 +3320,7 @@
       "line": 2204,
       "project": "chromium",
       "status": "expected",
-      "duration": 37228,
+      "duration": 43030,
       "retries": 0,
       "error": ""
     },
@@ -3333,7 +3333,7 @@
       "line": 2221,
       "project": "chromium",
       "status": "expected",
-      "duration": 36062,
+      "duration": 43597,
       "retries": 0,
       "error": ""
     },
@@ -3346,7 +3346,7 @@
       "line": 2286,
       "project": "chromium",
       "status": "expected",
-      "duration": 42093,
+      "duration": 47750,
       "retries": 0,
       "error": ""
     },
@@ -3359,7 +3359,7 @@
       "line": 2321,
       "project": "chromium",
       "status": "expected",
-      "duration": 40835,
+      "duration": 48853,
       "retries": 0,
       "error": ""
     },
@@ -3372,7 +3372,7 @@
       "line": 2447,
       "project": "chromium",
       "status": "expected",
-      "duration": 37407,
+      "duration": 43559,
       "retries": 0,
       "error": ""
     },
@@ -3385,7 +3385,7 @@
       "line": 2479,
       "project": "chromium",
       "status": "expected",
-      "duration": 36982,
+      "duration": 42814,
       "retries": 0,
       "error": ""
     },
@@ -3398,7 +3398,7 @@
       "line": 2511,
       "project": "chromium",
       "status": "expected",
-      "duration": 36400,
+      "duration": 42753,
       "retries": 0,
       "error": ""
     },
@@ -3411,7 +3411,7 @@
       "line": 2543,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 143949,
+      "duration": 161930,
       "retries": 2,
       "error": "Error: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n       - unexpected value \"21.8\"\n\nError: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 "
     },
@@ -3424,7 +3424,7 @@
       "line": 2573,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 144073,
+      "duration": 161706,
       "retries": 2,
       "error": "Error: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n       - unexpected value \"21.8\"\n\nError: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 "
     },
@@ -3437,7 +3437,7 @@
       "line": 2603,
       "project": "chromium",
       "status": "expected",
-      "duration": 36483,
+      "duration": 43314,
       "retries": 0,
       "error": ""
     },
@@ -3450,7 +3450,7 @@
       "line": 2633,
       "project": "chromium",
       "status": "expected",
-      "duration": 36799,
+      "duration": 42776,
       "retries": 0,
       "error": ""
     },
@@ -3463,7 +3463,7 @@
       "line": 2663,
       "project": "chromium",
       "status": "expected",
-      "duration": 37312,
+      "duration": 43823,
       "retries": 0,
       "error": ""
     },
@@ -3476,7 +3476,7 @@
       "line": 2712,
       "project": "chromium",
       "status": "expected",
-      "duration": 35780,
+      "duration": 43466,
       "retries": 0,
       "error": ""
     },
@@ -3489,7 +3489,7 @@
       "line": 2761,
       "project": "chromium",
       "status": "expected",
-      "duration": 36692,
+      "duration": 42747,
       "retries": 0,
       "error": ""
     },
@@ -3502,7 +3502,7 @@
       "line": 2782,
       "project": "chromium",
       "status": "expected",
-      "duration": 35527,
+      "duration": 42683,
       "retries": 0,
       "error": ""
     },
@@ -3515,7 +3515,7 @@
       "line": 2803,
       "project": "chromium",
       "status": "expected",
-      "duration": 36984,
+      "duration": 42517,
       "retries": 0,
       "error": ""
     },
@@ -3528,7 +3528,7 @@
       "line": 2824,
       "project": "chromium",
       "status": "expected",
-      "duration": 36152,
+      "duration": 43060,
       "retries": 0,
       "error": ""
     },
@@ -3541,7 +3541,7 @@
       "line": 2845,
       "project": "chromium",
       "status": "expected",
-      "duration": 37051,
+      "duration": 42926,
       "retries": 0,
       "error": ""
     },
@@ -3554,7 +3554,7 @@
       "line": 2866,
       "project": "chromium",
       "status": "expected",
-      "duration": 36833,
+      "duration": 42955,
       "retries": 0,
       "error": ""
     },
@@ -3567,7 +3567,7 @@
       "line": 2895,
       "project": "chromium",
       "status": "expected",
-      "duration": 37055,
+      "duration": 42915,
       "retries": 0,
       "error": ""
     },
@@ -3580,7 +3580,7 @@
       "line": 2918,
       "project": "chromium",
       "status": "expected",
-      "duration": 36994,
+      "duration": 43614,
       "retries": 0,
       "error": ""
     },
@@ -3593,7 +3593,7 @@
       "line": 2935,
       "project": "chromium",
       "status": "expected",
-      "duration": 36767,
+      "duration": 43484,
       "retries": 0,
       "error": ""
     },
@@ -3606,7 +3606,7 @@
       "line": 2952,
       "project": "chromium",
       "status": "expected",
-      "duration": 40521,
+      "duration": 48086,
       "retries": 0,
       "error": ""
     },
@@ -3619,7 +3619,7 @@
       "line": 2983,
       "project": "chromium",
       "status": "expected",
-      "duration": 40149,
+      "duration": 47741,
       "retries": 0,
       "error": ""
     }
@@ -3634,6 +3634,16 @@
       "skipped": 0,
       "total": 269,
       "duration": 19793554
+    },
+    {
+      "run": 40,
+      "date": "2026-09-09",
+      "passed": 252,
+      "failed": 17,
+      "flaky": 0,
+      "skipped": 0,
+      "total": 269,
+      "duration": 14646889
     }
   ]
 }

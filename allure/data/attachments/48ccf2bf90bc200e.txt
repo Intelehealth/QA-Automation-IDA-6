@@ -1,0 +1,1 @@
+TC_PE_042 — After refresh, Jaundice answer still visible: false. URL before refresh: https://dev.intelehealth.org/hwwebapp#/ayu, after: https://dev.intelehealth.org/hwwebapp#/ayu

@@ -1,0 +1,2 @@
+completeMedicalHistoryGeneric — reached Medical History summary after 7 step(s)
+waitForVisitSummaryToSettle — detected a loading spinner via "div[class*="loader" i]", waiting for it to clear
