@@ -691,13 +691,33 @@ th.num,td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:now
       { key:'skipped', color:COLOR.skipped, label:'Skipped' }
     ];
 
+    var single = n === 1;
+
     var lines = series.map(function (s) {
       var pts = TREND.map(function (p, i) { return x(i) + ',' + y(p[s.key] || 0); }).join(' ');
+
+      // One run has nothing to connect, so draw a short labelled dash
+      // instead of leaving a bare dot floating on the grid.
+      var stub = '';
+      if (single) {
+        var cx0 = x(0), cy0 = y(TREND[0][s.key] || 0);
+        stub = '<line x1="' + (cx0 - 46) + '" y1="' + cy0 + '" x2="' + (cx0 + 46) + '" y2="' + cy0 + '"' +
+          ' stroke="' + s.color + '" stroke-width="3.5" stroke-linecap="round"></line>' +
+          '<text x="' + (cx0 + 58) + '" y="' + (cy0 + 4) + '" font-size="12.5" font-weight="600" fill="' + s.color + '">' +
+          s.label + ' ' + (TREND[0][s.key] || 0) + '</text>';
+      }
+
       var dots = TREND.map(function (p, i) {
-        return '<circle cx="' + x(i) + '" cy="' + y(p[s.key] || 0) + '" r="3.5" fill="' + s.color + '">' +
+        return '<circle cx="' + x(i) + '" cy="' + y(p[s.key] || 0) + '" r="5"' +
+          ' fill="' + s.color + '" stroke="#FFFFFF" stroke-width="2">' +
           '<title>Run #' + esc(p.run) + ' — ' + s.label + ': ' + (p[s.key] || 0) + '</title></circle>';
       }).join('');
-      return '<polyline fill="none" stroke="' + s.color + '" stroke-width="2.2" stroke-linejoin="round" points="' + pts + '"></polyline>' + dots;
+
+      var path = single ? '' :
+        '<polyline fill="none" stroke="' + s.color + '" stroke-width="3"' +
+        ' stroke-linejoin="round" stroke-linecap="round" points="' + pts + '"></polyline>';
+
+      return path + stub + dots;
     }).join('');
 
     var everyNth = Math.ceil(n / 12);
@@ -995,6 +1015,5 @@ function main() {
   console.log(`Output   : ${path.join(OUT_DIR, 'index.html')}`);
   console.log('========================================');
 }
-
 
 main();

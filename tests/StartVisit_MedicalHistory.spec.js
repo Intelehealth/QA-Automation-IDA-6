@@ -639,24 +639,75 @@ async function answerCurrentMedicalHistoryQuestion(page) {
     return 'single-yes-no';
   }
 
-  // Case 3: selectable-option style card (e.g. allergies-like
-  // single choice with custom button classes).
+  // --------------------------------------------------------
+  // Case 3: generic named-button single choice, PREFERRING a
+  // negative/default answer (e.g. "No known allergies" vs
+  // "Yes [Describe]").
+  //
+  // *** BUGFIX ***: this check MUST run BEFORE the blind
+  // ".selectable-option" click that used to be Case 3. On
+  // questions like "Do you have any allergies?" BOTH
+  // "Yes [Describe]" AND "No known allergies" share the exact
+  // same "selectable-option" class, so a blind
+  // page.locator('button.selectable-option').first() has no way
+  // to distinguish them - it just grabs whichever one happens to
+  // sit FIRST in the DOM, which in this app is "Yes [Describe]".
+  // Clicking that reveals a required description text field, but
+  // the handler never types into that field or clicks a
+  // Next/Submit for it, so the screen never advances - the loop
+  // then lands on the exact same "Question 3/7" on its next
+  // iteration, forever, until completeMedicalHistoryGeneric's
+  // maxSteps cap is hit and the whole test throws
+  // "did not reach the Medical History summary within 12 steps."
+  // Checking for an explicit negative-wording button FIRST fixes
+  // this for allergies and any similar Yes/No-worded card
+  // question without needing per-question special-casing.
+  // --------------------------------------------------------
+  const negativeButton = page.getByRole('button', { name: /no known|^no$/i }).first();
+  if (await negativeButton.isVisible({ timeout: 3000 }).catch(() => false)) {
+    await negativeButton.scrollIntoViewIfNeeded().catch(() => {});
+    await page.waitForTimeout(200);
+
+    await negativeButton.click({ timeout: 5000 }).catch(async () => {
+      await negativeButton.click({ force: true, timeout: 5000 }).catch(async () => {
+        await negativeButton.evaluate((el) => el.click()).catch(() => {});
+      });
+    });
+
+    await page.waitForTimeout(1500);
+
+    // Defensive: some of these single-choice cards still require
+    // an explicit Submit click to actually advance, even though
+    // others auto-advance on click alone. If a Submit button is
+    // visible right after the click, click it too.
+    const pageSubmit = page.getByRole('button', { name: 'Submit', exact: true });
+    const pageSubmitVisible = await pageSubmit.isVisible({ timeout: 3000 }).catch(() => false);
+
+    if (pageSubmitVisible) {
+      await pageSubmit.scrollIntoViewIfNeeded().catch(() => {});
+      await page.waitForTimeout(300);
+
+      await pageSubmit.click({ timeout: 5000 }).catch(async () => {
+        await pageSubmit.click({ force: true, timeout: 5000 }).catch(async () => {
+          await pageSubmit.evaluate((el) => el.click()).catch(() => {});
+        });
+      });
+      await page.waitForTimeout(1500);
+    }
+
+    return 'generic-negative-option';
+  }
+
+  // Case 4: selectable-option style card (e.g. Pinch Skin
+  // "Normal"/"Abnormal") where NEITHER option matches the
+  // negative-wording regex above, so Case 3 above did not fire.
+  // Only reached when there's no explicit "No known.../No"
+  // option on the page - safe to take the first one here.
   const selectableOption = page.locator('button.selectable-option').first();
   if (await selectableOption.isVisible({ timeout: 3000 }).catch(() => false)) {
     await selectableOption.evaluate((el) => el.click());
     await page.waitForTimeout(1500);
     return 'selectable-option';
-  }
-
-  // Case 4: generic named-button single choice not matching the
-  // above (e.g. "No known allergies" / "Yes [Describe]" style
-  // buttons without the selectable-option class). Prefer any
-  // button whose name suggests a negative/default answer.
-  const negativeButton = page.getByRole('button', { name: /no known|^no$/i }).first();
-  if (await negativeButton.isVisible({ timeout: 3000 }).catch(() => false)) {
-    await negativeButton.click();
-    await page.waitForTimeout(1500);
-    return 'generic-negative-option';
   }
 
   // Case 5: LAST-RESORT generic fallback for entirely novel
@@ -922,6 +973,69 @@ async function expectMedicalHistorySummaryRow(page, label, value) {
 }
 
 // ------------------------------------------------------------
+// VISIT SUMMARY LOADING SETTLE
+//
+// CONFIRMED via real recording: immediately after clicking
+// Confirm on the Medical History summary, the Visit Summary page
+// mounts with a loading spinner overlaid on top of the Vitals
+// panel - the underlying panel content (Height(cm), BP, etc.) is
+// already present in the DOM at this point, but the spinner sits
+// on screen for 9-12+ seconds (observed across 3 consecutive
+// frames spaced 3s apart) before it clears and the page becomes
+// genuinely settled. A plain `toBeVisible()` check with a 10s
+// timeout on panel text (e.g. "Height(cm)") lands right inside
+// that window and times out reporting the element as "hidden" -
+// this is what caused MH_018 to fail while MH_019/MH_020 (whose
+// assertions happen to run slightly later in the script) passed
+// in the same run purely by timing luck.
+//
+// Rather than just padding every downstream assertion's timeout
+// (fragile - the spinner's duration will vary further under CI
+// load or parallel workers), explicitly wait for the spinner to
+// disappear first. Tries several common spinner selectors since
+// we don't have the exact markup; falls through harmlessly if
+// none match (e.g. if a given page load didn't spinner at all).
+// ------------------------------------------------------------
+
+async function waitForVisitSummaryToSettle(page) {
+  await expect(
+    page.getByText('Visit Summary', { exact: false }).first()
+  ).toBeVisible({ timeout: 20000 });
+
+  const spinnerSelectors = [
+    '.animate-spin',
+    '[role="status"]',
+    'svg[class*="spin" i]',
+    'div[class*="loader" i]',
+    'div[class*="spinner" i]',
+    'div[class*="loading" i]'
+  ];
+
+  for (const sel of spinnerSelectors) {
+    const spinner = page.locator(sel).first();
+    const spinnerVisible = await spinner.isVisible({ timeout: 2000 }).catch(() => false);
+
+    if (spinnerVisible) {
+      console.log(
+        `waitForVisitSummaryToSettle — detected a loading spinner via "${sel}", waiting for it to clear`
+      );
+      await spinner.waitFor({ state: 'hidden', timeout: 30000 }).catch(() => {
+        console.log(
+          `waitForVisitSummaryToSettle — spinner via "${sel}" did not clear within 30s; proceeding anyway`
+        );
+      });
+      break;
+    }
+  }
+
+  // A brief settle buffer regardless of whether a spinner was
+  // found - the spinner clearing is not always the very last
+  // visual change (a short reflow/re-render can immediately
+  // follow it).
+  await page.waitForTimeout(1000);
+}
+
+// ------------------------------------------------------------
 // VISIT SUMMARY / UPLOAD VISIT (bonus flow continuation)
 //
 // After confirming the Medical History summary, the app lands
@@ -934,7 +1048,11 @@ async function expectMedicalHistorySummaryRow(page, label, value) {
 // ------------------------------------------------------------
 
 async function completeVisitUpload(page, { doctorSpecialty = 'General Physician' } = {}) {
-  await expect(page.getByText('Visit Summary', { exact: false }).first()).toBeVisible({ timeout: 20000 });
+  // Settle first - the Visit Summary loading spinner (see
+  // waitForVisitSummaryToSettle) can still be up when this is
+  // called directly, and clicking "Select Doctor's specialty" or
+  // "Upload Visit" while it's mid-load is unreliable.
+  await waitForVisitSummaryToSettle(page);
 
   if (doctorSpecialty) {
     // The "Select Doctor's specialty" control may not render as a
@@ -1464,7 +1582,7 @@ test('MH_017_Verify_Confirm_Navigates_To_Visit_Summary', async ({ page }) => {
 
   await clickMedicalHistorySummaryConfirm(page);
 
-  await expect(page.getByText('Visit Summary', { exact: false }).first()).toBeVisible({ timeout: 20000 });
+  await waitForVisitSummaryToSettle(page);
 });
 
 // ============================================================
@@ -1474,11 +1592,11 @@ test('MH_018_Verify_Visit_Summary_Shows_Vitals', async ({ page }) => {
   await setupToMedicalHistory(page);
   await runFullMedicalHistory(page);
   await clickMedicalHistorySummaryConfirm(page);
+  await waitForVisitSummaryToSettle(page);
 
-  await expect(page.getByText('Visit Summary', { exact: false }).first()).toBeVisible({ timeout: 20000 });
-  await expect(page.getByText('Vitals', { exact: true }).first()).toBeVisible();
-  await expect(page.getByText('Height(cm)', { exact: false }).first()).toBeVisible();
-  await expect(page.getByText('BP', { exact: true }).first()).toBeVisible();
+  await expect(page.getByText('Vitals', { exact: true }).first()).toBeVisible({ timeout: 20000 });
+  await expect(page.getByText('Height(cm)', { exact: false }).first()).toBeVisible({ timeout: 20000 });
+  await expect(page.getByText('BP', { exact: true }).first()).toBeVisible({ timeout: 20000 });
 });
 
 // ============================================================
@@ -1489,15 +1607,14 @@ test('MH_019_Verify_Visit_Summary_Shows_Physical_Examination', async ({ page }) 
   await setupToMedicalHistory(page);
   await runFullMedicalHistory(page);
   await clickMedicalHistorySummaryConfirm(page);
-
-  await expect(page.getByText('Visit Summary', { exact: false }).first()).toBeVisible({ timeout: 20000 });
+  await waitForVisitSummaryToSettle(page);
 
   const peSection = page.locator('div').filter({ hasText: 'Physical examination' }).first();
-  await expect(peSection).toBeVisible({ timeout: 10000 });
+  await expect(peSection).toBeVisible({ timeout: 20000 });
 
-  await expect(page.getByText('Eyes: Jaundice', { exact: false })).toBeVisible();
-  await expect(page.getByText('Eyes: Pallor', { exact: false })).toBeVisible();
-  await expect(page.getByText('Nail abnormality', { exact: false })).toBeVisible();
+  await expect(page.getByText('Eyes: Jaundice', { exact: false })).toBeVisible({ timeout: 15000 });
+  await expect(page.getByText('Eyes: Pallor', { exact: false })).toBeVisible({ timeout: 15000 });
+  await expect(page.getByText('Nail abnormality', { exact: false })).toBeVisible({ timeout: 15000 });
 });
 
 // ============================================================
@@ -1508,17 +1625,16 @@ test('MH_020_Verify_Visit_Summary_Shows_Medical_History', async ({ page }) => {
   await setupToMedicalHistory(page);
   await runFullMedicalHistory(page);
   await clickMedicalHistorySummaryConfirm(page);
-
-  await expect(page.getByText('Visit Summary', { exact: false }).first()).toBeVisible({ timeout: 20000 });
+  await waitForVisitSummaryToSettle(page);
 
   const mhSection = page.locator('div').filter({ hasText: 'Medical History' }).first();
-  await expect(mhSection).toBeVisible({ timeout: 10000 });
+  await expect(mhSection).toBeVisible({ timeout: 20000 });
 
   // NOTE: does NOT assert "Vaccination History of children" -
   // that row only applies to child patients and will not appear
   // for our automated adult patient.
-  await expect(page.getByText('Drug history', { exact: false })).toBeVisible();
-  await expect(page.getByText('Allergies', { exact: false }).first()).toBeVisible();
+  await expect(page.getByText('Drug history', { exact: false })).toBeVisible({ timeout: 15000 });
+  await expect(page.getByText('Allergies', { exact: false }).first()).toBeVisible({ timeout: 15000 });
 });
 
 // ============================================================
@@ -1528,8 +1644,8 @@ test('MH_021_Verify_Doctor_Specialty_Selector_Present', async ({ page }) => {
   await setupToMedicalHistory(page);
   await runFullMedicalHistory(page);
   await clickMedicalHistorySummaryConfirm(page);
+  await waitForVisitSummaryToSettle(page);
 
-  await expect(page.getByText('Visit Summary', { exact: false }).first()).toBeVisible({ timeout: 20000 });
   await expect(
     page.getByRole('button', { name: "Select Doctor's specialty" })
   ).toBeVisible({ timeout: 15000 });
@@ -1542,8 +1658,7 @@ test('MH_022_Verify_Doctor_Specialty_Selection_Recorded', async ({ page }) => {
   await setupToMedicalHistory(page);
   await runFullMedicalHistory(page);
   await clickMedicalHistorySummaryConfirm(page);
-
-  await expect(page.getByText('Visit Summary', { exact: false }).first()).toBeVisible({ timeout: 20000 });
+  await waitForVisitSummaryToSettle(page);
 
   const specialtySelector = page.getByRole('button', { name: "Select Doctor's specialty" });
   await expect(specialtySelector).toBeVisible({ timeout: 15000 });
@@ -1562,8 +1677,8 @@ test('MH_023_Verify_Priority_Visit_Toggle_Present', async ({ page }) => {
   await setupToMedicalHistory(page);
   await runFullMedicalHistory(page);
   await clickMedicalHistorySummaryConfirm(page);
+  await waitForVisitSummaryToSettle(page);
 
-  await expect(page.getByText('Visit Summary', { exact: false }).first()).toBeVisible({ timeout: 20000 });
   await expect(page.getByText('Priority Visit', { exact: false })).toBeVisible({ timeout: 15000 });
 });
 
@@ -1575,6 +1690,7 @@ test('MH_024_Verify_Upload_Visit_With_Specialty_Proceeds', async ({ page }) => {
   await setupToMedicalHistory(page);
   await runFullMedicalHistory(page);
   await clickMedicalHistorySummaryConfirm(page);
+  await waitForVisitSummaryToSettle(page);
 
   await completeVisitUpload(page, { doctorSpecialty: 'General Physician' });
 
@@ -1608,8 +1724,7 @@ test('MH_025_Verify_End_To_End_Medical_History_And_Upload', async ({ page }) => 
   await expectMedicalHistorySummaryRow(page, 'Allergies', 'No known allergies');
 
   await clickMedicalHistorySummaryConfirm(page);
-
-  await expect(page.getByText('Visit Summary', { exact: false }).first()).toBeVisible({ timeout: 20000 });
+  await waitForVisitSummaryToSettle(page);
 
   await completeVisitUpload(page, { doctorSpecialty: 'General Physician' });
 });
