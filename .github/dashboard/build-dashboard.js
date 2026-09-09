@@ -285,7 +285,7 @@ function renderHtml(payload) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${escapeHtml(payload.meta.project)} — Test dashboard</title>
+<title>${escapeHtml(payload.meta.project)} — dashboard</title>
 <style>
 :root{
   --page:#F4F6F9; --card:#FFFFFF; --line:#E2E6EE; --line-soft:#EFF2F6;

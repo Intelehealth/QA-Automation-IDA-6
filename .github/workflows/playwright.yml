@@ -249,7 +249,7 @@ jobs:
       #   dashboard/history.json
       # ========================================================
 
-      - name: Build IDA-6 Test Dashboard
+      - name: Build IDA-6 Dashboard
         id: dashboard
         if: ${{ !cancelled() }}
         env:
@@ -763,7 +763,7 @@ jobs:
                     {
                       type: "button",
                       style: "primary",
-                      text: { type: "plain_text", text: "📈 IDA-6 Test Dashboard" },
+                      text: { type: "plain_text", text: "📈 IDA-6 Dashboard" },
                       url: $dashboard_url
                     },
 
