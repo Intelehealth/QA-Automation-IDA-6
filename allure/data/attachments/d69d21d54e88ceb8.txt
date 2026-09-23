@@ -1,0 +1,9 @@
+answerAbdomenYesSubQuestions [Q10/10] — "What is its shape?" -> clicking "Round".
+answerAbdomenYesSubQuestions [Q10/10] — "How is the surface?" -> clicking "Smooth".
+answerAbdomenYesSubQuestions [Q10/10] — "How does it feel?" -> clicking "Hard".
+answerAbdomenYesSubQuestions [Q10/10] — "Painful or not?" revealed nothing answerable.
+answerAbdomenYesSubQuestions [Q10/10] — "Any change in colour of skin?" revealed nothing answerable.
+answerAbdomenYesSubQuestions [Q10/10] — "Any swelling above or below the lump?" -> clicking "Swelling Above".
+answerAbdomenYesSubQuestions [Q10/10] — "Is it moving related to adjacent tissues?" -> clicking "Lump mobile".
+answerAbdomenYesSubQuestions [Q10/10] — "Put a hand on the swelling and ask the patient to cough. Can you see and feel if there is a change in size?" -> clicking "Does not change".
+answerAbdomenYesSubQuestions [Q10/10] — "Now ask the patient to lie down. Is the swelling going down/reduces in size?" -> clicking "does not change".

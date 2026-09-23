@@ -1,0 +1,1 @@
+TC_AP_017 — Wash hands modal appeared: true
