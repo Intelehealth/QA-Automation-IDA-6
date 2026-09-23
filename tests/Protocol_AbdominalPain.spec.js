@@ -151,6 +151,7 @@ async function setupToAbdominalPainAssessment(page) {
   await page.getByRole('option', { name: 'Primary' }).click();
   await page.getByRole('button', { name: 'Next' }).click();
 
+
   await page.waitForTimeout(5000);
 
   // 15. START VISIT - scoped to this test's unique patient name
@@ -205,22 +206,20 @@ async function setupToAbdominalPainAssessment(page) {
     page.getByRole('textbox', { name: 'Type or select reason eg.' })
   ).toBeVisible({ timeout: 15000 });
 
+  // Wait for the Visit Reason page to fully settle before
+  // interacting - the "All reasons" grid loads async and may
+  // still be fetching when the textbox first appears.
+  await page.waitForTimeout(1500);
+
   const reasonSearchBox = page.getByRole('textbox', { name: 'Type or select reason eg.' });
   await reasonSearchBox.click();
+  await page.waitForTimeout(300);
 
-  // Type as real keystrokes (pressSequentially) rather than
-  // .fill(), which sets the value in one shot via a single
-  // "input" event. CONFIRMED via a real screenshot: a plain
-  // .fill('abdominal pain') can leave this search-as-you-type
-  // widget showing "No matching complaints found" even though
-  // "Abdominal Pain" is a genuine, existing reason (directly
-  // confirmed selectable in the source recording) - almost
-  // certainly because the widget's debounced filter is bound to
-  // real keyboard events that .fill() does not reliably fire.
+  await reasonSearchBox.fill('');
   await reasonSearchBox.pressSequentially('abdominal pain', { delay: 80 });
+  await page.waitForTimeout(1000);
 
-  await page.waitForTimeout(800);
-
+  const typedValue = await reasonSearchBox.inputValue().catch(() => '');
   const noMatchesVisible = await page
     .getByText('No matching complaints found', { exact: false })
     .isVisible({ timeout: 2000 })
@@ -228,32 +227,30 @@ async function setupToAbdominalPainAssessment(page) {
 
   let abdominalPainOption;
 
-  if (noMatchesVisible) {
-    // Fallback: don't trust the live-filtered dropdown at all -
-    // clear the search box so the app falls back to its always-
-    // present "All reasons" grid (visible in the source
-    // recording's very first frame, listing every reason
-    // alphabetically regardless of search state), and select
-    // "Abdominal Pain" directly from there by its accessible
-    // button name.
-    console.log(
-      'setupToAbdominalPainAssessment — search returned "No matching complaints found" for "abdominal pain"; falling back to the "All reasons" grid instead of the live filter.'
-    );
-    await reasonSearchBox.fill('');
-    await page.waitForTimeout(500);
-
-    abdominalPainOption = page.getByRole('button', { name: 'Abdominal Pain', exact: true }).first();
-  } else {
-    // Scoped via a div-text filter + nth(1) - matches the working
-    // pattern confirmed in the Abdominal Distention suite. This
-    // correctly targets the actual selectable list item, not the
-    // "Selected reasons" chip (which also has the exact text
-    // "Abdominal Pain" and would otherwise be ambiguously matched
-    // first).
+  if (!noMatchesVisible && typedValue.trim() !== '') {
+    // Search worked - pick from the filtered dropdown
     abdominalPainOption = page
       .locator('div')
       .filter({ hasText: /^Abdominal Pain$/ })
       .nth(1);
+  } else {
+    // Search didn't filter - clear and use the "All reasons" grid.
+    // Scroll down then back up to trigger lazy-load if grid is empty.
+    await reasonSearchBox.fill('');
+    await page.waitForTimeout(500);
+    await page.evaluate(() => window.scrollBy(0, 300));
+    await page.waitForTimeout(500);
+    await page.evaluate(() => window.scrollBy(0, -300));
+    await page.waitForTimeout(300);
+
+    // Wait up to 15s for an Abdominal Pain button to appear
+    await page.locator('button').filter({ hasText: /Abdominal Pain/i }).first()
+      .waitFor({ state: 'visible', timeout: 15000 })
+      .catch(async () => {
+        await page.screenshot({ path: `debug-ap-reasons-grid-${Date.now()}.png`, fullPage: true }).catch(() => {});
+      });
+
+    abdominalPainOption = page.getByRole('button', { name: 'Abdominal Pain', exact: true }).first();
   }
 
   await expect(abdominalPainOption).toBeVisible({ timeout: 15000 });

@@ -122,21 +122,43 @@ async function setupToPhysicalExamination(page) {
   await page.getByRole('option', { name: 'Primary' }).click();
   await page.getByRole('button', { name: 'Next' }).click();
 
+  // Wait for the app to navigate away from the patient-creation
+  // form before looking for the patient card. If the URL or
+  // breadcrumb still shows the form after clicking Next, the
+  // patient save may have silently failed (e.g. a required field
+  // like District was not filled due to a cascading-dropdown
+  // timing race). Detecting this early gives a clearer failure
+  // message than a 60s timeout on the patient card.
   await page.waitForTimeout(5000);
 
   // 15. START VISIT
-  //
-  // Scoped to THIS test's unique patient name (First + unique
-  // Last Name generated above), so it matches exactly one card
-  // even after many prior tests have created their own
-  // "Automation Test..." patients in the same dashboard.
   const patientFullName = `Automation ${uniqueLastName}`;
 
   const patientCard = page
     .locator('div.bg-white.rounded-xl.border')
     .filter({ has: page.locator('p.font-semibold', { hasText: patientFullName }) });
 
-  await expect(patientCard).toBeVisible({ timeout: 30000 });
+  const patientCardFound = await patientCard
+    .isVisible({ timeout: 60000 })
+    .catch(() => false);
+
+  if (!patientCardFound) {
+    await page.screenshot({
+      path: `debug-patient-card-not-found-${Date.now()}.png`,
+      fullPage: true
+    }).catch(() => {});
+    const pageUrl = page.url();
+    const allCardNames = await page
+      .locator('p.font-semibold')
+      .allTextContents()
+      .catch(() => []);
+    throw new Error(
+      `setupToPhysicalExamination — patient card for "${patientFullName}" not found after 60s. ` +
+      `Current URL: ${pageUrl}. ` +
+      `All visible patient name elements: ${JSON.stringify(allCardNames.slice(0, 10))}. ` +
+      `See debug-patient-card-not-found-*.png for a full-page screenshot.`
+    );
+  }
 
   const startVisitButton = patientCard.getByRole('button', { name: 'Start Visit' });
   await expect(startVisitButton).toBeVisible({ timeout: 30000 });
@@ -182,9 +204,24 @@ async function setupToPhysicalExamination(page) {
 
   const reason = page.getByRole('textbox', { name: 'Type or select reason eg.' });
   await reason.click();
-  await reason.fill('other');
+  await reason.pressSequentially('other', { delay: 80 });
+  await page.waitForTimeout(800);
 
-  const otherOption = page.locator('div').filter({ hasText: /^Other$/ }).nth(1);
+  const noMatchesVisible = await page
+    .getByText('No matching complaints found', { exact: false })
+    .isVisible({ timeout: 2000 })
+    .catch(() => false);
+
+  let otherOption;
+
+  if (noMatchesVisible) {
+    await reason.fill('');
+    await page.waitForTimeout(500);
+    otherOption = page.getByRole('button', { name: 'Other', exact: true }).first();
+  } else {
+    otherOption = page.locator('div').filter({ hasText: /^Other$/ }).nth(1);
+  }
+
   await expect(otherOption).toBeVisible({ timeout: 15000 });
   await otherOption.click();
 
@@ -201,7 +238,18 @@ async function setupToPhysicalExamination(page) {
   // 20. FOLLOW-UP ASSESSMENT
   await page.getByRole('button', { name: 'None' }).click();
 
-  const additionalInfo = page.getByRole('textbox', { name: 'Additional information - [' });
+  // BUGFIX: this used to match on 'Additional information - ['
+  // (assuming a bracketed label like "[Describe]"), but the real
+  // rendered accessible name is "Additional information - Enter
+  // additional information" - no bracket at all (confirmed via a
+  // real accessibility snapshot in the Medical History suite,
+  // which has the identical shared-component question and hit the
+  // identical bug). Matching on the stable "Additional information"
+  // substring instead fixes this for good, regardless of what text
+  // follows the dash. Since this line lives in the SHARED setup
+  // that every test in this file calls, the mismatch was failing
+  // the entire suite.
+  const additionalInfo = page.getByRole('textbox', { name: 'Additional information', exact: false });
   await expect(additionalInfo).toBeVisible({ timeout: 15000 });
   await additionalInfo.fill('ok');
   await page.getByRole('button', { name: 'Submit' }).click();

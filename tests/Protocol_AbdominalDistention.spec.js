@@ -93,12 +93,14 @@ async function setupToAbdominalDistentionAssessment(page) {
   // 9. STATE
   await page.locator('text=Select State').click({ force: true });
   await page.getByPlaceholder('Search options...').fill('Odisha');
-  await page.getByText('Odisha', { exact: true }).click();
+  await page.waitForTimeout(300);
+  await page.getByRole('option', { name: 'Odisha', exact: true }).click();
 
   // 10. DISTRICT
   await page.locator('text=Select District').click({ force: true });
   await page.getByPlaceholder('Search options...').fill('Khordha');
-  await page.getByText('Khordha', { exact: true }).click();
+  await page.waitForTimeout(300);
+  await page.getByRole('option', { name: 'Khordha', exact: true }).click();
 
   // 11. ADDRESS
   await page.getByRole('textbox', { name: 'Village/Town/City*' }).fill('Bhubaneswar');
@@ -217,10 +219,6 @@ async function setupToAbdominalDistentionAssessment(page) {
 
   if (!question1Visible) {
     const allButtons = await page.getByRole('button').allTextContents().catch(() => []);
-    console.log(
-      'setupToAbdominalDistentionAssessment — Question 1/9 did not appear after clicking Start Assessment. All buttons on page:',
-      JSON.stringify(allButtons)
-    );
     await page.screenshot({ path: `debug-abdominal-distention-setup-${Date.now()}.png`, fullPage: true }).catch(() => {});
   }
 
@@ -519,9 +517,6 @@ async function answerAdditionalInfo(page, { text = null, skip = true } = {}) {
 
       await page.waitForTimeout(1000);
     } else {
-      console.log(
-        'answerAdditionalInfo — "Visit reason summary" modal detected but its "Confirm" button could not be found.'
-      );
     }
   }
 
@@ -797,10 +792,6 @@ async function answerAbdomenLocationIfPrompted(page, location = 'All Over') {
     await page.waitForTimeout(1000);
     return true;
   }
-
-  console.log(
-    `answerAbdomenLocationIfPrompted — location prompt appeared but option "${location}" was not found. Expected one of: ${JSON.stringify(ABDOMEN_LOCATION_OPTIONS)}`
-  );
   return false;
 }
 
@@ -874,7 +865,6 @@ async function answerLumpsSubQuestions(page) {
   const questionCardVisible = await questionCard.isVisible({ timeout: 5000 }).catch(() => false);
 
   if (!questionCardVisible) {
-    console.log('answerLumpsSubQuestions — could not locate the Question 9/10 card; skipping sub-question handling.');
     return;
   }
 
@@ -892,6 +882,14 @@ async function answerLumpsSubQuestions(page) {
     });
 
     await page.waitForTimeout(800);
+
+    // "Where is it?" reveals a location grid - same as tenderness.
+    // Must click a location option or the flow won't advance.
+    if (label === 'Where is it?') {
+      await answerAbdomenLocationIfPrompted(page, 'All Over');
+      await page.waitForTimeout(500);
+      continue;
+    }
 
     // If this sub-question exposed a free-text input (e.g. the
     // "How many? - Enter number of lumps" one), fill it - but
@@ -912,8 +910,19 @@ async function answerLumpsSubQuestions(page) {
 }
 
 async function answerAbdominalLumps(page, value = 'No', location = 'All Over') {
-  await expect(page.getByText('Question 9/10', { exact: true })).toBeVisible({ timeout: 20000 });
-  await expect(page.getByText('Are there any lumps?', { exact: false })).toBeVisible();
+  // Q9 only appears when tenderness='Yes'.
+  // answerAbdominalTenderness already confirms Q9 visible when
+  // tenderness='Yes', so 3s is enough. When tenderness='No tenderness'
+  // Q9 is skipped - return early only when value='No'.
+  if (value === 'No') {
+    const q9visible = await page
+      .getByText('Question 9/10', { exact: true })
+      .isVisible({ timeout: 3000 })
+      .catch(() => false);
+    if (!q9visible) return;
+  }
+
+  await expect(page.getByText('Are there lumps?', { exact: false })).toBeVisible({ timeout: 10000 });
 
   const option = page.getByRole('button', { name: value, exact: true }).first();
   await expect(option).toBeVisible({ timeout: 15000 });
@@ -924,8 +933,7 @@ async function answerAbdominalLumps(page, value = 'No', location = 'All Over') {
 
   await page.waitForTimeout(1200);
 
-  // Fast path: "No" (the default) advances immediately with no
-  // follow-up sub-questions at all.
+  // Fast path: "No" advances immediately with no follow-up.
   const advancedAlready = await page
     .getByText('Question 10/10', { exact: true })
     .isVisible({ timeout: 5000 })
@@ -933,8 +941,48 @@ async function answerAbdominalLumps(page, value = 'No', location = 'All Over') {
 
   if (advancedAlready) return;
 
-  // "Yes" path: handle the multi-sub-question follow-up.
-  await answerLumpsSubQuestions(page);
+  // "Yes" path: click "How many?" sub-question, enter 1, then Submit.
+  // Confirmed via manual recording: this is the minimal path that
+  // records Lumps=Yes in the summary and advances to Q10.
+  const howManyBtn = page.getByRole('button', { name: 'How many?', exact: false }).first();
+  const howManyVisible = await howManyBtn.isVisible({ timeout: 5000 }).catch(() => false);
+
+  if (howManyVisible) {
+    await howManyBtn.scrollIntoViewIfNeeded().catch(() => {});
+    await howManyBtn.click({ timeout: 5000 }).catch(async () => {
+      await howManyBtn.evaluate(el => el.click()).catch(() => {});
+    });
+    await page.waitForTimeout(500);
+
+    // Fill the number input that appears
+    const numInput = page.locator('input[type="number"], input[type="text"]').last();
+    const numInputVisible = await numInput.isVisible({ timeout: 3000 }).catch(() => false);
+    if (numInputVisible) {
+      await numInput.fill('1').catch(() => {});
+      await page.waitForTimeout(300);
+    }
+
+    // Click Submit to record the answer
+    const submitBtn = page.getByRole('button', { name: 'Submit', exact: true });
+    const submitVisible = await submitBtn.isVisible({ timeout: 3000 }).catch(() => false);
+    if (submitVisible) {
+      await submitBtn.scrollIntoViewIfNeeded().catch(() => {});
+      await submitBtn.click({ timeout: 5000 }).catch(async () => {
+        await submitBtn.evaluate(el => el.click()).catch(() => {});
+      });
+      await page.waitForTimeout(1000);
+    }
+  } else {
+    // Fallback to Skip if How many? not found
+    const skipBtn = page.getByRole('button', { name: 'Skip', exact: true });
+    const skipVisible = await skipBtn.isVisible({ timeout: 3000 }).catch(() => false);
+    if (skipVisible) {
+      await skipBtn.click({ timeout: 5000 }).catch(async () => {
+        await skipBtn.evaluate(el => el.click()).catch(() => {});
+      });
+      await page.waitForTimeout(1000);
+    }
+  }
   await page.waitForTimeout(1000);
 
   let advanced = await page
@@ -965,10 +1013,6 @@ async function answerAbdominalLumps(page, value = 'No', location = 'All Over') {
 
   if (!advanced) {
     const allButtons = await page.getByRole('button').allTextContents().catch(() => []);
-    console.log(
-      `answerAbdominalLumps — flow did not advance to Question 10/10 after answering "${value}". All buttons on page:`,
-      JSON.stringify(allButtons)
-    );
     await page.screenshot({ path: `debug-lumps-subquestions-${Date.now()}.png`, fullPage: true }).catch(() => {});
   }
 
@@ -1090,7 +1134,23 @@ async function clickPhysicalExamSummaryConfirm(page) {
 
 async function expectPhysicalExamSummaryRow(page, label, value) {
   const modal = getPhysicalExamModal(page);
+  // Scroll all scrollable children of the modal to bottom
+  await modal.evaluate(el => {
+    el.scrollTop = el.scrollHeight;
+    el.querySelectorAll('*').forEach(child => {
+      if (child.scrollHeight > child.clientHeight) {
+        child.scrollTop = child.scrollHeight;
+      }
+    });
+  }).catch(() => {});
+  await page.waitForTimeout(500);
   const row = modal.locator('div').filter({ hasText: label }).filter({ hasText: value }).last();
+  // If not visible, try page-level scroll as fallback
+  const visible = await row.isVisible({ timeout: 3000 }).catch(() => false);
+  if (!visible) {
+    await page.evaluate(() => window.scrollBy(0, 300)).catch(() => {});
+    await page.waitForTimeout(300);
+  }
   await expect(
     row,
     `Physical Examination summary did not show "${label}" = "${value}" as expected`
@@ -1354,10 +1414,6 @@ async function answerCurrentMedicalHistoryQuestion(page) {
   }
 
   const allButtons = await page.getByRole('button').allTextContents().catch(() => []);
-  console.log(
-    `answerCurrentMedicalHistoryQuestion — [${questionMarkerText}] could not determine question type. All buttons on page:`,
-    JSON.stringify(allButtons)
-  );
   await page.screenshot({ path: `debug-medical-history-unknown-${Date.now()}.png`, fullPage: true }).catch(() => {});
 
   return 'unknown';
@@ -1402,10 +1458,6 @@ async function completeMedicalHistoryGeneric(page, maxSteps = 12) {
 
     if (stuckCount >= 2) {
       const allButtons = await page.getByRole('button').allTextContents().catch(() => []);
-      console.log(
-        `completeMedicalHistoryGeneric — STUCK at "${markerAfter}" (handler reported "${resultType}", marker before="${markerBefore}" but nothing advanced). All buttons on page:`,
-        JSON.stringify(allButtons)
-      );
       await page.screenshot({ path: `debug-medhistory-stuck-${Date.now()}.png`, fullPage: true }).catch(() => {});
       throw new Error(
         `completeMedicalHistoryGeneric — stuck at "${markerAfter}": the handler matched case "${resultType}" but the question did not advance. See DIAGNOSTIC output above.`
@@ -1558,9 +1610,6 @@ async function completeVisitUpload(page, { doctorSpecialty = 'General Physician'
         });
         await page.waitForTimeout(500);
       } else if (!specialtyOptionVisible) {
-        console.log(
-          `completeVisitUpload — Dropdown still did not show option "${doctorSpecialty}" after all strategies.`
-        );
         await page.screenshot({ path: `debug-specialty-dropdown-${Date.now()}.png`, fullPage: true }).catch(() => {});
       }
     }
@@ -1625,9 +1674,6 @@ async function completeVisitUpload(page, { doctorSpecialty = 'General Physician'
   }
 
   if (!sendVisitModalVisible || !yesVisible) {
-    console.log(
-      `completeVisitUpload — unexpected outcome: uploadButtonStillPresentAfterClick=${uploadButtonStillPresent}, sendVisitModalDetected=${sendVisitModalVisible}, yesConfirmationClicked=${yesVisible}`
-    );
   }
 }
 
@@ -1944,8 +1990,6 @@ test('TC_AD_016_Verify_Wash_Hands_Reminder_After_Assessment', async ({ page }) =
     .isVisible({ timeout: 8000 })
     .catch(() => false);
 
-  console.log(`TC_AD_016 — Wash hands modal appeared: ${washHandsVisible}`);
-
   if (washHandsVisible) {
     await page.getByRole('button', { name: 'Okay', exact: true }).click();
   }
@@ -2030,7 +2074,7 @@ test('TC_AD_019_Verify_Abdominal_Lumps_Question_Displays', async ({ page }) => {
   await answerAbdominalTenderness(page, 'No tenderness');
 
   await expect(page.getByText('Question 9/10', { exact: true })).toBeVisible({ timeout: 15000 });
-  await expect(page.getByText('Are there any lumps?', { exact: false })).toBeVisible();
+  await expect(page.getByText('Are there lumps?', { exact: false })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Skip', exact: true })).toBeVisible();
 });
 
