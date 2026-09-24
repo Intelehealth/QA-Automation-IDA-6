@@ -4,34 +4,34 @@
     "repo": "Intelehealth/QA-Automation-IDA-6",
     "branch": "main",
     "actor": "sambit-QA",
-    "runNumber": "42",
-    "runUrl": "https://github.com/Intelehealth/QA-Automation-IDA-6/actions/runs/35829733239",
-    "commitSha": "41bd6df",
-    "commitMessage": "fix: stabilise all four test suites - visit reason search, State/District locators, patient card timing, and protocol question flow fixes",
-    "commitUrl": "https://github.com/Intelehealth/QA-Automation-IDA-6/commit/41bd6df77ca2c39716ad68398d8a41395de58878",
+    "runNumber": "43",
+    "runUrl": "https://github.com/Intelehealth/QA-Automation-IDA-6/actions/runs/36003754035",
+    "commitSha": "91220da",
+    "commitMessage": "feat: add 15 new test cases (TC_AD_031-045) from Abdominal Distention JSON covering onset speed, weight/appetite changes, associated symptoms, treatment history, and question flow validation",
+    "commitUrl": "https://github.com/Intelehealth/QA-Automation-IDA-6/commit/91220da9d86031b1069f36220232e338f355199b",
     "allureUrl": "https://Intelehealth.github.io/QA-Automation-IDA-6/allure/",
     "baseUrl": "https://dev.intelehealth.org",
     "environment": "DEV",
-    "runTime": "2026-09-23 17:25:46 IST",
-    "generatedAt": "2026-09-23T11:55:46.988Z"
+    "runTime": "2026-09-24 23:35:38 IST",
+    "generatedAt": "2026-09-24T18:05:38.320Z"
   },
   "totals": {
-    "passed": 259,
-    "failed": 15,
-    "flaky": 25,
+    "passed": 268,
+    "failed": 17,
+    "flaky": 29,
     "skipped": 0,
-    "total": 299,
-    "duration": 16544255,
-    "passRate": 95
+    "total": 314,
+    "duration": 17477671,
+    "passRate": 94.6
   },
   "stats": {
-    "passed": 259,
-    "failed": 15,
-    "flaky": 25,
+    "passed": 268,
+    "failed": 17,
+    "flaky": 29,
     "skipped": 0,
-    "total": 299,
-    "duration": 16544255,
-    "wallClock": 16732237.693
+    "total": 314,
+    "duration": 17477671,
+    "wallClock": 17663777.838
   },
   "modules": [
     {
@@ -41,68 +41,68 @@
       "flaky": 0,
       "skipped": 0,
       "total": 45,
-      "duration": 1962732,
+      "duration": 1998096,
       "passRate": 88.9
     },
     {
       "name": "Start Visit",
-      "passed": 71,
+      "passed": 69,
       "failed": 4,
-      "flaky": 0,
+      "flaky": 2,
       "skipped": 0,
       "total": 75,
-      "duration": 3278018,
+      "duration": 3463997,
       "passRate": 94.7
+    },
+    {
+      "name": "Abdominal Distention Protocol",
+      "passed": 37,
+      "failed": 3,
+      "flaky": 6,
+      "skipped": 0,
+      "total": 46,
+      "duration": 2948045,
+      "passRate": 93.5
+    },
+    {
+      "name": "Forgot Password",
+      "passed": 1,
+      "failed": 3,
+      "flaky": 2,
+      "skipped": 0,
+      "total": 6,
+      "duration": 255149,
+      "passRate": 50
     },
     {
       "name": "Physical Examination",
       "passed": 43,
-      "failed": 2,
-      "flaky": 6,
-      "skipped": 0,
-      "total": 51,
-      "duration": 2838298,
-      "passRate": 96.1
-    },
-    {
-      "name": "Abdominal Distention Protocol",
-      "passed": 23,
       "failed": 1,
       "flaky": 7,
       "skipped": 0,
-      "total": 31,
-      "duration": 2382791,
-      "passRate": 96.8
+      "total": 51,
+      "duration": 2868276,
+      "passRate": 98
     },
     {
       "name": "Abdominal Pain Protocol",
-      "passed": 24,
+      "passed": 22,
       "failed": 1,
-      "flaky": 5,
+      "flaky": 7,
       "skipped": 0,
       "total": 30,
-      "duration": 2570442,
+      "duration": 2503605,
       "passRate": 96.7
     },
     {
       "name": "Medical History",
-      "passed": 16,
-      "failed": 1,
-      "flaky": 3,
+      "passed": 18,
+      "failed": 0,
+      "flaky": 2,
       "skipped": 0,
       "total": 20,
-      "duration": 2330694,
-      "passRate": 95
-    },
-    {
-      "name": "Forgot Password",
-      "passed": 4,
-      "failed": 1,
-      "flaky": 1,
-      "skipped": 0,
-      "total": 6,
-      "duration": 140973,
-      "passRate": 83.3
+      "duration": 2348139,
+      "passRate": 100
     },
     {
       "name": "Start Visit - Visit Reason",
@@ -111,7 +111,7 @@
       "flaky": 3,
       "skipped": 0,
       "total": 20,
-      "duration": 801137,
+      "duration": 844180,
       "passRate": 100
     },
     {
@@ -121,7 +121,7 @@
       "flaky": 0,
       "skipped": 0,
       "total": 16,
-      "duration": 209224,
+      "duration": 219427,
       "passRate": 100
     },
     {
@@ -131,7 +131,7 @@
       "flaky": 0,
       "skipped": 0,
       "total": 5,
-      "duration": 29946,
+      "duration": 28757,
       "passRate": 100
     }
   ],
@@ -144,10 +144,10 @@
       "file": "ForgetPassword.spec.js",
       "line": 15,
       "project": "chromium",
-      "status": "expected",
-      "duration": 10603,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 58976,
+      "retries": 2,
+      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })"
     },
     {
       "id": "t1",
@@ -157,10 +157,10 @@
       "file": "ForgetPassword.spec.js",
       "line": 38,
       "project": "chromium",
-      "status": "expected",
-      "duration": 5515,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 44822,
+      "retries": 2,
+      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })"
     },
     {
       "id": "t2",
@@ -170,10 +170,10 @@
       "file": "ForgetPassword.spec.js",
       "line": 59,
       "project": "chromium",
-      "status": "expected",
-      "duration": 8131,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 59254,
+      "retries": 2,
+      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })"
     },
     {
       "id": "t3",
@@ -184,7 +184,7 @@
       "line": 74,
       "project": "chromium",
       "status": "expected",
-      "duration": 10311,
+      "duration": 10386,
       "retries": 0,
       "error": ""
     },
@@ -196,10 +196,10 @@
       "file": "ForgetPassword.spec.js",
       "line": 92,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 59395,
-      "retries": 2,
-      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })"
+      "status": "flaky",
+      "duration": 25338,
+      "retries": 1,
+      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })"
     },
     {
       "id": "t5",
@@ -209,10 +209,10 @@
       "file": "ForgetPassword.spec.js",
       "line": 120,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 47018,
+      "status": "unexpected",
+      "duration": 56373,
       "retries": 2,
-      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })"
+      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })\n\nError: expect(locator).toContainText(expected) failed\n\nLocator: getByRole('alert').filter({ hasText: 'Request OTP Failed' })\nExpected substring: \"No user exists with this phone number/email/username.\"\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toContainText\" with timeout 10000ms\n  - waiting for getByRole('alert').filter({ hasText: 'Request OTP Failed' })\n    2 × locator resolved to <div id=\"1\" tabindex=\"0\" role=\"alert\" data-in=\"true\" class=\"Toastify__toast Toastify__toast-theme--light Toastify__toast--error Toastify__toast--close-on-click Toastify--animate Toastify__bounce-enter--bottom-right\">…</div>\n      - unexpected value \"Request OTP FailedRequest OTP Failed\"\n    5 × locator resolved to <div id=\"1\" tabindex=\"0\" role=\"alert\" data-in"
     },
     {
       "id": "t6",
@@ -223,7 +223,7 @@
       "line": 21,
       "project": "chromium",
       "status": "expected",
-      "duration": 6518,
+      "duration": 6728,
       "retries": 0,
       "error": ""
     },
@@ -236,7 +236,7 @@
       "line": 46,
       "project": "chromium",
       "status": "expected",
-      "duration": 7049,
+      "duration": 4855,
       "retries": 0,
       "error": ""
     },
@@ -249,7 +249,7 @@
       "line": 62,
       "project": "chromium",
       "status": "expected",
-      "duration": 5636,
+      "duration": 5839,
       "retries": 0,
       "error": ""
     },
@@ -262,7 +262,7 @@
       "line": 92,
       "project": "chromium",
       "status": "expected",
-      "duration": 5490,
+      "duration": 5846,
       "retries": 0,
       "error": ""
     },
@@ -275,7 +275,7 @@
       "line": 126,
       "project": "chromium",
       "status": "expected",
-      "duration": 5253,
+      "duration": 5489,
       "retries": 0,
       "error": ""
     },
@@ -288,7 +288,7 @@
       "line": 58,
       "project": "chromium",
       "status": "expected",
-      "duration": 12604,
+      "duration": 10931,
       "retries": 0,
       "error": ""
     },
@@ -301,7 +301,7 @@
       "line": 77,
       "project": "chromium",
       "status": "expected",
-      "duration": 11594,
+      "duration": 12860,
       "retries": 0,
       "error": ""
     },
@@ -314,7 +314,7 @@
       "line": 93,
       "project": "chromium",
       "status": "expected",
-      "duration": 11905,
+      "duration": 13745,
       "retries": 0,
       "error": ""
     },
@@ -327,7 +327,7 @@
       "line": 108,
       "project": "chromium",
       "status": "expected",
-      "duration": 10928,
+      "duration": 12729,
       "retries": 0,
       "error": ""
     },
@@ -340,7 +340,7 @@
       "line": 127,
       "project": "chromium",
       "status": "expected",
-      "duration": 10783,
+      "duration": 12897,
       "retries": 0,
       "error": ""
     },
@@ -353,7 +353,7 @@
       "line": 142,
       "project": "chromium",
       "status": "expected",
-      "duration": 10248,
+      "duration": 12271,
       "retries": 0,
       "error": ""
     },
@@ -366,7 +366,7 @@
       "line": 169,
       "project": "chromium",
       "status": "expected",
-      "duration": 12355,
+      "duration": 13443,
       "retries": 0,
       "error": ""
     },
@@ -379,7 +379,7 @@
       "line": 193,
       "project": "chromium",
       "status": "expected",
-      "duration": 17797,
+      "duration": 18910,
       "retries": 0,
       "error": ""
     },
@@ -392,7 +392,7 @@
       "line": 266,
       "project": "chromium",
       "status": "expected",
-      "duration": 12431,
+      "duration": 14227,
       "retries": 0,
       "error": ""
     },
@@ -405,7 +405,7 @@
       "line": 280,
       "project": "chromium",
       "status": "expected",
-      "duration": 11966,
+      "duration": 12455,
       "retries": 0,
       "error": ""
     },
@@ -418,7 +418,7 @@
       "line": 298,
       "project": "chromium",
       "status": "expected",
-      "duration": 12455,
+      "duration": 12708,
       "retries": 0,
       "error": ""
     },
@@ -431,7 +431,7 @@
       "line": 316,
       "project": "chromium",
       "status": "expected",
-      "duration": 12204,
+      "duration": 12718,
       "retries": 0,
       "error": ""
     },
@@ -444,7 +444,7 @@
       "line": 334,
       "project": "chromium",
       "status": "expected",
-      "duration": 12498,
+      "duration": 12896,
       "retries": 0,
       "error": ""
     },
@@ -457,7 +457,7 @@
       "line": 352,
       "project": "chromium",
       "status": "expected",
-      "duration": 11952,
+      "duration": 12464,
       "retries": 0,
       "error": ""
     },
@@ -470,7 +470,7 @@
       "line": 366,
       "project": "chromium",
       "status": "expected",
-      "duration": 12234,
+      "duration": 13146,
       "retries": 0,
       "error": ""
     },
@@ -483,7 +483,7 @@
       "line": 388,
       "project": "chromium",
       "status": "expected",
-      "duration": 25270,
+      "duration": 21027,
       "retries": 0,
       "error": ""
     },
@@ -495,10 +495,10 @@
       "file": "Protocol_AbdominalDistention.spec.js",
       "line": 1684,
       "project": "chromium",
-      "status": "expected",
-      "duration": 30235,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 105273,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)"
     },
     {
       "id": "t28",
@@ -509,7 +509,7 @@
       "line": 1697,
       "project": "chromium",
       "status": "expected",
-      "duration": 30693,
+      "duration": 30816,
       "retries": 0,
       "error": ""
     },
@@ -522,7 +522,7 @@
       "line": 1711,
       "project": "chromium",
       "status": "expected",
-      "duration": 32172,
+      "duration": 31437,
       "retries": 0,
       "error": ""
     },
@@ -534,10 +534,10 @@
       "file": "Protocol_AbdominalDistention.spec.js",
       "line": 1728,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 114526,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)"
+      "status": "expected",
+      "duration": 33952,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t31",
@@ -547,10 +547,10 @@
       "file": "Protocol_AbdominalDistention.spec.js",
       "line": 1746,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 75983,
-      "retries": 1,
-      "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Accept' })\n    - locator resolved to <button type=\"button\" class=\"btn-base-styles btn-primary-variant py-3 gap-2 w-auto px-8\">Accept</button>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"global-loader\">…</div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"global-loader\">…</div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    53 × waiting for element to be visible, e"
+      "status": "expected",
+      "duration": 34837,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t32",
@@ -561,7 +561,7 @@
       "line": 1764,
       "project": "chromium",
       "status": "expected",
-      "duration": 35694,
+      "duration": 35631,
       "retries": 0,
       "error": ""
     },
@@ -574,7 +574,7 @@
       "line": 1784,
       "project": "chromium",
       "status": "expected",
-      "duration": 36738,
+      "duration": 35372,
       "retries": 0,
       "error": ""
     },
@@ -586,10 +586,10 @@
       "file": "Protocol_AbdominalDistention.spec.js",
       "line": 1803,
       "project": "chromium",
-      "status": "expected",
-      "duration": 40948,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 110563,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - "
     },
     {
       "id": "t35",
@@ -600,9 +600,9 @@
       "line": 1819,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 138070,
+      "duration": 113660,
       "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByText('Question 7/9', { exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByText('Qu"
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - "
     },
     {
       "id": "t36",
@@ -613,7 +613,7 @@
       "line": 1842,
       "project": "chromium",
       "status": "expected",
-      "duration": 41989,
+      "duration": 42133,
       "retries": 0,
       "error": ""
     },
@@ -625,10 +625,10 @@
       "file": "Protocol_AbdominalDistention.spec.js",
       "line": 1873,
       "project": "chromium",
-      "status": "expected",
-      "duration": 42143,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 130064,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nTimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Accept' })\n    - locator resolved to <button type=\"button\" class=\"btn-base-styles btn-primary-variant py-3 gap-2 w-auto px-8\">Accept</bu"
     },
     {
       "id": "t38",
@@ -639,7 +639,7 @@
       "line": 1889,
       "project": "chromium",
       "status": "expected",
-      "duration": 44103,
+      "duration": 43851,
       "retries": 0,
       "error": ""
     },
@@ -652,7 +652,7 @@
       "line": 1911,
       "project": "chromium",
       "status": "expected",
-      "duration": 47421,
+      "duration": 49138,
       "retries": 0,
       "error": ""
     },
@@ -664,10 +664,10 @@
       "file": "Protocol_AbdominalDistention.spec.js",
       "line": 1936,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 122944,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)"
+      "status": "expected",
+      "duration": 47328,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t41",
@@ -678,7 +678,7 @@
       "line": 1949,
       "project": "chromium",
       "status": "expected",
-      "duration": 47731,
+      "duration": 49392,
       "retries": 0,
       "error": ""
     },
@@ -690,10 +690,10 @@
       "file": "Protocol_AbdominalDistention.spec.js",
       "line": 1971,
       "project": "chromium",
-      "status": "expected",
-      "duration": 44484,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 82783,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)"
     },
     {
       "id": "t43",
@@ -704,7 +704,7 @@
       "line": 2013,
       "project": "chromium",
       "status": "expected",
-      "duration": 60785,
+      "duration": 58975,
       "retries": 0,
       "error": ""
     },
@@ -716,10 +716,10 @@
       "file": "Protocol_AbdominalDistention.spec.js",
       "line": 2035,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 103607,
-      "retries": 1,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)"
+      "status": "expected",
+      "duration": 60532,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t45",
@@ -730,7 +730,7 @@
       "line": 2065,
       "project": "chromium",
       "status": "expected",
-      "duration": 64039,
+      "duration": 62919,
       "retries": 0,
       "error": ""
     },
@@ -743,7 +743,7 @@
       "line": 2085,
       "project": "chromium",
       "status": "expected",
-      "duration": 65494,
+      "duration": 64839,
       "retries": 0,
       "error": ""
     },
@@ -755,10 +755,10 @@
       "file": "Protocol_AbdominalDistention.spec.js",
       "line": 2106,
       "project": "chromium",
-      "status": "expected",
-      "duration": 69283,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 105202,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)"
     },
     {
       "id": "t48",
@@ -768,10 +768,10 @@
       "file": "Protocol_AbdominalDistention.spec.js",
       "line": 2117,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 109048,
-      "retries": 1,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)"
+      "status": "expected",
+      "duration": 71674,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t49",
@@ -782,7 +782,7 @@
       "line": 2134,
       "project": "chromium",
       "status": "expected",
-      "duration": 70815,
+      "duration": 69367,
       "retries": 0,
       "error": ""
     },
@@ -794,10 +794,10 @@
       "file": "Protocol_AbdominalDistention.spec.js",
       "line": 2150,
       "project": "chromium",
-      "status": "expected",
-      "duration": 69150,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 143014,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)"
     },
     {
       "id": "t51",
@@ -808,7 +808,7 @@
       "line": 2165,
       "project": "chromium",
       "status": "expected",
-      "duration": 73816,
+      "duration": 73806,
       "retries": 0,
       "error": ""
     },
@@ -820,10 +820,10 @@
       "file": "Protocol_AbdominalDistention.spec.js",
       "line": 2185,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 137362,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)"
+      "status": "expected",
+      "duration": 62879,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t53",
@@ -834,7 +834,7 @@
       "line": 2223,
       "project": "chromium",
       "status": "expected",
-      "duration": 69739,
+      "duration": 69134,
       "retries": 0,
       "error": ""
     },
@@ -846,10 +846,10 @@
       "file": "Protocol_AbdominalDistention.spec.js",
       "line": 2236,
       "project": "chromium",
-      "status": "expected",
-      "duration": 118620,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 193465,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)"
     },
     {
       "id": "t55",
@@ -860,7 +860,7 @@
       "line": 2250,
       "project": "chromium",
       "status": "expected",
-      "duration": 120012,
+      "duration": 119101,
       "retries": 0,
       "error": ""
     },
@@ -873,7 +873,7 @@
       "line": 2265,
       "project": "chromium",
       "status": "expected",
-      "duration": 119955,
+      "duration": 93126,
       "retries": 0,
       "error": ""
     },
@@ -885,26 +885,221 @@
       "file": "Protocol_AbdominalDistention.spec.js",
       "line": 2286,
       "project": "chromium",
+      "status": "expected",
+      "duration": 101449,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t58",
+      "title": "TC_AD_031_Verify_Onset_Speed_Over_Few_Months",
+      "suite": "Abdominal Distention Protocol - Full Test Suite",
+      "module": "Abdominal Distention Protocol",
+      "file": "Protocol_AbdominalDistention.spec.js",
+      "line": 2312,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 30965,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t59",
+      "title": "TC_AD_032_Verify_Onset_Speed_Over_Few_Years",
+      "suite": "Abdominal Distention Protocol - Full Test Suite",
+      "module": "Abdominal Distention Protocol",
+      "file": "Protocol_AbdominalDistention.spec.js",
+      "line": 2319,
+      "project": "chromium",
       "status": "flaky",
-      "duration": 205192,
+      "duration": 112555,
       "retries": 2,
       "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)"
     },
     {
-      "id": "t58",
+      "id": "t60",
+      "title": "TC_AD_033_Verify_Onset_Speed_Suddenly",
+      "suite": "Abdominal Distention Protocol - Full Test Suite",
+      "module": "Abdominal Distention Protocol",
+      "file": "Protocol_AbdominalDistention.spec.js",
+      "line": 2326,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 32101,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t61",
+      "title": "TC_AD_034_Verify_Swelling_Cycle_Yes",
+      "suite": "Abdominal Distention Protocol - Full Test Suite",
+      "module": "Abdominal Distention Protocol",
+      "file": "Protocol_AbdominalDistention.spec.js",
+      "line": 2334,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 33414,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t62",
+      "title": "TC_AD_035_Verify_Weight_Change_Weight_Gain",
+      "suite": "Abdominal Distention Protocol - Full Test Suite",
+      "module": "Abdominal Distention Protocol",
+      "file": "Protocol_AbdominalDistention.spec.js",
+      "line": 2343,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 33306,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t63",
+      "title": "TC_AD_036_Verify_Weight_Change_Weight_Loss",
+      "suite": "Abdominal Distention Protocol - Full Test Suite",
+      "module": "Abdominal Distention Protocol",
+      "file": "Protocol_AbdominalDistention.spec.js",
+      "line": 2355,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 32868,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t64",
+      "title": "TC_AD_037_Verify_Appetite_Increased",
+      "suite": "Abdominal Distention Protocol - Full Test Suite",
+      "module": "Abdominal Distention Protocol",
+      "file": "Protocol_AbdominalDistention.spec.js",
+      "line": 2367,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 35774,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t65",
+      "title": "TC_AD_038_Verify_Appetite_Decreased",
+      "suite": "Abdominal Distention Protocol - Full Test Suite",
+      "module": "Abdominal Distention Protocol",
+      "file": "Protocol_AbdominalDistention.spec.js",
+      "line": 2380,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 35599,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t66",
+      "title": "TC_AD_039_Verify_Associated_Symptom_Diarrhea",
+      "suite": "Abdominal Distention Protocol - Full Test Suite",
+      "module": "Abdominal Distention Protocol",
+      "file": "Protocol_AbdominalDistention.spec.js",
+      "line": 2393,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 36367,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t67",
+      "title": "TC_AD_040_Verify_Associated_Symptom_Vomiting",
+      "suite": "Abdominal Distention Protocol - Full Test Suite",
+      "module": "Abdominal Distention Protocol",
+      "file": "Protocol_AbdominalDistention.spec.js",
+      "line": 2407,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 36068,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t68",
+      "title": "TC_AD_041_Verify_Jaundice_History_No",
+      "suite": "Abdominal Distention Protocol - Full Test Suite",
+      "module": "Abdominal Distention Protocol",
+      "file": "Protocol_AbdominalDistention.spec.js",
+      "line": 2421,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 42149,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t69",
+      "title": "TC_AD_042_Verify_Treatment_History_Yes_Shows_Input",
+      "suite": "Abdominal Distention Protocol - Full Test Suite",
+      "module": "Abdominal Distention Protocol",
+      "file": "Protocol_AbdominalDistention.spec.js",
+      "line": 2436,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 43861,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t70",
+      "title": "TC_AD_043_Verify_Additional_Info_Accepts_Text",
+      "suite": "Abdominal Distention Protocol - Full Test Suite",
+      "module": "Abdominal Distention Protocol",
+      "file": "Protocol_AbdominalDistention.spec.js",
+      "line": 2451,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 48393,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t71",
+      "title": "TC_AD_044_Verify_Associated_Symptoms_Question_Counter",
+      "suite": "Abdominal Distention Protocol - Full Test Suite",
+      "module": "Abdominal Distention Protocol",
+      "file": "Protocol_AbdominalDistention.spec.js",
+      "line": 2470,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 36433,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t72",
+      "title": "TC_AD_045_Verify_Swelling_Cycle_Question_Text",
+      "suite": "Abdominal Distention Protocol - Full Test Suite",
+      "module": "Abdominal Distention Protocol",
+      "file": "Protocol_AbdominalDistention.spec.js",
+      "line": 2486,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 32480,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t73",
       "title": "TC_AP_001_Verify_Visit_Reason_Selection_Starts_Assessment",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2078,
       "project": "chromium",
-      "status": "expected",
-      "duration": 30242,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 93639,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()"
     },
     {
-      "id": "t59",
+      "id": "t74",
       "title": "TC_AP_002_Verify_Pain_Location_Question",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
@@ -912,12 +1107,12 @@
       "line": 2091,
       "project": "chromium",
       "status": "expected",
-      "duration": 32377,
+      "duration": 32885,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t60",
+      "id": "t75",
       "title": "TC_AP_003_Verify_Pain_Radiation_Question",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
@@ -925,25 +1120,25 @@
       "line": 2106,
       "project": "chromium",
       "status": "expected",
-      "duration": 34052,
+      "duration": 34676,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t61",
+      "id": "t76",
       "title": "TC_AP_004_Verify_Symptom_Duration_Question",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2125,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 132999,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\n\nTimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Accept' })\n    - locator resolved to <button type=\"button\" class=\"btn-base-styles btn-primary-variant py-3 gap-2 w-auto px-8\">Accept</button>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"global-loader\">…</div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2"
+      "status": "expected",
+      "duration": 36330,
+      "retries": 0,
+      "error": ""
     },
     {
-      "id": "t62",
+      "id": "t77",
       "title": "TC_AP_005_Verify_Onset_Type_Question_Auto_Advances",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
@@ -951,12 +1146,12 @@
       "line": 2141,
       "project": "chromium",
       "status": "expected",
-      "duration": 37918,
+      "duration": 37145,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t63",
+      "id": "t78",
       "title": "TC_AP_006_Verify_Pain_Timing_Question",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
@@ -964,12 +1159,12 @@
       "line": 2161,
       "project": "chromium",
       "status": "expected",
-      "duration": 38091,
+      "duration": 39524,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t64",
+      "id": "t79",
       "title": "TC_AP_007_Verify_Pain_Character_Question_Mandatory",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
@@ -977,38 +1172,38 @@
       "line": 2184,
       "project": "chromium",
       "status": "expected",
-      "duration": 40465,
+      "duration": 41965,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t65",
+      "id": "t80",
       "title": "TC_AP_008_Verify_Pain_Severity_Question",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2213,
       "project": "chromium",
-      "status": "expected",
-      "duration": 42389,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 98536,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()"
     },
     {
-      "id": "t66",
+      "id": "t81",
       "title": "TC_AP_009_Verify_Associated_Symptoms_All_Items_Displayed",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2235,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 154330,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()"
+      "status": "expected",
+      "duration": 41491,
+      "retries": 0,
+      "error": ""
     },
     {
-      "id": "t67",
+      "id": "t82",
       "title": "TC_AP_010_Verify_Associated_Symptoms_All_No_Advances",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
@@ -1016,12 +1211,12 @@
       "line": 2256,
       "project": "chromium",
       "status": "expected",
-      "duration": 49970,
+      "duration": 50971,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t68",
+      "id": "t83",
       "title": "TC_AP_011_Verify_Associated_Symptom_Yes_Item_Recorded",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
@@ -1029,12 +1224,12 @@
       "line": 2274,
       "project": "chromium",
       "status": "expected",
-      "duration": 50012,
+      "duration": 50723,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t69",
+      "id": "t84",
       "title": "TC_AP_012_Verify_Aggravating_Factors_Question",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
@@ -1042,12 +1237,12 @@
       "line": 2298,
       "project": "chromium",
       "status": "expected",
-      "duration": 55081,
+      "duration": 55454,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t70",
+      "id": "t85",
       "title": "TC_AP_013_Verify_Relieving_Factors_Question",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
@@ -1055,12 +1250,12 @@
       "line": 2325,
       "project": "chromium",
       "status": "flaky",
-      "duration": 112700,
+      "duration": 117671,
       "retries": 1,
       "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()"
     },
     {
-      "id": "t71",
+      "id": "t86",
       "title": "TC_AP_014_Verify_Treatment_History_Question",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
@@ -1068,12 +1263,12 @@
       "line": 2353,
       "project": "chromium",
       "status": "expected",
-      "duration": 58856,
+      "duration": 59094,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t72",
+      "id": "t87",
       "title": "TC_AP_015_Verify_Additional_Information_Skip_Completes_Assessment",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
@@ -1081,12 +1276,12 @@
       "line": 2378,
       "project": "chromium",
       "status": "expected",
-      "duration": 62110,
+      "duration": 60762,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t73",
+      "id": "t88",
       "title": "TC_AP_016_Verify_Full_Assessment_Completes",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
@@ -1094,25 +1289,25 @@
       "line": 2406,
       "project": "chromium",
       "status": "expected",
-      "duration": 61936,
+      "duration": 61891,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t74",
+      "id": "t89",
       "title": "TC_AP_017_Verify_Wash_Hands_Reminder_After_Assessment",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2419,
       "project": "chromium",
-      "status": "expected",
-      "duration": 59259,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 115950,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()"
     },
     {
-      "id": "t75",
+      "id": "t90",
       "title": "TC_AP_018_Verify_Abdominal_Scars_Question_Displays",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
@@ -1120,12 +1315,12 @@
       "line": 2477,
       "project": "chromium",
       "status": "expected",
-      "duration": 74097,
+      "duration": 73283,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t76",
+      "id": "t91",
       "title": "TC_AP_019_Verify_Abdominal_Bloating_Question_Displays",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
@@ -1133,12 +1328,12 @@
       "line": 2509,
       "project": "chromium",
       "status": "expected",
-      "duration": 74762,
+      "duration": 74345,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t77",
+      "id": "t92",
       "title": "TC_AP_020_Verify_Tenderness_Question_And_Location_SubQuestion",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
@@ -1146,12 +1341,12 @@
       "line": 2542,
       "project": "chromium",
       "status": "expected",
-      "duration": 78870,
+      "duration": 78704,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t78",
+      "id": "t93",
       "title": "TC_AP_021_Verify_Lumps_Is_Final_Question",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
@@ -1159,12 +1354,12 @@
       "line": 2603,
       "project": "chromium",
       "status": "flaky",
-      "duration": 136500,
+      "duration": 138300,
       "retries": 1,
       "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()"
     },
     {
-      "id": "t79",
+      "id": "t94",
       "title": "TC_AP_022_Verify_Full_Physical_Exam_Reaches_Summary",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
@@ -1172,12 +1367,12 @@
       "line": 2646,
       "project": "chromium",
       "status": "expected",
-      "duration": 81560,
+      "duration": 80891,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t80",
+      "id": "t95",
       "title": "TC_AP_023_Verify_Summary_General_Exams_Section",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
@@ -1185,25 +1380,25 @@
       "line": 2657,
       "project": "chromium",
       "status": "expected",
-      "duration": 80388,
+      "duration": 81890,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t81",
+      "id": "t96",
       "title": "TC_AP_024_Verify_Summary_Abdomen_Section_And_No_Umbilicus",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2674,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 169599,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms"
+      "status": "expected",
+      "duration": 79966,
+      "retries": 0,
+      "error": ""
     },
     {
-      "id": "t82",
+      "id": "t97",
       "title": "TC_AP_025_Verify_Alternate_Abdomen_Answers_Recorded",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
@@ -1211,38 +1406,38 @@
       "line": 2702,
       "project": "chromium",
       "status": "expected",
-      "duration": 101588,
+      "duration": 102622,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t83",
+      "id": "t98",
       "title": "TC_AP_026_Verify_Physical_Exam_Confirm_Navigates_To_Medical_History",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2721,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 141136,
-      "retries": 1,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()"
+      "status": "expected",
+      "duration": 82644,
+      "retries": 0,
+      "error": ""
     },
     {
-      "id": "t84",
+      "id": "t99",
       "title": "TC_AP_027_Verify_Medical_History_Completes_Within_Protocol",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2734,
       "project": "chromium",
-      "status": "expected",
-      "duration": 132126,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 163040,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()"
     },
     {
-      "id": "t85",
+      "id": "t100",
       "title": "TC_AP_028_Verify_Medical_History_Confirm_Navigates_To_Visit_Summary",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
@@ -1250,38 +1445,38 @@
       "line": 2748,
       "project": "chromium",
       "status": "expected",
-      "duration": 134291,
+      "duration": 107500,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t86",
+      "id": "t101",
       "title": "TC_AP_029_Verify_Visit_Summary_Checkup_Reason_Section",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2763,
       "project": "chromium",
-      "status": "expected",
-      "duration": 154625,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 170593,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms"
     },
     {
-      "id": "t87",
+      "id": "t102",
       "title": "TC_AP_030_Verify_End_To_End_Abdominal_Pain_Protocol",
       "suite": "Abdominal Pain Protocol - Full Test Suite",
       "module": "Abdominal Pain Protocol",
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2790,
       "project": "chromium",
-      "status": "expected",
-      "duration": 158113,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 241120,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()"
     },
     {
-      "id": "t88",
+      "id": "t103",
       "title": "MH_001_Verify_Medical_History_Screen_Reached",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
@@ -1289,12 +1484,12 @@
       "line": 1294,
       "project": "chromium",
       "status": "expected",
-      "duration": 49015,
+      "duration": 48339,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t89",
+      "id": "t104",
       "title": "MH_002_Verify_First_Question_Is_Personal_History_Checklist",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
@@ -1302,12 +1497,12 @@
       "line": 1310,
       "project": "chromium",
       "status": "expected",
-      "duration": 49260,
+      "duration": 49040,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t90",
+      "id": "t105",
       "title": "MH_003_Verify_Personal_History_All_Items_Displayed",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
@@ -1315,12 +1510,12 @@
       "line": 1322,
       "project": "chromium",
       "status": "expected",
-      "duration": 49227,
+      "duration": 48840,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t91",
+      "id": "t106",
       "title": "MH_004_Verify_Personal_History_All_No_Advances",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
@@ -1328,12 +1523,12 @@
       "line": 1338,
       "project": "chromium",
       "status": "expected",
-      "duration": 56469,
+      "duration": 55321,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t92",
+      "id": "t107",
       "title": "MH_005_Verify_Personal_History_Yes_Item_Accepted",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
@@ -1341,12 +1536,12 @@
       "line": 1367,
       "project": "chromium",
       "status": "flaky",
-      "duration": 133437,
+      "duration": 132937,
       "retries": 2,
       "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
-      "id": "t93",
+      "id": "t108",
       "title": "MH_006_Document_Remaining_Adult_Question_Sequence",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
@@ -1354,12 +1549,12 @@
       "line": 1422,
       "project": "chromium",
       "status": "expected",
-      "duration": 69370,
+      "duration": 68797,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t94",
+      "id": "t109",
       "title": "MH_007_Verify_Adaptive_Handler_Reaches_Summary",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
@@ -1367,12 +1562,12 @@
       "line": 1467,
       "project": "chromium",
       "status": "expected",
-      "duration": 68034,
+      "duration": 68141,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t95",
+      "id": "t110",
       "title": "MH_008_Verify_Personal_History_Mandatory_Validation",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
@@ -1380,12 +1575,12 @@
       "line": 1478,
       "project": "chromium",
       "status": "flaky",
-      "duration": 128585,
+      "duration": 132304,
       "retries": 2,
       "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
-      "id": "t96",
+      "id": "t111",
       "title": "MH_009_Verify_Medical_History_Summary_Heading_Displayed",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
@@ -1393,12 +1588,12 @@
       "line": 1528,
       "project": "chromium",
       "status": "expected",
-      "duration": 68516,
+      "duration": 71995,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t97",
+      "id": "t112",
       "title": "MH_010_Verify_Summary_Reflects_No_Answers",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
@@ -1406,12 +1601,12 @@
       "line": 1547,
       "project": "chromium",
       "status": "expected",
-      "duration": 67444,
+      "duration": 69129,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t98",
+      "id": "t113",
       "title": "MH_016_Verify_Confirm_Button_Visible",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
@@ -1419,12 +1614,12 @@
       "line": 1564,
       "project": "chromium",
       "status": "expected",
-      "duration": 103942,
+      "duration": 106303,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t99",
+      "id": "t114",
       "title": "MH_017_Verify_Confirm_Navigates_To_Visit_Summary",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
@@ -1432,12 +1627,12 @@
       "line": 1576,
       "project": "chromium",
       "status": "expected",
-      "duration": 155087,
+      "duration": 156067,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t100",
+      "id": "t115",
       "title": "MH_018_Verify_Visit_Summary_Shows_Vitals",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
@@ -1445,38 +1640,38 @@
       "line": 1611,
       "project": "chromium",
       "status": "expected",
-      "duration": 154514,
+      "duration": 155654,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t101",
+      "id": "t116",
       "title": "MH_019_Verify_Visit_Summary_Shows_Physical_Examination",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1630,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 113370,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: "
+      "status": "expected",
+      "duration": 155845,
+      "retries": 0,
+      "error": ""
     },
     {
-      "id": "t102",
+      "id": "t117",
       "title": "MH_020_Verify_Visit_Summary_Shows_Medical_History",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1648,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 193482,
-      "retries": 1,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
+      "status": "expected",
+      "duration": 155965,
+      "retries": 0,
+      "error": ""
     },
     {
-      "id": "t103",
+      "id": "t118",
       "title": "MH_021_Verify_Doctor_Specialty_Selector_Present",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
@@ -1484,12 +1679,12 @@
       "line": 1667,
       "project": "chromium",
       "status": "expected",
-      "duration": 154776,
+      "duration": 155013,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t104",
+      "id": "t119",
       "title": "MH_022_Verify_Doctor_Specialty_Selection_Recorded",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
@@ -1497,12 +1692,12 @@
       "line": 1681,
       "project": "chromium",
       "status": "expected",
-      "duration": 154442,
+      "duration": 156632,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t105",
+      "id": "t120",
       "title": "MH_023_Verify_Priority_Visit_Toggle_Present",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
@@ -1510,12 +1705,12 @@
       "line": 1700,
       "project": "chromium",
       "status": "expected",
-      "duration": 155340,
+      "duration": 155332,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t106",
+      "id": "t121",
       "title": "MH_024_Verify_Upload_Visit_With_Specialty_Proceeds",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
@@ -1523,12 +1718,12 @@
       "line": 1713,
       "project": "chromium",
       "status": "expected",
-      "duration": 202183,
+      "duration": 202300,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t107",
+      "id": "t122",
       "title": "MH_025_Verify_End_To_End_Medical_History_And_Upload",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
@@ -1536,12 +1731,12 @@
       "line": 1738,
       "project": "chromium",
       "status": "expected",
-      "duration": 204201,
+      "duration": 204185,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t108",
+      "id": "t123",
       "title": "TC_PE_001_Verify_Physical_Examination_Screen_Loads",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1549,12 +1744,12 @@
       "line": 555,
       "project": "chromium",
       "status": "expected",
-      "duration": 35787,
+      "duration": 34644,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t109",
+      "id": "t124",
       "title": "TC_PE_002_Verify_Assessment_Progress_Initial_State",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1562,12 +1757,12 @@
       "line": 582,
       "project": "chromium",
       "status": "expected",
-      "duration": 32739,
+      "duration": 33228,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t110",
+      "id": "t125",
       "title": "TC_PE_003_Verify_Jaundice_No_Answer_Recorded",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1575,12 +1770,12 @@
       "line": 592,
       "project": "chromium",
       "status": "expected",
-      "duration": 33224,
+      "duration": 32449,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t111",
+      "id": "t126",
       "title": "TC_PE_004_Verify_Jaundice_Answer_Editable",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1588,12 +1783,12 @@
       "line": 605,
       "project": "chromium",
       "status": "expected",
-      "duration": 34394,
+      "duration": 33708,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t112",
+      "id": "t127",
       "title": "TC_PE_005_Verify_Pallor_Normal_Answer_Recorded",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1601,12 +1796,12 @@
       "line": 624,
       "project": "chromium",
       "status": "expected",
-      "duration": 34776,
+      "duration": 35915,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t113",
+      "id": "t128",
       "title": "TC_PE_006_Verify_Pallor_Options_Available",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1614,12 +1809,12 @@
       "line": 638,
       "project": "chromium",
       "status": "expected",
-      "duration": 34550,
+      "duration": 34979,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t114",
+      "id": "t129",
       "title": "TC_PE_007_Verify_Pinch_Skin_Question_Displays",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1627,25 +1822,25 @@
       "line": 650,
       "project": "chromium",
       "status": "expected",
-      "duration": 36157,
+      "duration": 36363,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t115",
+      "id": "t130",
       "title": "TC_PE_008_Verify_Pinch_Skin_Auto_Advances",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 676,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 114837,
+      "status": "flaky",
+      "duration": 114832,
       "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: "
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
-      "id": "t116",
+      "id": "t131",
       "title": "TC_PE_009_Verify_Pinch_Skin_Slow_Option_Recorded",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1653,12 +1848,12 @@
       "line": 691,
       "project": "chromium",
       "status": "expected",
-      "duration": 39484,
+      "duration": 39717,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t117",
+      "id": "t132",
       "title": "TC_PE_010_Verify_Pinch_Skin_Mandatory_Indicator",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1666,12 +1861,12 @@
       "line": 705,
       "project": "chromium",
       "status": "expected",
-      "duration": 36878,
+      "duration": 36614,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t118",
+      "id": "t133",
       "title": "TC_PE_011_Verify_Nail_Abnormality_Options_And_Images",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1679,12 +1874,12 @@
       "line": 725,
       "project": "chromium",
       "status": "expected",
-      "duration": 39063,
+      "duration": 39247,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t119",
+      "id": "t134",
       "title": "TC_PE_012_Verify_Nail_Abnormality_MultiSelect_Label",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1692,12 +1887,12 @@
       "line": 743,
       "project": "chromium",
       "status": "expected",
-      "duration": 40283,
+      "duration": 39010,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t120",
+      "id": "t135",
       "title": "TC_PE_013_Verify_Nail_Abnormality_Requires_Submit",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1705,25 +1900,25 @@
       "line": 756,
       "project": "chromium",
       "status": "expected",
-      "duration": 40890,
+      "duration": 42217,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t121",
+      "id": "t136",
       "title": "TC_PE_014_Verify_Nail_Abnormality_Multiple_Selections",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 769,
       "project": "chromium",
-      "status": "expected",
-      "duration": 42201,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 116252,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
-      "id": "t122",
+      "id": "t137",
       "title": "TC_PE_015_Verify_Nail_Abnormality_Validation_On_Empty_Submit",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1731,12 +1926,12 @@
       "line": 796,
       "project": "chromium",
       "status": "expected",
-      "duration": 41885,
+      "duration": 41261,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t123",
+      "id": "t138",
       "title": "TC_PE_016_Verify_Take_A_Picture_Option",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1744,12 +1939,12 @@
       "line": 840,
       "project": "chromium",
       "status": "expected",
-      "duration": 40105,
+      "duration": 39413,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t124",
+      "id": "t139",
       "title": "TC_PE_017_Verify_Nail_Anemia_Question_Displays",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1757,12 +1952,12 @@
       "line": 860,
       "project": "chromium",
       "status": "expected",
-      "duration": 42600,
+      "duration": 41966,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t125",
+      "id": "t140",
       "title": "TC_PE_018_Verify_Nail_Anemia_Auto_Advances",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1770,25 +1965,25 @@
       "line": 879,
       "project": "chromium",
       "status": "expected",
-      "duration": 45053,
+      "duration": 46172,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t126",
+      "id": "t141",
       "title": "TC_PE_019_Verify_Nail_Anemia_Pale_Option_Recorded",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 893,
       "project": "chromium",
-      "status": "expected",
-      "duration": 70460,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 111403,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: "
     },
     {
-      "id": "t127",
+      "id": "t142",
       "title": "TC_PE_020_Verify_Ankle_Oedema_Question_Displays",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1796,12 +1991,12 @@
       "line": 903,
       "project": "chromium",
       "status": "flaky",
-      "duration": 121087,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
+      "duration": 84186,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
-      "id": "t128",
+      "id": "t143",
       "title": "TC_PE_021_Verify_Skip_Button_Before_Selection",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1809,12 +2004,12 @@
       "line": 923,
       "project": "chromium",
       "status": "expected",
-      "duration": 44841,
+      "duration": 45704,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t129",
+      "id": "t144",
       "title": "TC_PE_022_Verify_No_Oedema_Advances_To_Summary",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1822,38 +2017,38 @@
       "line": 944,
       "project": "chromium",
       "status": "expected",
-      "duration": 70683,
+      "duration": 68680,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t130",
+      "id": "t145",
       "title": "TC_PE_023_Verify_Oedema_In_Left_Option_Recorded",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 954,
       "project": "chromium",
-      "status": "expected",
-      "duration": 69054,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 105865,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
-      "id": "t131",
+      "id": "t146",
       "title": "TC_PE_024_Verify_Skip_Bypasses_Oedema_Question",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 964,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 83872,
-      "retries": 1,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
+      "status": "expected",
+      "duration": 46485,
+      "retries": 0,
+      "error": ""
     },
     {
-      "id": "t132",
+      "id": "t147",
       "title": "TC_PE_025_Verify_Summary_Heading_Displayed",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1861,12 +2056,12 @@
       "line": 1000,
       "project": "chromium",
       "status": "expected",
-      "duration": 69826,
+      "duration": 70430,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t133",
+      "id": "t148",
       "title": "TC_PE_026_Verify_All_Summary_Fields_Correct",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1874,12 +2069,12 @@
       "line": 1011,
       "project": "chromium",
       "status": "expected",
-      "duration": 69541,
+      "duration": 71234,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t134",
+      "id": "t149",
       "title": "TC_PE_027_Verify_Change_Button_Present",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1887,25 +2082,25 @@
       "line": 1026,
       "project": "chromium",
       "status": "expected",
-      "duration": 68908,
+      "duration": 69409,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t135",
+      "id": "t150",
       "title": "TC_PE_028_Verify_Back_Button_Present_On_Summary",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1037,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 117111,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: "
+      "status": "expected",
+      "duration": 69512,
+      "retries": 0,
+      "error": ""
     },
     {
-      "id": "t136",
+      "id": "t151",
       "title": "TC_PE_029_Verify_Confirm_Button_Visible_And_Enabled",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1913,12 +2108,12 @@
       "line": 1049,
       "project": "chromium",
       "status": "expected",
-      "duration": 69158,
+      "duration": 68793,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t137",
+      "id": "t152",
       "title": "TC_PE_030_Verify_Confirm_Finalizes_Physical_Examination",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1926,38 +2121,38 @@
       "line": 1061,
       "project": "chromium",
       "status": "expected",
-      "duration": 70826,
+      "duration": 71287,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t138",
+      "id": "t153",
       "title": "TC_PE_031_Verify_Summary_Matches_Selections_Exactly",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1077,
       "project": "chromium",
-      "status": "expected",
-      "duration": 67729,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 108650,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
-      "id": "t139",
+      "id": "t154",
       "title": "TC_PE_032_Verify_Reedit_Updates_Summary",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1099,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 107566,
-      "retries": 1,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
+      "status": "expected",
+      "duration": 70555,
+      "retries": 0,
+      "error": ""
     },
     {
-      "id": "t140",
+      "id": "t155",
       "title": "TC_PE_033_Verify_Pinch_Skin_Mandatory_Enforcement",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1965,12 +2160,12 @@
       "line": 1118,
       "project": "chromium",
       "status": "expected",
-      "duration": 37102,
+      "duration": 35553,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t141",
+      "id": "t156",
       "title": "TC_PE_034_Verify_Nail_Abnormality_Requires_Selection",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1978,12 +2173,12 @@
       "line": 1142,
       "project": "chromium",
       "status": "expected",
-      "duration": 39531,
+      "duration": 41035,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t142",
+      "id": "t157",
       "title": "TC_PE_035_Verify_Progress_Dot_Indicator_Updates",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1991,38 +2186,38 @@
       "line": 1164,
       "project": "chromium",
       "status": "expected",
-      "duration": 36118,
+      "duration": 34454,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t143",
+      "id": "t158",
       "title": "TC_PE_036_Verify_Progress_Percentage_Increases",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1184,
       "project": "chromium",
-      "status": "expected",
-      "duration": 40040,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 115654,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
-      "id": "t144",
+      "id": "t159",
       "title": "TC_PE_037_Verify_Sticky_Footer_Does_Not_Block_Options",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1207,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 74094,
-      "retries": 1,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
+      "status": "expected",
+      "duration": 37186,
+      "retries": 0,
+      "error": ""
     },
     {
-      "id": "t145",
+      "id": "t160",
       "title": "TC_PE_038_Verify_Reference_Images_Render",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2030,12 +2225,12 @@
       "line": 1245,
       "project": "chromium",
       "status": "expected",
-      "duration": 40057,
+      "duration": 39567,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t146",
+      "id": "t161",
       "title": "TC_PE_039_Verify_Edit_Jaundice_After_Summary",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2043,12 +2238,12 @@
       "line": 1262,
       "project": "chromium",
       "status": "expected",
-      "duration": 70404,
+      "duration": 69846,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t147",
+      "id": "t162",
       "title": "TC_PE_040_Verify_End_To_End_Happy_Path",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2056,12 +2251,12 @@
       "line": 1277,
       "project": "chromium",
       "status": "expected",
-      "duration": 69004,
+      "duration": 70513,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t148",
+      "id": "t163",
       "title": "TC_PE_041_Verify_Fresh_Patient_No_Stale_Data",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2069,25 +2264,25 @@
       "line": 1294,
       "project": "chromium",
       "status": "expected",
-      "duration": 69630,
+      "duration": 68740,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t149",
+      "id": "t164",
       "title": "TC_PE_042_Verify_Refresh_Preserves_Answers",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1317,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 81595,
-      "retries": 1,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
+      "status": "expected",
+      "duration": 43735,
+      "retries": 0,
+      "error": ""
     },
     {
-      "id": "t150",
+      "id": "t165",
       "title": "TC_PE_043_Verify_Keyboard_Navigation_Support",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2095,12 +2290,12 @@
       "line": 1341,
       "project": "chromium",
       "status": "expected",
-      "duration": 32682,
+      "duration": 32275,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t151",
+      "id": "t166",
       "title": "TC_PE_044_Verify_Question_Transition_Performance",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2108,12 +2303,12 @@
       "line": 1366,
       "project": "chromium",
       "status": "expected",
-      "duration": 39143,
+      "duration": 40189,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t152",
+      "id": "t167",
       "title": "TC_PE_045_Verify_Consistent_Flow_Across_Roles",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2121,12 +2316,12 @@
       "line": 1407,
       "project": "chromium",
       "status": "expected",
-      "duration": 32462,
+      "duration": 33012,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t153",
+      "id": "t168",
       "title": "TC_PE_046_Verify_Jaundice_Question_Title_Displayed",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2134,12 +2329,12 @@
       "line": 1433,
       "project": "chromium",
       "status": "expected",
-      "duration": 33080,
+      "duration": 32902,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t154",
+      "id": "t169",
       "title": "TC_PE_047_Verify_Pallor_Question_Title_Displayed",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2147,12 +2342,12 @@
       "line": 1448,
       "project": "chromium",
       "status": "expected",
-      "duration": 35164,
+      "duration": 33735,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t155",
+      "id": "t170",
       "title": "TC_PE_048_Verify_PinchSkin_Question_Title_Displayed",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2160,12 +2355,12 @@
       "line": 1463,
       "project": "chromium",
       "status": "flaky",
-      "duration": 115028,
+      "duration": 114488,
       "retries": 2,
       "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
-      "id": "t156",
+      "id": "t171",
       "title": "TC_PE_049_Verify_NailAbnormality_Question_Title_Displayed",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2173,12 +2368,12 @@
       "line": 1482,
       "project": "chromium",
       "status": "expected",
-      "duration": 39798,
+      "duration": 39213,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t157",
+      "id": "t172",
       "title": "TC_PE_050_Verify_NailAnemia_Question_Title_Displayed",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2186,12 +2381,12 @@
       "line": 1502,
       "project": "chromium",
       "status": "expected",
-      "duration": 42757,
+      "duration": 40613,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t158",
+      "id": "t173",
       "title": "TC_PE_051_Verify_AnkleOedema_Question_Title_Displayed",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2199,12 +2394,12 @@
       "line": 1523,
       "project": "chromium",
       "status": "expected",
-      "duration": 45041,
+      "duration": 45386,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t159",
+      "id": "t174",
       "title": "TC_01_Verify_Visit_Reason_Screen",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2212,12 +2407,12 @@
       "line": 508,
       "project": "chromium",
       "status": "expected",
-      "duration": 31501,
+      "duration": 29557,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t160",
+      "id": "t175",
       "title": "TC_02_Verify_Visit_Reason_Input",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2225,12 +2420,12 @@
       "line": 534,
       "project": "chromium",
       "status": "expected",
-      "duration": 31689,
+      "duration": 26384,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t161",
+      "id": "t176",
       "title": "TC_03_Verify_Visit_Reason_Search",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2238,12 +2433,12 @@
       "line": 557,
       "project": "chromium",
       "status": "flaky",
-      "duration": 71418,
+      "duration": 70442,
       "retries": 1,
       "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true })"
     },
     {
-      "id": "t162",
+      "id": "t177",
       "title": "TC_04_Verify_Other_Visit_Reason_Option",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2251,12 +2446,12 @@
       "line": 589,
       "project": "chromium",
       "status": "expected",
-      "duration": 31678,
+      "duration": 30010,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t163",
+      "id": "t178",
       "title": "TC_05_Verify_Selected_Visit_Reason",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2264,12 +2459,12 @@
       "line": 634,
       "project": "chromium",
       "status": "expected",
-      "duration": 30618,
+      "duration": 30180,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t164",
+      "id": "t179",
       "title": "TC_06_Verify_Start_Assessment_Button",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2277,12 +2472,12 @@
       "line": 680,
       "project": "chromium",
       "status": "expected",
-      "duration": 32141,
+      "duration": 32133,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t165",
+      "id": "t180",
       "title": "TC_07_Verify_Start_Assessment_Navigation",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2290,12 +2485,12 @@
       "line": 700,
       "project": "chromium",
       "status": "expected",
-      "duration": 32252,
+      "duration": 31478,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t166",
+      "id": "t181",
       "title": "TC_08_Verify_Visit_Reason_Can_Be_Cleared",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2303,12 +2498,12 @@
       "line": 725,
       "project": "chromium",
       "status": "expected",
-      "duration": 31319,
+      "duration": 31149,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t167",
+      "id": "t182",
       "title": "TC_09_Verify_Invalid_Visit_Reason_Input",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2316,12 +2511,12 @@
       "line": 779,
       "project": "chromium",
       "status": "expected",
-      "duration": 29263,
+      "duration": 31124,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t168",
+      "id": "t183",
       "title": "TC_10_Verify_Start_Assessment_After_Selecting_Other",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2329,12 +2524,12 @@
       "line": 808,
       "project": "chromium",
       "status": "expected",
-      "duration": 33176,
+      "duration": 32980,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t169",
+      "id": "t184",
       "title": "TC_11_Verify_Visit_Reason_Search_Case_Insensitive",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2342,12 +2537,12 @@
       "line": 837,
       "project": "chromium",
       "status": "flaky",
-      "duration": 71473,
-      "retries": 1,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true })"
+      "duration": 115382,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true })"
     },
     {
-      "id": "t170",
+      "id": "t185",
       "title": "TC_12_Verify_Visit_Reason_Search_With_Partial_Text",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2355,12 +2550,12 @@
       "line": 868,
       "project": "chromium",
       "status": "expected",
-      "duration": 30359,
+      "duration": 30203,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t171",
+      "id": "t186",
       "title": "TC_13_Verify_Other_Option_Can_Be_Selected",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2368,12 +2563,12 @@
       "line": 899,
       "project": "chromium",
       "status": "expected",
-      "duration": 31504,
+      "duration": 30362,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t172",
+      "id": "t187",
       "title": "TC_14_Verify_Start_Assessment_Available_After_Other",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2381,12 +2576,12 @@
       "line": 940,
       "project": "chromium",
       "status": "expected",
-      "duration": 32509,
+      "duration": 34264,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t173",
+      "id": "t188",
       "title": "TC_15_Verify_Start_Assessment_Opens_Assessment",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2394,12 +2589,12 @@
       "line": 965,
       "project": "chromium",
       "status": "expected",
-      "duration": 32532,
+      "duration": 32458,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t174",
+      "id": "t189",
       "title": "TC_16_Verify_Yes_Option_After_Start_Assessment",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2407,25 +2602,25 @@
       "line": 993,
       "project": "chromium",
       "status": "expected",
-      "duration": 32544,
+      "duration": 33816,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t175",
+      "id": "t190",
       "title": "TC_17_Verify_Start_Assessment_Yes_Navigation",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
       "file": "StartVisit_VisitReason.spec.js",
       "line": 1023,
       "project": "chromium",
-      "status": "expected",
-      "duration": 33247,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 119651,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
     },
     {
-      "id": "t176",
+      "id": "t191",
       "title": "TC_18_Verify_Patient_Description_Field",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2433,25 +2628,25 @@
       "line": 1065,
       "project": "chromium",
       "status": "expected",
-      "duration": 33303,
+      "duration": 33310,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t177",
+      "id": "t192",
       "title": "TC_19_Verify_Patient_Description_Input",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
       "file": "StartVisit_VisitReason.spec.js",
       "line": 1104,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 114769,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 33759,
+      "retries": 0,
+      "error": ""
     },
     {
-      "id": "t178",
+      "id": "t193",
       "title": "TC_20_Verify_Submit_After_Patient_Description",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2459,12 +2654,12 @@
       "line": 1151,
       "project": "chromium",
       "status": "expected",
-      "duration": 33842,
+      "duration": 35538,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t179",
+      "id": "t194",
       "title": "TC_01_Verify_Vitals_Section_Headers",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2472,12 +2667,12 @@
       "line": 309,
       "project": "chromium",
       "status": "expected",
-      "duration": 31798,
+      "duration": 32114,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t180",
+      "id": "t195",
       "title": "TC_02_Verify_Height_Input_Attributes",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2485,12 +2680,12 @@
       "line": 336,
       "project": "chromium",
       "status": "expected",
-      "duration": 31357,
+      "duration": 31430,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t181",
+      "id": "t196",
       "title": "TC_03_Verify_Weight_Input_Attributes",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2498,12 +2693,12 @@
       "line": 369,
       "project": "chromium",
       "status": "expected",
-      "duration": 31871,
+      "duration": 42014,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t182",
+      "id": "t197",
       "title": "TC_04_Verify_BMI_Field_Is_ReadOnly",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2511,12 +2706,12 @@
       "line": 402,
       "project": "chromium",
       "status": "expected",
-      "duration": 32792,
+      "duration": 30774,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t183",
+      "id": "t198",
       "title": "TC_05_Verify_BMI_Calculation",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2524,12 +2719,12 @@
       "line": 420,
       "project": "chromium",
       "status": "expected",
-      "duration": 32099,
+      "duration": 31367,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t184",
+      "id": "t199",
       "title": "TC_06_Verify_BMI_Normal_Category",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2537,12 +2732,12 @@
       "line": 454,
       "project": "chromium",
       "status": "expected",
-      "duration": 30268,
+      "duration": 32969,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t185",
+      "id": "t200",
       "title": "TC_07_Verify_BMI_Underweight_Category",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2550,12 +2745,12 @@
       "line": 477,
       "project": "chromium",
       "status": "expected",
-      "duration": 29349,
+      "duration": 32884,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t186",
+      "id": "t201",
       "title": "TC_08_Verify_BMI_Overweight_Category",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2563,12 +2758,12 @@
       "line": 498,
       "project": "chromium",
       "status": "expected",
-      "duration": 34603,
+      "duration": 33847,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t187",
+      "id": "t202",
       "title": "TC_09_Verify_BMI_Obese_Category",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2576,12 +2771,12 @@
       "line": 519,
       "project": "chromium",
       "status": "expected",
-      "duration": 31088,
+      "duration": 31626,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t188",
+      "id": "t203",
       "title": "TC_10_Verify_BMI_Recalculates_When_Height_Changes",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2589,12 +2784,12 @@
       "line": 540,
       "project": "chromium",
       "status": "expected",
-      "duration": 31901,
+      "duration": 32226,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t189",
+      "id": "t204",
       "title": "TC_11_Verify_BMI_Recalculates_When_Weight_Changes",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2602,12 +2797,12 @@
       "line": 575,
       "project": "chromium",
       "status": "expected",
-      "duration": 32187,
+      "duration": 32214,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t190",
+      "id": "t205",
       "title": "TC_12_Verify_WHR_Field_Is_ReadOnly",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2615,12 +2810,12 @@
       "line": 610,
       "project": "chromium",
       "status": "expected",
-      "duration": 31798,
+      "duration": 32131,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t191",
+      "id": "t206",
       "title": "TC_13_Verify_WHR_Calculation",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2628,12 +2823,12 @@
       "line": 628,
       "project": "chromium",
       "status": "expected",
-      "duration": 31002,
+      "duration": 29221,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t192",
+      "id": "t207",
       "title": "TC_14_Verify_WHR_Recalculates_When_Waist_Changes",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2641,12 +2836,12 @@
       "line": 662,
       "project": "chromium",
       "status": "expected",
-      "duration": 30994,
+      "duration": 29464,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t193",
+      "id": "t208",
       "title": "TC_15_Verify_WHR_Recalculates_When_Hip_Changes",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2654,12 +2849,12 @@
       "line": 697,
       "project": "chromium",
       "status": "expected",
-      "duration": 30102,
+      "duration": 30315,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t194",
+      "id": "t209",
       "title": "TC_16_Verify_Decimal_Height_And_Weight",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2667,12 +2862,12 @@
       "line": 732,
       "project": "chromium",
       "status": "expected",
-      "duration": 29110,
+      "duration": 31451,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t195",
+      "id": "t210",
       "title": "TC_17_Verify_Decimal_BMI_Calculation",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2680,12 +2875,12 @@
       "line": 761,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 90250,
+      "duration": 99669,
       "retries": 2,
       "error": "Error: expect(received).toBeCloseTo(expected, precision)\n\nExpected: 21.35\nReceived: 21.3\n\nExpected precision:    1\nExpected difference: < 0.05\nReceived difference:   0.05000000000000071\nError: expect(received).toBeCloseTo(expected, precision)\n\nExpected: 21.35\nReceived: 21.3\n\nExpected precision:    1\nExpected difference: < 0.05\nReceived difference:   0.05000000000000071\nError: expect(received).toBeCloseTo(expected, precision)\n\nExpected: 21.35\nReceived: 21.3\n\nExpected precision:    1\nExpected difference: < 0.05\nReceived difference:   0.05000000000000071"
     },
     {
-      "id": "t196",
+      "id": "t211",
       "title": "TC_18_Verify_Temperature_Accepts_Decimal",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2693,12 +2888,12 @@
       "line": 793,
       "project": "chromium",
       "status": "expected",
-      "duration": 30963,
+      "duration": 33902,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t197",
+      "id": "t212",
       "title": "TC_19_Verify_HbA1c_Accepts_Decimal",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2706,12 +2901,12 @@
       "line": 812,
       "project": "chromium",
       "status": "expected",
-      "duration": 31279,
+      "duration": 32171,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t198",
+      "id": "t213",
       "title": "TC_20_Verify_Height_Maximum_Length",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2719,12 +2914,12 @@
       "line": 831,
       "project": "chromium",
       "status": "expected",
-      "duration": 31286,
+      "duration": 30537,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t199",
+      "id": "t214",
       "title": "TC_21_Verify_Weight_Maximum_Length",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2732,12 +2927,12 @@
       "line": 859,
       "project": "chromium",
       "status": "expected",
-      "duration": 31733,
+      "duration": 29590,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t200",
+      "id": "t215",
       "title": "TC_22_Verify_BMI_Cannot_Be_Manually_Edited",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2745,12 +2940,12 @@
       "line": 887,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 184603,
+      "duration": 184156,
       "retries": 2,
-      "error": "Test timeout of 60000ms exceeded.\nTimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('input[name=\"bmi\"]')\n    - locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n    - fill(\"25\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not editable\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not editable\n    - retrying fill action\n      - waiting 100ms\n    59 × waiting for element to be visible, enabled and editable\n       - element is not editable\n     - retrying fill action\n       - waiting 500ms\n\nTest timeout of 60000ms exceeded."
+      "error": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('input[name=\"bmi\"]')\n    - locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n    - fill(\"25\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not editable\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not editable\n    - retrying fill action\n      - waiting 100ms\n    59 × waiting for element to be visible, enabled and editable\n       - element is not editable\n     - retrying fill action\n       - waiting 500ms\n\nTest timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded."
     },
     {
-      "id": "t201",
+      "id": "t216",
       "title": "TC_23_Verify_WHR_Cannot_Be_Manually_Edited",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2758,12 +2953,12 @@
       "line": 915,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 183466,
+      "duration": 182644,
       "retries": 2,
-      "error": "Test timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded."
+      "error": "Test timeout of 60000ms exceeded.\nTimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('input[name=\"waist_to_hip_ratio\"]')\n    - locator resolved to <input readonly type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 0.85\" name=\"waist_to_hip_ratio\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n    - fill(\"2.00\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not editable\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not editable\n    - retrying fill action\n      - waiting 100ms\n    60 × waiting for element to be visible, enabled and editable\n       - element is not editable\n     - retrying fill action\n       - waiting 500ms\n\nTest timeout of 60000ms exceeded."
     },
     {
-      "id": "t202",
+      "id": "t217",
       "title": "TC_24_Verify_Blood_Group_Default_Option",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2771,12 +2966,12 @@
       "line": 953,
       "project": "chromium",
       "status": "expected",
-      "duration": 29485,
+      "duration": 32629,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t203",
+      "id": "t218",
       "title": "TC_25_Verify_Blood_Group_Selection_Persists",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2784,12 +2979,12 @@
       "line": 978,
       "project": "chromium",
       "status": "expected",
-      "duration": 31210,
+      "duration": 32710,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t204",
+      "id": "t219",
       "title": "TC_26_Verify_BMI_After_Clearing_Weight",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2797,12 +2992,12 @@
       "line": 1004,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 128133,
+      "duration": 129088,
       "retries": 2,
       "error": "Error: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n       - unexpected value \"21.8\"\n\nError: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 "
     },
     {
-      "id": "t205",
+      "id": "t220",
       "title": "TC_27_Verify_BMI_After_Clearing_Height",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2810,12 +3005,12 @@
       "line": 1037,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 124438,
+      "duration": 125235,
       "retries": 2,
       "error": "Error: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n       - unexpected value \"21.8\"\n\nError: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 "
     },
     {
-      "id": "t206",
+      "id": "t221",
       "title": "TC_28_Verify_WHR_After_Clearing_Waist",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2823,12 +3018,12 @@
       "line": 1070,
       "project": "chromium",
       "status": "expected",
-      "duration": 31296,
+      "duration": 31788,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t207",
+      "id": "t222",
       "title": "TC_29_Verify_WHR_After_Clearing_Hip",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2836,12 +3031,12 @@
       "line": 1103,
       "project": "chromium",
       "status": "expected",
-      "duration": 31364,
+      "duration": 33670,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t208",
+      "id": "t223",
       "title": "TC_30_Verify_Vitals_Input_Names",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2849,12 +3044,12 @@
       "line": 1136,
       "project": "chromium",
       "status": "expected",
-      "duration": 31468,
+      "duration": 32351,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t209",
+      "id": "t224",
       "title": "TC_31_Verify_BP_Fields_Can_Remain_Empty",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2862,12 +3057,12 @@
       "line": 1176,
       "project": "chromium",
       "status": "expected",
-      "duration": 31931,
+      "duration": 31543,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t210",
+      "id": "t225",
       "title": "TC_32_Verify_Temperature_Can_Remain_Empty",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2875,12 +3070,12 @@
       "line": 1197,
       "project": "chromium",
       "status": "expected",
-      "duration": 30249,
+      "duration": 30055,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t211",
+      "id": "t226",
       "title": "TC_33_Verify_SpO2_Can_Remain_Empty",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2888,12 +3083,12 @@
       "line": 1214,
       "project": "chromium",
       "status": "expected",
-      "duration": 31835,
+      "duration": 29660,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t212",
+      "id": "t227",
       "title": "TC_34_Verify_FBS_Can_Remain_Empty",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2901,12 +3096,12 @@
       "line": 1231,
       "project": "chromium",
       "status": "expected",
-      "duration": 31672,
+      "duration": 30247,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t213",
+      "id": "t228",
       "title": "TC_35_Verify_Blood_Group_Can_Remain_Unselected",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2914,12 +3109,12 @@
       "line": 1248,
       "project": "chromium",
       "status": "expected",
-      "duration": 30274,
+      "duration": 33165,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t214",
+      "id": "t229",
       "title": "TC_36_Verify_BMI_After_Multiple_Updates",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2927,12 +3122,12 @@
       "line": 1265,
       "project": "chromium",
       "status": "expected",
-      "duration": 30541,
+      "duration": 32664,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t215",
+      "id": "t230",
       "title": "TC_37_Verify_WHR_After_Multiple_Updates",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2940,12 +3135,12 @@
       "line": 1305,
       "project": "chromium",
       "status": "expected",
-      "duration": 31560,
+      "duration": 33103,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t216",
+      "id": "t231",
       "title": "TC_38_Verify_BMI_Direct_Input_Is_Not_Allowed",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2953,12 +3148,12 @@
       "line": 1345,
       "project": "chromium",
       "status": "expected",
-      "duration": 30598,
+      "duration": 31528,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t217",
+      "id": "t232",
       "title": "TC_39_Verify_WHR_Direct_Input_Is_Not_Allowed",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2966,12 +3161,12 @@
       "line": 1365,
       "project": "chromium",
       "status": "expected",
-      "duration": 31733,
+      "duration": 33113,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t218",
+      "id": "t233",
       "title": "TC_40_Verify_Vitals_Decimal_Input_Mode",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2979,12 +3174,12 @@
       "line": 1385,
       "project": "chromium",
       "status": "expected",
-      "duration": 32182,
+      "duration": 32607,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t219",
+      "id": "t234",
       "title": "TC_41_Verify_Vitals_Maximum_Length",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2992,12 +3187,12 @@
       "line": 1425,
       "project": "chromium",
       "status": "expected",
-      "duration": 31777,
+      "duration": 31264,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t220",
+      "id": "t235",
       "title": "TC_42_Verify_BMI_Placeholder",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3005,12 +3200,12 @@
       "line": 1465,
       "project": "chromium",
       "status": "expected",
-      "duration": 31974,
+      "duration": 29484,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t221",
+      "id": "t236",
       "title": "TC_43_Verify_WHR_Placeholder",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3018,12 +3213,12 @@
       "line": 1483,
       "project": "chromium",
       "status": "expected",
-      "duration": 32748,
+      "duration": 29705,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t222",
+      "id": "t237",
       "title": "TC_44_Verify_BMI_Is_Automatically_Generated",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3031,12 +3226,12 @@
       "line": 1501,
       "project": "chromium",
       "status": "expected",
-      "duration": 30914,
+      "duration": 31894,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t223",
+      "id": "t238",
       "title": "TC_45_Verify_WHR_Is_Automatically_Generated",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3044,12 +3239,12 @@
       "line": 1530,
       "project": "chromium",
       "status": "expected",
-      "duration": 29451,
+      "duration": 31877,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t224",
+      "id": "t239",
       "title": "TC_01_Verify_Start_Visit_Screen",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3057,12 +3252,12 @@
       "line": 420,
       "project": "chromium",
       "status": "expected",
-      "duration": 36935,
+      "duration": 37122,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t225",
+      "id": "t240",
       "title": "TC_02_Verify_Height",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3070,12 +3265,12 @@
       "line": 447,
       "project": "chromium",
       "status": "expected",
-      "duration": 36722,
+      "duration": 37782,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t226",
+      "id": "t241",
       "title": "TC_03_Verify_Weight",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3083,12 +3278,12 @@
       "line": 464,
       "project": "chromium",
       "status": "expected",
-      "duration": 37141,
+      "duration": 37188,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t227",
+      "id": "t242",
       "title": "TC_04_Verify_Blood_Pressure",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3096,12 +3291,12 @@
       "line": 481,
       "project": "chromium",
       "status": "expected",
-      "duration": 37010,
+      "duration": 36105,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t228",
+      "id": "t243",
       "title": "TC_05_Verify_Pulse",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3109,12 +3304,12 @@
       "line": 504,
       "project": "chromium",
       "status": "expected",
-      "duration": 36815,
+      "duration": 36553,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t229",
+      "id": "t244",
       "title": "TC_06_Verify_Temperature",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3122,12 +3317,12 @@
       "line": 521,
       "project": "chromium",
       "status": "expected",
-      "duration": 36799,
+      "duration": 35889,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t230",
+      "id": "t245",
       "title": "TC_07_Verify_SpO2",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3135,12 +3330,12 @@
       "line": 538,
       "project": "chromium",
       "status": "expected",
-      "duration": 36605,
+      "duration": 36652,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t231",
+      "id": "t246",
       "title": "TC_08_Verify_Respiratory_Rate",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3148,12 +3343,12 @@
       "line": 555,
       "project": "chromium",
       "status": "expected",
-      "duration": 35126,
+      "duration": 38387,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t232",
+      "id": "t247",
       "title": "TC_09_Verify_FBS",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3161,12 +3356,12 @@
       "line": 574,
       "project": "chromium",
       "status": "expected",
-      "duration": 35311,
+      "duration": 37400,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t233",
+      "id": "t248",
       "title": "TC_10_Verify_PPBS",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3174,12 +3369,12 @@
       "line": 591,
       "project": "chromium",
       "status": "expected",
-      "duration": 36830,
+      "duration": 38194,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t234",
+      "id": "t249",
       "title": "TC_11_Verify_Waist_Circumference",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3187,25 +3382,25 @@
       "line": 608,
       "project": "chromium",
       "status": "expected",
-      "duration": 37107,
+      "duration": 37948,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t235",
+      "id": "t250",
       "title": "TC_12_Verify_Hip_Circumference",
       "suite": "Start Visit Module",
       "module": "Start Visit",
       "file": "StartVisit.spec.js",
       "line": 625,
       "project": "chromium",
-      "status": "expected",
-      "duration": 36914,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 78410,
+      "retries": 1,
+      "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Accept' })\n    - locator resolved to <button type=\"button\" class=\"btn-base-styles btn-primary-variant py-3 gap-2 w-auto px-8\">Accept</button>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"global-loader\">…</div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"global-loader\">…</div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    53 × waiting for element to be visible, e"
     },
     {
-      "id": "t236",
+      "id": "t251",
       "title": "TC_13_Verify_OGTT",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3213,12 +3408,12 @@
       "line": 642,
       "project": "chromium",
       "status": "expected",
-      "duration": 36565,
+      "duration": 35498,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t237",
+      "id": "t252",
       "title": "TC_14_Verify_HbA1c",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3226,12 +3421,12 @@
       "line": 659,
       "project": "chromium",
       "status": "expected",
-      "duration": 37139,
+      "duration": 37744,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t238",
+      "id": "t253",
       "title": "TC_15_Verify_Blood_Group",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3239,12 +3434,12 @@
       "line": 676,
       "project": "chromium",
       "status": "expected",
-      "duration": 36882,
+      "duration": 37423,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t239",
+      "id": "t254",
       "title": "TC_16_Verify_Vitals_Next_Button",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3252,12 +3447,12 @@
       "line": 699,
       "project": "chromium",
       "status": "expected",
-      "duration": 35573,
+      "duration": 37183,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t240",
+      "id": "t255",
       "title": "TC_17_Verify_Complete_Vitals_Flow",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3265,12 +3460,12 @@
       "line": 715,
       "project": "chromium",
       "status": "expected",
-      "duration": 34519,
+      "duration": 41925,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t241",
+      "id": "t256",
       "title": "TC_18_Verify_Visit_Reason",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3278,12 +3473,12 @@
       "line": 802,
       "project": "chromium",
       "status": "expected",
-      "duration": 38446,
+      "duration": 40160,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t242",
+      "id": "t257",
       "title": "TC_19_Verify_Other_Visit_Reason",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3291,25 +3486,25 @@
       "line": 894,
       "project": "chromium",
       "status": "expected",
-      "duration": 41421,
+      "duration": 42592,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t243",
+      "id": "t258",
       "title": "TC_20_Verify_Start_Assessment",
       "suite": "Start Visit Module",
       "module": "Start Visit",
       "file": "StartVisit.spec.js",
       "line": 997,
       "project": "chromium",
-      "status": "expected",
-      "duration": 40774,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 102652,
+      "retries": 1,
+      "error": "Test timeout of 60000ms exceeded."
     },
     {
-      "id": "t244",
+      "id": "t259",
       "title": "TC_21_Verify_Required_Field_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3317,12 +3512,12 @@
       "line": 1134,
       "project": "chromium",
       "status": "expected",
-      "duration": 39568,
+      "duration": 40443,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t245",
+      "id": "t260",
       "title": "TC_22_Verify_Each_Required_Field_Error_Message",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3330,12 +3525,12 @@
       "line": 1224,
       "project": "chromium",
       "status": "expected",
-      "duration": 39588,
+      "duration": 40278,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t246",
+      "id": "t261",
       "title": "TC_23_Verify_Height_Required_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3343,12 +3538,12 @@
       "line": 1258,
       "project": "chromium",
       "status": "expected",
-      "duration": 39256,
+      "duration": 40829,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t247",
+      "id": "t262",
       "title": "TC_24_Verify_Weight_Required_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3356,12 +3551,12 @@
       "line": 1287,
       "project": "chromium",
       "status": "expected",
-      "duration": 33874,
+      "duration": 40309,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t248",
+      "id": "t263",
       "title": "TC_25_Verify_Pulse_Required_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3369,12 +3564,12 @@
       "line": 1316,
       "project": "chromium",
       "status": "expected",
-      "duration": 38884,
+      "duration": 37404,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t249",
+      "id": "t264",
       "title": "TC_26_Verify_Respiratory_Rate_Required_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3382,12 +3577,12 @@
       "line": 1341,
       "project": "chromium",
       "status": "expected",
-      "duration": 39609,
+      "duration": 38278,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t250",
+      "id": "t265",
       "title": "TC_27_Verify_PPBS_Required_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3395,12 +3590,12 @@
       "line": 1366,
       "project": "chromium",
       "status": "expected",
-      "duration": 39812,
+      "duration": 40898,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t251",
+      "id": "t266",
       "title": "TC_28_Verify_RBS_Required_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3408,12 +3603,12 @@
       "line": 1392,
       "project": "chromium",
       "status": "expected",
-      "duration": 39385,
+      "duration": 40873,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t252",
+      "id": "t267",
       "title": "TC_29_Verify_Waist_Circumference_Required_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3421,12 +3616,12 @@
       "line": 1417,
       "project": "chromium",
       "status": "expected",
-      "duration": 40525,
+      "duration": 40316,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t253",
+      "id": "t268",
       "title": "TC_30_Verify_Hip_Circumference_Required_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3434,12 +3629,12 @@
       "line": 1442,
       "project": "chromium",
       "status": "expected",
-      "duration": 40861,
+      "duration": 40664,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t254",
+      "id": "t269",
       "title": "TC_31_Verify_OGTT_Required_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3447,12 +3642,12 @@
       "line": 1467,
       "project": "chromium",
       "status": "expected",
-      "duration": 37373,
+      "duration": 42236,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t255",
+      "id": "t270",
       "title": "TC_32_Verify_HbA1c_Required_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3460,12 +3655,12 @@
       "line": 1493,
       "project": "chromium",
       "status": "expected",
-      "duration": 37027,
+      "duration": 40604,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t256",
+      "id": "t271",
       "title": "TC_33_Verify_BMI_Is_Readonly",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3473,12 +3668,12 @@
       "line": 1518,
       "project": "chromium",
       "status": "expected",
-      "duration": 34592,
+      "duration": 35346,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t257",
+      "id": "t272",
       "title": "TC_34_Verify_BMI_Calculation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3486,12 +3681,12 @@
       "line": 1538,
       "project": "chromium",
       "status": "expected",
-      "duration": 37314,
+      "duration": 34126,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t258",
+      "id": "t273",
       "title": "TC_35_Verify_BMI_Updates_When_Height_Changes",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3499,12 +3694,12 @@
       "line": 1576,
       "project": "chromium",
       "status": "expected",
-      "duration": 36479,
+      "duration": 36686,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t259",
+      "id": "t274",
       "title": "TC_36_Verify_BMI_Updates_When_Weight_Changes",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3512,12 +3707,12 @@
       "line": 1622,
       "project": "chromium",
       "status": "expected",
-      "duration": 37020,
+      "duration": 37229,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t260",
+      "id": "t275",
       "title": "TC_37_Verify_WHR_Is_Readonly",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3525,12 +3720,12 @@
       "line": 1668,
       "project": "chromium",
       "status": "expected",
-      "duration": 36859,
+      "duration": 36928,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t261",
+      "id": "t276",
       "title": "TC_38_Verify_WHR_Calculation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3538,12 +3733,12 @@
       "line": 1688,
       "project": "chromium",
       "status": "expected",
-      "duration": 36956,
+      "duration": 37253,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t262",
+      "id": "t277",
       "title": "TC_39_Verify_WHR_Updates_When_Waist_Changes",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3551,12 +3746,12 @@
       "line": 1722,
       "project": "chromium",
       "status": "expected",
-      "duration": 36968,
+      "duration": 37404,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t263",
+      "id": "t278",
       "title": "TC_40_Verify_WHR_Updates_When_Hip_Changes",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3564,12 +3759,12 @@
       "line": 1768,
       "project": "chromium",
       "status": "expected",
-      "duration": 33844,
+      "duration": 37383,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t264",
+      "id": "t279",
       "title": "TC_41_Verify_Optional_Vital_Fields",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3577,12 +3772,12 @@
       "line": 1814,
       "project": "chromium",
       "status": "expected",
-      "duration": 39016,
+      "duration": 35624,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t265",
+      "id": "t280",
       "title": "TC_42_Verify_Blood_Group_Is_Optional",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3590,12 +3785,12 @@
       "line": 1883,
       "project": "chromium",
       "status": "expected",
-      "duration": 40746,
+      "duration": 38668,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t266",
+      "id": "t281",
       "title": "TC_43_Verify_Blood_Group_Options",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3603,12 +3798,12 @@
       "line": 1953,
       "project": "chromium",
       "status": "expected",
-      "duration": 36021,
+      "duration": 37340,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t267",
+      "id": "t282",
       "title": "TC_44_Verify_Decimal_Height_And_Weight",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3616,12 +3811,12 @@
       "line": 2011,
       "project": "chromium",
       "status": "expected",
-      "duration": 35991,
+      "duration": 36684,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t268",
+      "id": "t283",
       "title": "TC_45_Verify_Decimal_Measurement_Values",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3629,12 +3824,12 @@
       "line": 2040,
       "project": "chromium",
       "status": "expected",
-      "duration": 36941,
+      "duration": 37333,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t269",
+      "id": "t284",
       "title": "TC_46_Verify_BMI_Status",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3642,12 +3837,12 @@
       "line": 2069,
       "project": "chromium",
       "status": "expected",
-      "duration": 37028,
+      "duration": 37194,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t270",
+      "id": "t285",
       "title": "TC_47_Verify_BMI_Cannot_Be_Manually_Edited",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3655,12 +3850,12 @@
       "line": 2102,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 184762,
+      "duration": 184485,
       "retries": 2,
       "error": "Test timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded."
     },
     {
-      "id": "t271",
+      "id": "t286",
       "title": "TC_48_Verify_WHR_Cannot_Be_Manually_Edited",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3668,12 +3863,12 @@
       "line": 2128,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 184535,
+      "duration": 184477,
       "retries": 2,
       "error": "Test timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded."
     },
     {
-      "id": "t272",
+      "id": "t287",
       "title": "TC_49_Verify_Height_Max_Length",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3681,12 +3876,12 @@
       "line": 2153,
       "project": "chromium",
       "status": "expected",
-      "duration": 34845,
+      "duration": 37872,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t273",
+      "id": "t288",
       "title": "TC_50_Verify_Weight_Max_Length",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3694,12 +3889,12 @@
       "line": 2170,
       "project": "chromium",
       "status": "expected",
-      "duration": 36874,
+      "duration": 35237,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t274",
+      "id": "t289",
       "title": "TC_51_Verify_Pulse_Max_Length",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3707,12 +3902,12 @@
       "line": 2187,
       "project": "chromium",
       "status": "expected",
-      "duration": 35442,
+      "duration": 37913,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t275",
+      "id": "t290",
       "title": "TC_52_Verify_Respiratory_Rate_Max_Length",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3720,12 +3915,12 @@
       "line": 2204,
       "project": "chromium",
       "status": "expected",
-      "duration": 36126,
+      "duration": 38329,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t276",
+      "id": "t291",
       "title": "TC_53_Verify_All_Required_Fields_Can_Be_Completed",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3733,12 +3928,12 @@
       "line": 2221,
       "project": "chromium",
       "status": "expected",
-      "duration": 37148,
+      "duration": 37626,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t277",
+      "id": "t292",
       "title": "TC_54_Verify_Error_Message_Clears_After_Entering_Value",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3746,12 +3941,12 @@
       "line": 2286,
       "project": "chromium",
       "status": "expected",
-      "duration": 39109,
+      "duration": 41411,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t278",
+      "id": "t293",
       "title": "TC_55_Verify_All_Required_Errors_Clear_After_Entering_Values",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3759,12 +3954,12 @@
       "line": 2321,
       "project": "chromium",
       "status": "expected",
-      "duration": 39915,
+      "duration": 50875,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t279",
+      "id": "t294",
       "title": "TC_56_Verify_BMI_Status_Underweight",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3772,12 +3967,12 @@
       "line": 2447,
       "project": "chromium",
       "status": "expected",
-      "duration": 33940,
+      "duration": 38593,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t280",
+      "id": "t295",
       "title": "TC_57_Verify_BMI_Status_Overweight",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3785,12 +3980,12 @@
       "line": 2479,
       "project": "chromium",
       "status": "expected",
-      "duration": 34720,
+      "duration": 35236,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t281",
+      "id": "t296",
       "title": "TC_58_Verify_BMI_Status_Obese",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3798,12 +3993,12 @@
       "line": 2511,
       "project": "chromium",
       "status": "expected",
-      "duration": 36580,
+      "duration": 37681,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t282",
+      "id": "t297",
       "title": "TC_59_Verify_BMI_Clears_When_Height_Is_Cleared",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3811,12 +4006,12 @@
       "line": 2543,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 143340,
+      "duration": 144212,
       "retries": 2,
       "error": "Error: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n       - unexpected value \"21.8\"\n\nError: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 "
     },
     {
-      "id": "t283",
+      "id": "t298",
       "title": "TC_60_Verify_BMI_Clears_When_Weight_Is_Cleared",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3824,12 +4019,12 @@
       "line": 2573,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 141004,
+      "duration": 141358,
       "retries": 2,
       "error": "Error: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n       - unexpected value \"21.8\"\n\nError: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 "
     },
     {
-      "id": "t284",
+      "id": "t299",
       "title": "TC_61_Verify_WHR_Clears_When_Waist_Is_Cleared",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3837,12 +4032,12 @@
       "line": 2603,
       "project": "chromium",
       "status": "expected",
-      "duration": 39065,
+      "duration": 35623,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t285",
+      "id": "t300",
       "title": "TC_62_Verify_WHR_Clears_When_Hip_Is_Cleared",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3850,12 +4045,12 @@
       "line": 2633,
       "project": "chromium",
       "status": "expected",
-      "duration": 37139,
+      "duration": 39108,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t286",
+      "id": "t301",
       "title": "TC_63_Verify_BMI_Recalculation_With_Multiple_Changes",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3863,12 +4058,12 @@
       "line": 2663,
       "project": "chromium",
       "status": "expected",
-      "duration": 36523,
+      "duration": 36976,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t287",
+      "id": "t302",
       "title": "TC_64_Verify_WHR_Recalculation_With_Multiple_Changes",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3876,12 +4071,12 @@
       "line": 2712,
       "project": "chromium",
       "status": "expected",
-      "duration": 37015,
+      "duration": 37684,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t288",
+      "id": "t303",
       "title": "TC_65_Verify_BP_Systolic_Can_Be_Entered_And_Cleared",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3889,12 +4084,12 @@
       "line": 2761,
       "project": "chromium",
       "status": "expected",
-      "duration": 36095,
+      "duration": 35627,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t289",
+      "id": "t304",
       "title": "TC_66_Verify_BP_Diastolic_Can_Be_Entered_And_Cleared",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3902,12 +4097,12 @@
       "line": 2782,
       "project": "chromium",
       "status": "expected",
-      "duration": 35721,
+      "duration": 38275,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t290",
+      "id": "t305",
       "title": "TC_67_Verify_Temperature_Can_Be_Entered_And_Cleared",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3915,12 +4110,12 @@
       "line": 2803,
       "project": "chromium",
       "status": "expected",
-      "duration": 34432,
+      "duration": 36342,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t291",
+      "id": "t306",
       "title": "TC_68_Verify_SpO2_Can_Be_Entered_And_Cleared",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3928,12 +4123,12 @@
       "line": 2824,
       "project": "chromium",
       "status": "expected",
-      "duration": 34988,
+      "duration": 37503,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t292",
+      "id": "t307",
       "title": "TC_69_Verify_FBS_Can_Be_Entered_And_Cleared",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3941,12 +4136,12 @@
       "line": 2845,
       "project": "chromium",
       "status": "expected",
-      "duration": 34342,
+      "duration": 37319,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t293",
+      "id": "t308",
       "title": "TC_70_Verify_Blood_Group_Selection_Can_Be_Changed",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3954,12 +4149,12 @@
       "line": 2866,
       "project": "chromium",
       "status": "expected",
-      "duration": 34652,
+      "duration": 37842,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t294",
+      "id": "t309",
       "title": "TC_71_Verify_Blood_Group_Can_Be_Reset_To_Default",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3967,12 +4162,12 @@
       "line": 2895,
       "project": "chromium",
       "status": "expected",
-      "duration": 34488,
+      "duration": 37473,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t295",
+      "id": "t310",
       "title": "TC_72_Verify_Height_Decimal_Precision",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3980,12 +4175,12 @@
       "line": 2918,
       "project": "chromium",
       "status": "expected",
-      "duration": 36001,
+      "duration": 37223,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t296",
+      "id": "t311",
       "title": "TC_73_Verify_Weight_Decimal_Precision",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3993,12 +4188,12 @@
       "line": 2935,
       "project": "chromium",
       "status": "expected",
-      "duration": 36274,
+      "duration": 36949,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t297",
+      "id": "t312",
       "title": "TC_74_Verify_Next_Does_Not_Proceed_With_Invalid_Required_Fields",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4006,12 +4201,12 @@
       "line": 2952,
       "project": "chromium",
       "status": "expected",
-      "duration": 35982,
+      "duration": 40140,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t298",
+      "id": "t313",
       "title": "TC_75_Verify_Next_Proceeds_After_Required_Fields_Are_Valid",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4019,7 +4214,7 @@
       "line": 2983,
       "project": "chromium",
       "status": "expected",
-      "duration": 34790,
+      "duration": 33471,
       "retries": 0,
       "error": ""
     }
@@ -4054,6 +4249,16 @@
       "skipped": 0,
       "total": 299,
       "duration": 16544255
+    },
+    {
+      "run": 43,
+      "date": "2026-09-24",
+      "passed": 268,
+      "failed": 17,
+      "flaky": 29,
+      "skipped": 0,
+      "total": 314,
+      "duration": 17477671
     }
   ]
 }
