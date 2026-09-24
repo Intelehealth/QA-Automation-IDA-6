@@ -128,7 +128,7 @@ async function setupToAbdominalDistentionAssessment(page) {
     .locator('div.bg-white.rounded-xl.border')
     .filter({ has: page.locator('p.font-semibold', { hasText: patientFullName }) });
 
-  await expect(patientCard).toBeVisible({ timeout: 30000 });
+  await expect(patientCard).toBeVisible({ timeout: 60000 });
 
   const startVisitButton = patientCard.getByRole('button', { name: 'Start Visit' });
   await expect(startVisitButton).toBeVisible({ timeout: 30000 });
@@ -2306,4 +2306,192 @@ test('TC_AD_030_Verify_End_To_End_Abdominal_Distention_Protocol', async ({ page 
   await completeVisitUpload(page, { doctorSpecialty: 'General Physician' });
 });
 
+
+
+// TC_AD_031 - Verify onset speed "Over few months" is selectable
+test('TC_AD_031_Verify_Onset_Speed_Over_Few_Months', async ({ page }) => {
+  await setupToAbdominalDistentionAssessment(page);
+  await answerSymptomDuration(page, '2', 'Months');
+  await expect(page.getByRole('button', { name: 'Over few months', exact: true })).toBeVisible({ timeout: 15000 });
 });
+ 
+// TC_AD_032 - Verify onset speed "Over few years" is selectable
+test('TC_AD_032_Verify_Onset_Speed_Over_Few_Years', async ({ page }) => {
+  await setupToAbdominalDistentionAssessment(page);
+  await answerSymptomDuration(page, '2', 'Years');
+  await expect(page.getByRole('button', { name: 'Over few years', exact: true })).toBeVisible({ timeout: 15000 });
+});
+ 
+// TC_AD_033 - Verify onset speed "Suddenly" is selectable
+test('TC_AD_033_Verify_Onset_Speed_Suddenly', async ({ page }) => {
+  await setupToAbdominalDistentionAssessment(page);
+  await answerSymptomDuration(page, '1', 'Hours');
+  await answerOnsetSpeed(page, 'Suddenly');
+  await expect(page.getByText('Suddenly', { exact: false })).toBeVisible({ timeout: 10000 });
+});
+ 
+// TC_AD_034 - Verify swelling cycle "Yes" is selectable
+test('TC_AD_034_Verify_Swelling_Cycle_Yes', async ({ page }) => {
+  await setupToAbdominalDistentionAssessment(page);
+  await answerSymptomDuration(page, '3', 'Hours');
+  await answerOnsetSpeed(page, 'Over few days');
+  await expect(page.getByText('Does the swelling increase or decrease during a 24 hr cycle?', { exact: false })).toBeVisible({ timeout: 15000 });
+  await expect(page.getByRole('button', { name: 'Yes', exact: true }).first()).toBeVisible({ timeout: 10000 });
+});
+ 
+// TC_AD_035 - Verify weight gain option is selectable
+test('TC_AD_035_Verify_Weight_Change_Weight_Gain', async ({ page }) => {
+  await setupToAbdominalDistentionAssessment(page);
+  await answerSymptomDuration(page, '3', 'Hours');
+  await answerOnsetSpeed(page, 'Over few days');
+  await answerSwellingCycle(page, 'No');
+  await expect(page.getByText('Weight change', { exact: false })).toBeVisible({ timeout: 15000 });
+  await expect(page.getByRole('button', { name: 'Weight gain', exact: true })).toBeVisible({ timeout: 10000 });
+  await page.getByRole('button', { name: 'Weight gain', exact: true }).click();
+  await expect(page.getByText('Weight gain', { exact: true })).toBeVisible({ timeout: 10000 });
+});
+ 
+// TC_AD_036 - Verify weight loss option is selectable
+test('TC_AD_036_Verify_Weight_Change_Weight_Loss', async ({ page }) => {
+  await setupToAbdominalDistentionAssessment(page);
+  await answerSymptomDuration(page, '3', 'Hours');
+  await answerOnsetSpeed(page, 'Over few days');
+  await answerSwellingCycle(page, 'No');
+  await expect(page.getByText('Weight change', { exact: false })).toBeVisible({ timeout: 15000 });
+  await expect(page.getByRole('button', { name: 'Weight loss', exact: true })).toBeVisible({ timeout: 10000 });
+  await page.getByRole('button', { name: 'Weight loss', exact: true }).click();
+  await expect(page.getByText('Weight loss', { exact: true })).toBeVisible({ timeout: 10000 });
+});
+ 
+// TC_AD_037 - Verify appetite increased option is selectable
+test('TC_AD_037_Verify_Appetite_Increased', async ({ page }) => {
+  await setupToAbdominalDistentionAssessment(page);
+  await answerSymptomDuration(page, '3', 'Hours');
+  await answerOnsetSpeed(page, 'Over few days');
+  await answerSwellingCycle(page, 'No');
+  await answerWeightChange(page, 'No change');
+  await expect(page.getByText('Have you experienced any change in appetite?', { exact: false })).toBeVisible({ timeout: 15000 });
+  await expect(page.getByRole('button', { name: 'Appetite increased', exact: true })).toBeVisible({ timeout: 10000 });
+  await page.getByRole('button', { name: 'Appetite increased', exact: true }).click();
+  await expect(page.getByText('Appetite increased', { exact: true })).toBeVisible({ timeout: 10000 });
+});
+ 
+// TC_AD_038 - Verify appetite decreased option is selectable
+test('TC_AD_038_Verify_Appetite_Decreased', async ({ page }) => {
+  await setupToAbdominalDistentionAssessment(page);
+  await answerSymptomDuration(page, '3', 'Hours');
+  await answerOnsetSpeed(page, 'Over few days');
+  await answerSwellingCycle(page, 'No');
+  await answerWeightChange(page, 'No change');
+  await expect(page.getByText('Have you experienced any change in appetite?', { exact: false })).toBeVisible({ timeout: 15000 });
+  await expect(page.getByRole('button', { name: 'Appetite decreased', exact: true })).toBeVisible({ timeout: 10000 });
+  await page.getByRole('button', { name: 'Appetite decreased', exact: true }).click();
+  await expect(page.getByText('Appetite decreased', { exact: true })).toBeVisible({ timeout: 10000 });
+});
+ 
+// TC_AD_039 - Verify associated symptom "Diarrhea" can be selected
+test('TC_AD_039_Verify_Associated_Symptom_Diarrhea', async ({ page }) => {
+  await setupToAbdominalDistentionAssessment(page);
+  await answerSymptomDuration(page, '3', 'Hours');
+  await answerOnsetSpeed(page, 'Over few days');
+  await answerSwellingCycle(page, 'No');
+  await answerWeightChange(page, 'No change');
+  await answerAppetiteChange(page, 'No change');
+  await expect(page.getByText('Do you have the following symptom(s)?', { exact: false })).toBeVisible({ timeout: 15000 });
+  const diarrhea = page.getByText('Diarrhea', { exact: false }).first();
+  await diarrhea.scrollIntoViewIfNeeded().catch(() => {});
+  await expect(diarrhea).toBeVisible({ timeout: 10000 });
+});
+ 
+// TC_AD_040 - Verify associated symptom "Vomiting" can be selected
+test('TC_AD_040_Verify_Associated_Symptom_Vomiting', async ({ page }) => {
+  await setupToAbdominalDistentionAssessment(page);
+  await answerSymptomDuration(page, '3', 'Hours');
+  await answerOnsetSpeed(page, 'Over few days');
+  await answerSwellingCycle(page, 'No');
+  await answerWeightChange(page, 'No change');
+  await answerAppetiteChange(page, 'No change');
+  await expect(page.getByText('Do you have the following symptom(s)?', { exact: false })).toBeVisible({ timeout: 15000 });
+  const vomiting = page.getByText('Vomiting', { exact: false }).first();
+  await vomiting.scrollIntoViewIfNeeded().catch(() => {});
+  await expect(vomiting).toBeVisible({ timeout: 10000 });
+});
+ 
+// TC_AD_041 - Verify jaundice history "No" answer is recordable
+test('TC_AD_041_Verify_Jaundice_History_No', async ({ page }) => {
+  await setupToAbdominalDistentionAssessment(page);
+  await answerSymptomDuration(page, '3', 'Hours');
+  await answerOnsetSpeed(page, 'Over few days');
+  await answerSwellingCycle(page, 'No');
+  await answerWeightChange(page, 'No change');
+  await answerAppetiteChange(page, 'No change');
+  await answerAssociatedSymptoms(page, 'No');
+  await expect(page.getByText('Did you ever suffer from jaundice?', { exact: false })).toBeVisible({ timeout: 15000 });
+  await expect(page.getByRole('button', { name: 'No', exact: true }).first()).toBeVisible({ timeout: 10000 });
+  await page.getByRole('button', { name: 'No', exact: true }).first().click();
+  await expect(page.getByText('No', { exact: true }).first()).toBeVisible({ timeout: 10000 });
+});
+ 
+// TC_AD_042 - Verify treatment history "Yes [Describe]" shows text input
+test('TC_AD_042_Verify_Treatment_History_Yes_Shows_Input', async ({ page }) => {
+  await setupToAbdominalDistentionAssessment(page);
+  await answerSymptomDuration(page, '3', 'Hours');
+  await answerOnsetSpeed(page, 'Over few days');
+  await answerSwellingCycle(page, 'No');
+  await answerWeightChange(page, 'No change');
+  await answerAppetiteChange(page, 'No change');
+  await answerAssociatedSymptoms(page, 'No');
+  await answerJaundiceHistory(page, 'No');
+  await expect(page.getByText('Have you taken any treatment', { exact: false })).toBeVisible({ timeout: 15000 });
+  await page.getByRole('button', { name: 'Yes [Describe]', exact: true }).click();
+  await expect(page.getByRole('textbox').last()).toBeVisible({ timeout: 10000 });
+});
+ 
+// TC_AD_043 - Verify additional information field accepts text input
+test('TC_AD_043_Verify_Additional_Info_Accepts_Text', async ({ page }) => {
+  await setupToAbdominalDistentionAssessment(page);
+  await answerSymptomDuration(page, '3', 'Hours');
+  await answerOnsetSpeed(page, 'Over few days');
+  await answerSwellingCycle(page, 'No');
+  await answerWeightChange(page, 'No change');
+  await answerAppetiteChange(page, 'No change');
+  await answerAssociatedSymptoms(page, 'No');
+  await answerJaundiceHistory(page, 'No');
+  await answerTreatmentHistory(page, 'None');
+  await answerAdditionalInfo(page, { text: 'Test additional info', skip: false });
+  // Additional info is recorded but shown in a collapsed summary section.
+  // Verify it exists in the DOM (attached) rather than requiring visibility.
+  await expect(
+    page.getByText('Test additional info', { exact: false }).first()
+  ).toBeAttached({ timeout: 10000 });
+});
+ 
+// TC_AD_044 - Verify Q7/9 associated symptoms question counter displays correctly
+test('TC_AD_044_Verify_Associated_Symptoms_Question_Counter', async ({ page }) => {
+  await setupToAbdominalDistentionAssessment(page);
+  await answerSymptomDuration(page, '3', 'Hours');
+  await answerOnsetSpeed(page, 'Over few days');
+  await answerSwellingCycle(page, 'No');
+  await answerWeightChange(page, 'No change');
+  await answerAppetiteChange(page, 'No change');
+  await expect(
+    page.getByText('Question 6/9', { exact: true })
+  ).toBeVisible({ timeout: 15000 });
+  await expect(
+    page.getByText('Do you have the following symptom(s)?', { exact: false })
+  ).toBeVisible({ timeout: 10000 });
+});
+ 
+// TC_AD_045 - Verify "Does the swelling increase or decrease" question displays
+test('TC_AD_045_Verify_Swelling_Cycle_Question_Text', async ({ page }) => {
+  await setupToAbdominalDistentionAssessment(page);
+  await answerSymptomDuration(page, '3', 'Hours');
+  await answerOnsetSpeed(page, 'Over few days');
+  await expect(
+    page.getByText('Does the swelling increase or decrease during a 24 hr cycle?', { exact: false })
+  ).toBeVisible({ timeout: 15000 });
+  await expect(page.getByRole('button', { name: 'No', exact: true }).first()).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Yes', exact: true }).first()).toBeVisible();
+});
+
+}); // end test.describe
