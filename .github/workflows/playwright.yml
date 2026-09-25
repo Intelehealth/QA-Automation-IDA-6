@@ -285,6 +285,11 @@ jobs:
       #
       # Reads dashboard/data.json, which the builder already
       # normalised, so Slack and the dashboard always agree.
+      #
+      # Also builds two QuickChart image URLs. QuickChart renders
+      # the PNG on its own servers, so Slack fetches the picture
+      # straight from the URL -- nothing extra is published and
+      # there is no GitHub Pages propagation delay.
       # ========================================================
 
       - name: Parse Test Results
@@ -310,6 +315,8 @@ jobs:
               echo "pass_rate=0"
               echo "modules=0"
               echo "failing_modules=Unknown"
+              echo "chart_overall="
+              echo "chart_modules="
             } >> "$GITHUB_OUTPUT"
 
             exit 0
@@ -352,6 +359,84 @@ jobs:
           console.log(`🔴 Failing   : ${failingText}`);
           console.log('========================================');
 
+
+          // ---- QuickChart images for Slack --------------------------
+          // Counts are written into the labels themselves, so every
+          // number is readable without hovering or opening anything.
+
+          const C = { pass:'#2E9E5B', fail:'#D93A3A', flaky:'#E09514', skip:'#93A0B4' };
+
+          const quickChart = (config, w, h) =>
+            'https://quickchart.io/chart?bkg=white&w=' + w + '&h=' + h +
+            '&c=' + encodeURIComponent(JSON.stringify(config));
+
+          let chartOverall = '';
+          let chartModules = '';
+
+          if ((t.total || 0) > 0) {
+
+            chartOverall = quickChart({
+              type: 'doughnut',
+              data: {
+                labels: [
+                  'Passed  ' + (t.passed || 0),
+                  'Failed  ' + (t.failed || 0),
+                  'Flaky  ' + (t.flaky || 0),
+                  'Skipped  ' + (t.skipped || 0)
+                ],
+                datasets: [{
+                  data: [t.passed || 0, t.failed || 0, t.flaky || 0, t.skipped || 0],
+                  backgroundColor: [C.pass, C.fail, C.flaky, C.skip],
+                  borderWidth: 0
+                }]
+              },
+              options: {
+                title: {
+                  display: true,
+                  text: [
+                    (t.passRate || 0) + '% pass rate',
+                    (t.passed || 0) + ' passed  /  ' + (t.failed || 0) + ' failed  /  ' + (t.total || 0) + ' total'
+                  ],
+                  fontSize: 17
+                },
+                legend: { position: 'right', labels: { fontSize: 13, boxWidth: 14 } },
+                cutoutPercentage: 60
+              }
+            }, 620, 320);
+
+
+            const mods = (data.modules || []).slice(0, 12);
+
+            const label = (m) => {
+              const name = m.name.length > 22 ? m.name.slice(0, 20) + '...' : m.name;
+              return [name, m.passed + ' pass / ' + m.failed + ' fail'];
+            };
+
+            chartModules = quickChart({
+              type: 'horizontalBar',
+              data: {
+                labels: mods.map(label),
+                datasets: [
+                  { label:'Passed',  backgroundColor:C.pass,  data: mods.map(m => m.passed) },
+                  { label:'Failed',  backgroundColor:C.fail,  data: mods.map(m => m.failed) },
+                  { label:'Flaky',   backgroundColor:C.flaky, data: mods.map(m => m.flaky) },
+                  { label:'Skipped', backgroundColor:C.skip,  data: mods.map(m => m.skipped) }
+                ]
+              },
+              options: {
+                title: { display: true, text: 'Test cases by module', fontSize: 17 },
+                legend: { position: 'bottom', labels: { fontSize: 12, boxWidth: 12 } },
+                scales: {
+                  xAxes: [{ stacked: true, ticks: { beginAtZero: true, fontSize: 12 } }],
+                  yAxes: [{ stacked: true, ticks: { fontSize: 12 } }]
+                }
+              }
+            }, 780, Math.max(300, 90 + mods.length * 40));
+
+            console.log(`🖼️ Chart URLs : ${chartOverall.length} / ${chartModules.length} chars`);
+          }
+
+
           const out = [
             `passed=${t.passed || 0}`,
             `failed=${t.failed || 0}`,
@@ -360,7 +445,9 @@ jobs:
             `total=${t.total || 0}`,
             `pass_rate=${t.passRate || 0}`,
             `modules=${modules.size}`,
-            `failing_modules=${failingText}`
+            `failing_modules=${failingText}`,
+            `chart_overall=${chartOverall}`,
+            `chart_modules=${chartModules}`
           ];
 
           fs.appendFileSync(
@@ -623,6 +710,8 @@ jobs:
           PASS_RATE: ${{ steps.results.outputs.pass_rate }}
           MODULES: ${{ steps.results.outputs.modules }}
           FAILING_MODULES: ${{ steps.results.outputs.failing_modules }}
+          CHART_OVERALL: ${{ steps.results.outputs.chart_overall }}
+          CHART_MODULES: ${{ steps.results.outputs.chart_modules }}
           RUN_NUMBER: ${{ github.run_number }}
           COMMIT_MESSAGE: ${{ steps.commit.outputs.message }}
           COMMIT_URL: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
@@ -657,6 +746,8 @@ jobs:
             --arg pass_rate "$PASS_RATE" \
             --arg modules "$MODULES" \
             --arg failing_modules "$FAILING_MODULES" \
+            --arg chart_overall "$CHART_OVERALL" \
+            --arg chart_modules "$CHART_MODULES" \
             --arg run_number "$RUN_NUMBER" \
             --arg commit_message "$COMMIT_MESSAGE" \
             --arg commit_url "$COMMIT_URL" \
@@ -666,7 +757,7 @@ jobs:
             --arg allure_url "$ALLURE_URL" \
             --arg github_logs "$GITHUB_LOG_URL" \
             '{
-              blocks: [
+              blocks: ([
 
                 {
                   type: "header",
@@ -723,6 +814,20 @@ jobs:
                     text: "🔴 *Modules With Failures:*\n\($failing_modules)"
                   }
                 },
+
+                (if $chart_overall == "" then null else {
+                  type: "image",
+                  title: { type: "plain_text", text: "Overall pass / fail" },
+                  image_url: $chart_overall,
+                  alt_text: "Doughnut chart of passed, failed, flaky and skipped test cases"
+                } end),
+
+                (if $chart_modules == "" then null else {
+                  type: "image",
+                  title: { type: "plain_text", text: "Test cases by module" },
+                  image_url: $chart_modules,
+                  alt_text: "Stacked bar chart of test case results for each module"
+                } end),
 
                 {
                   type: "divider"
@@ -789,7 +894,7 @@ jobs:
                   ]
                 }
 
-              ]
+              ] | map(select(. != null)))
             }'
           )
 
