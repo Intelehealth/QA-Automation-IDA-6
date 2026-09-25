@@ -4,36 +4,46 @@
     "repo": "Intelehealth/QA-Automation-IDA-6",
     "branch": "main",
     "actor": "sambit-QA",
-    "runNumber": "43",
-    "runUrl": "https://github.com/Intelehealth/QA-Automation-IDA-6/actions/runs/36003754035",
-    "commitSha": "91220da",
-    "commitMessage": "feat: add 15 new test cases (TC_AD_031-045) from Abdominal Distention JSON covering onset speed, weight/appetite changes, associated symptoms, treatment history, and question flow validation",
-    "commitUrl": "https://github.com/Intelehealth/QA-Automation-IDA-6/commit/91220da9d86031b1069f36220232e338f355199b",
+    "runNumber": "44",
+    "runUrl": "https://github.com/Intelehealth/QA-Automation-IDA-6/actions/runs/36117146718",
+    "commitSha": "94e7e9f",
+    "commitMessage": "feat(ci): add pass/fail charts to Slack summary",
+    "commitUrl": "https://github.com/Intelehealth/QA-Automation-IDA-6/commit/94e7e9f54f23ecd640283b20f17a65d164362ae2",
     "allureUrl": "https://Intelehealth.github.io/QA-Automation-IDA-6/allure/",
     "baseUrl": "https://dev.intelehealth.org",
     "environment": "DEV",
-    "runTime": "2026-09-24 23:35:38 IST",
-    "generatedAt": "2026-09-24T18:05:38.320Z"
+    "runTime": "2026-09-25 20:06:48 IST",
+    "generatedAt": "2026-09-25T14:36:48.629Z"
   },
   "totals": {
-    "passed": 268,
-    "failed": 17,
-    "flaky": 29,
+    "passed": 254,
+    "failed": 27,
+    "flaky": 33,
     "skipped": 0,
     "total": 314,
-    "duration": 17477671,
-    "passRate": 94.6
+    "duration": 19082161,
+    "passRate": 91.4
   },
   "stats": {
-    "passed": 268,
-    "failed": 17,
-    "flaky": 29,
+    "passed": 254,
+    "failed": 27,
+    "flaky": 33,
     "skipped": 0,
     "total": 314,
-    "duration": 17477671,
-    "wallClock": 17663777.838
+    "duration": 19082161,
+    "wallClock": 19368103.353
   },
   "modules": [
+    {
+      "name": "Start Visit",
+      "passed": 63,
+      "failed": 12,
+      "flaky": 0,
+      "skipped": 0,
+      "total": 75,
+      "duration": 4207201,
+      "passRate": 84
+    },
     {
       "name": "Start Visit - Vitals",
       "passed": 40,
@@ -41,77 +51,67 @@
       "flaky": 0,
       "skipped": 0,
       "total": 45,
-      "duration": 1998096,
+      "duration": 1971827,
       "passRate": 88.9
     },
     {
-      "name": "Start Visit",
-      "passed": 69,
-      "failed": 4,
-      "flaky": 2,
-      "skipped": 0,
-      "total": 75,
-      "duration": 3463997,
-      "passRate": 94.7
-    },
-    {
-      "name": "Abdominal Distention Protocol",
-      "passed": 37,
+      "name": "Medical History",
+      "passed": 11,
       "failed": 3,
       "flaky": 6,
       "skipped": 0,
-      "total": 46,
-      "duration": 2948045,
-      "passRate": 93.5
+      "total": 20,
+      "duration": 2674228,
+      "passRate": 85
     },
     {
       "name": "Forgot Password",
-      "passed": 1,
+      "passed": 2,
       "failed": 3,
-      "flaky": 2,
+      "flaky": 1,
       "skipped": 0,
       "total": 6,
-      "duration": 255149,
+      "duration": 226054,
       "passRate": 50
     },
     {
       "name": "Physical Examination",
-      "passed": 43,
-      "failed": 1,
-      "flaky": 7,
+      "passed": 39,
+      "failed": 2,
+      "flaky": 10,
       "skipped": 0,
       "total": 51,
-      "duration": 2868276,
-      "passRate": 98
+      "duration": 3240949,
+      "passRate": 96.1
+    },
+    {
+      "name": "Abdominal Distention Protocol",
+      "passed": 36,
+      "failed": 2,
+      "flaky": 8,
+      "skipped": 0,
+      "total": 46,
+      "duration": 3330872,
+      "passRate": 95.7
     },
     {
       "name": "Abdominal Pain Protocol",
-      "passed": 22,
-      "failed": 1,
-      "flaky": 7,
+      "passed": 24,
+      "failed": 0,
+      "flaky": 6,
       "skipped": 0,
       "total": 30,
-      "duration": 2503605,
-      "passRate": 96.7
+      "duration": 2484645,
+      "passRate": 100
     },
     {
-      "name": "Medical History",
+      "name": "Start Visit - Visit Reason",
       "passed": 18,
       "failed": 0,
       "flaky": 2,
       "skipped": 0,
       "total": 20,
-      "duration": 2348139,
-      "passRate": 100
-    },
-    {
-      "name": "Start Visit - Visit Reason",
-      "passed": 17,
-      "failed": 0,
-      "flaky": 3,
-      "skipped": 0,
-      "total": 20,
-      "duration": 844180,
+      "duration": 706232,
       "passRate": 100
     },
     {
@@ -121,7 +121,7 @@
       "flaky": 0,
       "skipped": 0,
       "total": 16,
-      "duration": 219427,
+      "duration": 209579,
       "passRate": 100
     },
     {
@@ -131,7 +131,7 @@
       "flaky": 0,
       "skipped": 0,
       "total": 5,
-      "duration": 28757,
+      "duration": 30574,
       "passRate": 100
     }
   ],
@@ -144,10 +144,10 @@
       "file": "ForgetPassword.spec.js",
       "line": 15,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 58976,
-      "retries": 2,
-      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })"
+      "status": "expected",
+      "duration": 11868,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t1",
@@ -157,10 +157,10 @@
       "file": "ForgetPassword.spec.js",
       "line": 38,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 44822,
+      "status": "unexpected",
+      "duration": 60212,
       "retries": 2,
-      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })"
+      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })"
     },
     {
       "id": "t2",
@@ -171,7 +171,7 @@
       "line": 59,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 59254,
+      "duration": 60942,
       "retries": 2,
       "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })"
     },
@@ -183,10 +183,10 @@
       "file": "ForgetPassword.spec.js",
       "line": 74,
       "project": "chromium",
-      "status": "expected",
-      "duration": 10386,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 59527,
+      "retries": 2,
+      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })"
     },
     {
       "id": "t4",
@@ -196,10 +196,10 @@
       "file": "ForgetPassword.spec.js",
       "line": 92,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 25338,
-      "retries": 1,
-      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })"
+      "status": "expected",
+      "duration": 5906,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t5",
@@ -209,10 +209,10 @@
       "file": "ForgetPassword.spec.js",
       "line": 120,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 56373,
-      "retries": 2,
-      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })\n\nError: expect(locator).toContainText(expected) failed\n\nLocator: getByRole('alert').filter({ hasText: 'Request OTP Failed' })\nExpected substring: \"No user exists with this phone number/email/username.\"\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toContainText\" with timeout 10000ms\n  - waiting for getByRole('alert').filter({ hasText: 'Request OTP Failed' })\n    2 × locator resolved to <div id=\"1\" tabindex=\"0\" role=\"alert\" data-in=\"true\" class=\"Toastify__toast Toastify__toast-theme--light Toastify__toast--error Toastify__toast--close-on-click Toastify--animate Toastify__bounce-enter--bottom-right\">…</div>\n      - unexpected value \"Request OTP FailedRequest OTP Failed\"\n    5 × locator resolved to <div id=\"1\" tabindex=\"0\" role=\"alert\" data-in"
+      "status": "flaky",
+      "duration": 27599,
+      "retries": 1,
+      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })"
     },
     {
       "id": "t6",
@@ -223,7 +223,7 @@
       "line": 21,
       "project": "chromium",
       "status": "expected",
-      "duration": 6728,
+      "duration": 7113,
       "retries": 0,
       "error": ""
     },
@@ -236,7 +236,7 @@
       "line": 46,
       "project": "chromium",
       "status": "expected",
-      "duration": 4855,
+      "duration": 5652,
       "retries": 0,
       "error": ""
     },
@@ -249,7 +249,7 @@
       "line": 62,
       "project": "chromium",
       "status": "expected",
-      "duration": 5839,
+      "duration": 5830,
       "retries": 0,
       "error": ""
     },
@@ -262,7 +262,7 @@
       "line": 92,
       "project": "chromium",
       "status": "expected",
-      "duration": 5846,
+      "duration": 6564,
       "retries": 0,
       "error": ""
     },
@@ -275,7 +275,7 @@
       "line": 126,
       "project": "chromium",
       "status": "expected",
-      "duration": 5489,
+      "duration": 5415,
       "retries": 0,
       "error": ""
     },
@@ -288,7 +288,7 @@
       "line": 58,
       "project": "chromium",
       "status": "expected",
-      "duration": 10931,
+      "duration": 12688,
       "retries": 0,
       "error": ""
     },
@@ -301,7 +301,7 @@
       "line": 77,
       "project": "chromium",
       "status": "expected",
-      "duration": 12860,
+      "duration": 11700,
       "retries": 0,
       "error": ""
     },
@@ -314,7 +314,7 @@
       "line": 93,
       "project": "chromium",
       "status": "expected",
-      "duration": 13745,
+      "duration": 12258,
       "retries": 0,
       "error": ""
     },
@@ -327,7 +327,7 @@
       "line": 108,
       "project": "chromium",
       "status": "expected",
-      "duration": 12729,
+      "duration": 12067,
       "retries": 0,
       "error": ""
     },
@@ -340,7 +340,7 @@
       "line": 127,
       "project": "chromium",
       "status": "expected",
-      "duration": 12897,
+      "duration": 12360,
       "retries": 0,
       "error": ""
     },
@@ -353,7 +353,7 @@
       "line": 142,
       "project": "chromium",
       "status": "expected",
-      "duration": 12271,
+      "duration": 11909,
       "retries": 0,
       "error": ""
     },
@@ -366,7 +366,7 @@
       "line": 169,
       "project": "chromium",
       "status": "expected",
-      "duration": 13443,
+      "duration": 12660,
       "retries": 0,
       "error": ""
     },
@@ -379,7 +379,7 @@
       "line": 193,
       "project": "chromium",
       "status": "expected",
-      "duration": 18910,
+      "duration": 17965,
       "retries": 0,
       "error": ""
     },
@@ -392,7 +392,7 @@
       "line": 266,
       "project": "chromium",
       "status": "expected",
-      "duration": 14227,
+      "duration": 12564,
       "retries": 0,
       "error": ""
     },
@@ -405,7 +405,7 @@
       "line": 280,
       "project": "chromium",
       "status": "expected",
-      "duration": 12455,
+      "duration": 10601,
       "retries": 0,
       "error": ""
     },
@@ -418,7 +418,7 @@
       "line": 298,
       "project": "chromium",
       "status": "expected",
-      "duration": 12708,
+      "duration": 12868,
       "retries": 0,
       "error": ""
     },
@@ -431,7 +431,7 @@
       "line": 316,
       "project": "chromium",
       "status": "expected",
-      "duration": 12718,
+      "duration": 12112,
       "retries": 0,
       "error": ""
     },
@@ -444,7 +444,7 @@
       "line": 334,
       "project": "chromium",
       "status": "expected",
-      "duration": 12896,
+      "duration": 12572,
       "retries": 0,
       "error": ""
     },
@@ -457,7 +457,7 @@
       "line": 352,
       "project": "chromium",
       "status": "expected",
-      "duration": 12464,
+      "duration": 11852,
       "retries": 0,
       "error": ""
     },
@@ -470,7 +470,7 @@
       "line": 366,
       "project": "chromium",
       "status": "expected",
-      "duration": 13146,
+      "duration": 12834,
       "retries": 0,
       "error": ""
     },
@@ -483,7 +483,7 @@
       "line": 388,
       "project": "chromium",
       "status": "expected",
-      "duration": 21027,
+      "duration": 20569,
       "retries": 0,
       "error": ""
     },
@@ -493,12 +493,12 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 1684,
+      "line": 1712,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 105273,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)"
+      "status": "expected",
+      "duration": 32504,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t28",
@@ -506,10 +506,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 1697,
+      "line": 1725,
       "project": "chromium",
       "status": "expected",
-      "duration": 30816,
+      "duration": 32669,
       "retries": 0,
       "error": ""
     },
@@ -519,10 +519,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 1711,
+      "line": 1739,
       "project": "chromium",
       "status": "expected",
-      "duration": 31437,
+      "duration": 35288,
       "retries": 0,
       "error": ""
     },
@@ -532,10 +532,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 1728,
+      "line": 1756,
       "project": "chromium",
       "status": "expected",
-      "duration": 33952,
+      "duration": 35433,
       "retries": 0,
       "error": ""
     },
@@ -545,10 +545,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 1746,
+      "line": 1774,
       "project": "chromium",
       "status": "expected",
-      "duration": 34837,
+      "duration": 36829,
       "retries": 0,
       "error": ""
     },
@@ -558,12 +558,12 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 1764,
+      "line": 1792,
       "project": "chromium",
-      "status": "expected",
-      "duration": 35631,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 167004,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Distention', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Distention', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Distention', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Distention', exact: true }).first()"
     },
     {
       "id": "t33",
@@ -571,10 +571,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 1784,
+      "line": 1812,
       "project": "chromium",
       "status": "expected",
-      "duration": 35372,
+      "duration": 38373,
       "retries": 0,
       "error": ""
     },
@@ -584,12 +584,12 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 1803,
+      "line": 1831,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 110563,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - "
+      "status": "expected",
+      "duration": 45160,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t35",
@@ -597,12 +597,12 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 1819,
+      "line": 1847,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 113660,
+      "duration": 183016,
       "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - "
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByText('Question 7/9', { exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByText('Question 7/9', { exact: true })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByText('Question 7/9', { exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByText('Question 7/9', { exact: true })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByText('Question 7/9', { exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByText('Question 7/9', { exact: true })"
     },
     {
       "id": "t36",
@@ -610,10 +610,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 1842,
+      "line": 1870,
       "project": "chromium",
       "status": "expected",
-      "duration": 42133,
+      "duration": 44555,
       "retries": 0,
       "error": ""
     },
@@ -623,12 +623,12 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 1873,
+      "line": 1901,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 130064,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nTimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Accept' })\n    - locator resolved to <button type=\"button\" class=\"btn-base-styles btn-primary-variant py-3 gap-2 w-auto px-8\">Accept</bu"
+      "status": "expected",
+      "duration": 44832,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t38",
@@ -636,10 +636,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 1889,
+      "line": 1917,
       "project": "chromium",
       "status": "expected",
-      "duration": 43851,
+      "duration": 47400,
       "retries": 0,
       "error": ""
     },
@@ -649,10 +649,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 1911,
+      "line": 1939,
       "project": "chromium",
       "status": "expected",
-      "duration": 49138,
+      "duration": 49420,
       "retries": 0,
       "error": ""
     },
@@ -662,12 +662,12 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 1936,
+      "line": 1964,
       "project": "chromium",
-      "status": "expected",
-      "duration": 47328,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 113515,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Distention', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Distention', exact: true }).first()"
     },
     {
       "id": "t41",
@@ -675,10 +675,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 1949,
+      "line": 1977,
       "project": "chromium",
       "status": "expected",
-      "duration": 49392,
+      "duration": 50397,
       "retries": 0,
       "error": ""
     },
@@ -688,12 +688,12 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 1971,
+      "line": 1999,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 82783,
-      "retries": 1,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)"
+      "status": "expected",
+      "duration": 48848,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t43",
@@ -701,10 +701,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2013,
+      "line": 2041,
       "project": "chromium",
       "status": "expected",
-      "duration": 58975,
+      "duration": 61630,
       "retries": 0,
       "error": ""
     },
@@ -714,12 +714,12 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2035,
+      "line": 2063,
       "project": "chromium",
-      "status": "expected",
-      "duration": 60532,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 128805,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Distention', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Distention', exact: true }).first()"
     },
     {
       "id": "t45",
@@ -727,10 +727,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2065,
+      "line": 2093,
       "project": "chromium",
       "status": "expected",
-      "duration": 62919,
+      "duration": 67166,
       "retries": 0,
       "error": ""
     },
@@ -740,10 +740,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2085,
+      "line": 2113,
       "project": "chromium",
       "status": "expected",
-      "duration": 64839,
+      "duration": 69141,
       "retries": 0,
       "error": ""
     },
@@ -753,12 +753,12 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2106,
+      "line": 2134,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 105202,
-      "retries": 1,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)"
+      "status": "expected",
+      "duration": 71050,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t48",
@@ -766,12 +766,12 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2117,
+      "line": 2145,
       "project": "chromium",
-      "status": "expected",
-      "duration": 71674,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 137663,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Distention', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Distention', exact: true }).first()"
     },
     {
       "id": "t49",
@@ -779,10 +779,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2134,
+      "line": 2162,
       "project": "chromium",
       "status": "expected",
-      "duration": 69367,
+      "duration": 73620,
       "retries": 0,
       "error": ""
     },
@@ -792,12 +792,12 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2150,
+      "line": 2178,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 143014,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)"
+      "status": "expected",
+      "duration": 72761,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t51",
@@ -805,10 +805,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2165,
+      "line": 2193,
       "project": "chromium",
       "status": "expected",
-      "duration": 73806,
+      "duration": 77201,
       "retries": 0,
       "error": ""
     },
@@ -818,10 +818,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2185,
+      "line": 2213,
       "project": "chromium",
       "status": "expected",
-      "duration": 62879,
+      "duration": 66700,
       "retries": 0,
       "error": ""
     },
@@ -831,10 +831,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2223,
+      "line": 2251,
       "project": "chromium",
       "status": "expected",
-      "duration": 69134,
+      "duration": 71596,
       "retries": 0,
       "error": ""
     },
@@ -844,12 +844,12 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2236,
+      "line": 2264,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 193465,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)"
+      "status": "expected",
+      "duration": 96807,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t55",
@@ -857,12 +857,12 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2250,
+      "line": 2278,
       "project": "chromium",
-      "status": "expected",
-      "duration": 119101,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 161901,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Distention', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Distention', exact: true }).first()"
     },
     {
       "id": "t56",
@@ -870,10 +870,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2265,
+      "line": 2293,
       "project": "chromium",
       "status": "expected",
-      "duration": 93126,
+      "duration": 95597,
       "retries": 0,
       "error": ""
     },
@@ -883,12 +883,12 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2286,
+      "line": 2314,
       "project": "chromium",
-      "status": "expected",
-      "duration": 101449,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 231083,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Distention', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Distention', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Distention', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Distention', exact: true }).first()"
     },
     {
       "id": "t58",
@@ -896,10 +896,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2312,
+      "line": 2340,
       "project": "chromium",
       "status": "expected",
-      "duration": 30965,
+      "duration": 33755,
       "retries": 0,
       "error": ""
     },
@@ -909,12 +909,12 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2319,
+      "line": 2347,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 112555,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Abdominal Distention$/ }).nth(1)"
+      "status": "expected",
+      "duration": 34291,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t60",
@@ -922,12 +922,12 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2326,
+      "line": 2354,
       "project": "chromium",
-      "status": "expected",
-      "duration": 32101,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 98876,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Distention', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Distention', exact: true }).first()"
     },
     {
       "id": "t61",
@@ -935,10 +935,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2334,
+      "line": 2362,
       "project": "chromium",
       "status": "expected",
-      "duration": 33414,
+      "duration": 34645,
       "retries": 0,
       "error": ""
     },
@@ -948,10 +948,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2343,
+      "line": 2371,
       "project": "chromium",
       "status": "expected",
-      "duration": 33306,
+      "duration": 37286,
       "retries": 0,
       "error": ""
     },
@@ -961,10 +961,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2355,
+      "line": 2383,
       "project": "chromium",
       "status": "expected",
-      "duration": 32868,
+      "duration": 36449,
       "retries": 0,
       "error": ""
     },
@@ -974,10 +974,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2367,
+      "line": 2395,
       "project": "chromium",
       "status": "expected",
-      "duration": 35774,
+      "duration": 36949,
       "retries": 0,
       "error": ""
     },
@@ -987,10 +987,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2380,
+      "line": 2408,
       "project": "chromium",
       "status": "expected",
-      "duration": 35599,
+      "duration": 37643,
       "retries": 0,
       "error": ""
     },
@@ -1000,12 +1000,12 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2393,
+      "line": 2421,
       "project": "chromium",
-      "status": "expected",
-      "duration": 36367,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 166447,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Distention', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Distention', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Distention', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Distention', exact: true }).first()\n\nTimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Accept' })\n    - locator resolved to <button type=\"button\" class=\"btn-base-styles btn-primary-variant py-3 g"
     },
     {
       "id": "t67",
@@ -1013,10 +1013,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2407,
+      "line": 2435,
       "project": "chromium",
       "status": "expected",
-      "duration": 36068,
+      "duration": 40284,
       "retries": 0,
       "error": ""
     },
@@ -1026,10 +1026,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2421,
+      "line": 2449,
       "project": "chromium",
       "status": "expected",
-      "duration": 42149,
+      "duration": 44348,
       "retries": 0,
       "error": ""
     },
@@ -1039,10 +1039,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2436,
+      "line": 2464,
       "project": "chromium",
       "status": "expected",
-      "duration": 43861,
+      "duration": 45372,
       "retries": 0,
       "error": ""
     },
@@ -1052,12 +1052,12 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2451,
+      "line": 2479,
       "project": "chromium",
-      "status": "expected",
-      "duration": 48393,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 116621,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Distention', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Distention', exact: true }).first()"
     },
     {
       "id": "t71",
@@ -1065,10 +1065,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2470,
+      "line": 2498,
       "project": "chromium",
       "status": "expected",
-      "duration": 36433,
+      "duration": 44827,
       "retries": 0,
       "error": ""
     },
@@ -1078,10 +1078,10 @@
       "suite": "Abdominal Distention Protocol - Full Test Suite",
       "module": "Abdominal Distention Protocol",
       "file": "Protocol_AbdominalDistention.spec.js",
-      "line": 2486,
+      "line": 2514,
       "project": "chromium",
       "status": "expected",
-      "duration": 32480,
+      "duration": 35115,
       "retries": 0,
       "error": ""
     },
@@ -1093,10 +1093,10 @@
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2078,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 93639,
-      "retries": 1,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()"
+      "status": "expected",
+      "duration": 31062,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t74",
@@ -1107,7 +1107,7 @@
       "line": 2091,
       "project": "chromium",
       "status": "expected",
-      "duration": 32885,
+      "duration": 33128,
       "retries": 0,
       "error": ""
     },
@@ -1120,7 +1120,7 @@
       "line": 2106,
       "project": "chromium",
       "status": "expected",
-      "duration": 34676,
+      "duration": 34336,
       "retries": 0,
       "error": ""
     },
@@ -1132,10 +1132,10 @@
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2125,
       "project": "chromium",
-      "status": "expected",
-      "duration": 36330,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 151708,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()"
     },
     {
       "id": "t77",
@@ -1146,7 +1146,7 @@
       "line": 2141,
       "project": "chromium",
       "status": "expected",
-      "duration": 37145,
+      "duration": 38155,
       "retries": 0,
       "error": ""
     },
@@ -1159,7 +1159,7 @@
       "line": 2161,
       "project": "chromium",
       "status": "expected",
-      "duration": 39524,
+      "duration": 39092,
       "retries": 0,
       "error": ""
     },
@@ -1172,7 +1172,7 @@
       "line": 2184,
       "project": "chromium",
       "status": "expected",
-      "duration": 41965,
+      "duration": 41708,
       "retries": 0,
       "error": ""
     },
@@ -1184,10 +1184,10 @@
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2213,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 98536,
-      "retries": 1,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()"
+      "status": "expected",
+      "duration": 41114,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t81",
@@ -1197,10 +1197,10 @@
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2235,
       "project": "chromium",
-      "status": "expected",
-      "duration": 41491,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 98869,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()"
     },
     {
       "id": "t82",
@@ -1211,7 +1211,7 @@
       "line": 2256,
       "project": "chromium",
       "status": "expected",
-      "duration": 50971,
+      "duration": 50902,
       "retries": 0,
       "error": ""
     },
@@ -1224,7 +1224,7 @@
       "line": 2274,
       "project": "chromium",
       "status": "expected",
-      "duration": 50723,
+      "duration": 50445,
       "retries": 0,
       "error": ""
     },
@@ -1237,7 +1237,7 @@
       "line": 2298,
       "project": "chromium",
       "status": "expected",
-      "duration": 55454,
+      "duration": 55423,
       "retries": 0,
       "error": ""
     },
@@ -1249,10 +1249,10 @@
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2325,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 117671,
-      "retries": 1,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()"
+      "status": "expected",
+      "duration": 56594,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t86",
@@ -1262,10 +1262,10 @@
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2353,
       "project": "chromium",
-      "status": "expected",
-      "duration": 59094,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 115115,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()"
     },
     {
       "id": "t87",
@@ -1276,7 +1276,7 @@
       "line": 2378,
       "project": "chromium",
       "status": "expected",
-      "duration": 60762,
+      "duration": 60386,
       "retries": 0,
       "error": ""
     },
@@ -1289,7 +1289,7 @@
       "line": 2406,
       "project": "chromium",
       "status": "expected",
-      "duration": 61891,
+      "duration": 62280,
       "retries": 0,
       "error": ""
     },
@@ -1301,10 +1301,10 @@
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2419,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 115950,
-      "retries": 1,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()"
+      "status": "expected",
+      "duration": 60064,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t90",
@@ -1314,10 +1314,10 @@
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2477,
       "project": "chromium",
-      "status": "expected",
-      "duration": 73283,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 130120,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()"
     },
     {
       "id": "t91",
@@ -1328,7 +1328,7 @@
       "line": 2509,
       "project": "chromium",
       "status": "expected",
-      "duration": 74345,
+      "duration": 75061,
       "retries": 0,
       "error": ""
     },
@@ -1341,7 +1341,7 @@
       "line": 2542,
       "project": "chromium",
       "status": "expected",
-      "duration": 78704,
+      "duration": 78673,
       "retries": 0,
       "error": ""
     },
@@ -1354,7 +1354,7 @@
       "line": 2603,
       "project": "chromium",
       "status": "flaky",
-      "duration": 138300,
+      "duration": 141147,
       "retries": 1,
       "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()"
     },
@@ -1367,7 +1367,7 @@
       "line": 2646,
       "project": "chromium",
       "status": "expected",
-      "duration": 80891,
+      "duration": 81412,
       "retries": 0,
       "error": ""
     },
@@ -1380,7 +1380,7 @@
       "line": 2657,
       "project": "chromium",
       "status": "expected",
-      "duration": 81890,
+      "duration": 82110,
       "retries": 0,
       "error": ""
     },
@@ -1392,10 +1392,10 @@
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2674,
       "project": "chromium",
-      "status": "expected",
-      "duration": 79966,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 137926,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()"
     },
     {
       "id": "t97",
@@ -1406,7 +1406,7 @@
       "line": 2702,
       "project": "chromium",
       "status": "expected",
-      "duration": 102622,
+      "duration": 101282,
       "retries": 0,
       "error": ""
     },
@@ -1419,7 +1419,7 @@
       "line": 2721,
       "project": "chromium",
       "status": "expected",
-      "duration": 82644,
+      "duration": 83895,
       "retries": 0,
       "error": ""
     },
@@ -1431,10 +1431,10 @@
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2734,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 163040,
-      "retries": 1,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()"
+      "status": "expected",
+      "duration": 105887,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t100",
@@ -1445,7 +1445,7 @@
       "line": 2748,
       "project": "chromium",
       "status": "expected",
-      "duration": 107500,
+      "duration": 134198,
       "retries": 0,
       "error": ""
     },
@@ -1457,10 +1457,10 @@
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2763,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 170593,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms"
+      "status": "expected",
+      "duration": 154381,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t102",
@@ -1470,10 +1470,10 @@
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 2790,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 241120,
-      "retries": 1,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Abdominal Pain', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Abdominal Pain', exact: true }).first()"
+      "status": "expected",
+      "duration": 158172,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t103",
@@ -1483,10 +1483,10 @@
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1294,
       "project": "chromium",
-      "status": "expected",
-      "duration": 48339,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 126482,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
       "id": "t104",
@@ -1497,7 +1497,7 @@
       "line": 1310,
       "project": "chromium",
       "status": "expected",
-      "duration": 49040,
+      "duration": 49555,
       "retries": 0,
       "error": ""
     },
@@ -1510,7 +1510,7 @@
       "line": 1322,
       "project": "chromium",
       "status": "expected",
-      "duration": 48840,
+      "duration": 49523,
       "retries": 0,
       "error": ""
     },
@@ -1523,7 +1523,7 @@
       "line": 1338,
       "project": "chromium",
       "status": "expected",
-      "duration": 55321,
+      "duration": 55284,
       "retries": 0,
       "error": ""
     },
@@ -1535,10 +1535,10 @@
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1367,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 132937,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
+      "status": "expected",
+      "duration": 53929,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t108",
@@ -1548,10 +1548,10 @@
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1422,
       "project": "chromium",
-      "status": "expected",
-      "duration": 68797,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 106128,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
       "id": "t109",
@@ -1562,7 +1562,7 @@
       "line": 1467,
       "project": "chromium",
       "status": "expected",
-      "duration": 68141,
+      "duration": 69784,
       "retries": 0,
       "error": ""
     },
@@ -1574,10 +1574,10 @@
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1478,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 132304,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
+      "status": "expected",
+      "duration": 51860,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t111",
@@ -1587,10 +1587,10 @@
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1528,
       "project": "chromium",
-      "status": "expected",
-      "duration": 71995,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 115246,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: "
     },
     {
       "id": "t112",
@@ -1600,10 +1600,10 @@
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1547,
       "project": "chromium",
-      "status": "expected",
-      "duration": 69129,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 114266,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: "
     },
     {
       "id": "t113",
@@ -1613,10 +1613,10 @@
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1564,
       "project": "chromium",
-      "status": "expected",
-      "duration": 106303,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 113730,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: "
     },
     {
       "id": "t114",
@@ -1627,7 +1627,7 @@
       "line": 1576,
       "project": "chromium",
       "status": "expected",
-      "duration": 156067,
+      "duration": 157579,
       "retries": 0,
       "error": ""
     },
@@ -1640,7 +1640,7 @@
       "line": 1611,
       "project": "chromium",
       "status": "expected",
-      "duration": 155654,
+      "duration": 154912,
       "retries": 0,
       "error": ""
     },
@@ -1652,10 +1652,10 @@
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1630,
       "project": "chromium",
-      "status": "expected",
-      "duration": 155845,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 233085,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
       "id": "t117",
@@ -1666,7 +1666,7 @@
       "line": 1648,
       "project": "chromium",
       "status": "expected",
-      "duration": 155965,
+      "duration": 152730,
       "retries": 0,
       "error": ""
     },
@@ -1679,7 +1679,7 @@
       "line": 1667,
       "project": "chromium",
       "status": "expected",
-      "duration": 155013,
+      "duration": 155003,
       "retries": 0,
       "error": ""
     },
@@ -1691,10 +1691,10 @@
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1681,
       "project": "chromium",
-      "status": "expected",
-      "duration": 156632,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 239324,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
       "id": "t120",
@@ -1705,7 +1705,7 @@
       "line": 1700,
       "project": "chromium",
       "status": "expected",
-      "duration": 155332,
+      "duration": 155363,
       "retries": 0,
       "error": ""
     },
@@ -1717,10 +1717,10 @@
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1713,
       "project": "chromium",
-      "status": "expected",
-      "duration": 202300,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 243491,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
       "id": "t122",
@@ -1730,10 +1730,10 @@
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1738,
       "project": "chromium",
-      "status": "expected",
-      "duration": 204185,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 276954,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
       "id": "t123",
@@ -1743,10 +1743,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 555,
       "project": "chromium",
-      "status": "expected",
-      "duration": 34644,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 111750,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
       "id": "t124",
@@ -1757,7 +1757,7 @@
       "line": 582,
       "project": "chromium",
       "status": "expected",
-      "duration": 33228,
+      "duration": 33589,
       "retries": 0,
       "error": ""
     },
@@ -1770,7 +1770,7 @@
       "line": 592,
       "project": "chromium",
       "status": "expected",
-      "duration": 32449,
+      "duration": 31919,
       "retries": 0,
       "error": ""
     },
@@ -1783,7 +1783,7 @@
       "line": 605,
       "project": "chromium",
       "status": "expected",
-      "duration": 33708,
+      "duration": 35475,
       "retries": 0,
       "error": ""
     },
@@ -1796,7 +1796,7 @@
       "line": 624,
       "project": "chromium",
       "status": "expected",
-      "duration": 35915,
+      "duration": 33601,
       "retries": 0,
       "error": ""
     },
@@ -1809,7 +1809,7 @@
       "line": 638,
       "project": "chromium",
       "status": "expected",
-      "duration": 34979,
+      "duration": 35238,
       "retries": 0,
       "error": ""
     },
@@ -1821,10 +1821,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 650,
       "project": "chromium",
-      "status": "expected",
-      "duration": 36363,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 114394,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
       "id": "t130",
@@ -1834,10 +1834,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 676,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 114832,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
+      "status": "expected",
+      "duration": 42348,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t131",
@@ -1848,7 +1848,7 @@
       "line": 691,
       "project": "chromium",
       "status": "expected",
-      "duration": 39717,
+      "duration": 39891,
       "retries": 0,
       "error": ""
     },
@@ -1861,7 +1861,7 @@
       "line": 705,
       "project": "chromium",
       "status": "expected",
-      "duration": 36614,
+      "duration": 38575,
       "retries": 0,
       "error": ""
     },
@@ -1874,7 +1874,7 @@
       "line": 725,
       "project": "chromium",
       "status": "expected",
-      "duration": 39247,
+      "duration": 39434,
       "retries": 0,
       "error": ""
     },
@@ -1887,7 +1887,7 @@
       "line": 743,
       "project": "chromium",
       "status": "expected",
-      "duration": 39010,
+      "duration": 39592,
       "retries": 0,
       "error": ""
     },
@@ -1899,10 +1899,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 756,
       "project": "chromium",
-      "status": "expected",
-      "duration": 42217,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 79016,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
       "id": "t136",
@@ -1912,10 +1912,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 769,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 116252,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
+      "status": "expected",
+      "duration": 43486,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t137",
@@ -1926,7 +1926,7 @@
       "line": 796,
       "project": "chromium",
       "status": "expected",
-      "duration": 41261,
+      "duration": 42801,
       "retries": 0,
       "error": ""
     },
@@ -1939,7 +1939,7 @@
       "line": 840,
       "project": "chromium",
       "status": "expected",
-      "duration": 39413,
+      "duration": 39221,
       "retries": 0,
       "error": ""
     },
@@ -1952,7 +1952,7 @@
       "line": 860,
       "project": "chromium",
       "status": "expected",
-      "duration": 41966,
+      "duration": 43255,
       "retries": 0,
       "error": ""
     },
@@ -1965,7 +1965,7 @@
       "line": 879,
       "project": "chromium",
       "status": "expected",
-      "duration": 46172,
+      "duration": 44758,
       "retries": 0,
       "error": ""
     },
@@ -1977,10 +1977,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 893,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 111403,
+      "status": "flaky",
+      "duration": 145736,
       "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: "
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
       "id": "t142",
@@ -1990,10 +1990,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 903,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 84186,
-      "retries": 1,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
+      "status": "expected",
+      "duration": 45260,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t143",
@@ -2004,7 +2004,7 @@
       "line": 923,
       "project": "chromium",
       "status": "expected",
-      "duration": 45704,
+      "duration": 45115,
       "retries": 0,
       "error": ""
     },
@@ -2017,7 +2017,7 @@
       "line": 944,
       "project": "chromium",
       "status": "expected",
-      "duration": 68680,
+      "duration": 70229,
       "retries": 0,
       "error": ""
     },
@@ -2030,9 +2030,9 @@
       "line": 954,
       "project": "chromium",
       "status": "flaky",
-      "duration": 105865,
-      "retries": 1,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
+      "duration": 145050,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
       "id": "t146",
@@ -2043,7 +2043,7 @@
       "line": 964,
       "project": "chromium",
       "status": "expected",
-      "duration": 46485,
+      "duration": 45430,
       "retries": 0,
       "error": ""
     },
@@ -2056,7 +2056,7 @@
       "line": 1000,
       "project": "chromium",
       "status": "expected",
-      "duration": 70430,
+      "duration": 69324,
       "retries": 0,
       "error": ""
     },
@@ -2068,10 +2068,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1011,
       "project": "chromium",
-      "status": "expected",
-      "duration": 71234,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 117186,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: "
     },
     {
       "id": "t149",
@@ -2082,7 +2082,7 @@
       "line": 1026,
       "project": "chromium",
       "status": "expected",
-      "duration": 69409,
+      "duration": 71058,
       "retries": 0,
       "error": ""
     },
@@ -2095,7 +2095,7 @@
       "line": 1037,
       "project": "chromium",
       "status": "expected",
-      "duration": 69512,
+      "duration": 70095,
       "retries": 0,
       "error": ""
     },
@@ -2108,7 +2108,7 @@
       "line": 1049,
       "project": "chromium",
       "status": "expected",
-      "duration": 68793,
+      "duration": 70539,
       "retries": 0,
       "error": ""
     },
@@ -2120,10 +2120,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1061,
       "project": "chromium",
-      "status": "expected",
-      "duration": 71287,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 110645,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
       "id": "t153",
@@ -2133,10 +2133,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1077,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 108650,
-      "retries": 1,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
+      "status": "expected",
+      "duration": 70219,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t154",
@@ -2147,7 +2147,7 @@
       "line": 1099,
       "project": "chromium",
       "status": "expected",
-      "duration": 70555,
+      "duration": 72143,
       "retries": 0,
       "error": ""
     },
@@ -2160,7 +2160,7 @@
       "line": 1118,
       "project": "chromium",
       "status": "expected",
-      "duration": 35553,
+      "duration": 35824,
       "retries": 0,
       "error": ""
     },
@@ -2172,10 +2172,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1142,
       "project": "chromium",
-      "status": "expected",
-      "duration": 41035,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 115552,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
       "id": "t157",
@@ -2186,7 +2186,7 @@
       "line": 1164,
       "project": "chromium",
       "status": "expected",
-      "duration": 34454,
+      "duration": 34847,
       "retries": 0,
       "error": ""
     },
@@ -2198,10 +2198,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1184,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 115654,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
+      "status": "expected",
+      "duration": 40602,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t159",
@@ -2212,7 +2212,7 @@
       "line": 1207,
       "project": "chromium",
       "status": "expected",
-      "duration": 37186,
+      "duration": 37881,
       "retries": 0,
       "error": ""
     },
@@ -2225,7 +2225,7 @@
       "line": 1245,
       "project": "chromium",
       "status": "expected",
-      "duration": 39567,
+      "duration": 40437,
       "retries": 0,
       "error": ""
     },
@@ -2237,10 +2237,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1262,
       "project": "chromium",
-      "status": "expected",
-      "duration": 69846,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 150673,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
       "id": "t162",
@@ -2251,7 +2251,7 @@
       "line": 1277,
       "project": "chromium",
       "status": "expected",
-      "duration": 70513,
+      "duration": 68919,
       "retries": 0,
       "error": ""
     },
@@ -2264,7 +2264,7 @@
       "line": 1294,
       "project": "chromium",
       "status": "expected",
-      "duration": 68740,
+      "duration": 69758,
       "retries": 0,
       "error": ""
     },
@@ -2277,7 +2277,7 @@
       "line": 1317,
       "project": "chromium",
       "status": "expected",
-      "duration": 43735,
+      "duration": 41871,
       "retries": 0,
       "error": ""
     },
@@ -2289,10 +2289,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1341,
       "project": "chromium",
-      "status": "expected",
-      "duration": 32275,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 113813,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: "
     },
     {
       "id": "t166",
@@ -2302,10 +2302,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1366,
       "project": "chromium",
-      "status": "expected",
-      "duration": 40189,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 115868,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
       "id": "t167",
@@ -2316,7 +2316,7 @@
       "line": 1407,
       "project": "chromium",
       "status": "expected",
-      "duration": 33012,
+      "duration": 32846,
       "retries": 0,
       "error": ""
     },
@@ -2328,10 +2328,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1433,
       "project": "chromium",
-      "status": "expected",
-      "duration": 32902,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 108569,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
     },
     {
       "id": "t169",
@@ -2342,7 +2342,7 @@
       "line": 1448,
       "project": "chromium",
       "status": "expected",
-      "duration": 33735,
+      "duration": 34725,
       "retries": 0,
       "error": ""
     },
@@ -2354,10 +2354,10 @@
       "file": "StartVisit_PhysicalExamination.spec.js",
       "line": 1463,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 114488,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true }).first()"
+      "status": "expected",
+      "duration": 36157,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t171",
@@ -2368,7 +2368,7 @@
       "line": 1482,
       "project": "chromium",
       "status": "expected",
-      "duration": 39213,
+      "duration": 40214,
       "retries": 0,
       "error": ""
     },
@@ -2381,7 +2381,7 @@
       "line": 1502,
       "project": "chromium",
       "status": "expected",
-      "duration": 40613,
+      "duration": 41693,
       "retries": 0,
       "error": ""
     },
@@ -2394,7 +2394,7 @@
       "line": 1523,
       "project": "chromium",
       "status": "expected",
-      "duration": 45386,
+      "duration": 44328,
       "retries": 0,
       "error": ""
     },
@@ -2407,7 +2407,7 @@
       "line": 508,
       "project": "chromium",
       "status": "expected",
-      "duration": 29557,
+      "duration": 25356,
       "retries": 0,
       "error": ""
     },
@@ -2420,7 +2420,7 @@
       "line": 534,
       "project": "chromium",
       "status": "expected",
-      "duration": 26384,
+      "duration": 26116,
       "retries": 0,
       "error": ""
     },
@@ -2432,10 +2432,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 557,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 70442,
-      "retries": 1,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true })"
+      "status": "expected",
+      "duration": 29320,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t177",
@@ -2446,7 +2446,7 @@
       "line": 589,
       "project": "chromium",
       "status": "expected",
-      "duration": 30010,
+      "duration": 30505,
       "retries": 0,
       "error": ""
     },
@@ -2459,7 +2459,7 @@
       "line": 634,
       "project": "chromium",
       "status": "expected",
-      "duration": 30180,
+      "duration": 31053,
       "retries": 0,
       "error": ""
     },
@@ -2472,7 +2472,7 @@
       "line": 680,
       "project": "chromium",
       "status": "expected",
-      "duration": 32133,
+      "duration": 33467,
       "retries": 0,
       "error": ""
     },
@@ -2485,7 +2485,7 @@
       "line": 700,
       "project": "chromium",
       "status": "expected",
-      "duration": 31478,
+      "duration": 31731,
       "retries": 0,
       "error": ""
     },
@@ -2498,7 +2498,7 @@
       "line": 725,
       "project": "chromium",
       "status": "expected",
-      "duration": 31149,
+      "duration": 31109,
       "retries": 0,
       "error": ""
     },
@@ -2511,7 +2511,7 @@
       "line": 779,
       "project": "chromium",
       "status": "expected",
-      "duration": 31124,
+      "duration": 29646,
       "retries": 0,
       "error": ""
     },
@@ -2524,7 +2524,7 @@
       "line": 808,
       "project": "chromium",
       "status": "expected",
-      "duration": 32980,
+      "duration": 32588,
       "retries": 0,
       "error": ""
     },
@@ -2537,9 +2537,9 @@
       "line": 837,
       "project": "chromium",
       "status": "flaky",
-      "duration": 115382,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true })"
+      "duration": 71145,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Other', exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByRole('button', { name: 'Other', exact: true })"
     },
     {
       "id": "t185",
@@ -2550,7 +2550,7 @@
       "line": 868,
       "project": "chromium",
       "status": "expected",
-      "duration": 30203,
+      "duration": 30227,
       "retries": 0,
       "error": ""
     },
@@ -2563,7 +2563,7 @@
       "line": 899,
       "project": "chromium",
       "status": "expected",
-      "duration": 30362,
+      "duration": 31300,
       "retries": 0,
       "error": ""
     },
@@ -2576,7 +2576,7 @@
       "line": 940,
       "project": "chromium",
       "status": "expected",
-      "duration": 34264,
+      "duration": 31546,
       "retries": 0,
       "error": ""
     },
@@ -2589,7 +2589,7 @@
       "line": 965,
       "project": "chromium",
       "status": "expected",
-      "duration": 32458,
+      "duration": 33395,
       "retries": 0,
       "error": ""
     },
@@ -2602,7 +2602,7 @@
       "line": 993,
       "project": "chromium",
       "status": "expected",
-      "duration": 33816,
+      "duration": 31622,
       "retries": 0,
       "error": ""
     },
@@ -2614,10 +2614,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 1023,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 119651,
-      "retries": 2,
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
+      "status": "expected",
+      "duration": 32974,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t191",
@@ -2628,7 +2628,7 @@
       "line": 1065,
       "project": "chromium",
       "status": "expected",
-      "duration": 33310,
+      "duration": 32436,
       "retries": 0,
       "error": ""
     },
@@ -2640,10 +2640,10 @@
       "file": "StartVisit_VisitReason.spec.js",
       "line": 1104,
       "project": "chromium",
-      "status": "expected",
-      "duration": 33759,
-      "retries": 0,
-      "error": ""
+      "status": "flaky",
+      "duration": 76030,
+      "retries": 1,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('div').filter({ hasText: /^Other$/ }).nth(1)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for locator('div').filter({ hasText: /^Other$/ }).nth(1)"
     },
     {
       "id": "t193",
@@ -2654,7 +2654,7 @@
       "line": 1151,
       "project": "chromium",
       "status": "expected",
-      "duration": 35538,
+      "duration": 34666,
       "retries": 0,
       "error": ""
     },
@@ -2667,7 +2667,7 @@
       "line": 309,
       "project": "chromium",
       "status": "expected",
-      "duration": 32114,
+      "duration": 31107,
       "retries": 0,
       "error": ""
     },
@@ -2680,7 +2680,7 @@
       "line": 336,
       "project": "chromium",
       "status": "expected",
-      "duration": 31430,
+      "duration": 32454,
       "retries": 0,
       "error": ""
     },
@@ -2693,7 +2693,7 @@
       "line": 369,
       "project": "chromium",
       "status": "expected",
-      "duration": 42014,
+      "duration": 31580,
       "retries": 0,
       "error": ""
     },
@@ -2706,7 +2706,7 @@
       "line": 402,
       "project": "chromium",
       "status": "expected",
-      "duration": 30774,
+      "duration": 31651,
       "retries": 0,
       "error": ""
     },
@@ -2719,7 +2719,7 @@
       "line": 420,
       "project": "chromium",
       "status": "expected",
-      "duration": 31367,
+      "duration": 31623,
       "retries": 0,
       "error": ""
     },
@@ -2732,7 +2732,7 @@
       "line": 454,
       "project": "chromium",
       "status": "expected",
-      "duration": 32969,
+      "duration": 31444,
       "retries": 0,
       "error": ""
     },
@@ -2745,7 +2745,7 @@
       "line": 477,
       "project": "chromium",
       "status": "expected",
-      "duration": 32884,
+      "duration": 28736,
       "retries": 0,
       "error": ""
     },
@@ -2758,7 +2758,7 @@
       "line": 498,
       "project": "chromium",
       "status": "expected",
-      "duration": 33847,
+      "duration": 29113,
       "retries": 0,
       "error": ""
     },
@@ -2771,7 +2771,7 @@
       "line": 519,
       "project": "chromium",
       "status": "expected",
-      "duration": 31626,
+      "duration": 31029,
       "retries": 0,
       "error": ""
     },
@@ -2784,7 +2784,7 @@
       "line": 540,
       "project": "chromium",
       "status": "expected",
-      "duration": 32226,
+      "duration": 31810,
       "retries": 0,
       "error": ""
     },
@@ -2797,7 +2797,7 @@
       "line": 575,
       "project": "chromium",
       "status": "expected",
-      "duration": 32214,
+      "duration": 31155,
       "retries": 0,
       "error": ""
     },
@@ -2810,7 +2810,7 @@
       "line": 610,
       "project": "chromium",
       "status": "expected",
-      "duration": 32131,
+      "duration": 31796,
       "retries": 0,
       "error": ""
     },
@@ -2823,7 +2823,7 @@
       "line": 628,
       "project": "chromium",
       "status": "expected",
-      "duration": 29221,
+      "duration": 31143,
       "retries": 0,
       "error": ""
     },
@@ -2836,7 +2836,7 @@
       "line": 662,
       "project": "chromium",
       "status": "expected",
-      "duration": 29464,
+      "duration": 31896,
       "retries": 0,
       "error": ""
     },
@@ -2849,7 +2849,7 @@
       "line": 697,
       "project": "chromium",
       "status": "expected",
-      "duration": 30315,
+      "duration": 31638,
       "retries": 0,
       "error": ""
     },
@@ -2862,7 +2862,7 @@
       "line": 732,
       "project": "chromium",
       "status": "expected",
-      "duration": 31451,
+      "duration": 30780,
       "retries": 0,
       "error": ""
     },
@@ -2875,7 +2875,7 @@
       "line": 761,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 99669,
+      "duration": 95849,
       "retries": 2,
       "error": "Error: expect(received).toBeCloseTo(expected, precision)\n\nExpected: 21.35\nReceived: 21.3\n\nExpected precision:    1\nExpected difference: < 0.05\nReceived difference:   0.05000000000000071\nError: expect(received).toBeCloseTo(expected, precision)\n\nExpected: 21.35\nReceived: 21.3\n\nExpected precision:    1\nExpected difference: < 0.05\nReceived difference:   0.05000000000000071\nError: expect(received).toBeCloseTo(expected, precision)\n\nExpected: 21.35\nReceived: 21.3\n\nExpected precision:    1\nExpected difference: < 0.05\nReceived difference:   0.05000000000000071"
     },
@@ -2888,7 +2888,7 @@
       "line": 793,
       "project": "chromium",
       "status": "expected",
-      "duration": 33902,
+      "duration": 30697,
       "retries": 0,
       "error": ""
     },
@@ -2901,7 +2901,7 @@
       "line": 812,
       "project": "chromium",
       "status": "expected",
-      "duration": 32171,
+      "duration": 31639,
       "retries": 0,
       "error": ""
     },
@@ -2914,7 +2914,7 @@
       "line": 831,
       "project": "chromium",
       "status": "expected",
-      "duration": 30537,
+      "duration": 31896,
       "retries": 0,
       "error": ""
     },
@@ -2927,7 +2927,7 @@
       "line": 859,
       "project": "chromium",
       "status": "expected",
-      "duration": 29590,
+      "duration": 30938,
       "retries": 0,
       "error": ""
     },
@@ -2940,9 +2940,9 @@
       "line": 887,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 184156,
+      "duration": 183879,
       "retries": 2,
-      "error": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('input[name=\"bmi\"]')\n    - locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n    - fill(\"25\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not editable\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not editable\n    - retrying fill action\n      - waiting 100ms\n    59 × waiting for element to be visible, enabled and editable\n       - element is not editable\n     - retrying fill action\n       - waiting 500ms\n\nTest timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded."
+      "error": "Test timeout of 60000ms exceeded.\nTimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('input[name=\"bmi\"]')\n    - locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n    - fill(\"25\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not editable\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not editable\n    - retrying fill action\n      - waiting 100ms\n    60 × waiting for element to be visible, enabled and editable\n       - element is not editable\n     - retrying fill action\n       - waiting 500ms\n\nTest timeout of 60000ms exceeded."
     },
     {
       "id": "t216",
@@ -2953,9 +2953,9 @@
       "line": 915,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 182644,
+      "duration": 183643,
       "retries": 2,
-      "error": "Test timeout of 60000ms exceeded.\nTimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('input[name=\"waist_to_hip_ratio\"]')\n    - locator resolved to <input readonly type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 0.85\" name=\"waist_to_hip_ratio\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n    - fill(\"2.00\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not editable\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not editable\n    - retrying fill action\n      - waiting 100ms\n    60 × waiting for element to be visible, enabled and editable\n       - element is not editable\n     - retrying fill action\n       - waiting 500ms\n\nTest timeout of 60000ms exceeded."
+      "error": "Test timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded."
     },
     {
       "id": "t217",
@@ -2966,7 +2966,7 @@
       "line": 953,
       "project": "chromium",
       "status": "expected",
-      "duration": 32629,
+      "duration": 30225,
       "retries": 0,
       "error": ""
     },
@@ -2979,7 +2979,7 @@
       "line": 978,
       "project": "chromium",
       "status": "expected",
-      "duration": 32710,
+      "duration": 32116,
       "retries": 0,
       "error": ""
     },
@@ -2992,7 +2992,7 @@
       "line": 1004,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 129088,
+      "duration": 127868,
       "retries": 2,
       "error": "Error: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n       - unexpected value \"21.8\"\n\nError: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 "
     },
@@ -3005,7 +3005,7 @@
       "line": 1037,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 125235,
+      "duration": 125134,
       "retries": 2,
       "error": "Error: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n       - unexpected value \"21.8\"\n\nError: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 "
     },
@@ -3018,7 +3018,7 @@
       "line": 1070,
       "project": "chromium",
       "status": "expected",
-      "duration": 31788,
+      "duration": 29961,
       "retries": 0,
       "error": ""
     },
@@ -3031,7 +3031,7 @@
       "line": 1103,
       "project": "chromium",
       "status": "expected",
-      "duration": 33670,
+      "duration": 32164,
       "retries": 0,
       "error": ""
     },
@@ -3044,7 +3044,7 @@
       "line": 1136,
       "project": "chromium",
       "status": "expected",
-      "duration": 32351,
+      "duration": 32931,
       "retries": 0,
       "error": ""
     },
@@ -3057,7 +3057,7 @@
       "line": 1176,
       "project": "chromium",
       "status": "expected",
-      "duration": 31543,
+      "duration": 31828,
       "retries": 0,
       "error": ""
     },
@@ -3070,7 +3070,7 @@
       "line": 1197,
       "project": "chromium",
       "status": "expected",
-      "duration": 30055,
+      "duration": 31942,
       "retries": 0,
       "error": ""
     },
@@ -3083,7 +3083,7 @@
       "line": 1214,
       "project": "chromium",
       "status": "expected",
-      "duration": 29660,
+      "duration": 31849,
       "retries": 0,
       "error": ""
     },
@@ -3096,7 +3096,7 @@
       "line": 1231,
       "project": "chromium",
       "status": "expected",
-      "duration": 30247,
+      "duration": 32414,
       "retries": 0,
       "error": ""
     },
@@ -3109,7 +3109,7 @@
       "line": 1248,
       "project": "chromium",
       "status": "expected",
-      "duration": 33165,
+      "duration": 32566,
       "retries": 0,
       "error": ""
     },
@@ -3122,7 +3122,7 @@
       "line": 1265,
       "project": "chromium",
       "status": "expected",
-      "duration": 32664,
+      "duration": 30380,
       "retries": 0,
       "error": ""
     },
@@ -3135,7 +3135,7 @@
       "line": 1305,
       "project": "chromium",
       "status": "expected",
-      "duration": 33103,
+      "duration": 29291,
       "retries": 0,
       "error": ""
     },
@@ -3148,7 +3148,7 @@
       "line": 1345,
       "project": "chromium",
       "status": "expected",
-      "duration": 31528,
+      "duration": 32551,
       "retries": 0,
       "error": ""
     },
@@ -3161,7 +3161,7 @@
       "line": 1365,
       "project": "chromium",
       "status": "expected",
-      "duration": 33113,
+      "duration": 31566,
       "retries": 0,
       "error": ""
     },
@@ -3174,7 +3174,7 @@
       "line": 1385,
       "project": "chromium",
       "status": "expected",
-      "duration": 32607,
+      "duration": 32145,
       "retries": 0,
       "error": ""
     },
@@ -3187,7 +3187,7 @@
       "line": 1425,
       "project": "chromium",
       "status": "expected",
-      "duration": 31264,
+      "duration": 31442,
       "retries": 0,
       "error": ""
     },
@@ -3200,7 +3200,7 @@
       "line": 1465,
       "project": "chromium",
       "status": "expected",
-      "duration": 29484,
+      "duration": 32477,
       "retries": 0,
       "error": ""
     },
@@ -3213,7 +3213,7 @@
       "line": 1483,
       "project": "chromium",
       "status": "expected",
-      "duration": 29705,
+      "duration": 31125,
       "retries": 0,
       "error": ""
     },
@@ -3226,7 +3226,7 @@
       "line": 1501,
       "project": "chromium",
       "status": "expected",
-      "duration": 31894,
+      "duration": 31779,
       "retries": 0,
       "error": ""
     },
@@ -3239,7 +3239,7 @@
       "line": 1530,
       "project": "chromium",
       "status": "expected",
-      "duration": 31877,
+      "duration": 30577,
       "retries": 0,
       "error": ""
     },
@@ -3252,7 +3252,7 @@
       "line": 420,
       "project": "chromium",
       "status": "expected",
-      "duration": 37122,
+      "duration": 35646,
       "retries": 0,
       "error": ""
     },
@@ -3265,7 +3265,7 @@
       "line": 447,
       "project": "chromium",
       "status": "expected",
-      "duration": 37782,
+      "duration": 36634,
       "retries": 0,
       "error": ""
     },
@@ -3278,7 +3278,7 @@
       "line": 464,
       "project": "chromium",
       "status": "expected",
-      "duration": 37188,
+      "duration": 37694,
       "retries": 0,
       "error": ""
     },
@@ -3291,7 +3291,7 @@
       "line": 481,
       "project": "chromium",
       "status": "expected",
-      "duration": 36105,
+      "duration": 36810,
       "retries": 0,
       "error": ""
     },
@@ -3304,7 +3304,7 @@
       "line": 504,
       "project": "chromium",
       "status": "expected",
-      "duration": 36553,
+      "duration": 38180,
       "retries": 0,
       "error": ""
     },
@@ -3317,7 +3317,7 @@
       "line": 521,
       "project": "chromium",
       "status": "expected",
-      "duration": 35889,
+      "duration": 36640,
       "retries": 0,
       "error": ""
     },
@@ -3330,7 +3330,7 @@
       "line": 538,
       "project": "chromium",
       "status": "expected",
-      "duration": 36652,
+      "duration": 37922,
       "retries": 0,
       "error": ""
     },
@@ -3343,7 +3343,7 @@
       "line": 555,
       "project": "chromium",
       "status": "expected",
-      "duration": 38387,
+      "duration": 35058,
       "retries": 0,
       "error": ""
     },
@@ -3356,7 +3356,7 @@
       "line": 574,
       "project": "chromium",
       "status": "expected",
-      "duration": 37400,
+      "duration": 36731,
       "retries": 0,
       "error": ""
     },
@@ -3369,7 +3369,7 @@
       "line": 591,
       "project": "chromium",
       "status": "expected",
-      "duration": 38194,
+      "duration": 35916,
       "retries": 0,
       "error": ""
     },
@@ -3382,7 +3382,7 @@
       "line": 608,
       "project": "chromium",
       "status": "expected",
-      "duration": 37948,
+      "duration": 37668,
       "retries": 0,
       "error": ""
     },
@@ -3394,10 +3394,10 @@
       "file": "StartVisit.spec.js",
       "line": 625,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 78410,
-      "retries": 1,
-      "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Accept' })\n    - locator resolved to <button type=\"button\" class=\"btn-base-styles btn-primary-variant py-3 gap-2 w-auto px-8\">Accept</button>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"global-loader\">…</div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"global-loader\">…</div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    53 × waiting for element to be visible, e"
+      "status": "expected",
+      "duration": 36817,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t251",
@@ -3408,7 +3408,7 @@
       "line": 642,
       "project": "chromium",
       "status": "expected",
-      "duration": 35498,
+      "duration": 35796,
       "retries": 0,
       "error": ""
     },
@@ -3421,7 +3421,7 @@
       "line": 659,
       "project": "chromium",
       "status": "expected",
-      "duration": 37744,
+      "duration": 36125,
       "retries": 0,
       "error": ""
     },
@@ -3434,7 +3434,7 @@
       "line": 676,
       "project": "chromium",
       "status": "expected",
-      "duration": 37423,
+      "duration": 36803,
       "retries": 0,
       "error": ""
     },
@@ -3447,7 +3447,7 @@
       "line": 699,
       "project": "chromium",
       "status": "expected",
-      "duration": 37183,
+      "duration": 36402,
       "retries": 0,
       "error": ""
     },
@@ -3460,7 +3460,7 @@
       "line": 715,
       "project": "chromium",
       "status": "expected",
-      "duration": 41925,
+      "duration": 36320,
       "retries": 0,
       "error": ""
     },
@@ -3473,7 +3473,7 @@
       "line": 802,
       "project": "chromium",
       "status": "expected",
-      "duration": 40160,
+      "duration": 40357,
       "retries": 0,
       "error": ""
     },
@@ -3486,7 +3486,7 @@
       "line": 894,
       "project": "chromium",
       "status": "expected",
-      "duration": 42592,
+      "duration": 41976,
       "retries": 0,
       "error": ""
     },
@@ -3498,10 +3498,10 @@
       "file": "StartVisit.spec.js",
       "line": 997,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 102652,
-      "retries": 1,
-      "error": "Test timeout of 60000ms exceeded."
+      "status": "expected",
+      "duration": 39890,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t259",
@@ -3511,10 +3511,10 @@
       "file": "StartVisit.spec.js",
       "line": 1134,
       "project": "chromium",
-      "status": "expected",
-      "duration": 40443,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 162988,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByText('Post Prandial Blood Sugar (PPBS) (mg/dl) is required', { exact: true })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for getByText('Post Prandial Blood Sugar (PPBS) (mg/dl) is required', { exact: true })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByText('Post Prandial Blood Sugar (PPBS) (mg/dl) is required', { exact: true })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for getByText('Post Prandial Blood Sugar (PPBS) (mg/dl) is required', { exact: true })\n\nTest timeout of 60000ms exceeded while running \"beforeEach\" hook."
     },
     {
       "id": "t260",
@@ -3524,10 +3524,10 @@
       "file": "StartVisit.spec.js",
       "line": 1224,
       "project": "chromium",
-      "status": "expected",
-      "duration": 40278,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 142098,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'Post Prandial Blood Sugar (PPBS) (mg/dl) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'Post Prandial Blood Sugar (PPBS) (mg/dl) is required' })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'Post Prandial Blood Sugar (PPBS) (mg/dl) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'Post Prandial Blood Sugar (PPBS) (mg/dl) is required' })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message')."
     },
     {
       "id": "t261",
@@ -3538,7 +3538,7 @@
       "line": 1258,
       "project": "chromium",
       "status": "expected",
-      "duration": 40829,
+      "duration": 39176,
       "retries": 0,
       "error": ""
     },
@@ -3551,7 +3551,7 @@
       "line": 1287,
       "project": "chromium",
       "status": "expected",
-      "duration": 40309,
+      "duration": 40239,
       "retries": 0,
       "error": ""
     },
@@ -3564,7 +3564,7 @@
       "line": 1316,
       "project": "chromium",
       "status": "expected",
-      "duration": 37404,
+      "duration": 40398,
       "retries": 0,
       "error": ""
     },
@@ -3577,7 +3577,7 @@
       "line": 1341,
       "project": "chromium",
       "status": "expected",
-      "duration": 38278,
+      "duration": 40193,
       "retries": 0,
       "error": ""
     },
@@ -3589,10 +3589,10 @@
       "file": "StartVisit.spec.js",
       "line": 1366,
       "project": "chromium",
-      "status": "expected",
-      "duration": 40898,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 152798,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'Post Prandial Blood Sugar (PPBS) (mg/dl) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'Post Prandial Blood Sugar (PPBS) (mg/dl) is required' })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'Post Prandial Blood Sugar (PPBS) (mg/dl) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'Post Prandial Blood Sugar (PPBS) (mg/dl) is required' })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message')."
     },
     {
       "id": "t266",
@@ -3602,10 +3602,10 @@
       "file": "StartVisit.spec.js",
       "line": 1392,
       "project": "chromium",
-      "status": "expected",
-      "duration": 40873,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 147556,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'RBS (mg/dl) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'RBS (mg/dl) is required' })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'RBS (mg/dl) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'RBS (mg/dl) is required' })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'RBS (mg/dl) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall "
     },
     {
       "id": "t267",
@@ -3615,10 +3615,10 @@
       "file": "StartVisit.spec.js",
       "line": 1417,
       "project": "chromium",
-      "status": "expected",
-      "duration": 40316,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 151168,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'Waist Circumference (cm) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'Waist Circumference (cm) is required' })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'Waist Circumference (cm) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'Waist Circumference (cm) is required' })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'Waist Circumference (cm) is required' })\nExpe"
     },
     {
       "id": "t268",
@@ -3628,10 +3628,10 @@
       "file": "StartVisit.spec.js",
       "line": 1442,
       "project": "chromium",
-      "status": "expected",
-      "duration": 40664,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 146413,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'Hip Circumference (cm) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'Hip Circumference (cm) is required' })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'Hip Circumference (cm) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'Hip Circumference (cm) is required' })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'Hip Circumference (cm) is required' })\nExpected: visi"
     },
     {
       "id": "t269",
@@ -3641,10 +3641,10 @@
       "file": "StartVisit.spec.js",
       "line": 1467,
       "project": "chromium",
-      "status": "expected",
-      "duration": 42236,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 151409,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: '2 Hour Post Load Glucose Test (OGTT) (mg/dl) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: '2 Hour Post Load Glucose Test (OGTT) (mg/dl) is required' })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: '2 Hour Post Load Glucose Test (OGTT) (mg/dl) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: '2 Hour Post Load Glucose Test (OGTT) (mg/dl) is required' })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-"
     },
     {
       "id": "t270",
@@ -3654,10 +3654,10 @@
       "file": "StartVisit.spec.js",
       "line": 1493,
       "project": "chromium",
-      "status": "expected",
-      "duration": 40604,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 147269,
+      "retries": 2,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'HbA1c is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'HbA1c is required' })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'HbA1c is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'HbA1c is required' })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'HbA1c is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" "
     },
     {
       "id": "t271",
@@ -3668,7 +3668,7 @@
       "line": 1518,
       "project": "chromium",
       "status": "expected",
-      "duration": 35346,
+      "duration": 36906,
       "retries": 0,
       "error": ""
     },
@@ -3681,7 +3681,7 @@
       "line": 1538,
       "project": "chromium",
       "status": "expected",
-      "duration": 34126,
+      "duration": 36806,
       "retries": 0,
       "error": ""
     },
@@ -3694,7 +3694,7 @@
       "line": 1576,
       "project": "chromium",
       "status": "expected",
-      "duration": 36686,
+      "duration": 36124,
       "retries": 0,
       "error": ""
     },
@@ -3707,7 +3707,7 @@
       "line": 1622,
       "project": "chromium",
       "status": "expected",
-      "duration": 37229,
+      "duration": 37473,
       "retries": 0,
       "error": ""
     },
@@ -3720,7 +3720,7 @@
       "line": 1668,
       "project": "chromium",
       "status": "expected",
-      "duration": 36928,
+      "duration": 36785,
       "retries": 0,
       "error": ""
     },
@@ -3733,7 +3733,7 @@
       "line": 1688,
       "project": "chromium",
       "status": "expected",
-      "duration": 37253,
+      "duration": 36857,
       "retries": 0,
       "error": ""
     },
@@ -3746,7 +3746,7 @@
       "line": 1722,
       "project": "chromium",
       "status": "expected",
-      "duration": 37404,
+      "duration": 35399,
       "retries": 0,
       "error": ""
     },
@@ -3759,7 +3759,7 @@
       "line": 1768,
       "project": "chromium",
       "status": "expected",
-      "duration": 37383,
+      "duration": 37479,
       "retries": 0,
       "error": ""
     },
@@ -3772,7 +3772,7 @@
       "line": 1814,
       "project": "chromium",
       "status": "expected",
-      "duration": 35624,
+      "duration": 40009,
       "retries": 0,
       "error": ""
     },
@@ -3785,7 +3785,7 @@
       "line": 1883,
       "project": "chromium",
       "status": "expected",
-      "duration": 38668,
+      "duration": 40293,
       "retries": 0,
       "error": ""
     },
@@ -3798,7 +3798,7 @@
       "line": 1953,
       "project": "chromium",
       "status": "expected",
-      "duration": 37340,
+      "duration": 35296,
       "retries": 0,
       "error": ""
     },
@@ -3811,7 +3811,7 @@
       "line": 2011,
       "project": "chromium",
       "status": "expected",
-      "duration": 36684,
+      "duration": 36822,
       "retries": 0,
       "error": ""
     },
@@ -3824,7 +3824,7 @@
       "line": 2040,
       "project": "chromium",
       "status": "expected",
-      "duration": 37333,
+      "duration": 36135,
       "retries": 0,
       "error": ""
     },
@@ -3837,7 +3837,7 @@
       "line": 2069,
       "project": "chromium",
       "status": "expected",
-      "duration": 37194,
+      "duration": 37096,
       "retries": 0,
       "error": ""
     },
@@ -3850,7 +3850,7 @@
       "line": 2102,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 184485,
+      "duration": 184524,
       "retries": 2,
       "error": "Test timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded."
     },
@@ -3863,7 +3863,7 @@
       "line": 2128,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 184477,
+      "duration": 184551,
       "retries": 2,
       "error": "Test timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded."
     },
@@ -3876,7 +3876,7 @@
       "line": 2153,
       "project": "chromium",
       "status": "expected",
-      "duration": 37872,
+      "duration": 36871,
       "retries": 0,
       "error": ""
     },
@@ -3889,7 +3889,7 @@
       "line": 2170,
       "project": "chromium",
       "status": "expected",
-      "duration": 35237,
+      "duration": 36741,
       "retries": 0,
       "error": ""
     },
@@ -3902,7 +3902,7 @@
       "line": 2187,
       "project": "chromium",
       "status": "expected",
-      "duration": 37913,
+      "duration": 37941,
       "retries": 0,
       "error": ""
     },
@@ -3915,7 +3915,7 @@
       "line": 2204,
       "project": "chromium",
       "status": "expected",
-      "duration": 38329,
+      "duration": 35812,
       "retries": 0,
       "error": ""
     },
@@ -3928,7 +3928,7 @@
       "line": 2221,
       "project": "chromium",
       "status": "expected",
-      "duration": 37626,
+      "duration": 38203,
       "retries": 0,
       "error": ""
     },
@@ -3941,7 +3941,7 @@
       "line": 2286,
       "project": "chromium",
       "status": "expected",
-      "duration": 41411,
+      "duration": 39271,
       "retries": 0,
       "error": ""
     },
@@ -3954,7 +3954,7 @@
       "line": 2321,
       "project": "chromium",
       "status": "expected",
-      "duration": 50875,
+      "duration": 39830,
       "retries": 0,
       "error": ""
     },
@@ -3967,7 +3967,7 @@
       "line": 2447,
       "project": "chromium",
       "status": "expected",
-      "duration": 38593,
+      "duration": 36885,
       "retries": 0,
       "error": ""
     },
@@ -3980,7 +3980,7 @@
       "line": 2479,
       "project": "chromium",
       "status": "expected",
-      "duration": 35236,
+      "duration": 36815,
       "retries": 0,
       "error": ""
     },
@@ -3993,7 +3993,7 @@
       "line": 2511,
       "project": "chromium",
       "status": "expected",
-      "duration": 37681,
+      "duration": 36355,
       "retries": 0,
       "error": ""
     },
@@ -4006,7 +4006,7 @@
       "line": 2543,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 144212,
+      "duration": 144717,
       "retries": 2,
       "error": "Error: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n       - unexpected value \"21.8\"\n\nError: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 "
     },
@@ -4019,7 +4019,7 @@
       "line": 2573,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 141358,
+      "duration": 137990,
       "retries": 2,
       "error": "Error: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n       - unexpected value \"21.8\"\n\nError: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 "
     },
@@ -4032,7 +4032,7 @@
       "line": 2603,
       "project": "chromium",
       "status": "expected",
-      "duration": 35623,
+      "duration": 38366,
       "retries": 0,
       "error": ""
     },
@@ -4045,7 +4045,7 @@
       "line": 2633,
       "project": "chromium",
       "status": "expected",
-      "duration": 39108,
+      "duration": 37064,
       "retries": 0,
       "error": ""
     },
@@ -4058,7 +4058,7 @@
       "line": 2663,
       "project": "chromium",
       "status": "expected",
-      "duration": 36976,
+      "duration": 37370,
       "retries": 0,
       "error": ""
     },
@@ -4071,7 +4071,7 @@
       "line": 2712,
       "project": "chromium",
       "status": "expected",
-      "duration": 37684,
+      "duration": 36878,
       "retries": 0,
       "error": ""
     },
@@ -4084,7 +4084,7 @@
       "line": 2761,
       "project": "chromium",
       "status": "expected",
-      "duration": 35627,
+      "duration": 35711,
       "retries": 0,
       "error": ""
     },
@@ -4097,7 +4097,7 @@
       "line": 2782,
       "project": "chromium",
       "status": "expected",
-      "duration": 38275,
+      "duration": 35281,
       "retries": 0,
       "error": ""
     },
@@ -4110,7 +4110,7 @@
       "line": 2803,
       "project": "chromium",
       "status": "expected",
-      "duration": 36342,
+      "duration": 37376,
       "retries": 0,
       "error": ""
     },
@@ -4123,7 +4123,7 @@
       "line": 2824,
       "project": "chromium",
       "status": "expected",
-      "duration": 37503,
+      "duration": 36765,
       "retries": 0,
       "error": ""
     },
@@ -4136,7 +4136,7 @@
       "line": 2845,
       "project": "chromium",
       "status": "expected",
-      "duration": 37319,
+      "duration": 36912,
       "retries": 0,
       "error": ""
     },
@@ -4149,7 +4149,7 @@
       "line": 2866,
       "project": "chromium",
       "status": "expected",
-      "duration": 37842,
+      "duration": 36664,
       "retries": 0,
       "error": ""
     },
@@ -4162,7 +4162,7 @@
       "line": 2895,
       "project": "chromium",
       "status": "expected",
-      "duration": 37473,
+      "duration": 37133,
       "retries": 0,
       "error": ""
     },
@@ -4175,7 +4175,7 @@
       "line": 2918,
       "project": "chromium",
       "status": "expected",
-      "duration": 37223,
+      "duration": 37385,
       "retries": 0,
       "error": ""
     },
@@ -4188,7 +4188,7 @@
       "line": 2935,
       "project": "chromium",
       "status": "expected",
-      "duration": 36949,
+      "duration": 36291,
       "retries": 0,
       "error": ""
     },
@@ -4201,7 +4201,7 @@
       "line": 2952,
       "project": "chromium",
       "status": "expected",
-      "duration": 40140,
+      "duration": 34331,
       "retries": 0,
       "error": ""
     },
@@ -4214,7 +4214,7 @@
       "line": 2983,
       "project": "chromium",
       "status": "expected",
-      "duration": 33471,
+      "duration": 40598,
       "retries": 0,
       "error": ""
     }
@@ -4259,6 +4259,16 @@
       "skipped": 0,
       "total": 314,
       "duration": 17477671
+    },
+    {
+      "run": 44,
+      "date": "2026-09-25",
+      "passed": 254,
+      "failed": 27,
+      "flaky": 33,
+      "skipped": 0,
+      "total": 314,
+      "duration": 19082161
     }
   ]
 }
