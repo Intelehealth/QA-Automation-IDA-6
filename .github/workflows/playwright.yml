@@ -286,15 +286,22 @@ jobs:
       # Reads dashboard/data.json, which the builder already
       # normalised, so Slack and the dashboard always agree.
       #
-      # Also builds two QuickChart image URLs. QuickChart renders
-      # the PNG on its own servers, so Slack fetches the picture
-      # straight from the URL -- nothing extra is published and
-      # there is no GitHub Pages propagation delay.
+      # Builds four dashboard-style chart images for Slack:
+      #   1. Test Execution Results Distribution (doughnut, total in centre)
+      #   2. Test Execution Results Trend (stacked bars per run + pass-rate line)
+      #   3. Test Results by Module (stacked horizontal bars)
+      #   4. Failures Distribution by Module (doughnut, only when failures exist)
+      #
+      # QuickChart renders the PNGs on its own servers, so Slack
+      # fetches them straight from the URL -- nothing extra is
+      # published and there is no GitHub Pages propagation delay.
       # ========================================================
 
       - name: Parse Test Results
         id: results
         if: ${{ !cancelled() }}
+        env:
+          RUN_NUMBER: ${{ github.run_number }}
         run: |
 
           echo "========================================"
@@ -315,8 +322,10 @@ jobs:
               echo "pass_rate=0"
               echo "modules=0"
               echo "failing_modules=Unknown"
-              echo "chart_overall="
+              echo "chart_distribution="
+              echo "chart_trend="
               echo "chart_modules="
+              echo "chart_failures="
             } >> "$GITHUB_OUTPUT"
 
             exit 0
@@ -360,102 +369,528 @@ jobs:
           console.log('========================================');
 
 
-          // ---- QuickChart images for Slack --------------------------
-          // Counts are written into the labels themselves, so every
-          // number is readable without hovering or opening anything.
+          // ============================================================
+          // Dashboard-style chart images for Slack (QuickChart)
+          //
+          // Charts are registered with QuickChart's /chart/create API,
+          // which returns a short URL -- Slack caps image_url at 3000
+          // characters, and these configs are bigger than that.
+          // Falls back to a normal GET URL if the API call fails.
+          // ============================================================
 
-          const C = { pass:'#2E9E5B', fail:'#D93A3A', flaky:'#E09514', skip:'#93A0B4' };
+          const C = {
+            pass:  '#3BA23F',
+            fail:  '#C9302C',
+            flaky: '#F0B02A',
+            skip:  '#4F5BD5',
+            line:  '#5B5FE0',
+            grid:  '#E6E8EC',
+            text:  '#1F2937',
+            muted: '#6B7280'
+          };
 
-          const quickChart = (config, w, h) =>
-            'https://quickchart.io/chart?bkg=white&w=' + w + '&h=' + h +
-            '&c=' + encodeURIComponent(JSON.stringify(config));
+          const num = v => Number(v) || 0;
+          const pct = (n, d) => (d ? (n * 100 / d).toFixed(2) : '0.00');
+          const clip = (s, n) => (s.length > n ? s.slice(0, n - 1) + '…' : s);
 
-          let chartOverall = '';
-          let chartModules = '';
+          const TITLE = text => ({
+            display: true, text, fontSize: 18, fontStyle: 'bold',
+            fontColor: C.text, padding: 16
+          });
 
-          if ((t.total || 0) > 0) {
+          const LEGEND_TOP = {
+            position: 'top', align: 'end',
+            labels: { usePointStyle: true, fontSize: 13, fontColor: C.text, padding: 16 }
+          };
 
-            chartOverall = quickChart({
-              type: 'doughnut',
-              data: {
-                labels: [
-                  'Passed  ' + (t.passed || 0),
-                  'Failed  ' + (t.failed || 0),
-                  'Flaky  ' + (t.flaky || 0),
-                  'Skipped  ' + (t.skipped || 0)
-                ],
-                datasets: [{
-                  data: [t.passed || 0, t.failed || 0, t.flaky || 0, t.skipped || 0],
-                  backgroundColor: [C.pass, C.fail, C.flaky, C.skip],
-                  borderWidth: 0
-                }]
-              },
-              options: {
-                title: {
-                  display: true,
-                  text: [
-                    (t.passRate || 0) + '% pass rate',
-                    (t.passed || 0) + ' passed  /  ' + (t.failed || 0) + ' failed  /  ' + (t.total || 0) + ' total'
-                  ],
-                  fontSize: 17
-                },
-                legend: { position: 'right', labels: { fontSize: 13, boxWidth: 14 } },
-                cutoutPercentage: 60
-              }
-            }, 620, 320);
+          const NO_DATALABELS = { datalabels: { display: false } };
 
+          const CFG = {};
 
-            const mods = (data.modules || []).slice(0, 12);
-
-            const label = (m) => {
-              const name = m.name.length > 22 ? m.name.slice(0, 20) + '...' : m.name;
-              return [name, m.passed + ' pass / ' + m.failed + ' fail'];
-            };
-
-            chartModules = quickChart({
-              type: 'horizontalBar',
-              data: {
-                labels: mods.map(label),
-                datasets: [
-                  { label:'Passed',  backgroundColor:C.pass,  data: mods.map(m => m.passed) },
-                  { label:'Failed',  backgroundColor:C.fail,  data: mods.map(m => m.failed) },
-                  { label:'Flaky',   backgroundColor:C.flaky, data: mods.map(m => m.flaky) },
-                  { label:'Skipped', backgroundColor:C.skip,  data: mods.map(m => m.skipped) }
-                ]
-              },
-              options: {
-                title: { display: true, text: 'Test cases by module', fontSize: 17 },
-                legend: { position: 'bottom', labels: { fontSize: 12, boxWidth: 12 } },
-                scales: {
-                  xAxes: [{ stacked: true, ticks: { beginAtZero: true, fontSize: 12 } }],
-                  yAxes: [{ stacked: true, ticks: { fontSize: 12 } }]
-                }
-              }
-            }, 780, Math.max(300, 90 + mods.length * 40));
-
-            console.log(`🖼️ Chart URLs : ${chartOverall.length} / ${chartModules.length} chars`);
+          async function chartUrl(config, w, h, key) {
+            if (key) CFG[key] = config;
+            try {
+              const res = await fetch('https://quickchart.io/chart/create', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  chart: config, width: w, height: h,
+                  backgroundColor: '#FFFFFF', devicePixelRatio: 2,
+                  format: 'png', version: '2'
+                })
+              });
+              const j = await res.json();
+              if (j.success && j.url) return j.url;
+              console.log('⚠️ QuickChart create returned:', JSON.stringify(j));
+            } catch (e) {
+              console.log('⚠️ QuickChart create failed:', e.message);
+            }
+            const url = 'https://quickchart.io/chart?v=2&bkg=white&devicePixelRatio=2&w=' + w + '&h=' + h +
+              '&c=' + encodeURIComponent(JSON.stringify(config));
+            return url.length <= 3000 ? url : '';
           }
 
 
-          const out = [
-            `passed=${t.passed || 0}`,
-            `failed=${t.failed || 0}`,
-            `flaky=${t.flaky || 0}`,
-            `skipped=${t.skipped || 0}`,
-            `total=${t.total || 0}`,
-            `pass_rate=${t.passRate || 0}`,
-            `modules=${modules.size}`,
-            `failing_modules=${failingText}`,
-            `chart_overall=${chartOverall}`,
-            `chart_modules=${chartModules}`
-          ];
+          // ---- read run history (tolerant of the history.json shape) ----
+          function readHistory() {
+            try {
+              let h = JSON.parse(fs.readFileSync('dashboard/history.json', 'utf8'));
+              if (!Array.isArray(h)) h = h.runs || h.history || h.items || [];
+              return h;
+            } catch (e) {
+              return [];
+            }
+          }
 
-          fs.appendFileSync(
-            process.env.GITHUB_OUTPUT,
-            out.join('\n') + '\n'
-          );
+          const field = (r, k) => num(r[k] ?? (r.totals || {})[k] ?? (r.stats || {})[k]);
+          const runNo = r => r.runNumber ?? r.run_number ?? r.run ?? r.build ?? r.id;
+
+          const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+          function shortDate(r) {
+            const s = String(r.runTime || r.time || r.date || r.timestamp || r.startTime || '');
+            const m = s.match(/(\d{4})-(\d{2})-(\d{2})/);
+            if (m) return MONTHS[Number(m[2]) - 1] + ' ' + m[3];
+            const d = new Date(s);
+            return isNaN(d) ? '' : MONTHS[d.getMonth()] + ' ' + String(d.getDate()).padStart(2, '0');
+          }
+
+
+          (async () => {
+
+            let chartDistribution = '';
+            let chartTrend = '';
+            let chartModules = '';
+            let chartFailures = '';
+
+            const total = num(t.total);
+
+            if (total > 0) {
+
+              const P = num(t.passed), F = num(t.failed), K = num(t.flaky), S = num(t.skipped);
+
+              // ---------- 1. Test Execution Results Distribution ----------
+              chartDistribution = await chartUrl({
+                type: 'doughnut',
+                data: {
+                  labels: [
+                    'Passed      ' + P + '  (' + pct(P, total) + '%)',
+                    'Failed      ' + F + '  (' + pct(F, total) + '%)',
+                    'Flaky        ' + K + '  (' + pct(K, total) + '%)',
+                    'Skipped    ' + S + '  (' + pct(S, total) + '%)'
+                  ],
+                  datasets: [{
+                    data: [P, F, K, S],
+                    backgroundColor: [C.pass, C.fail, C.flaky, C.skip],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 2
+                  }]
+                },
+                options: {
+                  title: TITLE('Test Execution Results Distribution'),
+                  legend: {
+                    position: 'right',
+                    labels: { usePointStyle: true, fontSize: 15, fontColor: C.text, padding: 18 }
+                  },
+                  cutoutPercentage: 80,
+                  layout: { padding: { left: 20, right: 30, top: 0, bottom: 10 } },
+                  plugins: {
+                    datalabels: { display: false },
+                    doughnutlabel: {
+                      labels: [
+                        { text: 'Total', font: { size: 16 }, color: C.muted },
+                        { text: String(total), font: { size: 46, weight: 'bold' }, color: '#111827' },
+                        { text: (t.passRate || 0) + '% pass', font: { size: 14 }, color: C.pass }
+                      ]
+                    }
+                  }
+                }
+              }, 760, 380, 'distribution');
+
+
+              // ---------- 2. Test Execution Results Trend (per run) ----------
+              let runs = readHistory().filter(r => field(r, 'total') > 0 || field(r, 'passed') + field(r, 'failed') > 0);
+
+              if (runs.length && runs.every(r => !isNaN(Number(runNo(r))))) {
+                runs.sort((a, b) => Number(runNo(a)) - Number(runNo(b)));
+              }
+
+              const cur = process.env.RUN_NUMBER;
+              if (!runs.length || (cur && String(runNo(runs[runs.length - 1])) !== String(cur))) {
+                runs.push({ runNumber: cur || 'now', runTime: new Date().toISOString(), passed: P, failed: F, flaky: K, skipped: S, total });
+              }
+
+              runs = runs.slice(-10);
+
+              const rate = r => {
+                const tot = field(r, 'total') || (field(r, 'passed') + field(r, 'failed') + field(r, 'flaky') + field(r, 'skipped'));
+                return tot ? Number((field(r, 'passed') * 100 / tot).toFixed(1)) : 0;
+              };
+
+              chartTrend = await chartUrl({
+                type: 'bar',
+                data: {
+                  labels: runs.map((r, i) => ['#' + (runNo(r) ?? i + 1), shortDate(r)]),
+                  datasets: [
+                    {
+                      type: 'line', label: 'Pass rate %', yAxisID: 'rate',
+                      data: runs.map(rate),
+                      borderColor: C.line, borderWidth: 2, fill: false, lineTension: 0,
+                      pointRadius: 5, pointBackgroundColor: '#FFFFFF', pointBorderColor: C.line, pointBorderWidth: 2
+                    },
+                    { label: 'Passed',  yAxisID: 'count', backgroundColor: C.pass,  data: runs.map(r => field(r, 'passed')) },
+                    { label: 'Failed',  yAxisID: 'count', backgroundColor: C.fail,  data: runs.map(r => field(r, 'failed')) },
+                    { label: 'Flaky',   yAxisID: 'count', backgroundColor: C.flaky, data: runs.map(r => field(r, 'flaky')) },
+                    { label: 'Skipped', yAxisID: 'count', backgroundColor: C.skip,  data: runs.map(r => field(r, 'skipped')) }
+                  ]
+                },
+                options: {
+                  title: TITLE('Test Execution Results Trend'),
+                  legend: LEGEND_TOP,
+                  plugins: NO_DATALABELS,
+                  scales: {
+                    xAxes: [{
+                      stacked: true, barPercentage: 0.6,
+                      gridLines: { display: false },
+                      ticks: { fontSize: 12, fontColor: C.muted }
+                    }],
+                    yAxes: [
+                      {
+                        id: 'count', position: 'left', stacked: true,
+                        scaleLabel: { display: true, labelString: 'Number of tests', fontColor: C.muted },
+                        gridLines: { color: C.grid, borderDash: [4, 4], drawBorder: false },
+                        ticks: { beginAtZero: true, fontColor: C.muted }
+                      },
+                      {
+                        id: 'rate', position: 'right',
+                        scaleLabel: { display: true, labelString: 'Pass rate (%)', fontColor: C.line },
+                        gridLines: { display: false, drawBorder: false },
+                        ticks: { min: 0, max: 100, stepSize: 20, fontColor: C.line }
+                      }
+                    ]
+                  }
+                }
+              }, 900, 420, 'trend');
+
+
+              // ---------- 3. Test Results by Module ----------
+              const mods = [...(data.modules || [])]
+                .sort((a, b) => num(b.failed) - num(a.failed) ||
+                  (num(b.passed) + num(b.failed)) - (num(a.passed) + num(a.failed)))
+                .slice(0, 12);
+
+              if (mods.length) {
+                chartModules = await chartUrl({
+                  type: 'horizontalBar',
+                  data: {
+                    labels: mods.map(m => {
+                      const tot = num(m.passed) + num(m.failed) + num(m.flaky) + num(m.skipped);
+                      return clip(String(m.name), 28) + '  (' + pct(num(m.passed), tot).replace(/\.00$/, '') + '%)';
+                    }),
+                    datasets: [
+                      { label: 'Passed',  backgroundColor: C.pass,  data: mods.map(m => num(m.passed)) },
+                      { label: 'Failed',  backgroundColor: C.fail,  data: mods.map(m => num(m.failed)) },
+                      { label: 'Flaky',   backgroundColor: C.flaky, data: mods.map(m => num(m.flaky)) },
+                      { label: 'Skipped', backgroundColor: C.skip,  data: mods.map(m => num(m.skipped)) }
+                    ]
+                  },
+                  options: {
+                    title: TITLE('Test Results by Module (pass rate)'),
+                    legend: LEGEND_TOP,
+                    plugins: NO_DATALABELS,
+                    scales: {
+                      xAxes: [{
+                        stacked: true,
+                        scaleLabel: { display: true, labelString: 'Number of tests', fontColor: C.muted },
+                        gridLines: { color: C.grid, borderDash: [4, 4], drawBorder: false },
+                        ticks: { beginAtZero: true, fontColor: C.muted }
+                      }],
+                      yAxes: [{
+                        stacked: true, barPercentage: 0.7,
+                        gridLines: { display: false },
+                        ticks: { fontSize: 13, fontColor: C.text }
+                      }]
+                    }
+                  }
+                }, 900, Math.max(320, 130 + mods.length * 38), 'modules');
+              }
+
+
+              // ---------- 4. Failures Distribution by Module ----------
+              const failMods = (data.modules || [])
+                .filter(m => num(m.failed) > 0)
+                .sort((a, b) => num(b.failed) - num(a.failed));
+
+              if (F > 0 && failMods.length) {
+                const top = failMods.slice(0, 6);
+                const rest = failMods.slice(6).reduce((s, m) => s + num(m.failed), 0);
+                const items = top.map(m => ({ name: clip(String(m.name), 24), v: num(m.failed) }));
+                if (rest > 0) items.push({ name: 'Others', v: rest });
+                const sum = items.reduce((s, i) => s + i.v, 0);
+
+                chartFailures = await chartUrl({
+                  type: 'doughnut',
+                  data: {
+                    labels: items.map(i => i.name + '    ' + i.v + '  (' + pct(i.v, sum) + '%)'),
+                    datasets: [{
+                      data: items.map(i => i.v),
+                      backgroundColor: ['#1E2A5A', '#4F7CF7', '#1BA3B8', '#C9302C', '#F0B02A', '#8E5BD6', '#93A0B4'],
+                      borderColor: '#FFFFFF',
+                      borderWidth: 2
+                    }]
+                  },
+                  options: {
+                    title: TITLE('Failures Distribution by Module'),
+                    legend: {
+                      position: 'right',
+                      labels: { usePointStyle: true, fontSize: 14, fontColor: C.text, padding: 16 }
+                    },
+                    cutoutPercentage: 80,
+                    layout: { padding: { left: 20, right: 30, top: 0, bottom: 10 } },
+                    plugins: {
+                      datalabels: { display: false },
+                      doughnutlabel: {
+                        labels: [
+                          { text: 'Failed', font: { size: 16 }, color: C.muted },
+                          { text: String(sum), font: { size: 46, weight: 'bold' }, color: C.fail }
+                        ]
+                      }
+                    }
+                  }
+                }, 760, 380, 'failures');
+              }
+
+              console.log('🖼️ Charts    :', [chartDistribution, chartTrend, chartModules, chartFailures].map(u => u ? 'ok' : '-').join(' / '));
+            }
+
+
+            const out = [
+              `passed=${t.passed || 0}`,
+              `failed=${t.failed || 0}`,
+              `flaky=${t.flaky || 0}`,
+              `skipped=${t.skipped || 0}`,
+              `total=${t.total || 0}`,
+              `pass_rate=${t.passRate || 0}`,
+              `modules=${modules.size}`,
+              `failing_modules=${failingText}`,
+              `chart_distribution=${chartDistribution}`,
+              `chart_trend=${chartTrend}`,
+              `chart_modules=${chartModules}`,
+              `chart_failures=${chartFailures}`
+            ];
+
+            // chart settings + data for the one-screen Slack dashboard image
+            fs.writeFileSync('slack-charts.json', JSON.stringify({
+              configs: CFG, totals: t, modules: data.modules || [], moduleCount: modules.size
+            }));
+
+            fs.appendFileSync(
+              process.env.GITHUB_OUTPUT,
+              out.join('\n') + '\n'
+            );
+
+          })();
 
           NODE
+
+
+      # ========================================================
+      # 🖥️ RENDER ONE-SCREEN SLACK DASHBOARD IMAGE
+      #
+      # Draws every chart plus the module table on a single
+      # dashboard-style screen with headless Chromium (already
+      # installed for the tests) and saves it as
+      #   dashboard/slack/run-<run number>.png
+      # The deploy step publishes it with the dashboard, and the
+      # Slack step posts it as one image.
+      # ========================================================
+
+      - name: Render Slack Dashboard Image
+        id: board
+        if: ${{ !cancelled() }}
+        env:
+          OUT_FILE: dashboard/slack/run-${{ github.run_number }}.png
+          PROJECT: IDA-6 Automation
+          ENVIRONMENT: DEV
+          RUN_NUMBER: ${{ github.run_number }}
+          BRANCH: ${{ github.ref_name }}
+          ACTOR: ${{ github.actor }}
+        run: |
+
+          echo "========================================"
+          echo "🖥️ RENDERING SLACK DASHBOARD IMAGE"
+          echo "========================================"
+
+          if [ ! -f "slack-charts.json" ]; then
+            echo "ℹ️ No chart data, skipping."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          export RUN_TIME="$(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M IST')"
+
+          node <<'NODE'
+
+          const fs = require('fs');
+          const path = require('path');
+
+          let chromium;
+          try { ({ chromium } = require('@playwright/test')); }
+          catch (e) { ({ chromium } = require('playwright')); }
+
+          const src = JSON.parse(fs.readFileSync('slack-charts.json', 'utf8'));
+          const cfg = src.configs || {};
+          const t = src.totals || {};
+          const OUT = process.env.OUT_FILE || 'dashboard/slack/board.png';
+
+          const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+          const num = v => Number(v) || 0;
+
+          // the card already shows the title, so drop the in-chart one
+          for (const k of Object.keys(cfg)) {
+            cfg[k].options = cfg[k].options || {};
+            cfg[k].options.title = { display: false };
+            cfg[k].options.maintainAspectRatio = false;
+            cfg[k].options.animation = false;
+            cfg[k].options.responsive = true;
+          }
+
+          // ---- module table rows (like "Test Coverage by Configuration") ----
+          const mods = [...(src.modules || [])]
+            .map(m => {
+              const tot = num(m.passed) + num(m.failed) + num(m.flaky) + num(m.skipped);
+              return { name: m.name, tot, passed: num(m.passed), failed: num(m.failed), rate: tot ? num(m.passed) * 100 / tot : 0 };
+            })
+            .sort((a, b) => b.tot - a.tot)
+            .slice(0, 8);
+
+          const rateColor = r => (r >= 90 ? '#3BA23F' : r >= 70 ? '#E09514' : '#C9302C');
+
+          const tableRows = mods.map(m => `
+            <tr>
+              <td class="mod"><span class="dot" style="background:${m.failed ? '#C9302C' : '#3BA23F'}"></span>${esc(m.name)}</td>
+              <td>${m.tot}</td>
+              <td>${m.passed}</td>
+              <td class="${m.failed ? 'bad' : ''}">${m.failed}</td>
+              <td><div class="rate"><div class="bar"><i style="width:${m.rate.toFixed(1)}%;background:${rateColor(m.rate)}"></i></div>${m.rate.toFixed(1).replace(/\.0$/, '')}%</div></td>
+            </tr>`).join('');
+
+          const failed = num(t.failed);
+          const meta = {
+            project: process.env.PROJECT || 'IDA-6 Automation',
+            run: process.env.RUN_NUMBER || '',
+            branch: process.env.BRANCH || '',
+            actor: process.env.ACTOR || '',
+            time: process.env.RUN_TIME || '',
+            env: process.env.ENVIRONMENT || 'DEV'
+          };
+
+          const card = (title, body, cls = '') =>
+            `<section class="card ${cls}"><h2>${title}</h2>${body}</section>`;
+
+          const canvas = (id, h) => cfg[id]
+            ? `<div class="chart" style="height:${h}px"><canvas id="${id}"></canvas></div>`
+            : `<div class="empty" style="height:${h}px">No data</div>`;
+
+          const failuresBody = cfg.failures
+            ? canvas('failures', 330)
+            : `<div class="empty ok" style="height:330px"><b>0</b><span>failures — all modules green</span></div>`;
+
+          const html = `<!doctype html><html><head><meta charset="utf-8"><style>
+            * { box-sizing: border-box; }
+            body { margin: 0; background: #F4F5F7; font-family: Inter, "Segoe UI", Helvetica, Arial, sans-serif; color: #1F2937; }
+            #board { width: 1800px; background: #F4F5F7; }
+            .top { background: #1E2356; color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 16px 28px; }
+            .top .brand { font-size: 22px; font-weight: 700; }
+            .top .brand small { font-weight: 400; opacity: .75; margin-left: 10px; font-size: 16px; }
+            .top .status { font-size: 15px; padding: 6px 14px; border-radius: 16px; font-weight: 600;
+                           background: ${failed ? '#C9302C' : '#3BA23F'}; }
+            .bar2 { display: flex; gap: 12px; padding: 16px 28px 4px; flex-wrap: wrap; }
+            .chip { background: #fff; border: 1px solid #DDE1E7; border-radius: 6px; padding: 8px 14px; font-size: 15px; color: #6B7280; }
+            .chip b { color: #1F2937; font-weight: 600; margin-left: 6px; }
+            .grid { display: grid; gap: 18px; padding: 16px 28px 28px; }
+            .row1 { grid-template-columns: 1fr 1.25fr 1fr; }
+            .row2 { grid-template-columns: 2fr 1fr; padding-top: 0; }
+            .card { background: #fff; border: 1px solid #DDE1E7; border-radius: 8px; padding: 18px 20px; }
+            .card h2 { margin: 0 0 10px; font-size: 18px; font-weight: 600; }
+            .chart { position: relative; width: 100%; }
+            .empty { display: flex; align-items: center; justify-content: center; color: #9CA3AF; font-size: 16px; flex-direction: column; }
+            .empty.ok b { font-size: 56px; color: #3BA23F; }
+            table { width: 100%; border-collapse: collapse; font-size: 15px; }
+            th { text-align: left; font-size: 12px; letter-spacing: .04em; color: #6B7280; font-weight: 600; padding: 8px 6px; border-bottom: 1px solid #E6E8EC; }
+            td { padding: 10px 6px; border-bottom: 1px solid #F0F1F4; white-space: nowrap; }
+            td.mod { max-width: 190px; overflow: hidden; text-overflow: ellipsis; }
+            td.bad { color: #C9302C; font-weight: 600; }
+            .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 8px; }
+            .rate { display: flex; align-items: center; gap: 8px; }
+            .rate .bar { width: 60px; height: 6px; background: #EEF0F3; border-radius: 3px; overflow: hidden; }
+            .rate .bar i { display: block; height: 100%; }
+          </style></head><body>
+          <div id="board">
+            <div class="top">
+              <div class="brand">${esc(meta.project)}<small>Test Execution Report</small></div>
+              <div class="status">${failed ? failed + ' Failed' : 'All Passed'}</div>
+            </div>
+            <div class="bar2">
+              <div class="chip">Run<b>#${esc(meta.run)}</b></div>
+              <div class="chip">Branch<b>${esc(meta.branch)}</b></div>
+              <div class="chip">Environment<b>${esc(meta.env)}</b></div>
+              <div class="chip">Browser<b>Chromium</b></div>
+              <div class="chip">Triggered by<b>${esc(meta.actor)}</b></div>
+              <div class="chip">Executed<b>${esc(meta.time)}</b></div>
+              <div class="chip">Pass rate<b>${esc(t.passRate || 0)}%</b></div>
+            </div>
+            <div class="grid row1">
+              ${card('Test Execution Results Distribution', canvas('distribution', 330))}
+              ${card('Test Execution Results Trend', canvas('trend', 330))}
+              ${card('Test Coverage by Module',
+                `<table><thead><tr><th>MODULE</th><th>EXECUTED</th><th>PASSED</th><th>FAILED</th><th>PASS RATE</th></tr></thead><tbody>${tableRows}</tbody></table>`)}
+            </div>
+            <div class="grid row2">
+              ${card('Test Results by Module', canvas('modules', 330))}
+              ${card('Failures Distribution by Module', failuresBody)}
+            </div>
+          </div>
+          </body></html>`;
+
+          (async () => {
+            const browser = await chromium.launch(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {});
+            const page = await browser.newPage({ viewport: { width: 1800, height: 1000 }, deviceScaleFactor: 1.5 });
+            await page.setContent(html);
+
+            // Chart.js 2.9.4 + doughnutlabel -- same versions QuickChart uses
+            const CHART_JS = process.env.CHART_JS_FILE
+              ? { path: process.env.CHART_JS_FILE }
+              : { url: 'https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js' };
+            const DOUGHNUT = process.env.DOUGHNUT_FILE
+              ? { path: process.env.DOUGHNUT_FILE }
+              : { url: 'https://cdn.jsdelivr.net/npm/chartjs-plugin-doughnutlabel@2.0.3/dist/chartjs-plugin-doughnutlabel.js' };
+            await page.addScriptTag(CHART_JS);
+            await page.addScriptTag(DOUGHNUT);
+
+            await page.evaluate(cfg => {
+              Chart.defaults.global.defaultFontFamily = 'Inter, "Segoe UI", Helvetica, Arial, sans-serif';
+              for (const [id, c] of Object.entries(cfg)) {
+                const el = document.getElementById(id);
+                if (!el) continue;
+                if (c.options.legend && c.options.legend.labels) c.options.legend.labels.fontSize = Math.min(c.options.legend.labels.fontSize || 13, 13);
+                new Chart(el, c);
+              }
+            }, cfg);
+
+            await page.waitForTimeout(500);
+            fs.mkdirSync(path.dirname(OUT), { recursive: true });
+            await (await page.$('#board')).screenshot({ path: OUT });
+            await browser.close();
+            console.log('🖼️ Dashboard image written:', OUT, fs.statSync(OUT).size, 'bytes');
+          })().catch(e => { console.log('⚠️ Could not render dashboard image:', e.message); process.exit(0); });
+
+          NODE
+
+          if [ -f "$OUT_FILE" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          fi
 
 
       # ========================================================
@@ -710,8 +1145,14 @@ jobs:
           PASS_RATE: ${{ steps.results.outputs.pass_rate }}
           MODULES: ${{ steps.results.outputs.modules }}
           FAILING_MODULES: ${{ steps.results.outputs.failing_modules }}
-          CHART_OVERALL: ${{ steps.results.outputs.chart_overall }}
+          CHART_DISTRIBUTION: ${{ steps.results.outputs.chart_distribution }}
+          CHART_TREND: ${{ steps.results.outputs.chart_trend }}
           CHART_MODULES: ${{ steps.results.outputs.chart_modules }}
+          CHART_FAILURES: ${{ steps.results.outputs.chart_failures }}
+          BOARD_READY: ${{ steps.board.outputs.ready }}
+          EVENT_NAME: ${{ github.event_name }}
+          BOARD_RAW_URL: https://raw.githubusercontent.com/${{ github.repository }}/gh-pages/slack/run-${{ github.run_number }}.png
+          BOARD_PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/slack/run-${{ github.run_number }}.png
           RUN_NUMBER: ${{ github.run_number }}
           COMMIT_MESSAGE: ${{ steps.commit.outputs.message }}
           COMMIT_URL: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
@@ -732,8 +1173,38 @@ jobs:
           fi
 
 
+          # ---- one-screen dashboard image ----
+          # It was pushed to gh-pages a moment ago. Wait until it is
+          # reachable (raw.githubusercontent is instant for public
+          # repos; GitHub Pages can take ~1 min). If it never shows
+          # up -- e.g. pull requests, which don't deploy -- the
+          # message falls back to the four separate charts.
+          BOARD_IMAGE=""
+
+          if [ "$EVENT_NAME" = "push" ] && [ "$BOARD_READY" = "true" ]; then
+            echo "⏳ Waiting for the dashboard image to be reachable..."
+            for i in $(seq 1 24); do
+              for U in "$BOARD_RAW_URL" "$BOARD_PAGES_URL"; do
+                CODE=$(curl -s -o /dev/null -w "%{http_code}" "$U" || true)
+                if [ "$CODE" = "200" ]; then
+                  BOARD_IMAGE="$U"
+                  break 2
+                fi
+              done
+              sleep 5
+            done
+          fi
+
+          if [ -n "$BOARD_IMAGE" ]; then
+            echo "✅ Dashboard image: $BOARD_IMAGE"
+          else
+            echo "ℹ️ Dashboard image not reachable, using separate charts."
+          fi
+
+
           PAYLOAD=$(jq -n \
             --arg header "$HEADER" \
+            --arg board_image "$BOARD_IMAGE" \
             --arg project "$PROJECT" \
             --arg repository "$REPOSITORY" \
             --arg branch "$BRANCH" \
@@ -746,8 +1217,10 @@ jobs:
             --arg pass_rate "$PASS_RATE" \
             --arg modules "$MODULES" \
             --arg failing_modules "$FAILING_MODULES" \
-            --arg chart_overall "$CHART_OVERALL" \
+            --arg chart_distribution "$CHART_DISTRIBUTION" \
+            --arg chart_trend "$CHART_TREND" \
             --arg chart_modules "$CHART_MODULES" \
+            --arg chart_failures "$CHART_FAILURES" \
             --arg run_number "$RUN_NUMBER" \
             --arg commit_message "$COMMIT_MESSAGE" \
             --arg commit_url "$COMMIT_URL" \
@@ -815,18 +1288,39 @@ jobs:
                   }
                 },
 
-                (if $chart_overall == "" then null else {
+                (if $board_image == "" then null else {
                   type: "image",
-                  title: { type: "plain_text", text: "Overall pass / fail" },
-                  image_url: $chart_overall,
-                  alt_text: "Doughnut chart of passed, failed, flaky and skipped test cases"
+                  title: { type: "plain_text", text: "IDA-6 Test Dashboard — Run #\($run_number)" },
+                  image_url: $board_image,
+                  alt_text: "IDA-6 dashboard: results distribution, trend, module coverage table, results by module and failures by module"
                 } end),
 
-                (if $chart_modules == "" then null else {
+                (if $board_image != "" or $chart_distribution == "" then null else {
                   type: "image",
-                  title: { type: "plain_text", text: "Test cases by module" },
+                  title: { type: "plain_text", text: "Test Execution Results Distribution" },
+                  image_url: $chart_distribution,
+                  alt_text: "Doughnut chart of passed, failed, flaky and skipped tests with the total in the centre"
+                } end),
+
+                (if $board_image != "" or $chart_trend == "" then null else {
+                  type: "image",
+                  title: { type: "plain_text", text: "Test Execution Results Trend" },
+                  image_url: $chart_trend,
+                  alt_text: "Stacked bar chart of results for recent runs with a pass-rate line"
+                } end),
+
+                (if $board_image != "" or $chart_modules == "" then null else {
+                  type: "image",
+                  title: { type: "plain_text", text: "Test Results by Module" },
                   image_url: $chart_modules,
-                  alt_text: "Stacked bar chart of test case results for each module"
+                  alt_text: "Stacked bar chart of test results for each module"
+                } end),
+
+                (if $board_image != "" or $chart_failures == "" then null else {
+                  type: "image",
+                  title: { type: "plain_text", text: "Failures Distribution by Module" },
+                  image_url: $chart_failures,
+                  alt_text: "Doughnut chart of failed tests split by module"
                 } end),
 
                 {
