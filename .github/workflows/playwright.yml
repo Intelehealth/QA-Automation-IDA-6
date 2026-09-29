@@ -10,27 +10,23 @@ on:
 permissions:
   contents: write
 
-# Only one deploy to gh-pages at a time, so two runs never fight over the branch.
-concurrency:
-  group: ida6-pages
-  cancel-in-progress: false
+# NOTE: concurrency moved from workflow level to the "report" job.
+# At workflow level, a second push had to wait for the whole 6-hour
+# test run to finish before it could even start.
 
 
 jobs:
 
   # ============================================================
-  # IDA-6 AUTOMATION JOB
+  # 🚀 SLACK - AUTOMATION STARTED (runs once)
   # ============================================================
 
-  test:
+  start:
 
     runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     steps:
-
-      # ========================================================
-      # 🚀 SLACK - AUTOMATION STARTED
-      # ========================================================
 
       - name: Slack - IDA-6 Automation Started
         env:
@@ -59,92 +55,182 @@ jobs:
             "$SLACK_WEBHOOK_URL"
 
 
-      # ========================================================
-      # 📥 CHECKOUT CODE
-      # ========================================================
+  # ============================================================
+  # 🧪 IDA-6 AUTOMATION - SHARDED
+  #
+  # The suite is split into 6 parallel jobs. Each one runs about
+  # 1/6 of the tests, so no job gets near GitHub's 6-hour limit.
+  # Change SHARD_TOTAL and the shard list together.
+  # ============================================================
+
+  test:
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4, 5, 6]
+
+    env:
+      SHARD_TOTAL: 6
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+
+      # continue-on-error keeps the job green on test failures
+      # (same behaviour as before), so the report job always runs.
+      - name: Run IDA-6 Playwright Automation (shard ${{ matrix.shard }}/${{ env.SHARD_TOTAL }})
+        id: playwright
+        continue-on-error: true
+        run: |
+
+          echo "========================================"
+          echo "🚀 IDA-6 AUTOMATION - SHARD ${{ matrix.shard }}/$SHARD_TOTAL"
+          echo "========================================"
+
+          PLAYWRIGHT_EXIT_CODE=0
+
+          npx playwright test --project=chromium \
+            --shard=${{ matrix.shard }}/$SHARD_TOTAL || PLAYWRIGHT_EXIT_CODE=$?
+
+          echo "Playwright Exit Code: $PLAYWRIGHT_EXIT_CODE"
+          echo "exit_code=$PLAYWRIGHT_EXIT_CODE" >> "$GITHUB_OUTPUT"
+
+          exit $PLAYWRIGHT_EXIT_CODE
+
+
+      # ---- hand results to the report job ----
+
+      - name: Upload Blob Report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: blob-report-${{ matrix.shard }}
+          path: blob-report
+          retention-days: 1
+          if-no-files-found: ignore
+
+      - name: Upload Allure Results
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-${{ matrix.shard }}
+          path: allure-results
+          retention-days: 1
+          if-no-files-found: ignore
+
+      - name: Upload Failed Videos
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: failed-videos-${{ matrix.shard }}
+          path: test-results/**/*.webm
+          if-no-files-found: ignore
+
+      - name: Upload Playwright Traces
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-traces-${{ matrix.shard }}
+          path: test-results/**/*.zip
+          if-no-files-found: ignore
+
+      - name: Upload Failure Screenshots
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: failure-screenshots-${{ matrix.shard }}
+          path: test-results/**/*.png
+          if-no-files-found: ignore
+
+
+  # ============================================================
+  # 📊 MERGE SHARDS -> DASHBOARD + ALLURE + PAGES + SLACK
+  # ============================================================
+
+  report:
+
+    needs: test
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    # Only one deploy to gh-pages at a time, so two runs never fight over the branch.
+    concurrency:
+      group: ida6-pages
+      cancel-in-progress: false
+
+    steps:
 
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-
-      # ========================================================
-      # 🟢 SETUP NODE
-      # ========================================================
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
-
-
-      # ========================================================
-      # 📦 INSTALL NPM DEPENDENCIES
-      # ========================================================
+          cache: npm
 
       - name: Install Dependencies
-        run: |
+        run: npm ci
 
-          echo "========================================"
-          echo "Installing npm dependencies"
-          echo "========================================"
-
-          npm ci
-
-
-      # ========================================================
-      # 🎭 INSTALL PLAYWRIGHT CHROMIUM
-      # ========================================================
-
+      # needed by "Render Slack Dashboard Image"
       - name: Install Playwright Chromium
-        run: |
-
-          echo "========================================"
-          echo "Installing Playwright Chromium"
-          echo "========================================"
-
-          npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps chromium
 
 
       # ========================================================
-      # 🧪 RUN PLAYWRIGHT TESTS
-      #
-      # continue-on-error keeps the workflow going when tests
-      # fail, so the dashboard and Slack summary are still built.
-      #
-      # NOTE: the exit code is captured with "|| CODE=$?" because
-      # the shell runs with -e and would otherwise abort the step
-      # before the exit code was ever written.
+      # 🔗 MERGE SHARD RESULTS
+      #   blob-report-*    -> results.json   (dashboard input)
+      #   allure-results-* -> allure-results (one folder)
       # ========================================================
 
-      - name: Run IDA-6 Playwright Automation
-        id: playwright
-        continue-on-error: true
+      - name: Download Blob Reports
+        uses: actions/download-artifact@v4
+        with:
+          pattern: blob-report-*
+          path: all-blob-reports
+          merge-multiple: true
+
+      - name: Download Allure Results
+        uses: actions/download-artifact@v4
+        with:
+          pattern: allure-results-*
+          path: allure-results
+          merge-multiple: true
+
+      - name: Merge Shard Reports Into results.json
         run: |
 
           echo "========================================"
-          echo "🚀 IDA-6 AUTOMATION STARTED"
+          echo "🔗 MERGING SHARD REPORTS"
           echo "========================================"
 
-          echo "Project       : IDA-6 Automation"
-          echo "Browser       : Chromium"
-          echo "Branch        : ${{ github.ref_name }}"
-          echo "Triggered By  : ${{ github.actor }}"
+          ls -la all-blob-reports || true
 
-          echo "========================================"
+          PLAYWRIGHT_JSON_OUTPUT_NAME=results.json \
+            npx playwright merge-reports --reporter=json ./all-blob-reports
 
-          PLAYWRIGHT_EXIT_CODE=0
-
-          npx playwright test --project=chromium || PLAYWRIGHT_EXIT_CODE=$?
-
-          echo "========================================"
-          echo "Playwright Exit Code: $PLAYWRIGHT_EXIT_CODE"
-          echo "========================================"
-
-          echo "exit_code=$PLAYWRIGHT_EXIT_CODE" >> "$GITHUB_OUTPUT"
-
-          exit $PLAYWRIGHT_EXIT_CODE
+          ls -la results.json
 
 
       # ========================================================
@@ -697,8 +783,7 @@ jobs:
       # 🖥️ RENDER ONE-SCREEN SLACK DASHBOARD IMAGE
       #
       # Draws every chart plus the module table on a single
-      # dashboard-style screen with headless Chromium (already
-      # installed for the tests) and saves it as
+      # dashboard-style screen with headless Chromium and saves it as
       #   dashboard/slack/run-<run number>.png
       # The deploy step publishes it with the dashboard, and the
       # Slack step posts it as one image.
@@ -911,6 +996,7 @@ jobs:
             echo "Node=$(node -v)"
             echo "Playwright=$(npx playwright --version)"
             echo "Base URL=https://dev.intelehealth.org"
+            echo "Shards=6"
           } > allure-results/environment.properties
 
 
@@ -950,14 +1036,9 @@ jobs:
       # ========================================================
       # 🧹 PRUNE HEAVY ALLURE ATTACHMENTS
       #
-      # Allure embeds videos (.webm) and Playwright traces (.zip)
-      # as attachments. On a 269-test run that pushes the report
-      # past 2 GB, which breaks both the gh-pages push and the
-      # 1 GB GitHub Pages limit.
-      #
-      # Videos and traces are still uploaded as build artifacts,
-      # so nothing is lost -- they just aren't embedded in the
-      # published report. Screenshots are kept.
+      # Videos and traces are still uploaded as build artifacts
+      # by each shard, so nothing is lost -- they just aren't
+      # embedded in the published report. Screenshots are kept.
       # ========================================================
 
       - name: Prune Heavy Allure Attachments
@@ -975,13 +1056,8 @@ jobs:
 
           echo "Before : $(du -sh allure-results | cut -f1)"
 
-          # videos
           find allure-results -type f -name "*.webm" -delete || true
-
-          # traces (Playwright trace zips)
           find allure-results -type f -name "*.zip" -delete || true
-
-          # any single attachment over 5 MB
           find allure-results -type f -size +5M -delete || true
 
           echo "After  : $(du -sh allure-results | cut -f1)"
@@ -1016,12 +1092,6 @@ jobs:
 
       # ========================================================
       # 🧩 ASSEMBLE THE PUBLISHED SITE
-      #
-      # public/
-      #   index.html    -> IDA-6 dashboard (landing page)
-      #   data.json     -> raw run data
-      #   history.json  -> trend across runs
-      #   allure/       -> full Allure report
       # ========================================================
 
       - name: Assemble GitHub Pages Site
@@ -1036,7 +1106,6 @@ jobs:
           mkdir -p public/allure
           cp -r allure-report/. public/allure/
 
-          # keeps GitHub Pages from running the files through Jekyll
           touch public/.nojekyll
 
           echo "========================================"
@@ -1058,6 +1127,7 @@ jobs:
 
       # ========================================================
       # 📦 UPLOAD ARTIFACTS
+      # (videos, traces, screenshots are uploaded per shard)
       # ========================================================
 
       - name: Upload Dashboard
@@ -1076,30 +1146,6 @@ jobs:
           path: results.json
           if-no-files-found: ignore
 
-      - name: Upload Failed Videos
-        if: ${{ !cancelled() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: failed-videos
-          path: test-results/**/*.webm
-          if-no-files-found: ignore
-
-      - name: Upload Playwright Traces
-        if: ${{ !cancelled() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-traces
-          path: test-results/**/*.zip
-          if-no-files-found: ignore
-
-      - name: Upload Failure Screenshots
-        if: ${{ !cancelled() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: failure-screenshots
-          path: test-results/**/*.png
-          if-no-files-found: ignore
-
       - name: Upload Allure Report
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
@@ -1111,9 +1157,6 @@ jobs:
 
       # ========================================================
       # 🌐 DEPLOY DASHBOARD + ALLURE TO GITHUB PAGES
-      #
-      # Pull requests from forks cannot push to gh-pages,
-      # so this only runs for pushes.
       # ========================================================
 
       - name: Deploy to GitHub Pages
@@ -1165,7 +1208,6 @@ jobs:
           IST_TIME=$(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M:%S IST')
 
 
-          # Header reflects the actual outcome instead of always saying "Completed".
           if [ "$FAILED" = "0" ]; then
             HEADER="✅ IDA-6 Automation Completed"
           else
@@ -1173,12 +1215,6 @@ jobs:
           fi
 
 
-          # ---- one-screen dashboard image ----
-          # It was pushed to gh-pages a moment ago. Wait until it is
-          # reachable (raw.githubusercontent is instant for public
-          # repos; GitHub Pages can take ~1 min). If it never shows
-          # up -- e.g. pull requests, which don't deploy -- the
-          # message falls back to the four separate charts.
           BOARD_IMAGE=""
 
           if [ "$EVENT_NAME" = "push" ] && [ "$BOARD_READY" = "true" ]; then

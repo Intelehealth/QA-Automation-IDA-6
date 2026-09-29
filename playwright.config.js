@@ -8,8 +8,11 @@ export default defineConfig({
 
   forbidOnly: !!process.env.CI,
 
-  retries: process.env.CI ? 2 : 1,
+  // 2 retries meant a failing test could run 3 times (up to 3 min each).
+  retries: 1,
 
+  // Each CI shard is its own runner, so 1 worker per shard is safe.
+  // Try 2 later if dev.intelehealth.org handles the load.
   workers: process.env.CI ? 1 : undefined,
 
   timeout: 60000,
@@ -18,12 +21,20 @@ export default defineConfig({
     timeout: 10000,
   },
 
-  reporter: [
-    ['list'],
-    ['json', { outputFile: 'results.json' }],
-    ['html', { open: 'never' }],
-    ['allure-playwright'],
-  ],
+  // In CI each shard writes a "blob" report; the report job merges
+  // them into results.json. Allure results are merged as files.
+  reporter: process.env.CI
+    ? [
+        ['list'],
+        ['blob'],
+        ['allure-playwright'],
+      ]
+    : [
+        ['list'],
+        ['json', { outputFile: 'results.json' }],
+        ['html', { open: 'never' }],
+        ['allure-playwright'],
+      ],
 
   use: {
     baseURL: 'https://dev.intelehealth.org',
