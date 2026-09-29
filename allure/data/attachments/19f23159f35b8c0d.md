@@ -1,0 +1,177 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - generic [ref=e5]:
+    - complementary [ref=e6]:
+      - button [ref=e7]
+      - generic [ref=e8]:
+        - img "hero" [ref=e10]
+        - link "Add Patients" [ref=e12] [cursor=pointer]:
+          - /url: "#/patient/add"
+          - generic [ref=e15]: Add Patients
+        - navigation [ref=e16]:
+          - generic [ref=e17]:
+            - link "Home Home" [ref=e18] [cursor=pointer]:
+              - /url: "#/dashboard"
+              - img "Home" [ref=e19]
+              - generic [ref=e20]: Home
+            - link "Achievements Achievements" [ref=e21] [cursor=pointer]:
+              - /url: "#/achievement-ui"
+              - img "Achievements" [ref=e22]
+              - generic [ref=e23]: Achievements
+            - link "Help & Support Help & Support" [ref=e24] [cursor=pointer]:
+              - /url: "#/help"
+              - img "Help & Support" [ref=e25]
+              - generic [ref=e26]: Help & Support
+            - link "Educational Videos Educational Videos" [ref=e27] [cursor=pointer]:
+              - /url: "#/educational-videos"
+              - img "Educational Videos" [ref=e28]
+              - generic [ref=e29]: Educational Videos
+            - link "Settings Settings" [ref=e30] [cursor=pointer]:
+              - /url: "#/settings"
+              - img "Settings" [ref=e31]
+              - generic [ref=e32]: Settings
+            - link "About us About us" [ref=e33] [cursor=pointer]:
+              - /url: "#/about-us"
+              - img "About us" [ref=e34]
+              - generic [ref=e35]: About us
+        - navigation [ref=e37]:
+          - generic [ref=e38] [cursor=pointer]:
+            - img [ref=e39]
+            - generic [ref=e40]: Log-out
+    - main [ref=e41]:
+      - generic [ref=e43]:
+        - generic [ref=e46]:
+          - generic [ref=e50]:
+            - generic:
+              - generic:
+                - img "search"
+            - combobox "Patient Search" [ref=e51]
+          - generic [ref=e53]:
+            - img "Location" [ref=e54]
+            - generic [ref=e55]: Telemedicine Clinic 1
+          - generic [ref=e56]:
+            - link "Notification" [ref=e57] [cursor=pointer]:
+              - /url: "#/notifications"
+              - img "Notification" [ref=e58]
+            - link "Profile" [ref=e59] [cursor=pointer]:
+              - /url: "#/profile"
+              - img "Profile" [ref=e60]
+        - generic [ref=e61]:
+          - navigation "Breadcrumb" [ref=e62]:
+            - list [ref=e63]:
+              - listitem [ref=e64]:
+                - link "Dashboard" [ref=e65] [cursor=pointer]:
+                  - /url: "#/dashboard"
+              - listitem [ref=e66]:
+                - generic [ref=e67]: ">"
+                - button "Add Patient" [ref=e68] [cursor=pointer]
+              - listitem [ref=e69]:
+                - generic [ref=e70]: ">"
+                - button "Patient Details" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]: ">"
+                - button "Start Visit" [ref=e74] [cursor=pointer]
+              - listitem [ref=e75]:
+                - generic [ref=e76]: ">"
+                - generic [ref=e77]: Vitals
+          - generic [ref=e80]:
+            - generic [ref=e81]:
+              - img "Ayu Loader" [ref=e82]
+              - text: Start Visit
+            - generic [ref=e83]:
+              - generic [ref=e84]:
+                - text: Automation Test
+                - generic [ref=e85]: 26 • M
+              - generic [ref=e86]: 1/4 Vitals
+            - generic [ref=e87]:
+              - generic [ref=e88]:
+                - generic [ref=e89]:
+                  - heading "Enter patient's body measurement details" [level=3] [ref=e90]
+                  - generic [ref=e91]:
+                    - generic [ref=e92]:
+                      - generic [ref=e93]: Height (cm)*
+                      - generic [ref=e94]:
+                        - textbox "E.g., 172 cm" [active] [ref=e95]
+                        - img [ref=e97]
+                      - paragraph [ref=e99]: Height (cm) is required
+                    - generic [ref=e100]:
+                      - generic [ref=e101]: Weight (kg)*
+                      - generic [ref=e102]:
+                        - textbox "E.g., 63 kg" [ref=e103]
+                        - img [ref=e105]
+                      - paragraph [ref=e107]: Weight (kg) is required
+                    - generic [ref=e108]:
+                      - generic [ref=e109]: BMI*
+                      - textbox "E.g., 22.5" [ref=e111]
+                - generic [ref=e112]:
+                  - heading "Enter the patient's vitals" [level=3] [ref=e113]
+                  - generic [ref=e114]:
+                    - generic [ref=e115]:
+                      - generic [ref=e116]: BP Systolic
+                      - textbox "E.g., 120 mmHg" [ref=e118]
+                    - generic [ref=e119]:
+                      - generic [ref=e120]: BP Diastolic
+                      - textbox "E.g., 80 mmHg" [ref=e122]
+                    - generic [ref=e123]:
+                      - generic [ref=e124]: Pulse (bpm)*
+                      - generic [ref=e125]:
+                        - textbox "E.g., 72 bpm" [ref=e126]
+                        - img [ref=e128]
+                      - paragraph [ref=e130]: Pulse (bpm) is required
+                    - generic [ref=e131]:
+                      - generic [ref=e132]: Temperature (F)
+                      - textbox "E.g., 98.6 °F" [ref=e134]
+                    - generic [ref=e135]:
+                      - generic [ref=e136]: SpO2 (%)
+                      - textbox "E.g., 98%" [ref=e138]
+                    - generic [ref=e139]:
+                      - generic [ref=e140]: Respiratory Rate*
+                      - generic [ref=e141]:
+                        - textbox "E.g., 18 breaths/min" [ref=e142]
+                        - img [ref=e144]
+                      - paragraph [ref=e146]: Respiratory Rate is required
+                - generic [ref=e147]:
+                  - heading "Additional Measurements" [level=3] [ref=e148]
+                  - generic [ref=e149]:
+                    - generic [ref=e150]:
+                      - generic [ref=e151]: Fasting Blood Sugar (FBS) (mg/dl)
+                      - textbox "E.g., 90 mg/dL" [ref=e153]
+                    - generic [ref=e154]:
+                      - generic [ref=e155]: Post Prandial Blood Sugar (PPBS) (mg/dl)
+                      - textbox "E.g., 140 mg/dL" [ref=e157]
+                    - generic [ref=e158]:
+                      - generic [ref=e159]: RBS (mg/dl)
+                      - textbox "E.g., 110 mg/dL" [ref=e161]
+                    - generic [ref=e162]:
+                      - generic [ref=e163]: Waist Circumference (cm)
+                      - textbox "E.g., 80 cm" [ref=e165]
+                    - generic [ref=e166]:
+                      - generic [ref=e167]: Hip Circumference (cm)
+                      - textbox "E.g., 95 cm" [ref=e169]
+                    - generic [ref=e170]:
+                      - generic [ref=e171]: Waist to Hip Ratio (WHR)
+                      - textbox "E.g., 0.85" [ref=e173]
+                    - generic [ref=e174]:
+                      - generic [ref=e175]: 2 Hour Post Load Glucose Test (OGTT) (mg/dl)
+                      - textbox "E.g., 140 mg/dL" [ref=e177]
+                    - generic [ref=e178]:
+                      - generic [ref=e179]: HbA1c
+                      - textbox "E.g., 5.7%" [ref=e181]
+                    - generic [ref=e182]:
+                      - generic [ref=e183]: Blood Group
+                      - combobox [ref=e185]:
+                        - option "Select Blood Group" [selected]
+                        - option "AB NEGATIVE"
+                        - option "A NEGATIVE"
+                        - option "O NEGATIVE"
+                        - option "B POSITIVE"
+                        - option "B NEGATIVE"
+                        - option "AB POSITIVE"
+                        - option "A POSITIVE"
+                        - option "O POSITIVE"
+              - button "Next" [ref=e187] [cursor=pointer]:
+                - generic [ref=e188]: Next
+  - region "Notifications Alt+T"
+```
