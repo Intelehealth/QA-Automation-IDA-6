@@ -165,35 +165,144 @@ async function selectOtherVisitReason(page) {
     // 4. DATE OF BIRTH
     // =====================================================
 
-    await page.getByPlaceholder(
-      'Enter Date Of Birth'
-    ).click();
+    {
+      // The calendar's header changed in October 2026: a recording of the
+      // old click sequence shows the calendar opening and then sitting
+      // untouched for the full 30s timeout, because its first click
+      // (`button:has(i.fa-chevron-down)`) no longer matches anything.
+      //
+      // The "Or Age" field is NOT a substitute. A real run entered age 26
+      // there: the Date Of Birth box stayed empty, and saving the patient
+      // came back as the toast "Add Patient Failed - Request failed with
+      // status code 400" (HTTP 400 on openmrs/ws/rest/v1/patient). The
+      // server needs a real date of birth.
+      //
+      // Route 1 types the date. Route 2 uses the calendar, finding its
+      // controls by what they contain instead of by an icon class. The
+      // field is checked afterwards either way, and if neither route works
+      // the calendar's markup is printed so the exact fix can be written.
+      const dobInput = page.getByPlaceholder('Enter Date Of Birth');
+      const dobFilled = async () =>
+        String((await dobInput.inputValue().catch(() => '')) || '').trim() !== '';
 
-    await page.locator(
-      'button:has(i.fa-chevron-down)'
-    ).click();
+      let dobRoute = null;
 
-    const previousDecade = page
-      .getByRole('button')
-      .filter({
-        hasText: /^$/
-      })
-      .nth(3);
+      // Route 1: type it, then Tab to close the calendar. In
+      // react-datepicker the field keeps a value only if the typed text was
+      // a real date - junk such as "abc" or "45/45/2000" is cleared on
+      // close - so a value that survives is a valid date. (Checked against
+      // react-datepicker 7: "01/01/2000" was accepted for day-first,
+      // month-first, dashed and ISO field formats alike.) Skipped when the
+      // field is read-only.
+      if (await dobInput.isEditable().catch(() => false)) {
+        for (const typed of ['01/01/2000', '01-01-2000', '2000-01-01', '01.01.2000']) {
+          await dobInput.click({ timeout: 5000 }).catch(() => {});
+          await dobInput.fill('', { timeout: 3000 }).catch(() => {});
+          await dobInput.fill(typed, { timeout: 3000 }).catch(() => {});
+          await page.keyboard.press('Tab').catch(() => {});
+          await page.waitForTimeout(500);
 
-    await previousDecade.click();
-    await previousDecade.click();
+          if (await dobFilled()) {
+            dobRoute = `typing ${typed}`;
+            break;
+          }
+        }
+      }
 
-    await page.getByRole('button', {
-      name: '2000'
-    }).click();
+      // Route 2: the calendar.
+      if (!dobRoute) {
+        const picker = page.locator('.react-datepicker').first();
+        let failedStep = 'open the calendar';
 
-    await page.getByRole('button', {
-      name: 'JAN'
-    }).click();
+        try {
+          await dobInput.click({ timeout: 5000 });
+          await picker.waitFor({ state: 'visible', timeout: 5000 });
 
-    await page.locator(
-      '.react-datepicker__day--001:not(.react-datepicker__day--outside-month)'
-    ).click();
+          // The day view has no button whose whole name is a four-digit
+          // year; the year list does, so this shows whether the header
+          // click really opened the year list.
+          const yearListOpen = () =>
+            picker
+              .getByRole('button', { name: /^\d{4}$/ })
+              .first()
+              .isVisible({ timeout: 800 })
+              .catch(() => false);
+
+          failedStep = 'open the year list from the calendar header';
+          for (const header of [
+            picker.locator('button:has(i.fa-chevron-down)'),
+            picker.locator('button').filter({ hasText: /\d{4}/ }),
+            picker.getByText(/\d{4}/)
+          ]) {
+            const target = header.first();
+            if (!(await target.isVisible({ timeout: 1500 }).catch(() => false))) continue;
+            await target.click({ timeout: 5000 }).catch(() => {});
+            await page.waitForTimeout(500);
+            if (await yearListOpen()) break;
+          }
+          if (!(await yearListOpen())) throw new Error('clicking the calendar header did not open the year list');
+
+          failedStep = 'bring 2000 into view';
+          const yearButton = picker.getByRole('button', { name: '2000', exact: true }).first();
+          const yearButtonVisible = () =>
+            yearButton.waitFor({ state: 'visible', timeout: 1000 }).then(() => true).catch(() => false);
+          for (let i = 0; i < 6 && !(await yearButtonVisible()); i++) {
+            // The previous-decade arrow is icon-only; inside the calendar
+            // the first empty-text button is the previous arrow.
+            await picker.getByRole('button').filter({ hasText: /^$/ }).first().click({ timeout: 5000 });
+            await page.waitForTimeout(250);
+          }
+
+          failedStep = 'select year 2000';
+          await yearButton.click({ timeout: 5000 });
+          await page.waitForTimeout(300);
+
+          failedStep = 'select month JAN';
+          await picker.getByRole('button', { name: 'JAN' }).first().click({ timeout: 5000 });
+          await page.waitForTimeout(300);
+
+          failedStep = 'select day 1';
+          await picker
+            .locator('.react-datepicker__day--001:not(.react-datepicker__day--outside-month)')
+            .first()
+            .click({ timeout: 5000 });
+          await page.waitForTimeout(500);
+
+          failedStep = 'confirm the date of birth field was filled';
+          if (await dobFilled()) dobRoute = 'the calendar';
+          else throw new Error('the date of birth field is still empty after clicking through the calendar');
+        } catch (err) {
+          const reason = String((err && err.message) || err).split('\n')[0];
+          console.log(`setupToAbdominalPainAssessment - the calendar route failed at "${failedStep}" (${reason}).`);
+
+          const markup =
+            (await picker.evaluate((el) => el.outerHTML).catch(() => null)) ||
+            (await page
+              .locator('[class*="datepicker" i], [class*="calendar" i]')
+              .first()
+              .evaluate((el) => el.outerHTML)
+              .catch(() => null));
+          console.log(
+            markup
+              ? 'calendar markup (first 3000 characters):\n' + markup.slice(0, 3000)
+              : 'no calendar element was found on the page.'
+          );
+          await page.keyboard.press('Escape').catch(() => {});
+        }
+      }
+
+      if (!dobRoute) {
+        await page
+          .screenshot({ path: `debug-dob-failed-${Date.now()}.png`, fullPage: true })
+          .catch(() => {});
+        throw new Error(
+          'setupToAbdominalPainAssessment - could not set a date of birth by typing it or by using the ' +
+          'calendar. Falling back to the Age field would not help: the server rejects a patient with no ' +
+          'date of birth (HTTP 400). See the calendar markup and the screenshot saved with this run.'
+        );
+      }
+      console.log(`setupToAbdominalPainAssessment - date of birth set by ${dobRoute}.`);
+    }
 
 
     // =====================================================
