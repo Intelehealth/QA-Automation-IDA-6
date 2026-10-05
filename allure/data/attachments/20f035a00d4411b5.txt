@@ -1,0 +1,2 @@
+setupToAbdominalPainAssessment - date of birth set by typing 01/01/2000.
+TC_PE_024 — Skip on Question 6/6 advanced to Summary

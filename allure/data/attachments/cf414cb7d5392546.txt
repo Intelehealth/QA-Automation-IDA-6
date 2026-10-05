@@ -1,0 +1,2 @@
+setupToAbdominalPainAssessment - date of birth set by typing 01/01/2000.
+TC_PE_037 — Element at Normal button center after scroll-to-end: DIV.flex gap-3 md:justify-end
