@@ -4,36 +4,56 @@
     "repo": "Intelehealth/QA-Automation-IDA-6",
     "branch": "main",
     "actor": "sambit-QA",
-    "runNumber": "48",
-    "runUrl": "https://github.com/Intelehealth/QA-Automation-IDA-6/actions/runs/37282024374",
-    "commitSha": "555c629",
-    "commitMessage": "Fix date of birth step after the October 2026 calendar change",
-    "commitUrl": "https://github.com/Intelehealth/QA-Automation-IDA-6/commit/555c6296703c243493a98574f7ae4056ee7bbf12",
+    "runNumber": "49",
+    "runUrl": "https://github.com/Intelehealth/QA-Automation-IDA-6/actions/runs/37574958753",
+    "commitSha": "7a6a8c3",
+    "commitMessage": "Add Animal Bites & Insect Stings protocol test suite (54 tests)",
+    "commitUrl": "https://github.com/Intelehealth/QA-Automation-IDA-6/commit/7a6a8c3ad86597dcca31b10192cf3bdb9d500434",
     "allureUrl": "https://Intelehealth.github.io/QA-Automation-IDA-6/allure/",
     "baseUrl": "https://dev.intelehealth.org",
     "environment": "DEV",
-    "runTime": "2026-10-05 14:57:56 IST",
-    "generatedAt": "2026-10-05T09:27:56.033Z"
+    "runTime": "2026-10-07 12:14:37 IST",
+    "generatedAt": "2026-10-07T06:44:37.176Z"
   },
   "totals": {
-    "passed": 303,
-    "failed": 25,
+    "passed": 318,
+    "failed": 64,
     "flaky": 1,
     "skipped": 0,
-    "total": 329,
-    "duration": 17759259,
-    "passRate": 92.4
+    "total": 383,
+    "duration": 21700285,
+    "passRate": 83.3
   },
   "stats": {
-    "passed": 303,
-    "failed": 25,
+    "passed": 318,
+    "failed": 64,
     "flaky": 1,
     "skipped": 0,
-    "total": 329,
-    "duration": 17759259,
-    "wallClock": 4359729.395019531
+    "total": 383,
+    "duration": 21700285,
+    "wallClock": 5472654.179931641
   },
   "modules": [
+    {
+      "name": "Medical History",
+      "passed": 0,
+      "failed": 20,
+      "flaky": 0,
+      "skipped": 0,
+      "total": 20,
+      "duration": 1406059,
+      "passRate": 0
+    },
+    {
+      "name": "Animal Bites & Insect Stings Protocol",
+      "passed": 40,
+      "failed": 14,
+      "flaky": 0,
+      "skipped": 0,
+      "total": 54,
+      "duration": 4706992,
+      "passRate": 74.1
+    },
     {
       "name": "Start Visit",
       "passed": 63,
@@ -41,8 +61,18 @@
       "flaky": 0,
       "skipped": 0,
       "total": 75,
-      "duration": 3701376,
+      "duration": 3769396,
       "passRate": 84
+    },
+    {
+      "name": "Abdominal Pain Protocol",
+      "passed": 36,
+      "failed": 9,
+      "flaky": 0,
+      "skipped": 0,
+      "total": 45,
+      "duration": 3681557,
+      "passRate": 80
     },
     {
       "name": "Start Visit - Vitals",
@@ -51,18 +81,8 @@
       "flaky": 0,
       "skipped": 0,
       "total": 45,
-      "duration": 1809422,
+      "duration": 1823475,
       "passRate": 88.9
-    },
-    {
-      "name": "Abdominal Pain Protocol",
-      "passed": 41,
-      "failed": 4,
-      "flaky": 0,
-      "skipped": 0,
-      "total": 45,
-      "duration": 3923663,
-      "passRate": 91.1
     },
     {
       "name": "Forgot Password",
@@ -71,7 +91,7 @@
       "flaky": 1,
       "skipped": 0,
       "total": 6,
-      "duration": 161210,
+      "duration": 165219,
       "passRate": 50
     },
     {
@@ -81,7 +101,7 @@
       "flaky": 0,
       "skipped": 0,
       "total": 46,
-      "duration": 2565266,
+      "duration": 2653078,
       "passRate": 97.8
     },
     {
@@ -91,17 +111,7 @@
       "flaky": 0,
       "skipped": 0,
       "total": 51,
-      "duration": 2459861,
-      "passRate": 100
-    },
-    {
-      "name": "Medical History",
-      "passed": 20,
-      "failed": 0,
-      "flaky": 0,
-      "skipped": 0,
-      "total": 20,
-      "duration": 2213323,
+      "duration": 2558255,
       "passRate": 100
     },
     {
@@ -111,7 +121,7 @@
       "flaky": 0,
       "skipped": 0,
       "total": 20,
-      "duration": 656640,
+      "duration": 669066,
       "passRate": 100
     },
     {
@@ -121,7 +131,7 @@
       "flaky": 0,
       "skipped": 0,
       "total": 16,
-      "duration": 236635,
+      "duration": 234851,
       "passRate": 100
     },
     {
@@ -131,7 +141,7 @@
       "flaky": 0,
       "skipped": 0,
       "total": 5,
-      "duration": 31863,
+      "duration": 32337,
       "passRate": 100
     }
   ],
@@ -144,10 +154,10 @@
       "file": "ForgetPassword.spec.js",
       "line": 15,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 40232,
-      "retries": 1,
-      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })"
+      "status": "expected",
+      "duration": 10642,
+      "retries": 0,
+      "error": ""
     },
     {
       "id": "t1",
@@ -157,10 +167,10 @@
       "file": "ForgetPassword.spec.js",
       "line": 38,
       "project": "chromium",
-      "status": "unexpected",
-      "duration": 39945,
+      "status": "flaky",
+      "duration": 26100,
       "retries": 1,
-      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })"
+      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Username' })"
     },
     {
       "id": "t2",
@@ -171,7 +181,7 @@
       "line": 59,
       "project": "chromium",
       "status": "expected",
-      "duration": 7490,
+      "duration": 7528,
       "retries": 0,
       "error": ""
     },
@@ -184,7 +194,7 @@
       "line": 74,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 39978,
+      "duration": 40394,
       "retries": 1,
       "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })"
     },
@@ -196,10 +206,10 @@
       "file": "ForgetPassword.spec.js",
       "line": 92,
       "project": "chromium",
-      "status": "expected",
-      "duration": 5894,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 40268,
+      "retries": 1,
+      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })"
     },
     {
       "id": "t5",
@@ -209,10 +219,10 @@
       "file": "ForgetPassword.spec.js",
       "line": 120,
       "project": "chromium",
-      "status": "flaky",
-      "duration": 27671,
+      "status": "unexpected",
+      "duration": 40287,
       "retries": 1,
-      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })"
+      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })\n\nTimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Mobile Number' })"
     },
     {
       "id": "t6",
@@ -223,7 +233,7 @@
       "line": 21,
       "project": "chromium",
       "status": "expected",
-      "duration": 9025,
+      "duration": 8021,
       "retries": 0,
       "error": ""
     },
@@ -236,7 +246,7 @@
       "line": 46,
       "project": "chromium",
       "status": "expected",
-      "duration": 5065,
+      "duration": 5354,
       "retries": 0,
       "error": ""
     },
@@ -249,7 +259,7 @@
       "line": 62,
       "project": "chromium",
       "status": "expected",
-      "duration": 5969,
+      "duration": 6987,
       "retries": 0,
       "error": ""
     },
@@ -262,7 +272,7 @@
       "line": 92,
       "project": "chromium",
       "status": "expected",
-      "duration": 5983,
+      "duration": 6229,
       "retries": 0,
       "error": ""
     },
@@ -275,7 +285,7 @@
       "line": 126,
       "project": "chromium",
       "status": "expected",
-      "duration": 5821,
+      "duration": 5746,
       "retries": 0,
       "error": ""
     },
@@ -288,7 +298,7 @@
       "line": 58,
       "project": "chromium",
       "status": "expected",
-      "duration": 12984,
+      "duration": 13749,
       "retries": 0,
       "error": ""
     },
@@ -301,7 +311,7 @@
       "line": 77,
       "project": "chromium",
       "status": "expected",
-      "duration": 14206,
+      "duration": 13572,
       "retries": 0,
       "error": ""
     },
@@ -314,7 +324,7 @@
       "line": 93,
       "project": "chromium",
       "status": "expected",
-      "duration": 14265,
+      "duration": 13715,
       "retries": 0,
       "error": ""
     },
@@ -327,7 +337,7 @@
       "line": 108,
       "project": "chromium",
       "status": "expected",
-      "duration": 14736,
+      "duration": 13189,
       "retries": 0,
       "error": ""
     },
@@ -340,7 +350,7 @@
       "line": 127,
       "project": "chromium",
       "status": "expected",
-      "duration": 13469,
+      "duration": 14017,
       "retries": 0,
       "error": ""
     },
@@ -353,7 +363,7 @@
       "line": 142,
       "project": "chromium",
       "status": "expected",
-      "duration": 12981,
+      "duration": 13746,
       "retries": 0,
       "error": ""
     },
@@ -366,7 +376,7 @@
       "line": 169,
       "project": "chromium",
       "status": "expected",
-      "duration": 15585,
+      "duration": 14374,
       "retries": 0,
       "error": ""
     },
@@ -379,7 +389,7 @@
       "line": 193,
       "project": "chromium",
       "status": "expected",
-      "duration": 19086,
+      "duration": 20043,
       "retries": 0,
       "error": ""
     },
@@ -392,7 +402,7 @@
       "line": 266,
       "project": "chromium",
       "status": "expected",
-      "duration": 15283,
+      "duration": 14257,
       "retries": 0,
       "error": ""
     },
@@ -405,7 +415,7 @@
       "line": 280,
       "project": "chromium",
       "status": "expected",
-      "duration": 13920,
+      "duration": 14330,
       "retries": 0,
       "error": ""
     },
@@ -418,7 +428,7 @@
       "line": 298,
       "project": "chromium",
       "status": "expected",
-      "duration": 13215,
+      "duration": 13532,
       "retries": 0,
       "error": ""
     },
@@ -431,7 +441,7 @@
       "line": 316,
       "project": "chromium",
       "status": "expected",
-      "duration": 13952,
+      "duration": 13442,
       "retries": 0,
       "error": ""
     },
@@ -444,7 +454,7 @@
       "line": 334,
       "project": "chromium",
       "status": "expected",
-      "duration": 13485,
+      "duration": 13646,
       "retries": 0,
       "error": ""
     },
@@ -457,7 +467,7 @@
       "line": 352,
       "project": "chromium",
       "status": "expected",
-      "duration": 13464,
+      "duration": 13248,
       "retries": 0,
       "error": ""
     },
@@ -470,7 +480,7 @@
       "line": 366,
       "project": "chromium",
       "status": "expected",
-      "duration": 13775,
+      "duration": 13508,
       "retries": 0,
       "error": ""
     },
@@ -483,7 +493,7 @@
       "line": 388,
       "project": "chromium",
       "status": "expected",
-      "duration": 22229,
+      "duration": 22483,
       "retries": 0,
       "error": ""
     },
@@ -496,7 +506,7 @@
       "line": 1838,
       "project": "chromium",
       "status": "expected",
-      "duration": 33475,
+      "duration": 32863,
       "retries": 0,
       "error": ""
     },
@@ -509,7 +519,7 @@
       "line": 1851,
       "project": "chromium",
       "status": "expected",
-      "duration": 34441,
+      "duration": 35229,
       "retries": 0,
       "error": ""
     },
@@ -522,7 +532,7 @@
       "line": 1865,
       "project": "chromium",
       "status": "expected",
-      "duration": 36496,
+      "duration": 37955,
       "retries": 0,
       "error": ""
     },
@@ -535,7 +545,7 @@
       "line": 1882,
       "project": "chromium",
       "status": "expected",
-      "duration": 38801,
+      "duration": 37930,
       "retries": 0,
       "error": ""
     },
@@ -548,7 +558,7 @@
       "line": 1900,
       "project": "chromium",
       "status": "expected",
-      "duration": 37280,
+      "duration": 39317,
       "retries": 0,
       "error": ""
     },
@@ -561,7 +571,7 @@
       "line": 1918,
       "project": "chromium",
       "status": "expected",
-      "duration": 39383,
+      "duration": 39591,
       "retries": 0,
       "error": ""
     },
@@ -574,7 +584,7 @@
       "line": 1938,
       "project": "chromium",
       "status": "expected",
-      "duration": 39557,
+      "duration": 40247,
       "retries": 0,
       "error": ""
     },
@@ -587,7 +597,7 @@
       "line": 1957,
       "project": "chromium",
       "status": "expected",
-      "duration": 45965,
+      "duration": 47145,
       "retries": 0,
       "error": ""
     },
@@ -600,7 +610,7 @@
       "line": 1973,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 125396,
+      "duration": 126420,
       "retries": 1,
       "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByText('Question 7/9', { exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByText('Question 7/9', { exact: true })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByText('Question 7/9', { exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 15000ms\n  - waiting for getByText('Question 7/9', { exact: true })"
     },
@@ -613,7 +623,7 @@
       "line": 1996,
       "project": "chromium",
       "status": "expected",
-      "duration": 46102,
+      "duration": 45476,
       "retries": 0,
       "error": ""
     },
@@ -626,7 +636,7 @@
       "line": 2027,
       "project": "chromium",
       "status": "expected",
-      "duration": 45620,
+      "duration": 47639,
       "retries": 0,
       "error": ""
     },
@@ -639,7 +649,7 @@
       "line": 2043,
       "project": "chromium",
       "status": "expected",
-      "duration": 47014,
+      "duration": 47603,
       "retries": 0,
       "error": ""
     },
@@ -652,7 +662,7 @@
       "line": 2065,
       "project": "chromium",
       "status": "expected",
-      "duration": 51560,
+      "duration": 51573,
       "retries": 0,
       "error": ""
     },
@@ -665,7 +675,7 @@
       "line": 2090,
       "project": "chromium",
       "status": "expected",
-      "duration": 51124,
+      "duration": 50843,
       "retries": 0,
       "error": ""
     },
@@ -678,7 +688,7 @@
       "line": 2103,
       "project": "chromium",
       "status": "expected",
-      "duration": 52547,
+      "duration": 51690,
       "retries": 0,
       "error": ""
     },
@@ -691,7 +701,7 @@
       "line": 2125,
       "project": "chromium",
       "status": "expected",
-      "duration": 48936,
+      "duration": 50932,
       "retries": 0,
       "error": ""
     },
@@ -704,7 +714,7 @@
       "line": 2167,
       "project": "chromium",
       "status": "expected",
-      "duration": 62646,
+      "duration": 63150,
       "retries": 0,
       "error": ""
     },
@@ -717,7 +727,7 @@
       "line": 2189,
       "project": "chromium",
       "status": "expected",
-      "duration": 65765,
+      "duration": 66374,
       "retries": 0,
       "error": ""
     },
@@ -730,7 +740,7 @@
       "line": 2219,
       "project": "chromium",
       "status": "expected",
-      "duration": 69735,
+      "duration": 68503,
       "retries": 0,
       "error": ""
     },
@@ -743,7 +753,7 @@
       "line": 2239,
       "project": "chromium",
       "status": "expected",
-      "duration": 68811,
+      "duration": 70496,
       "retries": 0,
       "error": ""
     },
@@ -756,7 +766,7 @@
       "line": 2260,
       "project": "chromium",
       "status": "expected",
-      "duration": 71258,
+      "duration": 72371,
       "retries": 0,
       "error": ""
     },
@@ -769,7 +779,7 @@
       "line": 2271,
       "project": "chromium",
       "status": "expected",
-      "duration": 75121,
+      "duration": 74881,
       "retries": 0,
       "error": ""
     },
@@ -782,7 +792,7 @@
       "line": 2288,
       "project": "chromium",
       "status": "expected",
-      "duration": 73419,
+      "duration": 74125,
       "retries": 0,
       "error": ""
     },
@@ -795,7 +805,7 @@
       "line": 2304,
       "project": "chromium",
       "status": "expected",
-      "duration": 75474,
+      "duration": 74424,
       "retries": 0,
       "error": ""
     },
@@ -808,7 +818,7 @@
       "line": 2319,
       "project": "chromium",
       "status": "expected",
-      "duration": 79128,
+      "duration": 79106,
       "retries": 0,
       "error": ""
     },
@@ -821,7 +831,7 @@
       "line": 2339,
       "project": "chromium",
       "status": "expected",
-      "duration": 67762,
+      "duration": 67905,
       "retries": 0,
       "error": ""
     },
@@ -834,7 +844,7 @@
       "line": 2377,
       "project": "chromium",
       "status": "expected",
-      "duration": 73575,
+      "duration": 73890,
       "retries": 0,
       "error": ""
     },
@@ -847,7 +857,7 @@
       "line": 2390,
       "project": "chromium",
       "status": "expected",
-      "duration": 97022,
+      "duration": 122820,
       "retries": 0,
       "error": ""
     },
@@ -860,7 +870,7 @@
       "line": 2404,
       "project": "chromium",
       "status": "expected",
-      "duration": 97635,
+      "duration": 101505,
       "retries": 0,
       "error": ""
     },
@@ -873,7 +883,7 @@
       "line": 2419,
       "project": "chromium",
       "status": "expected",
-      "duration": 122395,
+      "duration": 125160,
       "retries": 0,
       "error": ""
     },
@@ -886,7 +896,7 @@
       "line": 2440,
       "project": "chromium",
       "status": "expected",
-      "duration": 104729,
+      "duration": 132821,
       "retries": 0,
       "error": ""
     },
@@ -899,7 +909,7 @@
       "line": 2466,
       "project": "chromium",
       "status": "expected",
-      "duration": 35482,
+      "duration": 35243,
       "retries": 0,
       "error": ""
     },
@@ -912,7 +922,7 @@
       "line": 2473,
       "project": "chromium",
       "status": "expected",
-      "duration": 35031,
+      "duration": 36263,
       "retries": 0,
       "error": ""
     },
@@ -925,7 +935,7 @@
       "line": 2480,
       "project": "chromium",
       "status": "expected",
-      "duration": 36410,
+      "duration": 38750,
       "retries": 0,
       "error": ""
     },
@@ -938,7 +948,7 @@
       "line": 2488,
       "project": "chromium",
       "status": "expected",
-      "duration": 34800,
+      "duration": 37686,
       "retries": 0,
       "error": ""
     },
@@ -951,7 +961,7 @@
       "line": 2497,
       "project": "chromium",
       "status": "expected",
-      "duration": 36236,
+      "duration": 38720,
       "retries": 0,
       "error": ""
     },
@@ -964,7 +974,7 @@
       "line": 2509,
       "project": "chromium",
       "status": "expected",
-      "duration": 37022,
+      "duration": 38974,
       "retries": 0,
       "error": ""
     },
@@ -977,7 +987,7 @@
       "line": 2521,
       "project": "chromium",
       "status": "expected",
-      "duration": 39278,
+      "duration": 39484,
       "retries": 0,
       "error": ""
     },
@@ -990,7 +1000,7 @@
       "line": 2534,
       "project": "chromium",
       "status": "expected",
-      "duration": 38476,
+      "duration": 37698,
       "retries": 0,
       "error": ""
     },
@@ -1003,7 +1013,7 @@
       "line": 2547,
       "project": "chromium",
       "status": "expected",
-      "duration": 40284,
+      "duration": 39981,
       "retries": 0,
       "error": ""
     },
@@ -1016,7 +1026,7 @@
       "line": 2561,
       "project": "chromium",
       "status": "expected",
-      "duration": 38817,
+      "duration": 39649,
       "retries": 0,
       "error": ""
     },
@@ -1029,7 +1039,7 @@
       "line": 2575,
       "project": "chromium",
       "status": "expected",
-      "duration": 44991,
+      "duration": 46864,
       "retries": 0,
       "error": ""
     },
@@ -1042,7 +1052,7 @@
       "line": 2590,
       "project": "chromium",
       "status": "expected",
-      "duration": 45153,
+      "duration": 47030,
       "retries": 0,
       "error": ""
     },
@@ -1055,7 +1065,7 @@
       "line": 2605,
       "project": "chromium",
       "status": "expected",
-      "duration": 50128,
+      "duration": 51808,
       "retries": 0,
       "error": ""
     },
@@ -1068,7 +1078,7 @@
       "line": 2624,
       "project": "chromium",
       "status": "expected",
-      "duration": 38520,
+      "duration": 39237,
       "retries": 0,
       "error": ""
     },
@@ -1081,7 +1091,7 @@
       "line": 2640,
       "project": "chromium",
       "status": "expected",
-      "duration": 36466,
+      "duration": 35707,
       "retries": 0,
       "error": ""
     },
@@ -1094,7 +1104,7 @@
       "line": 2853,
       "project": "chromium",
       "status": "expected",
-      "duration": 46423,
+      "duration": 45863,
       "retries": 0,
       "error": ""
     },
@@ -1107,7 +1117,7 @@
       "line": 2866,
       "project": "chromium",
       "status": "expected",
-      "duration": 47284,
+      "duration": 49562,
       "retries": 0,
       "error": ""
     },
@@ -1120,7 +1130,7 @@
       "line": 2881,
       "project": "chromium",
       "status": "expected",
-      "duration": 49546,
+      "duration": 50525,
       "retries": 0,
       "error": ""
     },
@@ -1133,7 +1143,7 @@
       "line": 2900,
       "project": "chromium",
       "status": "expected",
-      "duration": 50115,
+      "duration": 52722,
       "retries": 0,
       "error": ""
     },
@@ -1146,7 +1156,7 @@
       "line": 2916,
       "project": "chromium",
       "status": "expected",
-      "duration": 52797,
+      "duration": 53638,
       "retries": 0,
       "error": ""
     },
@@ -1159,7 +1169,7 @@
       "line": 2936,
       "project": "chromium",
       "status": "expected",
-      "duration": 52637,
+      "duration": 55370,
       "retries": 0,
       "error": ""
     },
@@ -1172,7 +1182,7 @@
       "line": 2959,
       "project": "chromium",
       "status": "expected",
-      "duration": 54519,
+      "duration": 56005,
       "retries": 0,
       "error": ""
     },
@@ -1185,7 +1195,7 @@
       "line": 2988,
       "project": "chromium",
       "status": "expected",
-      "duration": 57055,
+      "duration": 57331,
       "retries": 0,
       "error": ""
     },
@@ -1198,7 +1208,7 @@
       "line": 3010,
       "project": "chromium",
       "status": "expected",
-      "duration": 57042,
+      "duration": 57071,
       "retries": 0,
       "error": ""
     },
@@ -1211,7 +1221,7 @@
       "line": 3031,
       "project": "chromium",
       "status": "expected",
-      "duration": 64714,
+      "duration": 66160,
       "retries": 0,
       "error": ""
     },
@@ -1224,7 +1234,7 @@
       "line": 3049,
       "project": "chromium",
       "status": "expected",
-      "duration": 65752,
+      "duration": 65542,
       "retries": 0,
       "error": ""
     },
@@ -1237,7 +1247,7 @@
       "line": 3073,
       "project": "chromium",
       "status": "expected",
-      "duration": 69653,
+      "duration": 72102,
       "retries": 0,
       "error": ""
     },
@@ -1250,7 +1260,7 @@
       "line": 3100,
       "project": "chromium",
       "status": "expected",
-      "duration": 71766,
+      "duration": 73337,
       "retries": 0,
       "error": ""
     },
@@ -1263,7 +1273,7 @@
       "line": 3128,
       "project": "chromium",
       "status": "expected",
-      "duration": 73478,
+      "duration": 74472,
       "retries": 0,
       "error": ""
     },
@@ -1276,7 +1286,7 @@
       "line": 3153,
       "project": "chromium",
       "status": "expected",
-      "duration": 76622,
+      "duration": 76253,
       "retries": 0,
       "error": ""
     },
@@ -1289,7 +1299,7 @@
       "line": 3181,
       "project": "chromium",
       "status": "expected",
-      "duration": 76322,
+      "duration": 78651,
       "retries": 0,
       "error": ""
     },
@@ -1302,7 +1312,7 @@
       "line": 3194,
       "project": "chromium",
       "status": "expected",
-      "duration": 74930,
+      "duration": 76157,
       "retries": 0,
       "error": ""
     },
@@ -1315,7 +1325,7 @@
       "line": 3252,
       "project": "chromium",
       "status": "expected",
-      "duration": 87948,
+      "duration": 89969,
       "retries": 0,
       "error": ""
     },
@@ -1328,7 +1338,7 @@
       "line": 3307,
       "project": "chromium",
       "status": "expected",
-      "duration": 88985,
+      "duration": 91016,
       "retries": 0,
       "error": ""
     },
@@ -1341,7 +1351,7 @@
       "line": 3355,
       "project": "chromium",
       "status": "expected",
-      "duration": 94548,
+      "duration": 95545,
       "retries": 0,
       "error": ""
     },
@@ -1354,7 +1364,7 @@
       "line": 3450,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 214002,
+      "duration": 220671,
       "retries": 1,
       "error": "Error: Expected the lumps question wording \"Are there any lumps?\". Paragraphs found: [\"Which part of the abdomen do you feel pain?*\",\"All over\",\"Does the pain move to other parts of the body?*\",\"Does not move\",\"Since when have you had this symptom?*\",\"3 hours\",\"How did the pain start?\",\"Gradual\",\"What time of the day do you feel the pain?\",\"Morning\",\"Character of the pain*\",\"Constant\",\"How severe is the pain?*\",\"Mild, 1-3\",\"Do you have the following symptom(s)?*\",\"Patient denies\",\"Nausea, Vomiting, Anorexia, Diarrhea, Constipation, Fever, Abdominal distention/Bloating, Belching/Burping, Passing gas, Change in appetite, Color change in stool [describe], Blood in stool, Change in frequency of urination [describe], Color change in urine [describe], Hiccups, Restlessness, Injury, Breathlessness, Other [describe].\",\"What worsens the pain?*\",\"Don't know/Unsure\",\"What relieves/lessens the pain?"
     },
@@ -1367,7 +1377,7 @@
       "line": 3511,
       "project": "chromium",
       "status": "expected",
-      "duration": 96794,
+      "duration": 97198,
       "retries": 0,
       "error": ""
     },
@@ -1380,7 +1390,7 @@
       "line": 3522,
       "project": "chromium",
       "status": "expected",
-      "duration": 96260,
+      "duration": 97077,
       "retries": 0,
       "error": ""
     },
@@ -1393,7 +1403,7 @@
       "line": 3539,
       "project": "chromium",
       "status": "expected",
-      "duration": 96057,
+      "duration": 97950,
       "retries": 0,
       "error": ""
     },
@@ -1406,7 +1416,7 @@
       "line": 3616,
       "project": "chromium",
       "status": "expected",
-      "duration": 114061,
+      "duration": 115406,
       "retries": 0,
       "error": ""
     },
@@ -1419,7 +1429,7 @@
       "line": 3635,
       "project": "chromium",
       "status": "expected",
-      "duration": 97158,
+      "duration": 100572,
       "retries": 0,
       "error": ""
     },
@@ -1432,7 +1442,7 @@
       "line": 3648,
       "project": "chromium",
       "status": "expected",
-      "duration": 122583,
+      "duration": 120589,
       "retries": 0,
       "error": ""
     },
@@ -1445,7 +1455,7 @@
       "line": 3662,
       "project": "chromium",
       "status": "expected",
-      "duration": 149304,
+      "duration": 125227,
       "retries": 0,
       "error": ""
     },
@@ -1458,7 +1468,7 @@
       "line": 3677,
       "project": "chromium",
       "status": "expected",
-      "duration": 195704,
+      "duration": 195964,
       "retries": 0,
       "error": ""
     },
@@ -1471,7 +1481,7 @@
       "line": 3704,
       "project": "chromium",
       "status": "expected",
-      "duration": 171959,
+      "duration": 174504,
       "retries": 0,
       "error": ""
     },
@@ -1484,7 +1494,7 @@
       "line": 3928,
       "project": "chromium",
       "status": "expected",
-      "duration": 50378,
+      "duration": 51558,
       "retries": 0,
       "error": ""
     },
@@ -1497,7 +1507,7 @@
       "line": 3960,
       "project": "chromium",
       "status": "expected",
-      "duration": 54237,
+      "duration": 54603,
       "retries": 0,
       "error": ""
     },
@@ -1510,7 +1520,7 @@
       "line": 3981,
       "project": "chromium",
       "status": "expected",
-      "duration": 54302,
+      "duration": 56474,
       "retries": 0,
       "error": ""
     },
@@ -1523,7 +1533,7 @@
       "line": 3999,
       "project": "chromium",
       "status": "expected",
-      "duration": 57193,
+      "duration": 58549,
       "retries": 0,
       "error": ""
     },
@@ -1536,7 +1546,7 @@
       "line": 4018,
       "project": "chromium",
       "status": "expected",
-      "duration": 62004,
+      "duration": 61785,
       "retries": 0,
       "error": ""
     },
@@ -1549,7 +1559,7 @@
       "line": 4054,
       "project": "chromium",
       "status": "expected",
-      "duration": 60673,
+      "duration": 63076,
       "retries": 0,
       "error": ""
     },
@@ -1562,7 +1572,7 @@
       "line": 4074,
       "project": "chromium",
       "status": "expected",
-      "duration": 63124,
+      "duration": 64525,
       "retries": 0,
       "error": ""
     },
@@ -1574,10 +1584,10 @@
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 4106,
       "project": "chromium",
-      "status": "expected",
-      "duration": 69796,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 93093,
+      "retries": 1,
+      "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Next' })\n    - locator resolved to <button type=\"submit\" class=\"btn-base-styles btn-primary-variant px-4 py-3 gap-2 w-full md:w-[10%]\">…</button>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"global-loader\">…</div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"global-loader\">…</div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    6 × waiting for element to be visible"
     },
     {
       "id": "t111",
@@ -1587,10 +1597,10 @@
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 4127,
       "project": "chromium",
-      "status": "expected",
-      "duration": 74359,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 45111,
+      "retries": 1,
+      "error": "Error: setupToAbdominalPainAssessment — preflight check failed after 3 attempts: https://dev.intelehealth.org:3004/api/mindmap/details/IDA6 is unreachable (apiRequestContext.get: connect ECONNREFUSED 13.204.152.60:3004\nCall log:\n  - → GET https://dev.intelehealth.org:3004/api/mindmap/details/IDA6\n    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.7632.6 Safari/537.36\n    - accept: */*\n    - accept-encoding: gzip,deflate,br\n). This is the same backend the Visit Reason page depends on for both its search box and its \"All reasons\" grid, so the full test setup would fail at that step anyway. Skipping straight to this error saves the ~90 seconds that login, patient creation, and vitals would otherwise cost before hitting the same wall. Check backend health with: curl -sS -o /dev/null -w \"%{http_code}\\n\" https://dev.intelehealth.org:"
     },
     {
       "id": "t112",
@@ -1600,10 +1610,10 @@
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 4147,
       "project": "chromium",
-      "status": "expected",
-      "duration": 75344,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 82414,
+      "retries": 1,
+      "error": "Error: setupToAbdominalPainAssessment — preflight check failed after 3 attempts: https://dev.intelehealth.org:3004/api/mindmap/details/IDA6 is unreachable (apiRequestContext.get: connect ECONNREFUSED 13.204.152.60:3004\nCall log:\n  - → GET https://dev.intelehealth.org:3004/api/mindmap/details/IDA6\n    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.7632.6 Safari/537.36\n    - accept: */*\n    - accept-encoding: gzip,deflate,br\n). This is the same backend the Visit Reason page depends on for both its search box and its \"All reasons\" grid, so the full test setup would fail at that step anyway. Skipping straight to this error saves the ~90 seconds that login, patient creation, and vitals would otherwise cost before hitting the same wall. Check backend health with: curl -sS -o /dev/null -w \"%{http_code}\\n\" https://dev.intelehealth.org:"
     },
     {
       "id": "t113",
@@ -1613,10 +1623,10 @@
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 4171,
       "project": "chromium",
-      "status": "expected",
-      "duration": 76222,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 73498,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
       "id": "t114",
@@ -1626,10 +1636,10 @@
       "file": "Protocol_AbdominalPain.spec.js",
       "line": 4194,
       "project": "chromium",
-      "status": "expected",
-      "duration": 77411,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 74548,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
       "id": "t115",
@@ -1640,9 +1650,9 @@
       "line": 4212,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 163419,
+      "duration": 73250,
       "retries": 1,
-      "error": "Error: Expected to be on Question 1/12 before answering it\n\nexpect(locator).toBeVisible() failed\n\nLocator: getByText('Question 1/12', { exact: true })\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n  - Expected to be on Question 1/12 before answering it with timeout 20000ms\n  - waiting for getByText('Question 1/12', { exact: true })\n\nError: Expected to be on Question 1/12 before answering it\n\nexpect(locator).toBeVisible() failed\n\nLocator: getByText('Question 1/12', { exact: true })\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n  - Expected to be on Question 1/12 before answering it with timeout 20000ms\n  - waiting for getByText('Question 1/12', { exact: true })"
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
       "id": "t116",
@@ -1653,9 +1663,9 @@
       "line": 4263,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 164377,
+      "duration": 74012,
       "retries": 1,
-      "error": "Error: Expected to be on Question 1/13 before answering it\n\nexpect(locator).toBeVisible() failed\n\nLocator: getByText('Question 1/13', { exact: true })\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n  - Expected to be on Question 1/13 before answering it with timeout 20000ms\n  - waiting for getByText('Question 1/13', { exact: true })\n\nError: Expected to be on Question 1/13 before answering it\n\nexpect(locator).toBeVisible() failed\n\nLocator: getByText('Question 1/13', { exact: true })\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n  - Expected to be on Question 1/13 before answering it with timeout 20000ms\n  - waiting for getByText('Question 1/13', { exact: true })"
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
       "id": "t117",
@@ -1666,272 +1676,974 @@
       "line": 4298,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 154806,
+      "duration": 72612,
       "retries": 1,
-      "error": "Error: Checklist row for \"19. Other [describe]\" not found\n\nexpect(locator).toBeVisible() failed\n\nLocator: locator('div.flex.items-center.justify-between').filter({ has: locator('span').filter({ hasText: '19. Other [describe]' }) }).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Checklist row for \"19. Other [describe]\" not found with timeout 10000ms\n  - waiting for locator('div.flex.items-center.justify-between').filter({ has: locator('span').filter({ hasText: '19. Other [describe]' }) }).first()\n\nError: Checklist row for \"19. Other [describe]\" not found\n\nexpect(locator).toBeVisible() failed\n\nLocator: locator('div.flex.items-center.justify-between').filter({ has: locator('span').filter({ hasText: '19. Other [describe]' }) }).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Checklist row for \"19. Other [describe]\" "
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
       "id": "t118",
+      "title": "TC_AB_001_Verify_Visit_Reason_Selection_Starts_Assessment",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2235,
+      "project": "chromium",
+      "status": "unexpected",
+      "duration": 73122,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
+    },
+    {
+      "id": "t119",
+      "title": "TC_AB_002_Verify_Bite_Type_Question_Shows_All_Options",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2243,
+      "project": "chromium",
+      "status": "unexpected",
+      "duration": 73523,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
+    },
+    {
+      "id": "t120",
+      "title": "TC_AB_003_Verify_Selecting_Dog_Advances_To_Date_Question",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2253,
+      "project": "chromium",
+      "status": "unexpected",
+      "duration": 72942,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
+    },
+    {
+      "id": "t121",
+      "title": "TC_AB_004_Verify_Cat_Can_Be_Selected",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2263,
+      "project": "chromium",
+      "status": "unexpected",
+      "duration": 72176,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
+    },
+    {
+      "id": "t122",
+      "title": "TC_AB_005_Verify_Small_rodents_rats_mice_Can_Be_Selected",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2263,
+      "project": "chromium",
+      "status": "unexpected",
+      "duration": 72904,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
+    },
+    {
+      "id": "t123",
+      "title": "TC_AB_006_Verify_Human_Can_Be_Selected",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2263,
+      "project": "chromium",
+      "status": "unexpected",
+      "duration": 72933,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
+    },
+    {
+      "id": "t124",
+      "title": "TC_AB_007_Verify_Spider_Can_Be_Selected",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2263,
+      "project": "chromium",
+      "status": "unexpected",
+      "duration": 72737,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
+    },
+    {
+      "id": "t125",
+      "title": "TC_AB_008_Verify_Scorpion_Can_Be_Selected",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2263,
+      "project": "chromium",
+      "status": "unexpected",
+      "duration": 73191,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
+    },
+    {
+      "id": "t126",
+      "title": "TC_AB_009_Verify_Bee_wasp_Can_Be_Selected",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2263,
+      "project": "chromium",
+      "status": "unexpected",
+      "duration": 72873,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
+    },
+    {
+      "id": "t127",
+      "title": "TC_AB_010_Verify_Tick_mite_Can_Be_Selected",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2263,
+      "project": "chromium",
+      "status": "unexpected",
+      "duration": 72533,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
+    },
+    {
+      "id": "t128",
+      "title": "TC_AB_011_Verify_Snake_Reveals_Type_Of_Snake_FollowUp",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2272,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 47743,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t129",
+      "title": "TC_AB_012_Verify_Snake_Unknown_Advances_To_Date_Question",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2287,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 48714,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t130",
+      "title": "TC_AB_013_Verify_Type_Of_Snake_Reveals_Text_Field",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2300,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 47851,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t131",
+      "title": "TC_AB_014_Verify_Other_Animal_Reveals_Text_Field",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2317,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 46963,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t132",
+      "title": "TC_AB_015_Verify_Occurrence_Date_Is_Accepted_And_Advances",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2336,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 53934,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t133",
+      "title": "TC_AB_016_Verify_Bite_Count_Question_Shows_Both_Options",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2351,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 52912,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t134",
+      "title": "TC_AB_017_Verify_Single_Bite_Advances_To_Site_Question",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2361,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 53739,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t135",
+      "title": "TC_AB_018_Verify_Multiple_Bites_Advances_To_Site_Question",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2370,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 54942,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t136",
+      "title": "TC_AB_019_Verify_Bite_Site_Question_Shows_All_Options",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2382,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 53928,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t137",
+      "title": "TC_AB_020_Verify_Bite_Site_Can_Be_Skipped",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2393,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 55392,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t138",
+      "title": "TC_AB_021_Verify_Choosing_A_Bite_Site_Advances",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2401,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 57685,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t139",
+      "title": "TC_AB_022_Verify_Male_Patient_Is_Offered_20_Symptoms",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2414,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 57780,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t140",
+      "title": "TC_AB_023_Verify_All_Symptoms_No_Advances_To_Illness_Question",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2430,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 107740,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t141",
+      "title": "TC_AB_024_Verify_Fever_Yes_Is_Accepted",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2439,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 107660,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t142",
+      "title": "TC_AB_025_Verify_Skin_Rash_Yes_Is_Accepted",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2450,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 107283,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t143",
+      "title": "TC_AB_026_Verify_Itching_Yes_Asks_What_Aggravates_It",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2458,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 57257,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t144",
+      "title": "TC_AB_027_Verify_Discharge_Yes_Asks_Nature_Of_Discharge",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2474,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 59426,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t145",
+      "title": "TC_AB_028_Verify_Joint_Pain_Yes_Asks_Involvement_And_Migration",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2490,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 60082,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t146",
+      "title": "TC_AB_029_Verify_Single_Joint_Accepts_A_Description",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2512,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 60247,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t147",
+      "title": "TC_AB_030_Verify_Paresthesia_Yes_Asks_Sensation_Progression_And_Areas",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2525,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 61183,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t148",
+      "title": "TC_AB_031_Verify_Paresthesia_Other_Sensation_Reveals_Text_Field",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2546,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 60775,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t149",
+      "title": "TC_AB_032_Verify_Other_Symptom_Yes_Reveals_Text_Field",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2563,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 57413,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t150",
+      "title": "TC_AB_033_Verify_Illness_History_Question_Shows_All_Options",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2580,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 109150,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t151",
+      "title": "TC_AB_034_Verify_Illness_History_Can_Be_Skipped",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2591,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 107944,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t152",
+      "title": "TC_AB_035_Verify_Choosing_An_Illness_Advances",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2599,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 108577,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t153",
+      "title": "TC_AB_036_Verify_Prior_Treatment_Question_Shows_Both_Options",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2611,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 107786,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t154",
+      "title": "TC_AB_037_Verify_Prior_Treatment_Yes_Reveals_Text_Field",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2621,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 110103,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t155",
+      "title": "TC_AB_038_Verify_Prior_Treatment_None_Advances",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2636,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 109637,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t156",
+      "title": "TC_AB_039_Verify_Additional_Information_Text_Completes_Assessment",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2649,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 113362,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t157",
+      "title": "TC_AB_040_Verify_Additional_Information_Skip_Completes_Assessment",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2657,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 112818,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t158",
+      "title": "TC_AB_041_Verify_Full_Assessment_Completes",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2665,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 114430,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t159",
+      "title": "TC_AB_042_Verify_Visit_Reason_Summary_Lists_The_Answers",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2673,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 109555,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t160",
+      "title": "TC_AB_043_Verify_Wash_Hands_Reminder_After_Assessment",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2688,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 111928,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t161",
+      "title": "TC_AB_044_Verify_Female_Patient_Is_Offered_21_Symptoms",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2704,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 55550,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t162",
+      "title": "TC_AB_045_Verify_Physical_Exam_Starts_After_Assessment",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2718,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 112286,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t163",
+      "title": "TC_AB_046_Verify_Physical_Exam_Reaches_Summary",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2725,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 141080,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t164",
+      "title": "TC_AB_047_Verify_Physical_Exam_Confirm_Navigates_To_Medical_History",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2733,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 143442,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t165",
+      "title": "TC_AB_048_Verify_Medical_History_Completes_Within_Protocol",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2742,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 191902,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t166",
+      "title": "TC_AB_049_Verify_Medical_History_Confirm_Navigates_To_Visit_Summary",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2752,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 193689,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t167",
+      "title": "TC_AB_050_Verify_Visit_Summary_Checkup_Reason_Section",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2763,
+      "project": "chromium",
+      "status": "expected",
+      "duration": 243316,
+      "retries": 0,
+      "error": ""
+    },
+    {
+      "id": "t168",
+      "title": "TC_AB_051_Verify_End_To_End_Animal_Bite_Protocol",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2785,
+      "project": "chromium",
+      "status": "unexpected",
+      "duration": 92911,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
+    },
+    {
+      "id": "t169",
+      "title": "TC_AB_052_Verify_Multiple_Joints_Accepts_A_Description",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2806,
+      "project": "chromium",
+      "status": "unexpected",
+      "duration": 72946,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
+    },
+    {
+      "id": "t170",
+      "title": "TC_AB_053_Verify_Paresthesia_Offers_All_Sensations",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2819,
+      "project": "chromium",
+      "status": "unexpected",
+      "duration": 72916,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
+    },
+    {
+      "id": "t171",
+      "title": "TC_AB_054_Verify_Paresthesia_Offers_Both_Progression_Options",
+      "suite": "Animal Bites & Insect Stings Protocol - Full Test Suite",
+      "module": "Animal Bites & Insect Stings Protocol",
+      "file": "Protocol_AnimalBites.spec.js",
+      "line": 2831,
+      "project": "chromium",
+      "status": "unexpected",
+      "duration": 72081,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
+    },
+    {
+      "id": "t172",
       "title": "MH_001_Verify_Medical_History_Screen_Reached",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1420,
       "project": "chromium",
-      "status": "expected",
-      "duration": 51453,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 70028,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
-      "id": "t119",
+      "id": "t173",
       "title": "MH_002_Verify_First_Question_Is_Personal_History_Checklist",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1436,
       "project": "chromium",
-      "status": "expected",
-      "duration": 50357,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 70485,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
-      "id": "t120",
+      "id": "t174",
       "title": "MH_003_Verify_Personal_History_All_Items_Displayed",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1448,
       "project": "chromium",
-      "status": "expected",
-      "duration": 50141,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 70096,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
-      "id": "t121",
+      "id": "t175",
       "title": "MH_004_Verify_Personal_History_All_No_Advances",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1464,
       "project": "chromium",
-      "status": "expected",
-      "duration": 55581,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 70316,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
-      "id": "t122",
+      "id": "t176",
       "title": "MH_005_Verify_Personal_History_Yes_Item_Accepted",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1493,
       "project": "chromium",
-      "status": "expected",
-      "duration": 56071,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 70366,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
-      "id": "t123",
+      "id": "t177",
       "title": "MH_006_Document_Remaining_Adult_Question_Sequence",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1548,
       "project": "chromium",
-      "status": "expected",
-      "duration": 69426,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 70226,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
-      "id": "t124",
+      "id": "t178",
       "title": "MH_007_Verify_Adaptive_Handler_Reaches_Summary",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1593,
       "project": "chromium",
-      "status": "expected",
-      "duration": 68096,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 70666,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
-      "id": "t125",
+      "id": "t179",
       "title": "MH_008_Verify_Personal_History_Mandatory_Validation",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1604,
       "project": "chromium",
-      "status": "expected",
-      "duration": 51868,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 70286,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
-      "id": "t126",
+      "id": "t180",
       "title": "MH_009_Verify_Medical_History_Summary_Heading_Displayed",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1654,
       "project": "chromium",
-      "status": "expected",
-      "duration": 68126,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 70497,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
-      "id": "t127",
+      "id": "t181",
       "title": "MH_010_Verify_Summary_Reflects_No_Answers",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1673,
       "project": "chromium",
-      "status": "expected",
-      "duration": 69608,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 70102,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
-      "id": "t128",
+      "id": "t182",
       "title": "MH_016_Verify_Confirm_Button_Visible",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1690,
       "project": "chromium",
-      "status": "expected",
-      "duration": 108069,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 70028,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
-      "id": "t129",
+      "id": "t183",
       "title": "MH_017_Verify_Confirm_Navigates_To_Visit_Summary",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1702,
       "project": "chromium",
-      "status": "expected",
-      "duration": 158103,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 70771,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
-      "id": "t130",
+      "id": "t184",
       "title": "MH_018_Verify_Visit_Summary_Shows_Vitals",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1737,
       "project": "chromium",
-      "status": "expected",
-      "duration": 158565,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 70273,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
-      "id": "t131",
+      "id": "t185",
       "title": "MH_019_Verify_Visit_Summary_Shows_Physical_Examination",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1756,
       "project": "chromium",
-      "status": "expected",
-      "duration": 158829,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 70666,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
-      "id": "t132",
+      "id": "t186",
       "title": "MH_020_Verify_Visit_Summary_Shows_Medical_History",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1774,
       "project": "chromium",
-      "status": "expected",
-      "duration": 158174,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 70561,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
-      "id": "t133",
+      "id": "t187",
       "title": "MH_021_Verify_Doctor_Specialty_Selector_Present",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1793,
       "project": "chromium",
-      "status": "expected",
-      "duration": 155587,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 69990,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
-      "id": "t134",
+      "id": "t188",
       "title": "MH_022_Verify_Doctor_Specialty_Selection_Recorded",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1807,
       "project": "chromium",
-      "status": "expected",
-      "duration": 157798,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 69952,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
-      "id": "t135",
+      "id": "t189",
       "title": "MH_023_Verify_Priority_Visit_Toggle_Present",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1826,
       "project": "chromium",
-      "status": "expected",
-      "duration": 154928,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 70233,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
-      "id": "t136",
+      "id": "t190",
       "title": "MH_024_Verify_Upload_Visit_With_Specialty_Proceeds",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1839,
       "project": "chromium",
-      "status": "expected",
-      "duration": 204380,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 70301,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
-      "id": "t137",
+      "id": "t191",
       "title": "MH_025_Verify_End_To_End_Medical_History_And_Upload",
       "suite": "Medical History Module - Full Test Suite",
       "module": "Medical History",
       "file": "StartVisit_MedicalHistory.spec.js",
       "line": 1864,
       "project": "chromium",
-      "status": "expected",
-      "duration": 208163,
-      "retries": 0,
-      "error": ""
+      "status": "unexpected",
+      "duration": 70216,
+      "retries": 1,
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\n\nError: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /.*dashboard/\nReceived string:  \"https://dev.intelehealth.org/hwwebapp#/auth/login\"\nTimeout: 30000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 30000ms\n    34 × unexpected value \"https://dev.intelehealth.org/hwwebapp#/auth/login\""
     },
     {
-      "id": "t138",
+      "id": "t192",
       "title": "TC_PE_001_Verify_Physical_Examination_Screen_Loads",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1939,12 +2651,12 @@
       "line": 681,
       "project": "chromium",
       "status": "expected",
-      "duration": 35740,
+      "duration": 36375,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t139",
+      "id": "t193",
       "title": "TC_PE_002_Verify_Assessment_Progress_Initial_State",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1952,12 +2664,12 @@
       "line": 708,
       "project": "chromium",
       "status": "expected",
-      "duration": 32625,
+      "duration": 35999,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t140",
+      "id": "t194",
       "title": "TC_PE_003_Verify_Jaundice_No_Answer_Recorded",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1965,12 +2677,12 @@
       "line": 718,
       "project": "chromium",
       "status": "expected",
-      "duration": 34407,
+      "duration": 35856,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t141",
+      "id": "t195",
       "title": "TC_PE_004_Verify_Jaundice_Answer_Editable",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1978,12 +2690,12 @@
       "line": 731,
       "project": "chromium",
       "status": "expected",
-      "duration": 35734,
+      "duration": 44045,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t142",
+      "id": "t196",
       "title": "TC_PE_005_Verify_Pallor_Normal_Answer_Recorded",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -1991,12 +2703,12 @@
       "line": 750,
       "project": "chromium",
       "status": "expected",
-      "duration": 36820,
+      "duration": 37884,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t143",
+      "id": "t197",
       "title": "TC_PE_006_Verify_Pallor_Options_Available",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2004,12 +2716,12 @@
       "line": 764,
       "project": "chromium",
       "status": "expected",
-      "duration": 34644,
+      "duration": 37074,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t144",
+      "id": "t198",
       "title": "TC_PE_007_Verify_Pinch_Skin_Question_Displays",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2017,12 +2729,12 @@
       "line": 776,
       "project": "chromium",
       "status": "expected",
-      "duration": 37757,
+      "duration": 38063,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t145",
+      "id": "t199",
       "title": "TC_PE_008_Verify_Pinch_Skin_Auto_Advances",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2030,12 +2742,12 @@
       "line": 802,
       "project": "chromium",
       "status": "expected",
-      "duration": 40425,
+      "duration": 44365,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t146",
+      "id": "t200",
       "title": "TC_PE_009_Verify_Pinch_Skin_Slow_Option_Recorded",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2043,12 +2755,12 @@
       "line": 817,
       "project": "chromium",
       "status": "expected",
-      "duration": 39704,
+      "duration": 41220,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t147",
+      "id": "t201",
       "title": "TC_PE_010_Verify_Pinch_Skin_Mandatory_Indicator",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2056,12 +2768,12 @@
       "line": 831,
       "project": "chromium",
       "status": "expected",
-      "duration": 37170,
+      "duration": 39909,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t148",
+      "id": "t202",
       "title": "TC_PE_011_Verify_Nail_Abnormality_Options_And_Images",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2069,12 +2781,12 @@
       "line": 851,
       "project": "chromium",
       "status": "expected",
-      "duration": 40685,
+      "duration": 43936,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t149",
+      "id": "t203",
       "title": "TC_PE_012_Verify_Nail_Abnormality_MultiSelect_Label",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2082,12 +2794,12 @@
       "line": 869,
       "project": "chromium",
       "status": "expected",
-      "duration": 39333,
+      "duration": 42984,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t150",
+      "id": "t204",
       "title": "TC_PE_013_Verify_Nail_Abnormality_Requires_Submit",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2095,12 +2807,12 @@
       "line": 882,
       "project": "chromium",
       "status": "expected",
-      "duration": 42855,
+      "duration": 44844,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t151",
+      "id": "t205",
       "title": "TC_PE_014_Verify_Nail_Abnormality_Multiple_Selections",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2108,12 +2820,12 @@
       "line": 895,
       "project": "chromium",
       "status": "expected",
-      "duration": 44467,
+      "duration": 45325,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t152",
+      "id": "t206",
       "title": "TC_PE_015_Verify_Nail_Abnormality_Validation_On_Empty_Submit",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2121,12 +2833,12 @@
       "line": 922,
       "project": "chromium",
       "status": "expected",
-      "duration": 41718,
+      "duration": 43294,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t153",
+      "id": "t207",
       "title": "TC_PE_016_Verify_Take_A_Picture_Option",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2134,12 +2846,12 @@
       "line": 966,
       "project": "chromium",
       "status": "expected",
-      "duration": 40155,
+      "duration": 43635,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t154",
+      "id": "t208",
       "title": "TC_PE_017_Verify_Nail_Anemia_Question_Displays",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2147,12 +2859,12 @@
       "line": 986,
       "project": "chromium",
       "status": "expected",
-      "duration": 42562,
+      "duration": 45094,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t155",
+      "id": "t209",
       "title": "TC_PE_018_Verify_Nail_Anemia_Auto_Advances",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2160,12 +2872,12 @@
       "line": 1005,
       "project": "chromium",
       "status": "expected",
-      "duration": 46238,
+      "duration": 46960,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t156",
+      "id": "t210",
       "title": "TC_PE_019_Verify_Nail_Anemia_Pale_Option_Recorded",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2173,12 +2885,12 @@
       "line": 1019,
       "project": "chromium",
       "status": "expected",
-      "duration": 70980,
+      "duration": 73176,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t157",
+      "id": "t211",
       "title": "TC_PE_020_Verify_Ankle_Oedema_Question_Displays",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2186,12 +2898,12 @@
       "line": 1029,
       "project": "chromium",
       "status": "expected",
-      "duration": 46031,
+      "duration": 48542,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t158",
+      "id": "t212",
       "title": "TC_PE_021_Verify_Skip_Button_Before_Selection",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2199,12 +2911,12 @@
       "line": 1049,
       "project": "chromium",
       "status": "expected",
-      "duration": 44873,
+      "duration": 47812,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t159",
+      "id": "t213",
       "title": "TC_PE_022_Verify_No_Oedema_Advances_To_Summary",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2212,12 +2924,12 @@
       "line": 1070,
       "project": "chromium",
       "status": "expected",
-      "duration": 70811,
+      "duration": 73297,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t160",
+      "id": "t214",
       "title": "TC_PE_023_Verify_Oedema_In_Left_Option_Recorded",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2225,12 +2937,12 @@
       "line": 1080,
       "project": "chromium",
       "status": "expected",
-      "duration": 70307,
+      "duration": 72929,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t161",
+      "id": "t215",
       "title": "TC_PE_024_Verify_Skip_Bypasses_Oedema_Question",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2238,12 +2950,12 @@
       "line": 1090,
       "project": "chromium",
       "status": "expected",
-      "duration": 46760,
+      "duration": 49776,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t162",
+      "id": "t216",
       "title": "TC_PE_025_Verify_Summary_Heading_Displayed",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2251,12 +2963,12 @@
       "line": 1126,
       "project": "chromium",
       "status": "expected",
-      "duration": 70959,
+      "duration": 74053,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t163",
+      "id": "t217",
       "title": "TC_PE_026_Verify_All_Summary_Fields_Correct",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2264,12 +2976,12 @@
       "line": 1137,
       "project": "chromium",
       "status": "expected",
-      "duration": 70316,
+      "duration": 77752,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t164",
+      "id": "t218",
       "title": "TC_PE_027_Verify_Change_Button_Present",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2277,12 +2989,12 @@
       "line": 1152,
       "project": "chromium",
       "status": "expected",
-      "duration": 70023,
+      "duration": 72454,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t165",
+      "id": "t219",
       "title": "TC_PE_028_Verify_Back_Button_Present_On_Summary",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2290,12 +3002,12 @@
       "line": 1163,
       "project": "chromium",
       "status": "expected",
-      "duration": 70872,
+      "duration": 74108,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t166",
+      "id": "t220",
       "title": "TC_PE_029_Verify_Confirm_Button_Visible_And_Enabled",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2303,12 +3015,12 @@
       "line": 1175,
       "project": "chromium",
       "status": "expected",
-      "duration": 71030,
+      "duration": 73207,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t167",
+      "id": "t221",
       "title": "TC_PE_030_Verify_Confirm_Finalizes_Physical_Examination",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2316,12 +3028,12 @@
       "line": 1187,
       "project": "chromium",
       "status": "expected",
-      "duration": 73823,
+      "duration": 75146,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t168",
+      "id": "t222",
       "title": "TC_PE_031_Verify_Summary_Matches_Selections_Exactly",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2329,12 +3041,12 @@
       "line": 1203,
       "project": "chromium",
       "status": "expected",
-      "duration": 72128,
+      "duration": 72533,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t169",
+      "id": "t223",
       "title": "TC_PE_032_Verify_Reedit_Updates_Summary",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2342,12 +3054,12 @@
       "line": 1225,
       "project": "chromium",
       "status": "expected",
-      "duration": 76201,
+      "duration": 75863,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t170",
+      "id": "t224",
       "title": "TC_PE_033_Verify_Pinch_Skin_Mandatory_Enforcement",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2355,12 +3067,12 @@
       "line": 1244,
       "project": "chromium",
       "status": "expected",
-      "duration": 38083,
+      "duration": 38830,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t171",
+      "id": "t225",
       "title": "TC_PE_034_Verify_Nail_Abnormality_Requires_Selection",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2368,12 +3080,12 @@
       "line": 1268,
       "project": "chromium",
       "status": "expected",
-      "duration": 39882,
+      "duration": 42417,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t172",
+      "id": "t226",
       "title": "TC_PE_035_Verify_Progress_Dot_Indicator_Updates",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2381,12 +3093,12 @@
       "line": 1290,
       "project": "chromium",
       "status": "expected",
-      "duration": 35227,
+      "duration": 37536,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t173",
+      "id": "t227",
       "title": "TC_PE_036_Verify_Progress_Percentage_Increases",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2394,12 +3106,12 @@
       "line": 1310,
       "project": "chromium",
       "status": "expected",
-      "duration": 41300,
+      "duration": 44077,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t174",
+      "id": "t228",
       "title": "TC_PE_037_Verify_Sticky_Footer_Does_Not_Block_Options",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2407,12 +3119,12 @@
       "line": 1333,
       "project": "chromium",
       "status": "expected",
-      "duration": 38714,
+      "duration": 39801,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t175",
+      "id": "t229",
       "title": "TC_PE_038_Verify_Reference_Images_Render",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2420,12 +3132,12 @@
       "line": 1371,
       "project": "chromium",
       "status": "expected",
-      "duration": 40137,
+      "duration": 40716,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t176",
+      "id": "t230",
       "title": "TC_PE_039_Verify_Edit_Jaundice_After_Summary",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2433,12 +3145,12 @@
       "line": 1388,
       "project": "chromium",
       "status": "expected",
-      "duration": 68934,
+      "duration": 71128,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t177",
+      "id": "t231",
       "title": "TC_PE_040_Verify_End_To_End_Happy_Path",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2446,12 +3158,12 @@
       "line": 1403,
       "project": "chromium",
       "status": "expected",
-      "duration": 70610,
+      "duration": 72166,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t178",
+      "id": "t232",
       "title": "TC_PE_041_Verify_Fresh_Patient_No_Stale_Data",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2459,12 +3171,12 @@
       "line": 1420,
       "project": "chromium",
       "status": "expected",
-      "duration": 71143,
+      "duration": 71839,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t179",
+      "id": "t233",
       "title": "TC_PE_042_Verify_Refresh_Preserves_Answers",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2472,12 +3184,12 @@
       "line": 1443,
       "project": "chromium",
       "status": "expected",
-      "duration": 44113,
+      "duration": 44807,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t180",
+      "id": "t234",
       "title": "TC_PE_043_Verify_Keyboard_Navigation_Support",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2485,12 +3197,12 @@
       "line": 1467,
       "project": "chromium",
       "status": "expected",
-      "duration": 34240,
+      "duration": 33299,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t181",
+      "id": "t235",
       "title": "TC_PE_044_Verify_Question_Transition_Performance",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2498,12 +3210,12 @@
       "line": 1492,
       "project": "chromium",
       "status": "expected",
-      "duration": 39229,
+      "duration": 39640,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t182",
+      "id": "t236",
       "title": "TC_PE_045_Verify_Consistent_Flow_Across_Roles",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2511,12 +3223,12 @@
       "line": 1533,
       "project": "chromium",
       "status": "expected",
-      "duration": 34050,
+      "duration": 34586,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t183",
+      "id": "t237",
       "title": "TC_PE_046_Verify_Jaundice_Question_Title_Displayed",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2524,12 +3236,12 @@
       "line": 1559,
       "project": "chromium",
       "status": "expected",
-      "duration": 33267,
+      "duration": 33580,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t184",
+      "id": "t238",
       "title": "TC_PE_047_Verify_Pallor_Question_Title_Displayed",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2537,12 +3249,12 @@
       "line": 1574,
       "project": "chromium",
       "status": "expected",
-      "duration": 35308,
+      "duration": 36652,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t185",
+      "id": "t239",
       "title": "TC_PE_048_Verify_PinchSkin_Question_Title_Displayed",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2550,12 +3262,12 @@
       "line": 1589,
       "project": "chromium",
       "status": "expected",
-      "duration": 37585,
+      "duration": 40210,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t186",
+      "id": "t240",
       "title": "TC_PE_049_Verify_NailAbnormality_Question_Title_Displayed",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2563,12 +3275,12 @@
       "line": 1608,
       "project": "chromium",
       "status": "expected",
-      "duration": 40387,
+      "duration": 39962,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t187",
+      "id": "t241",
       "title": "TC_PE_050_Verify_NailAnemia_Question_Title_Displayed",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2576,12 +3288,12 @@
       "line": 1628,
       "project": "chromium",
       "status": "expected",
-      "duration": 43081,
+      "duration": 43638,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t188",
+      "id": "t242",
       "title": "TC_PE_051_Verify_AnkleOedema_Question_Title_Displayed",
       "suite": "Physical Examination Module - Full Test Suite",
       "module": "Physical Examination",
@@ -2589,12 +3301,12 @@
       "line": 1649,
       "project": "chromium",
       "status": "expected",
-      "duration": 46418,
+      "duration": 45861,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t189",
+      "id": "t243",
       "title": "TC_01_Verify_Visit_Reason_Screen",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2602,12 +3314,12 @@
       "line": 617,
       "project": "chromium",
       "status": "expected",
-      "duration": 30171,
+      "duration": 29795,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t190",
+      "id": "t244",
       "title": "TC_02_Verify_Visit_Reason_Input",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2615,12 +3327,12 @@
       "line": 643,
       "project": "chromium",
       "status": "expected",
-      "duration": 31218,
+      "duration": 32963,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t191",
+      "id": "t245",
       "title": "TC_03_Verify_Visit_Reason_Search",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2628,12 +3340,12 @@
       "line": 666,
       "project": "chromium",
       "status": "expected",
-      "duration": 31136,
+      "duration": 30988,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t192",
+      "id": "t246",
       "title": "TC_04_Verify_Other_Visit_Reason_Option",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2641,12 +3353,12 @@
       "line": 698,
       "project": "chromium",
       "status": "expected",
-      "duration": 33710,
+      "duration": 32908,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t193",
+      "id": "t247",
       "title": "TC_05_Verify_Selected_Visit_Reason",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2654,12 +3366,12 @@
       "line": 743,
       "project": "chromium",
       "status": "expected",
-      "duration": 32629,
+      "duration": 31954,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t194",
+      "id": "t248",
       "title": "TC_06_Verify_Start_Assessment_Button",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2667,12 +3379,12 @@
       "line": 789,
       "project": "chromium",
       "status": "expected",
-      "duration": 31679,
+      "duration": 34166,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t195",
+      "id": "t249",
       "title": "TC_07_Verify_Start_Assessment_Navigation",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2680,12 +3392,12 @@
       "line": 809,
       "project": "chromium",
       "status": "expected",
-      "duration": 33561,
+      "duration": 31972,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t196",
+      "id": "t250",
       "title": "TC_08_Verify_Visit_Reason_Can_Be_Cleared",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2693,12 +3405,12 @@
       "line": 834,
       "project": "chromium",
       "status": "expected",
-      "duration": 33319,
+      "duration": 33362,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t197",
+      "id": "t251",
       "title": "TC_09_Verify_Invalid_Visit_Reason_Input",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2706,12 +3418,12 @@
       "line": 888,
       "project": "chromium",
       "status": "expected",
-      "duration": 31423,
+      "duration": 30594,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t198",
+      "id": "t252",
       "title": "TC_10_Verify_Start_Assessment_After_Selecting_Other",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2719,12 +3431,12 @@
       "line": 917,
       "project": "chromium",
       "status": "expected",
-      "duration": 32174,
+      "duration": 33917,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t199",
+      "id": "t253",
       "title": "TC_11_Verify_Visit_Reason_Search_Case_Insensitive",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2732,12 +3444,12 @@
       "line": 946,
       "project": "chromium",
       "status": "expected",
-      "duration": 30853,
+      "duration": 30415,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t200",
+      "id": "t254",
       "title": "TC_12_Verify_Visit_Reason_Search_With_Partial_Text",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2745,12 +3457,12 @@
       "line": 977,
       "project": "chromium",
       "status": "expected",
-      "duration": 32510,
+      "duration": 30604,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t201",
+      "id": "t255",
       "title": "TC_13_Verify_Other_Option_Can_Be_Selected",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2758,12 +3470,12 @@
       "line": 1008,
       "project": "chromium",
       "status": "expected",
-      "duration": 31383,
+      "duration": 34822,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t202",
+      "id": "t256",
       "title": "TC_14_Verify_Start_Assessment_Available_After_Other",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2771,12 +3483,12 @@
       "line": 1049,
       "project": "chromium",
       "status": "expected",
-      "duration": 31885,
+      "duration": 34719,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t203",
+      "id": "t257",
       "title": "TC_15_Verify_Start_Assessment_Opens_Assessment",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2784,12 +3496,12 @@
       "line": 1074,
       "project": "chromium",
       "status": "expected",
-      "duration": 32873,
+      "duration": 34566,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t204",
+      "id": "t258",
       "title": "TC_16_Verify_Yes_Option_After_Start_Assessment",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2797,12 +3509,12 @@
       "line": 1102,
       "project": "chromium",
       "status": "expected",
-      "duration": 33233,
+      "duration": 35004,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t205",
+      "id": "t259",
       "title": "TC_17_Verify_Start_Assessment_Yes_Navigation",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2810,12 +3522,12 @@
       "line": 1132,
       "project": "chromium",
       "status": "expected",
-      "duration": 36179,
+      "duration": 35357,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t206",
+      "id": "t260",
       "title": "TC_18_Verify_Patient_Description_Field",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2823,12 +3535,12 @@
       "line": 1174,
       "project": "chromium",
       "status": "expected",
-      "duration": 36384,
+      "duration": 36397,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t207",
+      "id": "t261",
       "title": "TC_19_Verify_Patient_Description_Input",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2836,12 +3548,12 @@
       "line": 1213,
       "project": "chromium",
       "status": "expected",
-      "duration": 34027,
+      "duration": 35880,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t208",
+      "id": "t262",
       "title": "TC_20_Verify_Submit_After_Patient_Description",
       "suite": "Start Visit - Visit Reason Module",
       "module": "Start Visit - Visit Reason",
@@ -2849,12 +3561,12 @@
       "line": 1260,
       "project": "chromium",
       "status": "expected",
-      "duration": 36293,
+      "duration": 38683,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t209",
+      "id": "t263",
       "title": "TC_01_Verify_Vitals_Section_Headers",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2862,12 +3574,12 @@
       "line": 420,
       "project": "chromium",
       "status": "expected",
-      "duration": 31627,
+      "duration": 32827,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t210",
+      "id": "t264",
       "title": "TC_02_Verify_Height_Input_Attributes",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2875,12 +3587,12 @@
       "line": 447,
       "project": "chromium",
       "status": "expected",
-      "duration": 32304,
+      "duration": 32622,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t211",
+      "id": "t265",
       "title": "TC_03_Verify_Weight_Input_Attributes",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2888,12 +3600,12 @@
       "line": 480,
       "project": "chromium",
       "status": "expected",
-      "duration": 33242,
+      "duration": 32607,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t212",
+      "id": "t266",
       "title": "TC_04_Verify_BMI_Field_Is_ReadOnly",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2901,12 +3613,12 @@
       "line": 513,
       "project": "chromium",
       "status": "expected",
-      "duration": 33077,
+      "duration": 32882,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t213",
+      "id": "t267",
       "title": "TC_05_Verify_BMI_Calculation",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2914,12 +3626,12 @@
       "line": 531,
       "project": "chromium",
       "status": "expected",
-      "duration": 32737,
+      "duration": 33216,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t214",
+      "id": "t268",
       "title": "TC_06_Verify_BMI_Normal_Category",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2927,12 +3639,12 @@
       "line": 565,
       "project": "chromium",
       "status": "expected",
-      "duration": 34031,
+      "duration": 32777,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t215",
+      "id": "t269",
       "title": "TC_07_Verify_BMI_Underweight_Category",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2940,12 +3652,12 @@
       "line": 588,
       "project": "chromium",
       "status": "expected",
-      "duration": 32653,
+      "duration": 33383,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t216",
+      "id": "t270",
       "title": "TC_08_Verify_BMI_Overweight_Category",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2953,12 +3665,12 @@
       "line": 609,
       "project": "chromium",
       "status": "expected",
-      "duration": 32670,
+      "duration": 32921,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t217",
+      "id": "t271",
       "title": "TC_09_Verify_BMI_Obese_Category",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2966,12 +3678,12 @@
       "line": 630,
       "project": "chromium",
       "status": "expected",
-      "duration": 32547,
+      "duration": 33905,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t218",
+      "id": "t272",
       "title": "TC_10_Verify_BMI_Recalculates_When_Height_Changes",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2979,12 +3691,12 @@
       "line": 651,
       "project": "chromium",
       "status": "expected",
-      "duration": 32173,
+      "duration": 33393,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t219",
+      "id": "t273",
       "title": "TC_11_Verify_BMI_Recalculates_When_Weight_Changes",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -2992,12 +3704,12 @@
       "line": 686,
       "project": "chromium",
       "status": "expected",
-      "duration": 32592,
+      "duration": 34002,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t220",
+      "id": "t274",
       "title": "TC_12_Verify_WHR_Field_Is_ReadOnly",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3005,12 +3717,12 @@
       "line": 721,
       "project": "chromium",
       "status": "expected",
-      "duration": 34911,
+      "duration": 34195,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t221",
+      "id": "t275",
       "title": "TC_13_Verify_WHR_Calculation",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3018,12 +3730,12 @@
       "line": 739,
       "project": "chromium",
       "status": "expected",
-      "duration": 33513,
+      "duration": 33271,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t222",
+      "id": "t276",
       "title": "TC_14_Verify_WHR_Recalculates_When_Waist_Changes",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3031,12 +3743,12 @@
       "line": 773,
       "project": "chromium",
       "status": "expected",
-      "duration": 34623,
+      "duration": 32761,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t223",
+      "id": "t277",
       "title": "TC_15_Verify_WHR_Recalculates_When_Hip_Changes",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3044,12 +3756,12 @@
       "line": 808,
       "project": "chromium",
       "status": "expected",
-      "duration": 32835,
+      "duration": 34215,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t224",
+      "id": "t278",
       "title": "TC_16_Verify_Decimal_Height_And_Weight",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3057,12 +3769,12 @@
       "line": 843,
       "project": "chromium",
       "status": "expected",
-      "duration": 34086,
+      "duration": 32771,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t225",
+      "id": "t279",
       "title": "TC_17_Verify_Decimal_BMI_Calculation",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3070,12 +3782,12 @@
       "line": 872,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 68223,
+      "duration": 70712,
       "retries": 1,
       "error": "Error: expect(received).toBeCloseTo(expected, precision)\n\nExpected: 21.35\nReceived: 21.3\n\nExpected precision:    1\nExpected difference: < 0.05\nReceived difference:   0.05000000000000071\nError: expect(received).toBeCloseTo(expected, precision)\n\nExpected: 21.35\nReceived: 21.3\n\nExpected precision:    1\nExpected difference: < 0.05\nReceived difference:   0.05000000000000071"
     },
     {
-      "id": "t226",
+      "id": "t280",
       "title": "TC_18_Verify_Temperature_Accepts_Decimal",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3083,12 +3795,12 @@
       "line": 904,
       "project": "chromium",
       "status": "expected",
-      "duration": 35160,
+      "duration": 32736,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t227",
+      "id": "t281",
       "title": "TC_19_Verify_HbA1c_Accepts_Decimal",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3096,12 +3808,12 @@
       "line": 923,
       "project": "chromium",
       "status": "expected",
-      "duration": 34897,
+      "duration": 33049,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t228",
+      "id": "t282",
       "title": "TC_20_Verify_Height_Maximum_Length",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3109,12 +3821,12 @@
       "line": 942,
       "project": "chromium",
       "status": "expected",
-      "duration": 33307,
+      "duration": 33950,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t229",
+      "id": "t283",
       "title": "TC_21_Verify_Weight_Maximum_Length",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3122,12 +3834,12 @@
       "line": 970,
       "project": "chromium",
       "status": "expected",
-      "duration": 32805,
+      "duration": 33573,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t230",
+      "id": "t284",
       "title": "TC_22_Verify_BMI_Cannot_Be_Manually_Edited",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3135,12 +3847,12 @@
       "line": 998,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 121798,
+      "duration": 123137,
       "retries": 1,
       "error": "Test timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded."
     },
     {
-      "id": "t231",
+      "id": "t285",
       "title": "TC_23_Verify_WHR_Cannot_Be_Manually_Edited",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3148,12 +3860,12 @@
       "line": 1026,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 121469,
+      "duration": 122152,
       "retries": 1,
       "error": "Test timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded."
     },
     {
-      "id": "t232",
+      "id": "t286",
       "title": "TC_24_Verify_Blood_Group_Default_Option",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3161,12 +3873,12 @@
       "line": 1064,
       "project": "chromium",
       "status": "expected",
-      "duration": 33442,
+      "duration": 33301,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t233",
+      "id": "t287",
       "title": "TC_25_Verify_Blood_Group_Selection_Persists",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3174,12 +3886,12 @@
       "line": 1089,
       "project": "chromium",
       "status": "expected",
-      "duration": 32209,
+      "duration": 33185,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t234",
+      "id": "t288",
       "title": "TC_26_Verify_BMI_After_Clearing_Weight",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3187,12 +3899,12 @@
       "line": 1115,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 87049,
+      "duration": 88717,
       "retries": 1,
       "error": "Error: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n       - unexpected value \"21.8\"\n\nError: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 "
     },
     {
-      "id": "t235",
+      "id": "t289",
       "title": "TC_27_Verify_BMI_After_Clearing_Height",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3200,12 +3912,12 @@
       "line": 1148,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 85655,
+      "duration": 88015,
       "retries": 1,
       "error": "Error: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n       - unexpected value \"21.8\"\n\nError: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 "
     },
     {
-      "id": "t236",
+      "id": "t290",
       "title": "TC_28_Verify_WHR_After_Clearing_Waist",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3213,12 +3925,12 @@
       "line": 1181,
       "project": "chromium",
       "status": "expected",
-      "duration": 34510,
+      "duration": 33050,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t237",
+      "id": "t291",
       "title": "TC_29_Verify_WHR_After_Clearing_Hip",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3226,12 +3938,12 @@
       "line": 1214,
       "project": "chromium",
       "status": "expected",
-      "duration": 32450,
+      "duration": 33809,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t238",
+      "id": "t292",
       "title": "TC_30_Verify_Vitals_Input_Names",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3239,12 +3951,12 @@
       "line": 1247,
       "project": "chromium",
       "status": "expected",
-      "duration": 34070,
+      "duration": 33802,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t239",
+      "id": "t293",
       "title": "TC_31_Verify_BP_Fields_Can_Remain_Empty",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3252,12 +3964,12 @@
       "line": 1287,
       "project": "chromium",
       "status": "expected",
-      "duration": 32534,
+      "duration": 33652,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t240",
+      "id": "t294",
       "title": "TC_32_Verify_Temperature_Can_Remain_Empty",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3265,12 +3977,12 @@
       "line": 1308,
       "project": "chromium",
       "status": "expected",
-      "duration": 31308,
+      "duration": 32628,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t241",
+      "id": "t295",
       "title": "TC_33_Verify_SpO2_Can_Remain_Empty",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3278,12 +3990,12 @@
       "line": 1325,
       "project": "chromium",
       "status": "expected",
-      "duration": 33202,
+      "duration": 33377,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t242",
+      "id": "t296",
       "title": "TC_34_Verify_FBS_Can_Remain_Empty",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3291,12 +4003,12 @@
       "line": 1342,
       "project": "chromium",
       "status": "expected",
-      "duration": 32857,
+      "duration": 33143,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t243",
+      "id": "t297",
       "title": "TC_35_Verify_Blood_Group_Can_Remain_Unselected",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3304,12 +4016,12 @@
       "line": 1359,
       "project": "chromium",
       "status": "expected",
-      "duration": 34252,
+      "duration": 34746,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t244",
+      "id": "t298",
       "title": "TC_36_Verify_BMI_After_Multiple_Updates",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3317,12 +4029,12 @@
       "line": 1376,
       "project": "chromium",
       "status": "expected",
-      "duration": 32749,
+      "duration": 33675,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t245",
+      "id": "t299",
       "title": "TC_37_Verify_WHR_After_Multiple_Updates",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3330,12 +4042,12 @@
       "line": 1416,
       "project": "chromium",
       "status": "expected",
-      "duration": 33823,
+      "duration": 33528,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t246",
+      "id": "t300",
       "title": "TC_38_Verify_BMI_Direct_Input_Is_Not_Allowed",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3343,12 +4055,12 @@
       "line": 1456,
       "project": "chromium",
       "status": "expected",
-      "duration": 32334,
+      "duration": 33504,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t247",
+      "id": "t301",
       "title": "TC_39_Verify_WHR_Direct_Input_Is_Not_Allowed",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3356,12 +4068,12 @@
       "line": 1476,
       "project": "chromium",
       "status": "expected",
-      "duration": 32419,
+      "duration": 32652,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t248",
+      "id": "t302",
       "title": "TC_40_Verify_Vitals_Decimal_Input_Mode",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3369,12 +4081,12 @@
       "line": 1496,
       "project": "chromium",
       "status": "expected",
-      "duration": 32732,
+      "duration": 32868,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t249",
+      "id": "t303",
       "title": "TC_41_Verify_Vitals_Maximum_Length",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3382,12 +4094,12 @@
       "line": 1536,
       "project": "chromium",
       "status": "expected",
-      "duration": 32630,
+      "duration": 32021,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t250",
+      "id": "t304",
       "title": "TC_42_Verify_BMI_Placeholder",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3395,12 +4107,12 @@
       "line": 1576,
       "project": "chromium",
       "status": "expected",
-      "duration": 33825,
+      "duration": 33651,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t251",
+      "id": "t305",
       "title": "TC_43_Verify_WHR_Placeholder",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3408,12 +4120,12 @@
       "line": 1594,
       "project": "chromium",
       "status": "expected",
-      "duration": 32101,
+      "duration": 32685,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t252",
+      "id": "t306",
       "title": "TC_44_Verify_BMI_Is_Automatically_Generated",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3421,12 +4133,12 @@
       "line": 1612,
       "project": "chromium",
       "status": "expected",
-      "duration": 32379,
+      "duration": 33383,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t253",
+      "id": "t307",
       "title": "TC_45_Verify_WHR_Is_Automatically_Generated",
       "suite": "Start Visit - Vitals Module",
       "module": "Start Visit - Vitals",
@@ -3434,12 +4146,12 @@
       "line": 1641,
       "project": "chromium",
       "status": "expected",
-      "duration": 33612,
+      "duration": 33026,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t254",
+      "id": "t308",
       "title": "TC_01_Verify_Start_Visit_Screen",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3447,12 +4159,12 @@
       "line": 526,
       "project": "chromium",
       "status": "expected",
-      "duration": 39153,
+      "duration": 37709,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t255",
+      "id": "t309",
       "title": "TC_02_Verify_Height",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3460,12 +4172,12 @@
       "line": 553,
       "project": "chromium",
       "status": "expected",
-      "duration": 37455,
+      "duration": 37951,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t256",
+      "id": "t310",
       "title": "TC_03_Verify_Weight",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3473,12 +4185,12 @@
       "line": 570,
       "project": "chromium",
       "status": "expected",
-      "duration": 37371,
+      "duration": 38838,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t257",
+      "id": "t311",
       "title": "TC_04_Verify_Blood_Pressure",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3491,7 +4203,7 @@
       "error": ""
     },
     {
-      "id": "t258",
+      "id": "t312",
       "title": "TC_05_Verify_Pulse",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3499,12 +4211,12 @@
       "line": 610,
       "project": "chromium",
       "status": "expected",
-      "duration": 38410,
+      "duration": 37752,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t259",
+      "id": "t313",
       "title": "TC_06_Verify_Temperature",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3512,12 +4224,12 @@
       "line": 627,
       "project": "chromium",
       "status": "expected",
-      "duration": 38308,
+      "duration": 38414,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t260",
+      "id": "t314",
       "title": "TC_07_Verify_SpO2",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3525,12 +4237,12 @@
       "line": 644,
       "project": "chromium",
       "status": "expected",
-      "duration": 38336,
+      "duration": 37921,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t261",
+      "id": "t315",
       "title": "TC_08_Verify_Respiratory_Rate",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3538,12 +4250,12 @@
       "line": 661,
       "project": "chromium",
       "status": "expected",
-      "duration": 39085,
+      "duration": 39533,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t262",
+      "id": "t316",
       "title": "TC_09_Verify_FBS",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3551,12 +4263,12 @@
       "line": 680,
       "project": "chromium",
       "status": "expected",
-      "duration": 37340,
+      "duration": 38099,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t263",
+      "id": "t317",
       "title": "TC_10_Verify_PPBS",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3564,12 +4276,12 @@
       "line": 697,
       "project": "chromium",
       "status": "expected",
-      "duration": 39055,
+      "duration": 38021,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t264",
+      "id": "t318",
       "title": "TC_11_Verify_Waist_Circumference",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3577,12 +4289,12 @@
       "line": 714,
       "project": "chromium",
       "status": "expected",
-      "duration": 36860,
+      "duration": 37983,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t265",
+      "id": "t319",
       "title": "TC_12_Verify_Hip_Circumference",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3590,12 +4302,12 @@
       "line": 731,
       "project": "chromium",
       "status": "expected",
-      "duration": 38420,
+      "duration": 37858,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t266",
+      "id": "t320",
       "title": "TC_13_Verify_OGTT",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3603,12 +4315,12 @@
       "line": 748,
       "project": "chromium",
       "status": "expected",
-      "duration": 39176,
+      "duration": 41303,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t267",
+      "id": "t321",
       "title": "TC_14_Verify_HbA1c",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3616,12 +4328,12 @@
       "line": 765,
       "project": "chromium",
       "status": "expected",
-      "duration": 39238,
+      "duration": 41276,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t268",
+      "id": "t322",
       "title": "TC_15_Verify_Blood_Group",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3629,12 +4341,12 @@
       "line": 782,
       "project": "chromium",
       "status": "expected",
-      "duration": 39520,
+      "duration": 36858,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t269",
+      "id": "t323",
       "title": "TC_16_Verify_Vitals_Next_Button",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3642,12 +4354,12 @@
       "line": 805,
       "project": "chromium",
       "status": "expected",
-      "duration": 39086,
+      "duration": 38398,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t270",
+      "id": "t324",
       "title": "TC_17_Verify_Complete_Vitals_Flow",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3655,12 +4367,12 @@
       "line": 821,
       "project": "chromium",
       "status": "expected",
-      "duration": 41412,
+      "duration": 41853,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t271",
+      "id": "t325",
       "title": "TC_18_Verify_Visit_Reason",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3668,12 +4380,12 @@
       "line": 908,
       "project": "chromium",
       "status": "expected",
-      "duration": 41177,
+      "duration": 41957,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t272",
+      "id": "t326",
       "title": "TC_19_Verify_Other_Visit_Reason",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3681,12 +4393,12 @@
       "line": 1000,
       "project": "chromium",
       "status": "expected",
-      "duration": 42136,
+      "duration": 43726,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t273",
+      "id": "t327",
       "title": "TC_20_Verify_Start_Assessment",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3694,12 +4406,12 @@
       "line": 1103,
       "project": "chromium",
       "status": "expected",
-      "duration": 42755,
+      "duration": 43773,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t274",
+      "id": "t328",
       "title": "TC_21_Verify_Required_Field_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3707,12 +4419,12 @@
       "line": 1240,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 104297,
+      "duration": 104909,
       "retries": 1,
       "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByText('Post Prandial Blood Sugar (PPBS) (mg/dl) is required', { exact: true })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for getByText('Post Prandial Blood Sugar (PPBS) (mg/dl) is required', { exact: true })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: getByText('Post Prandial Blood Sugar (PPBS) (mg/dl) is required', { exact: true })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for getByText('Post Prandial Blood Sugar (PPBS) (mg/dl) is required', { exact: true })"
     },
     {
-      "id": "t275",
+      "id": "t329",
       "title": "TC_22_Verify_Each_Required_Field_Error_Message",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3720,12 +4432,12 @@
       "line": 1330,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 102168,
+      "duration": 109298,
       "retries": 1,
       "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'Post Prandial Blood Sugar (PPBS) (mg/dl) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'Post Prandial Blood Sugar (PPBS) (mg/dl) is required' })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'Post Prandial Blood Sugar (PPBS) (mg/dl) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'Post Prandial Blood Sugar (PPBS) (mg/dl) is required' })"
     },
     {
-      "id": "t276",
+      "id": "t330",
       "title": "TC_23_Verify_Height_Required_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3733,12 +4445,12 @@
       "line": 1364,
       "project": "chromium",
       "status": "expected",
-      "duration": 41408,
+      "duration": 43022,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t277",
+      "id": "t331",
       "title": "TC_24_Verify_Weight_Required_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3746,12 +4458,12 @@
       "line": 1393,
       "project": "chromium",
       "status": "expected",
-      "duration": 52303,
+      "duration": 42789,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t278",
+      "id": "t332",
       "title": "TC_25_Verify_Pulse_Required_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3759,12 +4471,12 @@
       "line": 1422,
       "project": "chromium",
       "status": "expected",
-      "duration": 40522,
+      "duration": 41543,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t279",
+      "id": "t333",
       "title": "TC_26_Verify_Respiratory_Rate_Required_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3772,12 +4484,12 @@
       "line": 1447,
       "project": "chromium",
       "status": "expected",
-      "duration": 42215,
+      "duration": 42116,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t280",
+      "id": "t334",
       "title": "TC_27_Verify_PPBS_Required_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3785,12 +4497,12 @@
       "line": 1472,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 103380,
+      "duration": 106240,
       "retries": 1,
       "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'Post Prandial Blood Sugar (PPBS) (mg/dl) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'Post Prandial Blood Sugar (PPBS) (mg/dl) is required' })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'Post Prandial Blood Sugar (PPBS) (mg/dl) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'Post Prandial Blood Sugar (PPBS) (mg/dl) is required' })"
     },
     {
-      "id": "t281",
+      "id": "t335",
       "title": "TC_28_Verify_RBS_Required_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3798,12 +4510,12 @@
       "line": 1498,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 104250,
+      "duration": 106133,
       "retries": 1,
       "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'RBS (mg/dl) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'RBS (mg/dl) is required' })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'RBS (mg/dl) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'RBS (mg/dl) is required' })"
     },
     {
-      "id": "t282",
+      "id": "t336",
       "title": "TC_29_Verify_Waist_Circumference_Required_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3811,12 +4523,12 @@
       "line": 1523,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 102062,
+      "duration": 104889,
       "retries": 1,
       "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'Waist Circumference (cm) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'Waist Circumference (cm) is required' })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'Waist Circumference (cm) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'Waist Circumference (cm) is required' })"
     },
     {
-      "id": "t283",
+      "id": "t337",
       "title": "TC_30_Verify_Hip_Circumference_Required_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3824,12 +4536,12 @@
       "line": 1548,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 101844,
+      "duration": 107371,
       "retries": 1,
       "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'Hip Circumference (cm) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'Hip Circumference (cm) is required' })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'Hip Circumference (cm) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'Hip Circumference (cm) is required' })"
     },
     {
-      "id": "t284",
+      "id": "t338",
       "title": "TC_31_Verify_OGTT_Required_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3837,12 +4549,12 @@
       "line": 1573,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 103245,
+      "duration": 105245,
       "retries": 1,
       "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: '2 Hour Post Load Glucose Test (OGTT) (mg/dl) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: '2 Hour Post Load Glucose Test (OGTT) (mg/dl) is required' })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: '2 Hour Post Load Glucose Test (OGTT) (mg/dl) is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: '2 Hour Post Load Glucose Test (OGTT) (mg/dl) is required' })"
     },
     {
-      "id": "t285",
+      "id": "t339",
       "title": "TC_32_Verify_HbA1c_Required_Validation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3850,12 +4562,12 @@
       "line": 1599,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 102137,
+      "duration": 107265,
       "retries": 1,
       "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'HbA1c is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'HbA1c is required' })\n\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('p.form-error-message').filter({ hasText: 'HbA1c is required' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('p.form-error-message').filter({ hasText: 'HbA1c is required' })"
     },
     {
-      "id": "t286",
+      "id": "t340",
       "title": "TC_33_Verify_BMI_Is_Readonly",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3863,12 +4575,12 @@
       "line": 1624,
       "project": "chromium",
       "status": "expected",
-      "duration": 36657,
+      "duration": 38349,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t287",
+      "id": "t341",
       "title": "TC_34_Verify_BMI_Calculation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3876,12 +4588,12 @@
       "line": 1644,
       "project": "chromium",
       "status": "expected",
-      "duration": 37432,
+      "duration": 37927,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t288",
+      "id": "t342",
       "title": "TC_35_Verify_BMI_Updates_When_Height_Changes",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3889,12 +4601,12 @@
       "line": 1682,
       "project": "chromium",
       "status": "expected",
-      "duration": 38539,
+      "duration": 37616,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t289",
+      "id": "t343",
       "title": "TC_36_Verify_BMI_Updates_When_Weight_Changes",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3902,12 +4614,12 @@
       "line": 1728,
       "project": "chromium",
       "status": "expected",
-      "duration": 37639,
+      "duration": 37823,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t290",
+      "id": "t344",
       "title": "TC_37_Verify_WHR_Is_Readonly",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3915,12 +4627,12 @@
       "line": 1774,
       "project": "chromium",
       "status": "expected",
-      "duration": 38920,
+      "duration": 37291,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t291",
+      "id": "t345",
       "title": "TC_38_Verify_WHR_Calculation",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3928,12 +4640,12 @@
       "line": 1794,
       "project": "chromium",
       "status": "expected",
-      "duration": 37605,
+      "duration": 38494,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t292",
+      "id": "t346",
       "title": "TC_39_Verify_WHR_Updates_When_Waist_Changes",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3941,12 +4653,12 @@
       "line": 1828,
       "project": "chromium",
       "status": "expected",
-      "duration": 38017,
+      "duration": 37339,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t293",
+      "id": "t347",
       "title": "TC_40_Verify_WHR_Updates_When_Hip_Changes",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3954,12 +4666,12 @@
       "line": 1874,
       "project": "chromium",
       "status": "expected",
-      "duration": 36078,
+      "duration": 39440,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t294",
+      "id": "t348",
       "title": "TC_41_Verify_Optional_Vital_Fields",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3967,12 +4679,12 @@
       "line": 1920,
       "project": "chromium",
       "status": "expected",
-      "duration": 40076,
+      "duration": 41834,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t295",
+      "id": "t349",
       "title": "TC_42_Verify_Blood_Group_Is_Optional",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3980,12 +4692,12 @@
       "line": 1989,
       "project": "chromium",
       "status": "expected",
-      "duration": 41547,
+      "duration": 43293,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t296",
+      "id": "t350",
       "title": "TC_43_Verify_Blood_Group_Options",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -3993,12 +4705,12 @@
       "line": 2059,
       "project": "chromium",
       "status": "expected",
-      "duration": 37012,
+      "duration": 39348,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t297",
+      "id": "t351",
       "title": "TC_44_Verify_Decimal_Height_And_Weight",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4006,12 +4718,12 @@
       "line": 2117,
       "project": "chromium",
       "status": "expected",
-      "duration": 37437,
+      "duration": 38711,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t298",
+      "id": "t352",
       "title": "TC_45_Verify_Decimal_Measurement_Values",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4019,12 +4731,12 @@
       "line": 2146,
       "project": "chromium",
       "status": "expected",
-      "duration": 36081,
+      "duration": 38845,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t299",
+      "id": "t353",
       "title": "TC_46_Verify_BMI_Status",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4032,12 +4744,12 @@
       "line": 2175,
       "project": "chromium",
       "status": "expected",
-      "duration": 37041,
+      "duration": 39222,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t300",
+      "id": "t354",
       "title": "TC_47_Verify_BMI_Cannot_Be_Manually_Edited",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4045,12 +4757,12 @@
       "line": 2208,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 122322,
+      "duration": 122980,
       "retries": 1,
       "error": "Test timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded."
     },
     {
-      "id": "t301",
+      "id": "t355",
       "title": "TC_48_Verify_WHR_Cannot_Be_Manually_Edited",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4058,12 +4770,12 @@
       "line": 2234,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 122326,
+      "duration": 122957,
       "retries": 1,
       "error": "Test timeout of 60000ms exceeded.\nTest timeout of 60000ms exceeded."
     },
     {
-      "id": "t302",
+      "id": "t356",
       "title": "TC_49_Verify_Height_Max_Length",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4071,12 +4783,12 @@
       "line": 2259,
       "project": "chromium",
       "status": "expected",
-      "duration": 38292,
+      "duration": 37820,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t303",
+      "id": "t357",
       "title": "TC_50_Verify_Weight_Max_Length",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4084,12 +4796,12 @@
       "line": 2276,
       "project": "chromium",
       "status": "expected",
-      "duration": 36553,
+      "duration": 37420,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t304",
+      "id": "t358",
       "title": "TC_51_Verify_Pulse_Max_Length",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4097,12 +4809,12 @@
       "line": 2293,
       "project": "chromium",
       "status": "expected",
-      "duration": 37043,
+      "duration": 37749,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t305",
+      "id": "t359",
       "title": "TC_52_Verify_Respiratory_Rate_Max_Length",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4110,12 +4822,12 @@
       "line": 2310,
       "project": "chromium",
       "status": "expected",
-      "duration": 37870,
+      "duration": 38219,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t306",
+      "id": "t360",
       "title": "TC_53_Verify_All_Required_Fields_Can_Be_Completed",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4123,12 +4835,12 @@
       "line": 2327,
       "project": "chromium",
       "status": "expected",
-      "duration": 36207,
+      "duration": 38951,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t307",
+      "id": "t361",
       "title": "TC_54_Verify_Error_Message_Clears_After_Entering_Value",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4136,12 +4848,12 @@
       "line": 2392,
       "project": "chromium",
       "status": "expected",
-      "duration": 40804,
+      "duration": 43397,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t308",
+      "id": "t362",
       "title": "TC_55_Verify_All_Required_Errors_Clear_After_Entering_Values",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4149,12 +4861,12 @@
       "line": 2427,
       "project": "chromium",
       "status": "expected",
-      "duration": 41665,
+      "duration": 41212,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t309",
+      "id": "t363",
       "title": "TC_56_Verify_BMI_Status_Underweight",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4162,12 +4874,12 @@
       "line": 2553,
       "project": "chromium",
       "status": "expected",
-      "duration": 38005,
+      "duration": 37258,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t310",
+      "id": "t364",
       "title": "TC_57_Verify_BMI_Status_Overweight",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4175,12 +4887,12 @@
       "line": 2585,
       "project": "chromium",
       "status": "expected",
-      "duration": 39338,
+      "duration": 39187,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t311",
+      "id": "t365",
       "title": "TC_58_Verify_BMI_Status_Obese",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4188,12 +4900,12 @@
       "line": 2617,
       "project": "chromium",
       "status": "expected",
-      "duration": 37147,
+      "duration": 37960,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t312",
+      "id": "t366",
       "title": "TC_59_Verify_BMI_Clears_When_Height_Is_Cleared",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4201,12 +4913,12 @@
       "line": 2649,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 96451,
+      "duration": 98328,
       "retries": 1,
       "error": "Error: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n       - unexpected value \"21.8\"\n\nError: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 "
     },
     {
-      "id": "t313",
+      "id": "t367",
       "title": "TC_60_Verify_BMI_Clears_When_Weight_Is_Cleared",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4214,12 +4926,12 @@
       "line": 2679,
       "project": "chromium",
       "status": "unexpected",
-      "duration": 96057,
+      "duration": 97459,
       "retries": 1,
       "error": "Error: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 cursor-not-allowed\"/>\n       - unexpected value \"21.8\"\n\nError: expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('input[name=\"bmi\"]')\nExpected: \"\"\nReceived: \"21.8\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveValue\" with timeout 10000ms\n  - waiting for locator('input[name=\"bmi\"]')\n    14 × locator resolved to <input readonly name=\"bmi\" type=\"text\" maxlength=\"10\" inputmode=\"decimal\" placeholder=\"E.g., 22.5\" class=\"form-input-base w-full px-3 py-2  bg-gray-50 "
     },
     {
-      "id": "t314",
+      "id": "t368",
       "title": "TC_61_Verify_WHR_Clears_When_Waist_Is_Cleared",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4227,12 +4939,12 @@
       "line": 2709,
       "project": "chromium",
       "status": "expected",
-      "duration": 38354,
+      "duration": 37607,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t315",
+      "id": "t369",
       "title": "TC_62_Verify_WHR_Clears_When_Hip_Is_Cleared",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4240,12 +4952,12 @@
       "line": 2739,
       "project": "chromium",
       "status": "expected",
-      "duration": 38118,
+      "duration": 37746,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t316",
+      "id": "t370",
       "title": "TC_63_Verify_BMI_Recalculation_With_Multiple_Changes",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4253,12 +4965,12 @@
       "line": 2769,
       "project": "chromium",
       "status": "expected",
-      "duration": 38511,
+      "duration": 39253,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t317",
+      "id": "t371",
       "title": "TC_64_Verify_WHR_Recalculation_With_Multiple_Changes",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4266,12 +4978,12 @@
       "line": 2818,
       "project": "chromium",
       "status": "expected",
-      "duration": 37159,
+      "duration": 37299,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t318",
+      "id": "t372",
       "title": "TC_65_Verify_BP_Systolic_Can_Be_Entered_And_Cleared",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4279,12 +4991,12 @@
       "line": 2867,
       "project": "chromium",
       "status": "expected",
-      "duration": 37868,
+      "duration": 37589,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t319",
+      "id": "t373",
       "title": "TC_66_Verify_BP_Diastolic_Can_Be_Entered_And_Cleared",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4292,12 +5004,12 @@
       "line": 2888,
       "project": "chromium",
       "status": "expected",
-      "duration": 37075,
+      "duration": 38092,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t320",
+      "id": "t374",
       "title": "TC_67_Verify_Temperature_Can_Be_Entered_And_Cleared",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4305,12 +5017,12 @@
       "line": 2909,
       "project": "chromium",
       "status": "expected",
-      "duration": 36102,
+      "duration": 39037,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t321",
+      "id": "t375",
       "title": "TC_68_Verify_SpO2_Can_Be_Entered_And_Cleared",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4318,12 +5030,12 @@
       "line": 2930,
       "project": "chromium",
       "status": "expected",
-      "duration": 36850,
+      "duration": 39466,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t322",
+      "id": "t376",
       "title": "TC_69_Verify_FBS_Can_Be_Entered_And_Cleared",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4331,12 +5043,12 @@
       "line": 2951,
       "project": "chromium",
       "status": "expected",
-      "duration": 38006,
+      "duration": 37419,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t323",
+      "id": "t377",
       "title": "TC_70_Verify_Blood_Group_Selection_Can_Be_Changed",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4344,12 +5056,12 @@
       "line": 2972,
       "project": "chromium",
       "status": "expected",
-      "duration": 37281,
+      "duration": 39029,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t324",
+      "id": "t378",
       "title": "TC_71_Verify_Blood_Group_Can_Be_Reset_To_Default",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4357,12 +5069,12 @@
       "line": 3001,
       "project": "chromium",
       "status": "expected",
-      "duration": 37861,
+      "duration": 39637,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t325",
+      "id": "t379",
       "title": "TC_72_Verify_Height_Decimal_Precision",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4370,12 +5082,12 @@
       "line": 3024,
       "project": "chromium",
       "status": "expected",
-      "duration": 36718,
+      "duration": 39053,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t326",
+      "id": "t380",
       "title": "TC_73_Verify_Weight_Decimal_Precision",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4383,12 +5095,12 @@
       "line": 3041,
       "project": "chromium",
       "status": "expected",
-      "duration": 36678,
+      "duration": 39451,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t327",
+      "id": "t381",
       "title": "TC_74_Verify_Next_Does_Not_Proceed_With_Invalid_Required_Fields",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4396,12 +5108,12 @@
       "line": 3058,
       "project": "chromium",
       "status": "expected",
-      "duration": 40808,
+      "duration": 42295,
       "retries": 0,
       "error": ""
     },
     {
-      "id": "t328",
+      "id": "t382",
       "title": "TC_75_Verify_Next_Proceeds_After_Required_Fields_Are_Valid",
       "suite": "Start Visit Module",
       "module": "Start Visit",
@@ -4409,7 +5121,7 @@
       "line": 3089,
       "project": "chromium",
       "status": "expected",
-      "duration": 41832,
+      "duration": 42081,
       "retries": 0,
       "error": ""
     }
@@ -4484,6 +5196,16 @@
       "skipped": 0,
       "total": 329,
       "duration": 17759259
+    },
+    {
+      "run": 49,
+      "date": "2026-10-07",
+      "passed": 318,
+      "failed": 64,
+      "flaky": 1,
+      "skipped": 0,
+      "total": 383,
+      "duration": 21700285
     }
   ]
 }
