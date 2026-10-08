@@ -1,0 +1,5 @@
+where      : Answering "Yes" should ask the frequency and the animal name
+url        : https://dev.intelehealth.org/hwwebapp#/ayu
+question   : Question 11/18
+buttons    : ["Add Patient","Patient Details","Start Visit","Vitals","Yes","No","1","2","3","4","5","6","7","8","9","10","Submit","Skip"]
+paragraphs : ["Which part of the body has the rash?*","All over","Since when have you had rash?*","3 hours","Rate of rash spread*","within days","How has the rash spread?*","Centrifugal","Since when have you had fever?*","3 hours","How does fever change?*","All day/ Constant","Severity of Fever*","Moderate","In a day, when do you feel fever the most?","Morning","Do you have the following symptom(s)?*","Patient denies","Abdominal pain, Diarrhea, Nausea, Vomiting, Muscle pain, Adenopathy, Pain in rash area, Painful skin lesions in the genital area, Joint pain, Sore throat, Headache, Runny nose, Cough, Itchy rash, Rash is triggered by sun exposure, Other [describe].","Any contact with persons with fever & rash in the past month?*","No","Question 11/18","Question 1/8","Is there jaundice?*","References:","Select any one","Question 1/8"]
