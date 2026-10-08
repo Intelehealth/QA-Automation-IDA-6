@@ -1,2 +1,0 @@
-setupToAbdominalPainAssessment - date of birth set by typing 01/01/2000.
-TC_PE_044 — Question 3/6 to Question 4/6 transition took 1899ms

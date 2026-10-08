@@ -1,4 +1,0 @@
-setupToAbdominalPainAssessment - date of birth set by typing 01/01/2000.
-========================================
-Generated MRS ID: 16MWP-0
-========================================
