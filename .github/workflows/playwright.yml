@@ -58,23 +58,23 @@ jobs:
   # ============================================================
   # 🧪 IDA-6 AUTOMATION - SHARDED
   #
-  # The suite is split into 8 parallel jobs. Each one runs about
-  # 1/8 of the tests, so no job gets near GitHub's 6-hour limit.
+  # The suite is split into 10 parallel jobs. Each one runs about
+  # 1/10 of the tests, so no job gets near GitHub's 6-hour limit.
   # Change SHARD_TOTAL and the shard list together.
   # ============================================================
 
   test:
 
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 300
 
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2, 3, 4, 5, 6, 7, 8]
+        shard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
     env:
-      SHARD_TOTAL: 8
+      SHARD_TOTAL: 10
 
     steps:
 
@@ -996,7 +996,7 @@ jobs:
             echo "Node=$(node -v)"
             echo "Playwright=$(npx playwright --version)"
             echo "Base URL=https://dev.intelehealth.org"
-            echo "Shards=8"
+            echo "Shards=10"
           } > allure-results/environment.properties
 
 
