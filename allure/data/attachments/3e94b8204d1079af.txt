@@ -1,3 +1,0 @@
-setupToAbdominalPainAssessment - date of birth set by typing 01/01/2000.
-TC_AP_018 — scars question card ready: labelled
-TC_AP_018 — scars question layout: Yes/No buttons=true, location grid=false

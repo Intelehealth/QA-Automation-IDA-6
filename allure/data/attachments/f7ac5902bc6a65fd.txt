@@ -1,2 +1,0 @@
-setupToAbdominalPainAssessment - date of birth set by typing 01/01/2000.
-TC_AP_037 — open free-text fields after two Yes answers: 3
