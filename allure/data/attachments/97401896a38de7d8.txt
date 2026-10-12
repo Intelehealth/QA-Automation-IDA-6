@@ -1,0 +1,5 @@
+where      : An enclosed fire space should ask which substance burned
+url        : https://dev.intelehealth.org/hwwebapp#/ayu
+question   : Question 4/8
+buttons    : ["Add Patient","Patient Details","Start Visit","Vitals","Flame","Scald (Hot liquids) [Describe]","Contact (Hot or cold solid materials) [Describe]","Chemicals [Describe]","Electricity","Enclosed fire space","Open fire space","Submit"]
+paragraphs : ["Where did you get burnt?*","Left forearm","When did you get burned?*","3 hours","How did you get burnt?*","Spilled hot water while cooking","Question 4/8","Question 1/6","Is there jaundice?*","References:","Select any one","Question 1/8"]
