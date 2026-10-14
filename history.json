@@ -178,5 +178,15 @@
     "skipped": 0,
     "total": 810,
     "duration": 67640554
+  },
+  {
+    "run": 60,
+    "date": "2026-10-14",
+    "passed": 808,
+    "failed": 51,
+    "flaky": 3,
+    "skipped": 0,
+    "total": 862,
+    "duration": 73642120
   }
 ]
