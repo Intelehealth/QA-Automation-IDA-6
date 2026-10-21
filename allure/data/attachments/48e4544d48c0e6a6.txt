@@ -1,5 +1,0 @@
-setupToAbdominalPainAssessment - date of birth set by typing 01/01/2000.
-selectAbdomenAnswer [Question 7/10] — card ready, layout detected: labelled
-answerAbdominalScars — answered "No" via the "labelled-option" layout.
-TC_AP_019 — bloating question layout: labelled
-TC_AP_019 — buttons on the bloating card: ["","Add Patient","Patient Details","Start Visit","Vitals","Visit Reason","","","","","","","","No","Yes","Take a Picture","Back"]

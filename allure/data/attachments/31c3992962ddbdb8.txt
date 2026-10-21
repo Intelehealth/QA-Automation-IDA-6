@@ -1,0 +1,5 @@
+where      : Knee pop-up not shown
+url        : https://dev.intelehealth.org/hwwebapp#/ayu
+question   : Question 1/13
+buttons    : ["Add Patient","Patient Details","Start Visit","Vitals","Right leg","Left leg","Hip","Hip","Buttock","Thigh","Knee","Calf","Site of knee pain","Swelling","Submit"]
+paragraphs : ["Question 1/13","Question 1/13","Is there jaundice?*","References:","Select any one","Question 1/8"]
