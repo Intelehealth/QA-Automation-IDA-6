@@ -7,6 +7,16 @@ on:
 
   pull_request:
 
+  # ▶ Manual run: Actions -> this workflow -> "Run workflow".
+  #   Type part of a test file name (e.g. login) to run only that file,
+  #   or leave "all" to run the full suite.
+  workflow_dispatch:
+    inputs:
+      test_file:
+        description: "Test file to run (leave 'all' for full suite, or type e.g. login)"
+        type: string
+        default: all
+
 permissions:
   contents: write
 
@@ -60,7 +70,9 @@ jobs:
   #
   # The suite is split into 10 parallel jobs. Each one runs about
   # 1/10 of the tests, so no job gets near GitHub's 6-hour limit.
-  # Change SHARD_TOTAL and the shard list together.
+  #
+  # Manual run with a test file typed in -> only 1 job runs that file.
+  # Push / PR / manual "all"             -> 10 shards, same as before.
   # ============================================================
 
   test:
@@ -71,10 +83,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        shard: ${{ fromJSON((inputs.test_file || 'all') != 'all' && '[1]' || '[1,2,3,4,5,6,7,8,9,10]') }}
 
     env:
-      SHARD_TOTAL: 10
+      SHARD_TOTAL: ${{ strategy.job-total }}
+      TEST_FILE: ${{ inputs.test_file || 'all' }}
 
     steps:
 
@@ -103,12 +116,17 @@ jobs:
 
           echo "========================================"
           echo "🚀 IDA-6 AUTOMATION - SHARD ${{ matrix.shard }}/$SHARD_TOTAL"
+          echo "🎯 Test file: $TEST_FILE"
           echo "========================================"
 
           PLAYWRIGHT_EXIT_CODE=0
 
-          npx playwright test --project=chromium \
-            --shard=${{ matrix.shard }}/$SHARD_TOTAL || PLAYWRIGHT_EXIT_CODE=$?
+          if [ "$TEST_FILE" = "all" ]; then
+            npx playwright test --project=chromium \
+              --shard=${{ matrix.shard }}/$SHARD_TOTAL || PLAYWRIGHT_EXIT_CODE=$?
+          else
+            npx playwright test --project=chromium "$TEST_FILE" || PLAYWRIGHT_EXIT_CODE=$?
+          fi
 
           echo "Playwright Exit Code: $PLAYWRIGHT_EXIT_CODE"
           echo "exit_code=$PLAYWRIGHT_EXIT_CODE" >> "$GITHUB_OUTPUT"
@@ -1157,6 +1175,7 @@ jobs:
 
       # ========================================================
       # 🌐 DEPLOY DASHBOARD + ALLURE TO GITHUB PAGES
+      # (push only -- manual runs never overwrite the dashboard)
       # ========================================================
 
       - name: Deploy to GitHub Pages
