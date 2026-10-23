@@ -1,0 +1,239 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - generic [ref=e5]:
+    - complementary [ref=e6]:
+      - button [ref=e7]
+      - generic [ref=e8]:
+        - img "hero" [ref=e10]
+        - link "Add Patients" [ref=e12] [cursor=pointer]:
+          - /url: "#/patient/add"
+          - generic [ref=e15]: Add Patients
+        - navigation [ref=e16]:
+          - generic [ref=e17]:
+            - link "Home Home" [ref=e18] [cursor=pointer]:
+              - /url: "#/dashboard"
+              - img "Home" [ref=e19]
+              - generic [ref=e20]: Home
+            - link "Achievements Achievements" [ref=e21] [cursor=pointer]:
+              - /url: "#/achievement-ui"
+              - img "Achievements" [ref=e22]
+              - generic [ref=e23]: Achievements
+            - link "Help & Support Help & Support" [ref=e24] [cursor=pointer]:
+              - /url: "#/help"
+              - img "Help & Support" [ref=e25]
+              - generic [ref=e26]: Help & Support
+            - link "Educational Videos Educational Videos" [ref=e27] [cursor=pointer]:
+              - /url: "#/educational-videos"
+              - img "Educational Videos" [ref=e28]
+              - generic [ref=e29]: Educational Videos
+            - link "Settings Settings" [ref=e30] [cursor=pointer]:
+              - /url: "#/settings"
+              - img "Settings" [ref=e31]
+              - generic [ref=e32]: Settings
+            - link "About us About us" [ref=e33] [cursor=pointer]:
+              - /url: "#/about-us"
+              - img "About us" [ref=e34]
+              - generic [ref=e35]: About us
+        - navigation [ref=e37]:
+          - generic [ref=e38] [cursor=pointer]:
+            - img [ref=e39]
+            - generic [ref=e40]: Log-out
+    - main [ref=e41]:
+      - generic [ref=e43]:
+        - generic [ref=e46]:
+          - generic [ref=e50]:
+            - generic:
+              - generic:
+                - img "search"
+            - combobox "Patient Search" [ref=e51]
+          - generic [ref=e53]:
+            - img "Location" [ref=e54]
+            - generic [ref=e55]: Telemedicine Clinic 1
+          - generic [ref=e56]:
+            - link "Notification" [ref=e57] [cursor=pointer]:
+              - /url: "#/notifications"
+              - img "Notification" [ref=e58]
+            - link "Profile" [ref=e59] [cursor=pointer]:
+              - /url: "#/profile"
+              - img "Profile" [ref=e60]
+        - generic [ref=e61]:
+          - navigation "Breadcrumb" [ref=e62]:
+            - list [ref=e63]:
+              - listitem [ref=e64]:
+                - link "Dashboard" [ref=e65] [cursor=pointer]:
+                  - /url: "#/dashboard"
+              - listitem [ref=e66]:
+                - generic [ref=e67]: ">"
+                - button "Add Patient" [ref=e68] [cursor=pointer]
+              - listitem [ref=e69]:
+                - generic [ref=e70]: ">"
+                - button "Patient Details" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]: ">"
+                - button "Start Visit" [ref=e74] [cursor=pointer]
+              - listitem [ref=e75]:
+                - generic [ref=e76]: ">"
+                - button "Vitals" [ref=e77] [cursor=pointer]
+              - listitem [ref=e78]:
+                - generic [ref=e79]: ">"
+                - generic [ref=e80]: Visit Reason
+          - generic [ref=e83]:
+            - generic [ref=e84]:
+              - img "Ayu Loader" [ref=e85]
+              - text: Start Visit
+            - generic [ref=e87]:
+              - generic [ref=e88]:
+                - text: Automation Test1792754108223241
+                - generic [ref=e89]: 26 • M
+              - generic [ref=e90]: "2/4 Visit Reason : Fever and Rash"
+            - generic [ref=e93]:
+              - generic [ref=e94]: Assessment Progress
+              - generic [ref=e95]: LIVE
+              - generic [ref=e97]: 56%
+            - generic [ref=e123]:
+              - generic [ref=e126]:
+                - img "Answered" [ref=e129]
+                - generic [ref=e131]:
+                  - button "Edit answer" [ref=e132]:
+                    - img "Edit" [ref=e133]
+                  - generic [ref=e134]:
+                    - paragraph [ref=e135]: Which part of the body has the rash?*
+                    - paragraph [ref=e136]: All over
+              - generic [ref=e139]:
+                - img "Answered" [ref=e142]
+                - generic [ref=e144]:
+                  - button "Edit answer" [ref=e145]:
+                    - img "Edit" [ref=e146]
+                  - generic [ref=e147]:
+                    - paragraph [ref=e148]: Since when have you had rash?*
+                    - paragraph [ref=e149]: 3 hours
+              - generic [ref=e152]:
+                - img "Answered" [ref=e155]
+                - generic [ref=e157]:
+                  - button "Edit answer" [ref=e158]:
+                    - img "Edit" [ref=e159]
+                  - generic [ref=e160]:
+                    - paragraph [ref=e161]: Rate of rash spread*
+                    - paragraph [ref=e162]: within days
+              - generic [ref=e165]:
+                - img "Answered" [ref=e168]
+                - generic [ref=e170]:
+                  - button "Edit answer" [ref=e171]:
+                    - img "Edit" [ref=e172]
+                  - generic [ref=e173]:
+                    - paragraph [ref=e174]: How has the rash spread?*
+                    - paragraph [ref=e175]: Centrifugal
+              - generic [ref=e178]:
+                - img "Answered" [ref=e181]
+                - generic [ref=e183]:
+                  - button "Edit answer" [ref=e184]:
+                    - img "Edit" [ref=e185]
+                  - generic [ref=e186]:
+                    - paragraph [ref=e187]: Since when have you had fever?*
+                    - paragraph [ref=e188]: 3 hours
+              - generic [ref=e191]:
+                - img "Answered" [ref=e194]
+                - generic [ref=e196]:
+                  - button "Edit answer" [ref=e197]:
+                    - img "Edit" [ref=e198]
+                  - generic [ref=e199]:
+                    - paragraph [ref=e200]: How does fever change?*
+                    - paragraph [ref=e201]: All day/ Constant
+              - generic [ref=e204]:
+                - img "Answered" [ref=e207]
+                - generic [ref=e209]:
+                  - button "Edit answer" [ref=e210]:
+                    - img "Edit" [ref=e211]
+                  - generic [ref=e212]:
+                    - paragraph [ref=e213]: Severity of Fever*
+                    - paragraph [ref=e214]: Moderate
+              - generic [ref=e217]:
+                - img "Answered" [ref=e220]
+                - generic [ref=e222]:
+                  - button "Edit answer" [ref=e223]:
+                    - img "Edit" [ref=e224]
+                  - generic [ref=e225]:
+                    - paragraph [ref=e226]: In a day, when do you feel fever the most?
+                    - paragraph [ref=e227]: Morning
+              - generic [ref=e230]:
+                - img "Answered" [ref=e233]
+                - generic [ref=e235]:
+                  - button "Edit answer" [ref=e236]:
+                    - img "Edit" [ref=e237]
+                  - generic [ref=e238]:
+                    - paragraph [ref=e239]: Do you have the following symptom(s)?*
+                    - generic [ref=e240]:
+                      - paragraph [ref=e241]: Patient denies
+                      - paragraph [ref=e242]: Abdominal pain, Diarrhea, Nausea, Vomiting, Muscle pain, Adenopathy, Pain in rash area, Painful skin lesions in the genital area, Joint pain, Sore throat, Headache, Runny nose, Cough, Itchy rash, Rash is triggered by sun exposure, Other [describe].
+              - generic [ref=e245]:
+                - img "Answered" [ref=e248]
+                - generic [ref=e250]:
+                  - button "Edit answer" [ref=e251]:
+                    - img "Edit" [ref=e252]
+                  - generic [ref=e253]:
+                    - paragraph [ref=e254]: Any contact with persons with fever & rash in the past month?*
+                    - paragraph [ref=e255]: "No"
+              - generic [ref=e258]:
+                - img "Question Icon" [ref=e260]
+                - generic [ref=e262]:
+                  - paragraph [ref=e263]: Question 11/18
+                  - generic [ref=e264]:
+                    - generic [ref=e265]: Any recent exposure to an animal in the past month?
+                    - generic [ref=e266]: Select any one
+                    - generic [ref=e267]:
+                      - button "Yes" [active] [ref=e268] [cursor=pointer]:
+                        - generic [ref=e269]: "Yes"
+                      - button "No" [ref=e270] [cursor=pointer]:
+                        - generic [ref=e271]: "No"
+                  - generic [ref=e274]:
+                    - generic [ref=e275]:
+                      - img [ref=e276]
+                      - generic [ref=e279]:
+                        - generic [ref=e280]: Drag anywhere from 0 to 10
+                        - generic [ref=e281]:
+                          - generic [ref=e282]:
+                            - button "1" [ref=e283] [cursor=pointer]
+                            - button "2" [ref=e284] [cursor=pointer]
+                            - button "3" [ref=e285] [cursor=pointer]
+                            - button "4" [ref=e286] [cursor=pointer]
+                            - button "5" [ref=e287] [cursor=pointer]
+                            - button "6" [ref=e288] [cursor=pointer]
+                            - button "7" [ref=e289] [cursor=pointer]
+                            - button "8" [ref=e290] [cursor=pointer]
+                            - button "9" [ref=e291] [cursor=pointer]
+                            - button "10" [ref=e292] [cursor=pointer]
+                          - slider [ref=e294] [cursor=pointer]: "1"
+                          - generic [ref=e295]:
+                            - button "Level 1" [ref=e296] [cursor=pointer]:
+                              - img [ref=e297]
+                            - button "Level 2" [ref=e302] [cursor=pointer]:
+                              - img [ref=e303]
+                            - button "Level 3" [ref=e308] [cursor=pointer]:
+                              - img [ref=e309]
+                            - button "Level 4" [ref=e314] [cursor=pointer]:
+                              - img [ref=e315]
+                            - button "Level 5" [ref=e320] [cursor=pointer]:
+                              - img [ref=e321]
+                            - button "Level 6" [ref=e325] [cursor=pointer]:
+                              - img [ref=e326]
+                            - button "Level 7" [ref=e331] [cursor=pointer]:
+                              - img [ref=e332]
+                            - button "Level 8" [ref=e337] [cursor=pointer]:
+                              - img [ref=e338]
+                            - button "Level 9" [ref=e343] [cursor=pointer]:
+                              - img [ref=e344]
+                            - button "Level 10" [ref=e349] [cursor=pointer]:
+                              - img [ref=e350]
+                    - generic [ref=e355]:
+                      - img [ref=e356]
+                      - generic [ref=e359]:
+                        - generic [ref=e360]: Animal name (Describe)
+                        - textbox "Animal name (Describe)" [ref=e361]:
+                          - /placeholder: Describe...
+                  - generic [ref=e362]:
+                    - button "Submit" [ref=e363] [cursor=pointer]
+                    - button "Skip" [ref=e364] [cursor=pointer]
+  - region "Notifications Alt+T"
+```
