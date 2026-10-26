@@ -1,0 +1,2 @@
+setupToAbdominalPainAssessment - date of birth set by typing 01/01/2000.
+selectSearchableOption — "Select District" still unset after attempt 1/3 (wanted "Khordha"); retrying.
