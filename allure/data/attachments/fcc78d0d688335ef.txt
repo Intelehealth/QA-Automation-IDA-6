@@ -1,0 +1,5 @@
+where      : Choosing "Abnormalities" should offer "Small nodule on (Describe)" and "Other (Describe)"
+url        : https://dev.intelehealth.org/hwwebapp#/ayu
+question   : Question 1/12
+buttons    : ["Add Patient","Patient Details","Start Visit","Vitals","Shoulder","Elbow","Wrist","Hand","Pain over tips","Fingers' color change with exposure to cold","Pain over finger joints","Abnormalities","Submit"]
+paragraphs : ["Question 1/12","Question 1/13","Is there jaundice?*","References:","Select any one","Question 1/8"]

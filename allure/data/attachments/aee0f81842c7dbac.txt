@@ -1,0 +1,5 @@
+where      : option "since when" not offered
+url        : https://dev.intelehealth.org/hwwebapp#/ayu
+question   : Question 7/12
+buttons    : ["Add Patient","Patient Details","Start Visit","Vitals","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Submit"]
+paragraphs : ["Which part of the shoulder/arm do you feel pain?*","Elbow","Involvement","Right","Since when have you had this symptom?*","3 hours","How did the symptom start?*","Gradual","How has the symptom progressed?*","Progressive (Worsening)","Describe the pain","Dull aching","Question 7/12","Question 1/13","Is there jaundice?*","References:","Select any one","Question 1/8"]

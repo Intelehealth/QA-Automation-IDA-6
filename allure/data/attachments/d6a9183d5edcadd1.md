@@ -1,0 +1,287 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - generic [ref=e5]:
+    - complementary [ref=e6]:
+      - button [ref=e7]
+      - generic [ref=e8]:
+        - img "hero" [ref=e10]
+        - link "Add Patients" [ref=e12] [cursor=pointer]:
+          - /url: "#/patient/add"
+          - generic [ref=e15]: Add Patients
+        - navigation [ref=e16]:
+          - generic [ref=e17]:
+            - link "Home Home" [ref=e18] [cursor=pointer]:
+              - /url: "#/dashboard"
+              - img "Home" [ref=e19]
+              - generic [ref=e20]: Home
+            - link "Achievements Achievements" [ref=e21] [cursor=pointer]:
+              - /url: "#/achievement-ui"
+              - img "Achievements" [ref=e22]
+              - generic [ref=e23]: Achievements
+            - link "Help & Support Help & Support" [ref=e24] [cursor=pointer]:
+              - /url: "#/help"
+              - img "Help & Support" [ref=e25]
+              - generic [ref=e26]: Help & Support
+            - link "Educational Videos Educational Videos" [ref=e27] [cursor=pointer]:
+              - /url: "#/educational-videos"
+              - img "Educational Videos" [ref=e28]
+              - generic [ref=e29]: Educational Videos
+            - link "Settings Settings" [ref=e30] [cursor=pointer]:
+              - /url: "#/settings"
+              - img "Settings" [ref=e31]
+              - generic [ref=e32]: Settings
+            - link "About us About us" [ref=e33] [cursor=pointer]:
+              - /url: "#/about-us"
+              - img "About us" [ref=e34]
+              - generic [ref=e35]: About us
+        - navigation [ref=e37]:
+          - generic [ref=e38] [cursor=pointer]:
+            - img [ref=e39]
+            - generic [ref=e40]: Log-out
+    - main [ref=e41]:
+      - generic [ref=e43]:
+        - generic [ref=e46]:
+          - generic [ref=e50]:
+            - generic:
+              - generic:
+                - img "search"
+            - combobox "Patient Search" [ref=e51]
+          - generic [ref=e53]:
+            - img "Location" [ref=e54]
+            - generic [ref=e55]: Telemedicine Clinic 1
+          - generic [ref=e56]:
+            - link "Notification" [ref=e57] [cursor=pointer]:
+              - /url: "#/notifications"
+              - img "Notification" [ref=e58]
+            - link "Profile" [ref=e59] [cursor=pointer]:
+              - /url: "#/profile"
+              - img "Profile" [ref=e60]
+        - generic [ref=e61]:
+          - navigation "Breadcrumb" [ref=e62]:
+            - list [ref=e63]:
+              - listitem [ref=e64]:
+                - link "Dashboard" [ref=e65] [cursor=pointer]:
+                  - /url: "#/dashboard"
+              - listitem [ref=e66]:
+                - generic [ref=e67]: ">"
+                - button "Add Patient" [ref=e68] [cursor=pointer]
+              - listitem [ref=e69]:
+                - generic [ref=e70]: ">"
+                - button "Patient Details" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]: ">"
+                - button "Start Visit" [ref=e74] [cursor=pointer]
+              - listitem [ref=e75]:
+                - generic [ref=e76]: ">"
+                - button "Vitals" [ref=e77] [cursor=pointer]
+              - listitem [ref=e78]:
+                - generic [ref=e79]: ">"
+                - generic [ref=e80]: Visit Reason
+          - generic [ref=e83]:
+            - generic [ref=e84]:
+              - img "Ayu Loader" [ref=e85]
+              - text: Start Visit
+            - generic [ref=e87]:
+              - generic [ref=e88]:
+                - text: Automation Test1793248219079577
+                - generic [ref=e89]: 26 • M
+              - generic [ref=e90]: "2/4 Visit Reason : Abdominal Distention"
+            - generic [ref=e93]:
+              - generic [ref=e94]: Assessment Progress
+              - generic [ref=e95]: LIVE
+              - generic [ref=e97]: 56%
+            - generic [ref=e114]:
+              - generic [ref=e117]:
+                - img "Answered" [ref=e120]
+                - generic [ref=e122]:
+                  - button "Edit answer" [ref=e123]:
+                    - img "Edit" [ref=e124]
+                  - generic [ref=e125]:
+                    - paragraph [ref=e126]: Since when have you had this symptom?*
+                    - paragraph [ref=e127]: 3 hours
+              - generic [ref=e130]:
+                - img "Answered" [ref=e133]
+                - generic [ref=e135]:
+                  - button "Edit answer" [ref=e136]:
+                    - img "Edit" [ref=e137]
+                  - generic [ref=e138]:
+                    - paragraph [ref=e139]: How fast did this symptom develop?*
+                    - paragraph [ref=e140]: Over few days
+              - generic [ref=e143]:
+                - img "Answered" [ref=e146]
+                - generic [ref=e148]:
+                  - button "Edit answer" [ref=e149]:
+                    - img "Edit" [ref=e150]
+                  - generic [ref=e151]:
+                    - paragraph [ref=e152]: Does the swelling increase or decrease during a 24 hr cycle?
+                    - paragraph [ref=e153]: "No"
+              - generic [ref=e156]:
+                - img "Answered" [ref=e159]
+                - generic [ref=e161]:
+                  - button "Edit answer" [ref=e162]:
+                    - img "Edit" [ref=e163]
+                  - generic [ref=e164]:
+                    - paragraph [ref=e165]: Weight change (kg)*
+                    - paragraph [ref=e166]: No change
+              - generic [ref=e169]:
+                - img "Answered" [ref=e172]
+                - generic [ref=e174]:
+                  - button "Edit answer" [ref=e175]:
+                    - img "Edit" [ref=e176]
+                  - generic [ref=e177]:
+                    - paragraph [ref=e178]: Have you experienced any change in appetite?*
+                    - paragraph [ref=e179]: No change
+              - generic [ref=e182]:
+                - img "Question Icon" [ref=e184]
+                - generic [ref=e186]:
+                  - paragraph [ref=e187]: Question 6/9
+                  - generic [ref=e188]:
+                    - generic [ref=e189]: Do you have the following symptom(s)?*
+                    - text: Select yes or no
+                    - generic [ref=e191]:
+                      - generic [ref=e192]: 1. Abdominal pain
+                      - generic [ref=e193]:
+                        - button "yes Yes" [ref=e194] [cursor=pointer]:
+                          - img "yes" [ref=e196]
+                          - text: "Yes"
+                        - button "no No" [ref=e197] [cursor=pointer]:
+                          - img "no" [ref=e199]
+                          - text: "No"
+                    - generic [ref=e201]:
+                      - generic [ref=e202]: 2. Constipation*
+                      - generic [ref=e203]:
+                        - button "yes Yes" [ref=e204] [cursor=pointer]:
+                          - img "yes" [ref=e206]
+                          - text: "Yes"
+                        - button "no No" [ref=e207] [cursor=pointer]:
+                          - img "no" [ref=e209]
+                          - text: "No"
+                    - generic [ref=e211]:
+                      - generic [ref=e212]: 3. Diarrhea
+                      - generic [ref=e213]:
+                        - button "yes Yes" [ref=e214] [cursor=pointer]:
+                          - img "yes" [ref=e216]
+                          - text: "Yes"
+                        - button "no No" [ref=e217] [cursor=pointer]:
+                          - img "no" [ref=e219]
+                          - text: "No"
+                    - generic [ref=e220]:
+                      - generic [ref=e221]:
+                        - generic [ref=e222]: 4. Vomiting*
+                        - generic [ref=e223]:
+                          - button "yes Yes" [ref=e224] [cursor=pointer]:
+                            - img "yes" [ref=e226]
+                            - text: "Yes"
+                          - button "no No" [ref=e227] [cursor=pointer]:
+                            - img "no" [ref=e229]
+                            - text: "No"
+                      - generic [ref=e233]:
+                        - img [ref=e234]
+                        - generic [ref=e237]:
+                          - generic [ref=e238]: Colour of vomit [describe]
+                          - generic [ref=e239]: Select any one
+                          - generic [ref=e240]:
+                            - button "Food" [ref=e241] [cursor=pointer]:
+                              - generic [ref=e242]: Food
+                            - button "Yellow" [ref=e243] [cursor=pointer]:
+                              - generic [ref=e244]: Yellow
+                            - button "Green" [ref=e245] [cursor=pointer]:
+                              - generic [ref=e246]: Green
+                            - button "Faecal" [ref=e247] [cursor=pointer]:
+                              - generic [ref=e248]: Faecal
+                            - button "Blood stained" [ref=e249] [cursor=pointer]:
+                              - generic [ref=e250]: Blood stained
+                            - button "Fresh blood" [ref=e251] [cursor=pointer]:
+                              - generic [ref=e252]: Fresh blood
+                    - generic [ref=e254]:
+                      - generic [ref=e255]: 5. Night sweats*
+                      - generic [ref=e256]:
+                        - button "yes Yes" [ref=e257] [cursor=pointer]:
+                          - img "yes" [ref=e259]
+                          - text: "Yes"
+                        - button "no No" [ref=e260] [cursor=pointer]:
+                          - img "no" [ref=e262]
+                          - text: "No"
+                    - generic [ref=e264]:
+                      - generic [ref=e265]: 6. Difficulty breathing*
+                      - generic [ref=e266]:
+                        - button "yes Yes" [ref=e267] [cursor=pointer]:
+                          - img "yes" [ref=e269]
+                          - text: "Yes"
+                        - button "no No" [ref=e270] [cursor=pointer]:
+                          - img "no" [ref=e272]
+                          - text: "No"
+                    - generic [ref=e274]:
+                      - generic [ref=e275]: 7. Pedal oedema/Feet swelling*
+                      - generic [ref=e276]:
+                        - button "yes Yes" [ref=e277] [cursor=pointer]:
+                          - img "yes" [ref=e279]
+                          - text: "Yes"
+                        - button "no No" [ref=e280] [cursor=pointer]:
+                          - img "no" [ref=e282]
+                          - text: "No"
+                    - generic [ref=e284]:
+                      - generic [ref=e285]: 8. Sudden shortness of breath that wakes the patient up at night
+                      - generic [ref=e286]:
+                        - button "yes Yes" [ref=e287] [cursor=pointer]:
+                          - img "yes" [ref=e289]
+                          - text: "Yes"
+                        - button "no No" [ref=e290] [cursor=pointer]:
+                          - img "no" [ref=e292]
+                          - text: "No"
+                    - generic [ref=e294]:
+                      - generic [ref=e295]: 9. Difficulty in urination
+                      - generic [ref=e296]:
+                        - button "yes Yes" [ref=e297] [cursor=pointer]:
+                          - img "yes" [ref=e299]
+                          - text: "Yes"
+                        - button "no No" [ref=e300] [cursor=pointer]:
+                          - img "no" [ref=e302]
+                          - text: "No"
+                    - generic [ref=e304]:
+                      - generic [ref=e305]: 10. Burning sensation during urination
+                      - generic [ref=e306]:
+                        - button "yes Yes" [ref=e307] [cursor=pointer]:
+                          - img "yes" [ref=e309]
+                          - text: "Yes"
+                        - button "no No" [ref=e310] [cursor=pointer]:
+                          - img "no" [ref=e312]
+                          - text: "No"
+                    - generic [ref=e314]:
+                      - generic [ref=e315]: 11. Blood in stools
+                      - generic [ref=e316]:
+                        - button "yes Yes" [ref=e317] [cursor=pointer]:
+                          - img "yes" [ref=e319]
+                          - text: "Yes"
+                        - button "no No" [ref=e320] [cursor=pointer]:
+                          - img "no" [ref=e322]
+                          - text: "No"
+                    - generic [ref=e324]:
+                      - generic [ref=e325]: 12. Easy fatiguability
+                      - generic [ref=e326]:
+                        - button "yes Yes" [ref=e327] [cursor=pointer]:
+                          - img "yes" [ref=e329]
+                          - text: "Yes"
+                        - button "no No" [ref=e330] [cursor=pointer]:
+                          - img "no" [ref=e332]
+                          - text: "No"
+                    - generic [ref=e334]:
+                      - generic [ref=e335]: 13. Others [describe]
+                      - generic [ref=e336]:
+                        - button "yes Yes" [ref=e337] [cursor=pointer]:
+                          - img "yes" [ref=e339]
+                          - text: "Yes"
+                        - button "no No" [ref=e340] [cursor=pointer]:
+                          - img "no" [ref=e342]
+                          - text: "No"
+                  - button "Submit" [active] [ref=e344] [cursor=pointer]
+  - region "Notifications Alt+T":
+    - alert [ref=e346] [cursor=pointer]:
+      - img [ref=e348]
+      - strong [ref=e351]: Please select any one option
+      - button "close" [ref=e352]:
+        - img [ref=e353]
+      - progressbar "notification timer" [ref=e357]
+```
