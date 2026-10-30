@@ -1,0 +1,221 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - generic [ref=e5]:
+    - complementary [ref=e6]:
+      - button [ref=e7]
+      - generic [ref=e8]:
+        - img "hero" [ref=e10]
+        - link "Add Patients" [ref=e12] [cursor=pointer]:
+          - /url: "#/patient/add"
+          - generic [ref=e15]: Add Patients
+        - navigation [ref=e16]:
+          - generic [ref=e17]:
+            - link "Home Home" [ref=e18] [cursor=pointer]:
+              - /url: "#/dashboard"
+              - img "Home" [ref=e19]
+              - generic [ref=e20]: Home
+            - link "Achievements Achievements" [ref=e21] [cursor=pointer]:
+              - /url: "#/achievement-ui"
+              - img "Achievements" [ref=e22]
+              - generic [ref=e23]: Achievements
+            - link "Help & Support Help & Support" [ref=e24] [cursor=pointer]:
+              - /url: "#/help"
+              - img "Help & Support" [ref=e25]
+              - generic [ref=e26]: Help & Support
+            - link "Educational Videos Educational Videos" [ref=e27] [cursor=pointer]:
+              - /url: "#/educational-videos"
+              - img "Educational Videos" [ref=e28]
+              - generic [ref=e29]: Educational Videos
+            - link "Settings Settings" [ref=e30] [cursor=pointer]:
+              - /url: "#/settings"
+              - img "Settings" [ref=e31]
+              - generic [ref=e32]: Settings
+            - link "About us About us" [ref=e33] [cursor=pointer]:
+              - /url: "#/about-us"
+              - img "About us" [ref=e34]
+              - generic [ref=e35]: About us
+        - navigation [ref=e37]:
+          - generic [ref=e38] [cursor=pointer]:
+            - img [ref=e39]
+            - generic [ref=e40]: Log-out
+    - main [ref=e41]:
+      - generic [ref=e43]:
+        - generic [ref=e46]:
+          - generic [ref=e50]:
+            - generic:
+              - generic:
+                - img "search"
+            - combobox "Patient Search" [ref=e51]
+          - generic [ref=e53]:
+            - img "Location" [ref=e54]
+            - generic [ref=e55]: Telemedicine Clinic 1
+          - generic [ref=e56]:
+            - link "Notification" [ref=e57] [cursor=pointer]:
+              - /url: "#/notifications"
+              - img "Notification" [ref=e58]
+            - link "Profile" [ref=e59] [cursor=pointer]:
+              - /url: "#/profile"
+              - img "Profile" [ref=e60]
+        - generic [ref=e61]:
+          - navigation "Breadcrumb" [ref=e62]:
+            - list [ref=e63]:
+              - listitem [ref=e64]:
+                - link "Dashboard" [ref=e65] [cursor=pointer]:
+                  - /url: "#/dashboard"
+              - listitem [ref=e66]:
+                - generic [ref=e67]: ">"
+                - button "Add Patient" [ref=e68] [cursor=pointer]
+              - listitem [ref=e69]:
+                - generic [ref=e70]: ">"
+                - button "Patient Details" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - generic [ref=e73]: ">"
+                - button "Start Visit" [ref=e74] [cursor=pointer]
+              - listitem [ref=e75]:
+                - generic [ref=e76]: ">"
+                - button "Vitals" [ref=e77] [cursor=pointer]
+              - listitem [ref=e78]:
+                - generic [ref=e79]: ">"
+                - button "Visit Reason" [ref=e80] [cursor=pointer]
+              - listitem [ref=e81]:
+                - generic [ref=e82]: ">"
+                - generic [ref=e83]: Physical Examination
+          - generic [ref=e86]:
+            - generic [ref=e87]:
+              - img "Ayu Loader" [ref=e88]
+              - text: Start Visit
+            - generic [ref=e90]:
+              - generic [ref=e91]:
+                - text: Automation Test179337221524084
+                - generic [ref=e92]: 26 • M
+              - generic [ref=e93]: "3/4 Physical Examination : Physical Exam"
+            - generic [ref=e96]:
+              - generic [ref=e97]: Assessment Progress
+              - generic [ref=e98]: LIVE
+              - generic [ref=e100]: 92%
+            - generic [ref=e118]:
+              - generic [ref=e121]:
+                - generic [ref=e124]:
+                  - img "Answered" [ref=e127]
+                  - generic [ref=e129]:
+                    - button "Edit answer" [ref=e130]:
+                      - img "Edit" [ref=e131]
+                    - generic [ref=e132]:
+                      - paragraph [ref=e133]: Is there jaundice?
+                      - paragraph [ref=e134]: "No"
+                - generic [ref=e137]:
+                  - img "Answered" [ref=e140]
+                  - generic [ref=e142]:
+                    - button "Edit answer" [ref=e143]:
+                      - img "Edit" [ref=e144]
+                    - generic [ref=e145]:
+                      - paragraph [ref=e146]: Is there pallor?
+                      - paragraph [ref=e147]: Normal
+                - generic [ref=e150]:
+                  - img "Answered" [ref=e153]
+                  - generic [ref=e155]:
+                    - button "Edit answer" [ref=e156]:
+                      - img "Edit" [ref=e157]
+                    - generic [ref=e158]:
+                      - paragraph [ref=e159]: Pinch skin
+                      - paragraph [ref=e160]: Normal
+                - generic [ref=e163]:
+                  - img "Answered" [ref=e166]
+                  - generic [ref=e168]:
+                    - button "Edit answer" [ref=e169]:
+                      - img "Edit" [ref=e170]
+                    - generic [ref=e171]:
+                      - paragraph [ref=e172]: Is there any nail abnormality?
+                      - paragraph [ref=e173]: Nails are normal
+                - generic [ref=e176]:
+                  - img "Answered" [ref=e179]
+                  - generic [ref=e181]:
+                    - button "Edit answer" [ref=e182]:
+                      - img "Edit" [ref=e183]
+                    - generic [ref=e184]:
+                      - paragraph [ref=e185]: Are the nails pale?
+                      - paragraph [ref=e186]: Nails are normal
+                - generic [ref=e189]:
+                  - img "Answered" [ref=e192]
+                  - generic [ref=e194]:
+                    - button "Edit answer" [ref=e195]:
+                      - img "Edit" [ref=e196]
+                    - generic [ref=e197]:
+                      - paragraph [ref=e198]: Is there ankle oedema?
+                      - paragraph [ref=e199]: No oedema
+                - generic [ref=e202]:
+                  - img "Answered" [ref=e205]
+                  - generic [ref=e207]:
+                    - button "Edit answer" [ref=e208]:
+                      - img "Edit" [ref=e209]
+                    - generic [ref=e210]:
+                      - paragraph [ref=e211]: Does the face appear swollen/puffy?
+                      - paragraph [ref=e212]: Normal
+                - generic [ref=e215]:
+                  - img "Answered" [ref=e218]
+                  - generic [ref=e220]:
+                    - button "Edit answer" [ref=e221]:
+                      - img "Edit" [ref=e222]
+                    - generic [ref=e223]:
+                      - paragraph [ref=e224]: Is there bleeding from gums?
+                      - paragraph [ref=e225]: "No"
+                - generic [ref=e228]:
+                  - img "Answered" [ref=e231]
+                  - generic [ref=e233]:
+                    - button "Edit answer" [ref=e234]:
+                      - img "Edit" [ref=e235]
+                    - generic [ref=e236]:
+                      - paragraph [ref=e237]: Is there visible swelling in the front of the neck?
+                      - paragraph [ref=e238]: "No"
+                - generic [ref=e241]:
+                  - img "Answered" [ref=e244]
+                  - generic [ref=e246]:
+                    - button "Edit answer" [ref=e247]:
+                      - img "Edit" [ref=e248]
+                    - generic [ref=e249]:
+                      - paragraph [ref=e250]: Is there abdominal bloating?
+                      - paragraph [ref=e251]: "No"
+                - generic [ref=e254]:
+                  - img "Answered" [ref=e257]
+                  - generic [ref=e259]:
+                    - button "Edit answer" [ref=e260]:
+                      - img "Edit" [ref=e261]
+                    - generic [ref=e262]:
+                      - paragraph [ref=e263]: Is there any rash?
+                      - paragraph [ref=e264]: "No"
+                - generic [ref=e267]:
+                  - img "Answered" [ref=e270]
+                  - generic [ref=e272]:
+                    - button "Edit answer" [ref=e273]:
+                      - img "Edit" [ref=e274]
+                    - generic [ref=e275]:
+                      - paragraph [ref=e276]: Are there bruises? If yes, take a picture
+                      - paragraph [ref=e277]: "No"
+                - generic [ref=e280]:
+                  - img "Question Icon" [ref=e282]
+                  - generic [ref=e284]:
+                    - paragraph [ref=e285]: Question 13/13
+                    - generic [ref=e286]:
+                      - generic [ref=e287]: ArmLying BP
+                      - paragraph [ref=e288]: Take the patient's BP lying down
+                      - separator [ref=e289]
+                      - paragraph [ref=e290]: Select any one
+                      - generic [ref=e291]:
+                        - button "Enter systolic BP" [ref=e292] [cursor=pointer]:
+                          - generic [ref=e293]: Enter systolic BP
+                        - button "Enter diastolic BP" [ref=e294] [cursor=pointer]:
+                          - generic [ref=e295]: Enter diastolic BP
+                    - generic [ref=e299]:
+                      - img [ref=e300]
+                      - generic [ref=e303]:
+                        - generic [ref=e304]: Enter systolic BP
+                        - spinbutton [ref=e305]
+                    - generic [ref=e306]:
+                      - button "Submit" [active] [ref=e307] [cursor=pointer]
+                      - button "Skip" [ref=e308] [cursor=pointer]
+              - button "Back" [ref=e311] [cursor=pointer]:
+                - generic [ref=e312]: Back
+  - region "Notifications Alt+T"
+```

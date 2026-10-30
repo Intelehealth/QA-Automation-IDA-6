@@ -1,0 +1,5 @@
+where      : option "When" not offered
+url        : https://dev.intelehealth.org/hwwebapp#/ayu
+question   : Question 8/10
+buttons    : ["Add Patient","Patient Details","Start Visit","Vitals","No","Yes","Submit"]
+paragraphs : ["Where is the palpable lump?*","Disseminated","Since when have you had this symptom?*","3 hours","How did the symptom start?*","Gradual","How has the node(s) swelling progressed?*","Static/No change","Do you have the following symptom(s)?*","Patient denies","Pain on affected nodes, Weight change (kg), Fever, Diarrhoea, Night sweats, Cough, Sore throat, Skin bruises, Joint pain, Other [describe].","Have you ever been diagnosed with any of the following specific diseases?*","None","Recent exposure to an animal","No","Question 8/10","Question 1/7","Is there jaundice?*","References:","Select any one","Question 1/8"]

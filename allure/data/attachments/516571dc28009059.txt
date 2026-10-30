@@ -1,7 +1,0 @@
-setupToAbdominalPainAssessment - date of birth set by typing 01/01/2000.
-selectAbdomenAnswer [Question 7/10] — card ready, layout detected: location-grid
-answerAbdominalScars — answered "No" via the "skipped" layout.
-selectAbdomenAnswer [Question 8/10] — card ready, layout detected: labelled
-TC_AP_020 — tenderness question layout: location-grid
-TC_AP_020 — buttons on the tenderness card: ["","Add Patient","Patient Details","Start Visit","Vitals","Visit Reason","","","","","","","","","Upper(L)","Upper(C)","Upper(R)","Middle(L)","Middle(C)","Middle(R)","Lower(L)","Lower(C)","Lower(R)","All Over","Skip","Back"]
-TC_AP_020 — Tenderness location sub-question appeared: true

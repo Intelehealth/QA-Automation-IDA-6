@@ -1,0 +1,25 @@
+Smoke test, level "assessment" (Verify_Full_Assessment_Completes)
+Started 2026-10-30 14:49, running for 33m20s
+
+PROTOCOL                RESULT    TESTS  PASSED  FAILED  TIME    NOTE
+Abdominal Distention    PASS      1      1       0       0m49s   
+Abdominal Pain          PASS      1      1       0       1m15s   
+Abnormal Bleeding       PASS      1      1       0       2m19s   
+Animal Bites            PASS      1      1       0       1m53s   
+Back And Neck Pain      PASS      1      1       0       1m47s   
+Burns                   PASS      1      1       0       1m43s   
+Cold And Sneezing       PASS      1      1       0       1m34s   
+Constipation            PASS      1      1       0       1m40s   
+Cough                   PASS      1      1       0       1m44s   
+Diarrhea                PASS      1      1       0       1m30s   
+Ear Pain                PASS      1      1       0       1m24s   
+Fever                   PASS      1      1       0       2m13s   
+Fever And Rash          PASS      1      1       0       2m26s   
+Leg Knee Hip Pain       PASS      1      1       0       1m44s   
+Lymph Node Enlargement  PASS      1      1       0       1m38s   
+Oral Pain               PASS      1      1       0       1m38s   
+Red Or Painful Eye      PASS      1      1       0       1m35s   
+Shoulder Arm Hand Pain  PASS      1      1       0       1m47s   
+Vomiting                PASS      1      1       0       1m44s   
+
+19 of 19 protocols fully passed. Tests: 19 run, 19 passed, 0 failed.
