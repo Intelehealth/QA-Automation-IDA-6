@@ -1,0 +1,5 @@
+where      : option "Enter duration of weight loss" not offered
+url        : https://dev.intelehealth.org/hwwebapp#/ayu
+question   : Question 7/10
+buttons    : ["Add Patient","Patient Details","Start Visit","Vitals","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Submit","Skip"]
+paragraphs : ["Since when have you had this symptom?*","3 hours","How did the symptom start?*","Gradual","How long does the symptom continue?*","Brief","Severity","Mild","Does the symptom get worse with the following situation(s)?*","Fatigue","Does the symptom get better with the following situation(s)?*","Posture","Certain positions","Lying on the left side","Question 7/10","Question 1/7","Is there jaundice?*","References:","Select any one","Question 1/8"]

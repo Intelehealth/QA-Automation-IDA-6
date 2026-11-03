@@ -1,0 +1,359 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - generic [ref=e5]:
+    - complementary [ref=e6]:
+      - button [ref=e7]
+      - generic [ref=e9]:
+        - img "hero" [ref=e11]
+        - link "Add Patients" [ref=e13] [cursor=pointer]:
+          - /url: "#/patient/add"
+          - generic [ref=e17]: Add Patients
+        - navigation [ref=e18]:
+          - generic [ref=e19]:
+            - link "Home Home" [ref=e20] [cursor=pointer]:
+              - /url: "#/dashboard"
+              - img "Home" [ref=e21]
+              - generic [ref=e22]: Home
+            - link "Achievements Achievements" [ref=e23] [cursor=pointer]:
+              - /url: "#/achievement-ui"
+              - img "Achievements" [ref=e24]
+              - generic [ref=e25]: Achievements
+            - link "Help & Support Help & Support" [ref=e26] [cursor=pointer]:
+              - /url: "#/help"
+              - img "Help & Support" [ref=e27]
+              - generic [ref=e28]: Help & Support
+            - link "Educational Videos Educational Videos" [ref=e29] [cursor=pointer]:
+              - /url: "#/educational-videos"
+              - img "Educational Videos" [ref=e30]
+              - generic [ref=e31]: Educational Videos
+            - link "Settings Settings" [ref=e32] [cursor=pointer]:
+              - /url: "#/settings"
+              - img "Settings" [ref=e33]
+              - generic [ref=e34]: Settings
+            - link "About us About us" [ref=e35] [cursor=pointer]:
+              - /url: "#/about-us"
+              - img "About us" [ref=e36]
+              - generic [ref=e37]: About us
+        - navigation [ref=e39]:
+          - generic [ref=e40] [cursor=pointer]:
+            - img [ref=e41]
+            - generic [ref=e42]: Log-out
+    - main [ref=e43]:
+      - generic [ref=e45]:
+        - generic [ref=e48]:
+          - generic [ref=e52]:
+            - generic:
+              - generic:
+                - img "search"
+            - combobox "Patient Search" [ref=e53]
+          - generic [ref=e55]:
+            - img "Location" [ref=e56]
+            - generic [ref=e57]: Telemedicine Clinic 1
+          - generic [ref=e58]:
+            - link "Notification" [ref=e59] [cursor=pointer]:
+              - /url: "#/notifications"
+              - img "Notification" [ref=e60]
+            - link "Profile" [ref=e61] [cursor=pointer]:
+              - /url: "#/profile"
+              - img "Profile" [ref=e62]
+        - generic [ref=e63]:
+          - navigation "Breadcrumb" [ref=e64]:
+            - list [ref=e65]:
+              - listitem [ref=e66]:
+                - link "Dashboard" [ref=e67] [cursor=pointer]:
+                  - /url: "#/dashboard"
+              - listitem [ref=e68]:
+                - generic [ref=e69]: ">"
+                - button "Add Patient" [ref=e70] [cursor=pointer]
+              - listitem [ref=e71]:
+                - generic [ref=e72]: ">"
+                - button "Patient Details" [ref=e73] [cursor=pointer]
+              - listitem [ref=e74]:
+                - generic [ref=e75]: ">"
+                - button "Start Visit" [ref=e76] [cursor=pointer]
+              - listitem [ref=e77]:
+                - generic [ref=e78]: ">"
+                - button "Vitals" [ref=e79] [cursor=pointer]
+              - listitem [ref=e80]:
+                - generic [ref=e81]: ">"
+                - generic [ref=e82]: Visit Reason
+          - generic [ref=e85]:
+            - generic [ref=e86]:
+              - img "Ayu Loader" [ref=e87]
+              - text: Start Visit
+            - generic [ref=e89]:
+              - generic [ref=e90]:
+                - text: Automation Test1793682689231314
+                - generic [ref=e91]: 26 • M
+              - generic [ref=e92]: "2/4 Visit Reason : Lymph node enlargement"
+            - generic [ref=e95]:
+              - generic [ref=e96]: Assessment Progress
+              - generic [ref=e97]: LIVE
+              - generic [ref=e99]: 40%
+            - generic [ref=e117]:
+              - generic [ref=e120]:
+                - img "Answered" [ref=e123]
+                - generic [ref=e125]:
+                  - button "Edit answer" [ref=e126]:
+                    - img "Edit" [ref=e127]
+                  - generic [ref=e128]:
+                    - paragraph [ref=e129]: Where is the palpable lump?*
+                    - paragraph [ref=e130]: Disseminated
+              - generic [ref=e133]:
+                - img "Answered" [ref=e136]
+                - generic [ref=e138]:
+                  - button "Edit answer" [ref=e139]:
+                    - img "Edit" [ref=e140]
+                  - generic [ref=e141]:
+                    - paragraph [ref=e142]: Since when have you had this symptom?*
+                    - paragraph [ref=e143]: 3 hours
+              - generic [ref=e146]:
+                - img "Answered" [ref=e149]
+                - generic [ref=e151]:
+                  - button "Edit answer" [ref=e152]:
+                    - img "Edit" [ref=e153]
+                  - generic [ref=e154]:
+                    - paragraph [ref=e155]: How did the symptom start?*
+                    - paragraph [ref=e156]: Gradual
+              - generic [ref=e159]:
+                - img "Answered" [ref=e162]
+                - generic [ref=e164]:
+                  - button "Edit answer" [ref=e165]:
+                    - img "Edit" [ref=e166]
+                  - generic [ref=e167]:
+                    - paragraph [ref=e168]: How has the node(s) swelling progressed?*
+                    - paragraph [ref=e169]: Static/No change
+              - generic [ref=e172]:
+                - img "Question Icon" [ref=e174]
+                - generic [ref=e176]:
+                  - paragraph [ref=e177]: Question 5/10
+                  - generic [ref=e178]:
+                    - generic [ref=e179]: Do you have the following symptom(s)?*
+                    - text: Select yes or no
+                    - generic [ref=e181]:
+                      - generic [ref=e182]: 1. Pain on affected nodes
+                      - generic [ref=e183]:
+                        - button "yes Yes" [ref=e184] [cursor=pointer]:
+                          - img "yes" [ref=e186]
+                          - text: "Yes"
+                        - button "no No" [ref=e187] [cursor=pointer]:
+                          - img "no" [ref=e189]
+                          - text: "No"
+                    - generic [ref=e190]:
+                      - generic [ref=e191]:
+                        - generic [ref=e192]: 2. Weight change (kg)
+                        - generic [ref=e193]:
+                          - button "yes Yes" [active] [ref=e194] [cursor=pointer]:
+                            - img "yes" [ref=e196]
+                            - text: "Yes"
+                          - button "no No" [ref=e197] [cursor=pointer]:
+                            - img "no" [ref=e199]
+                            - text: "No"
+                      - generic [ref=e202]:
+                        - generic [ref=e203]:
+                          - img [ref=e204]
+                          - generic [ref=e207]:
+                            - generic [ref=e208]: Weight gain
+                            - spinbutton [ref=e209]
+                        - generic [ref=e210]:
+                          - img [ref=e211]
+                          - generic [ref=e214]:
+                            - generic [ref=e215]: Weight loss
+                            - spinbutton [ref=e216]
+                        - generic [ref=e217]:
+                          - img [ref=e218]
+                          - generic [ref=e221]:
+                            - generic [ref=e222]: since when
+                            - generic [ref=e223]:
+                              - generic [ref=e224]:
+                                - combobox [ref=e225] [cursor=pointer]:
+                                  - option "Number" [disabled] [selected]
+                                  - option "1"
+                                  - option "2"
+                                  - option "3"
+                                  - option "4"
+                                  - option "5"
+                                  - option "6"
+                                  - option "7"
+                                  - option "8"
+                                  - option "9"
+                                  - option "10"
+                                  - option "11"
+                                  - option "12"
+                                  - option "13"
+                                  - option "14"
+                                  - option "15"
+                                  - option "16"
+                                  - option "17"
+                                  - option "18"
+                                  - option "19"
+                                  - option "20"
+                                  - option "21"
+                                  - option "22"
+                                  - option "23"
+                                  - option "24"
+                                  - option "25"
+                                  - option "26"
+                                  - option "27"
+                                  - option "28"
+                                  - option "29"
+                                  - option "30"
+                                  - option "31"
+                                  - option "32"
+                                  - option "33"
+                                  - option "34"
+                                  - option "35"
+                                  - option "36"
+                                  - option "37"
+                                  - option "38"
+                                  - option "39"
+                                  - option "40"
+                                  - option "41"
+                                  - option "42"
+                                  - option "43"
+                                  - option "44"
+                                  - option "45"
+                                  - option "46"
+                                  - option "47"
+                                  - option "48"
+                                  - option "49"
+                                  - option "50"
+                                  - option "51"
+                                  - option "52"
+                                  - option "53"
+                                  - option "54"
+                                  - option "55"
+                                  - option "56"
+                                  - option "57"
+                                  - option "58"
+                                  - option "59"
+                                  - option "60"
+                                  - option "61"
+                                  - option "62"
+                                  - option "63"
+                                  - option "64"
+                                  - option "65"
+                                  - option "66"
+                                  - option "67"
+                                  - option "68"
+                                  - option "69"
+                                  - option "70"
+                                  - option "71"
+                                  - option "72"
+                                  - option "73"
+                                  - option "74"
+                                  - option "75"
+                                  - option "76"
+                                  - option "77"
+                                  - option "78"
+                                  - option "79"
+                                  - option "80"
+                                  - option "81"
+                                  - option "82"
+                                  - option "83"
+                                  - option "84"
+                                  - option "85"
+                                  - option "86"
+                                  - option "87"
+                                  - option "88"
+                                  - option "89"
+                                  - option "90"
+                                  - option "91"
+                                  - option "92"
+                                  - option "93"
+                                  - option "94"
+                                  - option "95"
+                                  - option "96"
+                                  - option "97"
+                                  - option "98"
+                                  - option "99"
+                                  - option "100"
+                                - generic:
+                                  - img
+                              - generic [ref=e226]:
+                                - combobox [ref=e227] [cursor=pointer]:
+                                  - option "Duration Type" [disabled] [selected]
+                                  - option "Hours"
+                                  - option "Days"
+                                  - option "Weeks"
+                                  - option "Months"
+                                  - option "Years"
+                                - generic:
+                                  - img
+                    - generic [ref=e229]:
+                      - generic [ref=e230]: 3. Fever
+                      - generic [ref=e231]:
+                        - button "yes Yes" [ref=e232] [cursor=pointer]:
+                          - img "yes" [ref=e234]
+                          - text: "Yes"
+                        - button "no No" [ref=e235] [cursor=pointer]:
+                          - img "no" [ref=e237]
+                          - text: "No"
+                    - generic [ref=e239]:
+                      - generic [ref=e240]: 4. Diarrhoea
+                      - generic [ref=e241]:
+                        - button "yes Yes" [ref=e242] [cursor=pointer]:
+                          - img "yes" [ref=e244]
+                          - text: "Yes"
+                        - button "no No" [ref=e245] [cursor=pointer]:
+                          - img "no" [ref=e247]
+                          - text: "No"
+                    - generic [ref=e249]:
+                      - generic [ref=e250]: 5. Night sweats
+                      - generic [ref=e251]:
+                        - button "yes Yes" [ref=e252] [cursor=pointer]:
+                          - img "yes" [ref=e254]
+                          - text: "Yes"
+                        - button "no No" [ref=e255] [cursor=pointer]:
+                          - img "no" [ref=e257]
+                          - text: "No"
+                    - generic [ref=e259]:
+                      - generic [ref=e260]: 6. Cough
+                      - generic [ref=e261]:
+                        - button "yes Yes" [ref=e262] [cursor=pointer]:
+                          - img "yes" [ref=e264]
+                          - text: "Yes"
+                        - button "no No" [ref=e265] [cursor=pointer]:
+                          - img "no" [ref=e267]
+                          - text: "No"
+                    - generic [ref=e269]:
+                      - generic [ref=e270]: 7. Sore throat
+                      - generic [ref=e271]:
+                        - button "yes Yes" [ref=e272] [cursor=pointer]:
+                          - img "yes" [ref=e274]
+                          - text: "Yes"
+                        - button "no No" [ref=e275] [cursor=pointer]:
+                          - img "no" [ref=e277]
+                          - text: "No"
+                    - generic [ref=e279]:
+                      - generic [ref=e280]: 8. Skin bruises
+                      - generic [ref=e281]:
+                        - button "yes Yes" [ref=e282] [cursor=pointer]:
+                          - img "yes" [ref=e284]
+                          - text: "Yes"
+                        - button "no No" [ref=e285] [cursor=pointer]:
+                          - img "no" [ref=e287]
+                          - text: "No"
+                    - generic [ref=e289]:
+                      - generic [ref=e290]: 9. Joint pain
+                      - generic [ref=e291]:
+                        - button "yes Yes" [ref=e292] [cursor=pointer]:
+                          - img "yes" [ref=e294]
+                          - text: "Yes"
+                        - button "no No" [ref=e295] [cursor=pointer]:
+                          - img "no" [ref=e297]
+                          - text: "No"
+                    - generic [ref=e299]:
+                      - generic [ref=e300]: 10. Other [describe]
+                      - generic [ref=e301]:
+                        - button "yes Yes" [ref=e302] [cursor=pointer]:
+                          - img "yes" [ref=e304]
+                          - text: "Yes"
+                        - button "no No" [ref=e305] [cursor=pointer]:
+                          - img "no" [ref=e307]
+                          - text: "No"
+                  - button "Submit" [ref=e309] [cursor=pointer]
+  - region "Notifications Alt+T"
+```

@@ -1,0 +1,138 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - generic [ref=e5]:
+    - complementary [ref=e6]:
+      - button [ref=e7]
+      - generic [ref=e9]:
+        - img "hero" [ref=e11]
+        - link "Add Patients" [ref=e13] [cursor=pointer]:
+          - /url: "#/patient/add"
+          - generic [ref=e17]: Add Patients
+        - navigation [ref=e18]:
+          - generic [ref=e19]:
+            - link "Home Home" [ref=e20] [cursor=pointer]:
+              - /url: "#/dashboard"
+              - img "Home" [ref=e21]
+              - generic [ref=e22]: Home
+            - link "Achievements Achievements" [ref=e23] [cursor=pointer]:
+              - /url: "#/achievement-ui"
+              - img "Achievements" [ref=e24]
+              - generic [ref=e25]: Achievements
+            - link "Help & Support Help & Support" [ref=e26] [cursor=pointer]:
+              - /url: "#/help"
+              - img "Help & Support" [ref=e27]
+              - generic [ref=e28]: Help & Support
+            - link "Educational Videos Educational Videos" [ref=e29] [cursor=pointer]:
+              - /url: "#/educational-videos"
+              - img "Educational Videos" [ref=e30]
+              - generic [ref=e31]: Educational Videos
+            - link "Settings Settings" [ref=e32] [cursor=pointer]:
+              - /url: "#/settings"
+              - img "Settings" [ref=e33]
+              - generic [ref=e34]: Settings
+            - link "About us About us" [ref=e35] [cursor=pointer]:
+              - /url: "#/about-us"
+              - img "About us" [ref=e36]
+              - generic [ref=e37]: About us
+        - navigation [ref=e39]:
+          - generic [ref=e40] [cursor=pointer]:
+            - img [ref=e41]
+            - generic [ref=e42]: Log-out
+    - main [ref=e43]:
+      - generic [ref=e45]:
+        - generic [ref=e48]:
+          - generic [ref=e52]:
+            - generic:
+              - generic:
+                - img "search"
+            - combobox "Patient Search" [ref=e53]
+          - generic [ref=e55]:
+            - img "Location" [ref=e56]
+            - generic [ref=e57]: Telemedicine Clinic 1
+          - generic [ref=e58]:
+            - link "Notification" [ref=e59] [cursor=pointer]:
+              - /url: "#/notifications"
+              - img "Notification" [ref=e60]
+            - link "Profile" [ref=e61] [cursor=pointer]:
+              - /url: "#/profile"
+              - img "Profile" [ref=e62]
+        - generic [ref=e63]:
+          - navigation "Breadcrumb" [ref=e64]:
+            - list [ref=e65]:
+              - listitem [ref=e66]:
+                - link "Dashboard" [ref=e67] [cursor=pointer]:
+                  - /url: "#/dashboard"
+              - listitem [ref=e68]:
+                - generic [ref=e69]: ">"
+                - button "Add Patient" [ref=e70] [cursor=pointer]
+              - listitem [ref=e71]:
+                - generic [ref=e72]: ">"
+                - button "Patient Details" [ref=e73] [cursor=pointer]
+              - listitem [ref=e74]:
+                - generic [ref=e75]: ">"
+                - button "Start Visit" [ref=e76] [cursor=pointer]
+              - listitem [ref=e77]:
+                - generic [ref=e78]: ">"
+                - button "Vitals" [ref=e79] [cursor=pointer]
+              - listitem [ref=e80]:
+                - generic [ref=e81]: ">"
+                - generic [ref=e82]: Visit Reason
+          - generic [ref=e85]:
+            - generic [ref=e86]:
+              - img "Ayu Loader" [ref=e87]
+              - text: Start Visit
+            - generic [ref=e89]:
+              - generic [ref=e90]:
+                - text: Automation Test1793689694459994
+                - generic [ref=e91]: 26 • M
+              - generic [ref=e92]: "2/4 Visit Reason : Leg knee or hip pain"
+            - generic [ref=e95]:
+              - generic [ref=e96]: Assessment Progress
+              - generic [ref=e97]: LIVE
+              - generic [ref=e99]: 0%
+            - generic [ref=e122]:
+              - img "Question Icon" [ref=e124]
+              - generic [ref=e126]:
+                - paragraph [ref=e127]: Question 1/13
+                - generic [ref=e128]:
+                  - generic [ref=e129]: Which part of the leg or hip do you feel pain?*
+                  - generic [ref=e130]: Select one or more
+                  - generic [ref=e131]:
+                    - button "Right leg" [ref=e132] [cursor=pointer]:
+                      - generic [ref=e133]: Right leg
+                    - button "Left leg" [ref=e134] [cursor=pointer]:
+                      - generic [ref=e135]: Left leg
+                    - button "Hip" [ref=e136] [cursor=pointer]:
+                      - generic [ref=e137]: Hip
+                - generic [ref=e141]:
+                  - img [ref=e142]
+                  - generic [ref=e144]:
+                    - generic [ref=e145]:
+                      - generic [ref=e146]: Right leg
+                      - generic [ref=e147]: Select one or more
+                      - generic [ref=e148]:
+                        - button "Hip" [ref=e149] [cursor=pointer]:
+                          - generic [ref=e150]: Hip
+                        - button "Buttock" [ref=e151] [cursor=pointer]:
+                          - generic [ref=e152]: Buttock
+                        - button "Thigh" [ref=e153] [cursor=pointer]:
+                          - generic [ref=e154]: Thigh
+                        - button "Knee" [active] [ref=e155] [cursor=pointer]:
+                          - generic [ref=e156]: Knee
+                        - button "Calf" [ref=e157] [cursor=pointer]:
+                          - generic [ref=e158]: Calf
+                    - generic [ref=e162]:
+                      - img [ref=e163]
+                      - generic [ref=e166]:
+                        - generic [ref=e167]: Knee
+                        - generic [ref=e168]: Select one or more
+                        - generic [ref=e169]:
+                          - button "Site of knee pain" [ref=e170] [cursor=pointer]:
+                            - generic [ref=e171]: Site of knee pain
+                          - button "Swelling" [ref=e172] [cursor=pointer]:
+                            - generic [ref=e173]: Swelling
+                - button "Submit" [ref=e175] [cursor=pointer]
+  - region "Notifications Alt+T"
+```
