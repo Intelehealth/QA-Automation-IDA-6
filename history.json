@@ -1,15 +1,5 @@
 [
   {
-    "run": 50,
-    "date": "2026-10-07",
-    "passed": 346,
-    "failed": 28,
-    "flaky": 0,
-    "skipped": 0,
-    "total": 374,
-    "duration": 22229923
-  },
-  {
     "run": 51,
     "date": "2026-10-08",
     "passed": 237,
@@ -198,5 +188,15 @@
     "skipped": 0,
     "total": 1318,
     "duration": 119873975
+  },
+  {
+    "run": 71,
+    "date": "2026-11-06",
+    "passed": 1278,
+    "failed": 88,
+    "flaky": 3,
+    "skipped": 0,
+    "total": 1369,
+    "duration": 124615175
   }
 ]
