@@ -1,12 +1,13 @@
-name: IDA-6 Automation + Dashboard + Allure + Slack
 
+name: IDA-6 Automation + Dashboard + Allure + Slack
+ 
 on:
   push:
     branches:
       - main
-
+ 
   pull_request:
-
+ 
   # ▶ Manual run: Actions -> this workflow -> "Run workflow".
   #   Type part of a test file name (e.g. login) to run only that file,
   #   or leave "all" to run the full suite.
@@ -16,28 +17,28 @@ on:
         description: "Test file to run (leave 'all' for full suite, or type e.g. login)"
         type: string
         default: all
-
+ 
 permissions:
   contents: write
-
+ 
 # NOTE: concurrency moved from workflow level to the "report" job.
 # At workflow level, a second push had to wait for the whole 6-hour
 # test run to finish before it could even start.
-
-
+ 
+ 
 jobs:
-
+ 
   # ============================================================
   # 🚀 SLACK - AUTOMATION STARTED (runs once)
   # ============================================================
-
+ 
   start:
-
-    runs-on: ubuntu-latest
+ 
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
-
+ 
     steps:
-
+ 
       - name: Slack - IDA-6 Automation Started
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
@@ -45,9 +46,9 @@ jobs:
           BRANCH: ${{ github.ref_name }}
           ACTOR: ${{ github.actor }}
         run: |
-
+ 
           IST_TIME=$(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M:%S IST')
-
+ 
           PAYLOAD=$(jq -n \
             --arg time "$IST_TIME" \
             --arg repository "$REPOSITORY" \
@@ -58,13 +59,13 @@ jobs:
                 "🚀 *IDA-6 Automation Started*\n\nProject: IDA-6 Automation\nRepository: \($repository)\nBranch: \($branch)\nTriggered By: \($actor)\nTime: \($time)"
             }'
           )
-
+ 
           curl -X POST \
             -H "Content-Type: application/json" \
             --data "$PAYLOAD" \
             "$SLACK_WEBHOOK_URL"
-
-
+ 
+ 
   # ============================================================
   # 🧪 IDA-6 AUTOMATION - SHARDED
   #
@@ -74,68 +75,68 @@ jobs:
   # Manual run with a test file typed in -> only 1 job runs that file.
   # Push / PR / manual "all"             -> 10 shards, same as before.
   # ============================================================
-
+ 
   test:
-
-    runs-on: ubuntu-latest
+ 
+    runs-on: ubuntu-24.04
     timeout-minutes: 300
-
+ 
     strategy:
       fail-fast: false
       matrix:
         shard: ${{ fromJSON((inputs.test_file || 'all') != 'all' && '[1]' || '[1,2,3,4,5,6,7,8,9,10]') }}
-
+ 
     env:
       SHARD_TOTAL: ${{ strategy.job-total }}
       TEST_FILE: ${{ inputs.test_file || 'all' }}
-
+ 
     steps:
-
+ 
       - name: Checkout Repository
         uses: actions/checkout@v4
-
+ 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: npm
-
+ 
       - name: Install Dependencies
         run: npm ci
-
+ 
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
-
-
+ 
+ 
       # continue-on-error keeps the job green on test failures
       # (same behaviour as before), so the report job always runs.
       - name: Run IDA-6 Playwright Automation (shard ${{ matrix.shard }}/${{ env.SHARD_TOTAL }})
         id: playwright
         continue-on-error: true
         run: |
-
+ 
           echo "========================================"
           echo "🚀 IDA-6 AUTOMATION - SHARD ${{ matrix.shard }}/$SHARD_TOTAL"
           echo "🎯 Test file: $TEST_FILE"
           echo "========================================"
-
+ 
           PLAYWRIGHT_EXIT_CODE=0
-
+ 
           if [ "$TEST_FILE" = "all" ]; then
             npx playwright test --project=chromium \
               --shard=${{ matrix.shard }}/$SHARD_TOTAL || PLAYWRIGHT_EXIT_CODE=$?
           else
             npx playwright test --project=chromium "$TEST_FILE" || PLAYWRIGHT_EXIT_CODE=$?
           fi
-
+ 
           echo "Playwright Exit Code: $PLAYWRIGHT_EXIT_CODE"
           echo "exit_code=$PLAYWRIGHT_EXIT_CODE" >> "$GITHUB_OUTPUT"
-
+ 
           exit $PLAYWRIGHT_EXIT_CODE
-
-
+ 
+ 
       # ---- hand results to the report job ----
-
+ 
       - name: Upload Blob Report
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
@@ -144,7 +145,7 @@ jobs:
           path: blob-report
           retention-days: 1
           if-no-files-found: ignore
-
+ 
       - name: Upload Allure Results
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
@@ -153,7 +154,7 @@ jobs:
           path: allure-results
           retention-days: 1
           if-no-files-found: ignore
-
+ 
       - name: Upload Failed Videos
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
@@ -161,7 +162,7 @@ jobs:
           name: failed-videos-${{ matrix.shard }}
           path: test-results/**/*.webm
           if-no-files-found: ignore
-
+ 
       - name: Upload Playwright Traces
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
@@ -169,7 +170,7 @@ jobs:
           name: playwright-traces-${{ matrix.shard }}
           path: test-results/**/*.zip
           if-no-files-found: ignore
-
+ 
       - name: Upload Failure Screenshots
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
@@ -177,113 +178,113 @@ jobs:
           name: failure-screenshots-${{ matrix.shard }}
           path: test-results/**/*.png
           if-no-files-found: ignore
-
-
+ 
+ 
   # ============================================================
   # 📊 MERGE SHARDS -> DASHBOARD + ALLURE + PAGES + SLACK
   # ============================================================
-
+ 
   report:
-
+ 
     needs: test
     if: ${{ !cancelled() }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 45
-
+ 
     # Only one deploy to gh-pages at a time, so two runs never fight over the branch.
     concurrency:
       group: ida6-pages
       cancel-in-progress: false
-
+ 
     steps:
-
+ 
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
+ 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: npm
-
+ 
       - name: Install Dependencies
         run: npm ci
-
+ 
       # needed by "Render Slack Dashboard Image"
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
-
-
+ 
+ 
       # ========================================================
       # 🔗 MERGE SHARD RESULTS
       #   blob-report-*    -> results.json   (dashboard input)
       #   allure-results-* -> allure-results (one folder)
       # ========================================================
-
+ 
       - name: Download Blob Reports
         uses: actions/download-artifact@v4
         with:
           pattern: blob-report-*
           path: all-blob-reports
           merge-multiple: true
-
+ 
       - name: Download Allure Results
         uses: actions/download-artifact@v4
         with:
           pattern: allure-results-*
           path: allure-results
           merge-multiple: true
-
+ 
       - name: Merge Shard Reports Into results.json
         run: |
-
+ 
           echo "========================================"
           echo "🔗 MERGING SHARD REPORTS"
           echo "========================================"
-
+ 
           ls -la all-blob-reports || true
-
+ 
           PLAYWRIGHT_JSON_OUTPUT_NAME=results.json \
             npx playwright merge-reports --reporter=json ./all-blob-reports
-
+ 
           ls -la results.json
-
-
+ 
+ 
       # ========================================================
       # 📝 GET COMMIT INFORMATION
       # ========================================================
-
+ 
       - name: Get Commit Information
         id: commit
         if: ${{ !cancelled() }}
         run: |
-
+ 
           COMMIT_MESSAGE=$(git log -1 --pretty=%B)
-
+ 
           COMMIT_SHA=$(git rev-parse HEAD)
-
+ 
           echo "========================================"
           echo "📝 COMMIT INFORMATION"
           echo "========================================"
-
+ 
           echo "$COMMIT_SHA"
           echo "$COMMIT_MESSAGE"
-
+ 
           echo "========================================"
-
-
+ 
+ 
           {
             echo 'message<<COMMIT_EOF'
             echo "$COMMIT_MESSAGE"
             echo 'COMMIT_EOF'
           } >> "$GITHUB_OUTPUT"
-
-
+ 
+ 
           echo "sha=$COMMIT_SHA" >> "$GITHUB_OUTPUT"
-
-
+ 
+ 
       # ========================================================
       # 🕘 RESTORE HISTORY FROM GH-PAGES
       #
@@ -291,59 +292,59 @@ jobs:
       #   gh-pages/allure/history  -> Allure trend graphs
       #   gh-pages/history.json    -> dashboard "Results per run"
       # ========================================================
-
+ 
       - name: Restore History From GitHub Pages
         if: ${{ !cancelled() }}
         run: |
-
+ 
           echo "========================================"
           echo "🕘 RESTORING HISTORY"
           echo "========================================"
-
-
+ 
+ 
           rm -rf gh-pages
-
-
+ 
+ 
           git clone \
             --depth=1 \
             --branch gh-pages \
             "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" \
             gh-pages || true
-
-
+ 
+ 
           # ---- Allure history ----
           if [ -d "gh-pages/allure/history" ]; then
-
+ 
             echo "✅ Allure history found."
             mkdir -p allure-results/history
             cp -r gh-pages/allure/history/* allure-results/history/ || true
-
+ 
           elif [ -d "gh-pages/history" ]; then
-
+ 
             echo "✅ Allure history found (old layout)."
             mkdir -p allure-results/history
             cp -r gh-pages/history/* allure-results/history/ || true
-
+ 
           else
-
+ 
             echo "ℹ️ No previous Allure history found."
-
+ 
           fi
-
-
+ 
+ 
           # ---- Dashboard history ----
           if [ -f "gh-pages/history.json" ]; then
-
+ 
             echo "✅ Dashboard history found."
             cp gh-pages/history.json dashboard-history.json
-
+ 
           else
-
+ 
             echo "ℹ️ No previous dashboard history found."
-
+ 
           fi
-
-
+ 
+ 
       # ========================================================
       # 📈 BUILD IDA-6 TEST DASHBOARD
       #
@@ -352,7 +353,7 @@ jobs:
       #   dashboard/data.json
       #   dashboard/history.json
       # ========================================================
-
+ 
       - name: Build IDA-6 Dashboard
         id: dashboard
         if: ${{ !cancelled() }}
@@ -374,16 +375,16 @@ jobs:
           RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
           ALLURE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allure/
         run: |
-
+ 
           echo "========================================"
           echo "📈 BUILDING IDA-6 DASHBOARD"
           echo "========================================"
-
+ 
           export RUN_TIME="$(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M:%S IST')"
-
+ 
           node .github/dashboard/build-dashboard.js
-
-
+ 
+ 
       # ========================================================
       # 📊 PARSE RESULTS FOR SLACK
       #
@@ -400,23 +401,23 @@ jobs:
       # fetches them straight from the URL -- nothing extra is
       # published and there is no GitHub Pages propagation delay.
       # ========================================================
-
+ 
       - name: Parse Test Results
         id: results
         if: ${{ !cancelled() }}
         env:
           RUN_NUMBER: ${{ github.run_number }}
         run: |
-
+ 
           echo "========================================"
           echo "📊 PARSING TEST RESULTS"
           echo "========================================"
-
-
+ 
+ 
           if [ ! -f "dashboard/data.json" ]; then
-
+ 
             echo "❌ dashboard/data.json not found."
-
+ 
             {
               echo "passed=0"
               echo "failed=0"
@@ -431,34 +432,34 @@ jobs:
               echo "chart_modules="
               echo "chart_failures="
             } >> "$GITHUB_OUTPUT"
-
+ 
             exit 0
-
+ 
           fi
-
-
+ 
+ 
           node <<'NODE'
-
+ 
           const fs = require('fs');
-
+ 
           const data = JSON.parse(
             fs.readFileSync('dashboard/data.json', 'utf8')
           );
-
+ 
           const t = data.totals || {};
-
+ 
           const modules = new Set(
             (data.tests || []).map(x => x.module)
           );
-
+ 
           const failing = (data.modules || [])
             .filter(m => m.failed > 0)
             .map(m => `${m.name} (${m.failed})`);
-
+ 
           const failingText = failing.length
             ? failing.join(', ')
             : 'None — all modules green';
-
+ 
           console.log('========================================');
           console.log('📊 IDA-6 AUTOMATION RESULTS');
           console.log('========================================');
@@ -471,8 +472,8 @@ jobs:
           console.log(`🧩 Modules   : ${modules.size}`);
           console.log(`🔴 Failing   : ${failingText}`);
           console.log('========================================');
-
-
+ 
+ 
           // ============================================================
           // Dashboard-style chart images for Slack (QuickChart)
           //
@@ -481,7 +482,7 @@ jobs:
           // characters, and these configs are bigger than that.
           // Falls back to a normal GET URL if the API call fails.
           // ============================================================
-
+ 
           const C = {
             pass:  '#3BA23F',
             fail:  '#C9302C',
@@ -492,25 +493,25 @@ jobs:
             text:  '#1F2937',
             muted: '#6B7280'
           };
-
+ 
           const num = v => Number(v) || 0;
           const pct = (n, d) => (d ? (n * 100 / d).toFixed(2) : '0.00');
           const clip = (s, n) => (s.length > n ? s.slice(0, n - 1) + '…' : s);
-
+ 
           const TITLE = text => ({
             display: true, text, fontSize: 18, fontStyle: 'bold',
             fontColor: C.text, padding: 16
           });
-
+ 
           const LEGEND_TOP = {
             position: 'top', align: 'end',
             labels: { usePointStyle: true, fontSize: 13, fontColor: C.text, padding: 16 }
           };
-
+ 
           const NO_DATALABELS = { datalabels: { display: false } };
-
+ 
           const CFG = {};
-
+ 
           async function chartUrl(config, w, h, key) {
             if (key) CFG[key] = config;
             try {
@@ -533,8 +534,8 @@ jobs:
               '&c=' + encodeURIComponent(JSON.stringify(config));
             return url.length <= 3000 ? url : '';
           }
-
-
+ 
+ 
           // ---- read run history (tolerant of the history.json shape) ----
           function readHistory() {
             try {
@@ -545,10 +546,10 @@ jobs:
               return [];
             }
           }
-
+ 
           const field = (r, k) => num(r[k] ?? (r.totals || {})[k] ?? (r.stats || {})[k]);
           const runNo = r => r.runNumber ?? r.run_number ?? r.run ?? r.build ?? r.id;
-
+ 
           const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
           function shortDate(r) {
             const s = String(r.runTime || r.time || r.date || r.timestamp || r.startTime || '');
@@ -557,21 +558,21 @@ jobs:
             const d = new Date(s);
             return isNaN(d) ? '' : MONTHS[d.getMonth()] + ' ' + String(d.getDate()).padStart(2, '0');
           }
-
-
+ 
+ 
           (async () => {
-
+ 
             let chartDistribution = '';
             let chartTrend = '';
             let chartModules = '';
             let chartFailures = '';
-
+ 
             const total = num(t.total);
-
+ 
             if (total > 0) {
-
+ 
               const P = num(t.passed), F = num(t.failed), K = num(t.flaky), S = num(t.skipped);
-
+ 
               // ---------- 1. Test Execution Results Distribution ----------
               chartDistribution = await chartUrl({
                 type: 'doughnut',
@@ -609,27 +610,27 @@ jobs:
                   }
                 }
               }, 760, 380, 'distribution');
-
-
+ 
+ 
               // ---------- 2. Test Execution Results Trend (per run) ----------
               let runs = readHistory().filter(r => field(r, 'total') > 0 || field(r, 'passed') + field(r, 'failed') > 0);
-
+ 
               if (runs.length && runs.every(r => !isNaN(Number(runNo(r))))) {
                 runs.sort((a, b) => Number(runNo(a)) - Number(runNo(b)));
               }
-
+ 
               const cur = process.env.RUN_NUMBER;
               if (!runs.length || (cur && String(runNo(runs[runs.length - 1])) !== String(cur))) {
                 runs.push({ runNumber: cur || 'now', runTime: new Date().toISOString(), passed: P, failed: F, flaky: K, skipped: S, total });
               }
-
+ 
               runs = runs.slice(-10);
-
+ 
               const rate = r => {
                 const tot = field(r, 'total') || (field(r, 'passed') + field(r, 'failed') + field(r, 'flaky') + field(r, 'skipped'));
                 return tot ? Number((field(r, 'passed') * 100 / tot).toFixed(1)) : 0;
               };
-
+ 
               chartTrend = await chartUrl({
                 type: 'bar',
                 data: {
@@ -674,14 +675,14 @@ jobs:
                   }
                 }
               }, 900, 420, 'trend');
-
-
+ 
+ 
               // ---------- 3. Test Results by Module ----------
               const mods = [...(data.modules || [])]
                 .sort((a, b) => num(b.failed) - num(a.failed) ||
                   (num(b.passed) + num(b.failed)) - (num(a.passed) + num(a.failed)))
                 .slice(0, 12);
-
+ 
               if (mods.length) {
                 chartModules = await chartUrl({
                   type: 'horizontalBar',
@@ -717,20 +718,20 @@ jobs:
                   }
                 }, 900, Math.max(320, 130 + mods.length * 38), 'modules');
               }
-
-
+ 
+ 
               // ---------- 4. Failures Distribution by Module ----------
               const failMods = (data.modules || [])
                 .filter(m => num(m.failed) > 0)
                 .sort((a, b) => num(b.failed) - num(a.failed));
-
+ 
               if (F > 0 && failMods.length) {
                 const top = failMods.slice(0, 6);
                 const rest = failMods.slice(6).reduce((s, m) => s + num(m.failed), 0);
                 const items = top.map(m => ({ name: clip(String(m.name), 24), v: num(m.failed) }));
                 if (rest > 0) items.push({ name: 'Others', v: rest });
                 const sum = items.reduce((s, i) => s + i.v, 0);
-
+ 
                 chartFailures = await chartUrl({
                   type: 'doughnut',
                   data: {
@@ -762,11 +763,11 @@ jobs:
                   }
                 }, 760, 380, 'failures');
               }
-
+ 
               console.log('🖼️ Charts    :', [chartDistribution, chartTrend, chartModules, chartFailures].map(u => u ? 'ok' : '-').join(' / '));
             }
-
-
+ 
+ 
             const out = [
               `passed=${t.passed || 0}`,
               `failed=${t.failed || 0}`,
@@ -781,22 +782,22 @@ jobs:
               `chart_modules=${chartModules}`,
               `chart_failures=${chartFailures}`
             ];
-
+ 
             // chart settings + data for the one-screen Slack dashboard image
             fs.writeFileSync('slack-charts.json', JSON.stringify({
               configs: CFG, totals: t, modules: data.modules || [], moduleCount: modules.size
             }));
-
+ 
             fs.appendFileSync(
               process.env.GITHUB_OUTPUT,
               out.join('\n') + '\n'
             );
-
+ 
           })();
-
+ 
           NODE
-
-
+ 
+ 
       # ========================================================
       # 🖥️ RENDER ONE-SCREEN SLACK DASHBOARD IMAGE
       #
@@ -806,7 +807,7 @@ jobs:
       # The deploy step publishes it with the dashboard, and the
       # Slack step posts it as one image.
       # ========================================================
-
+ 
       - name: Render Slack Dashboard Image
         id: board
         if: ${{ !cancelled() }}
@@ -818,36 +819,36 @@ jobs:
           BRANCH: ${{ github.ref_name }}
           ACTOR: ${{ github.actor }}
         run: |
-
+ 
           echo "========================================"
           echo "🖥️ RENDERING SLACK DASHBOARD IMAGE"
           echo "========================================"
-
+ 
           if [ ! -f "slack-charts.json" ]; then
             echo "ℹ️ No chart data, skipping."
             echo "ready=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-
+ 
           export RUN_TIME="$(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M IST')"
-
+ 
           node <<'NODE'
-
+ 
           const fs = require('fs');
           const path = require('path');
-
+ 
           let chromium;
           try { ({ chromium } = require('@playwright/test')); }
           catch (e) { ({ chromium } = require('playwright')); }
-
+ 
           const src = JSON.parse(fs.readFileSync('slack-charts.json', 'utf8'));
           const cfg = src.configs || {};
           const t = src.totals || {};
           const OUT = process.env.OUT_FILE || 'dashboard/slack/board.png';
-
+ 
           const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
           const num = v => Number(v) || 0;
-
+ 
           // the card already shows the title, so drop the in-chart one
           for (const k of Object.keys(cfg)) {
             cfg[k].options = cfg[k].options || {};
@@ -856,7 +857,7 @@ jobs:
             cfg[k].options.animation = false;
             cfg[k].options.responsive = true;
           }
-
+ 
           // ---- module table rows (like "Test Coverage by Configuration") ----
           const mods = [...(src.modules || [])]
             .map(m => {
@@ -865,9 +866,9 @@ jobs:
             })
             .sort((a, b) => b.tot - a.tot)
             .slice(0, 8);
-
+ 
           const rateColor = r => (r >= 90 ? '#3BA23F' : r >= 70 ? '#E09514' : '#C9302C');
-
+ 
           const tableRows = mods.map(m => `
             <tr>
               <td class="mod"><span class="dot" style="background:${m.failed ? '#C9302C' : '#3BA23F'}"></span>${esc(m.name)}</td>
@@ -876,7 +877,7 @@ jobs:
               <td class="${m.failed ? 'bad' : ''}">${m.failed}</td>
               <td><div class="rate"><div class="bar"><i style="width:${m.rate.toFixed(1)}%;background:${rateColor(m.rate)}"></i></div>${m.rate.toFixed(1).replace(/\.0$/, '')}%</div></td>
             </tr>`).join('');
-
+ 
           const failed = num(t.failed);
           const meta = {
             project: process.env.PROJECT || 'IDA-6 Automation',
@@ -886,18 +887,18 @@ jobs:
             time: process.env.RUN_TIME || '',
             env: process.env.ENVIRONMENT || 'DEV'
           };
-
+ 
           const card = (title, body, cls = '') =>
             `<section class="card ${cls}"><h2>${title}</h2>${body}</section>`;
-
+ 
           const canvas = (id, h) => cfg[id]
             ? `<div class="chart" style="height:${h}px"><canvas id="${id}"></canvas></div>`
             : `<div class="empty" style="height:${h}px">No data</div>`;
-
+ 
           const failuresBody = cfg.failures
             ? canvas('failures', 330)
             : `<div class="empty ok" style="height:330px"><b>0</b><span>failures — all modules green</span></div>`;
-
+ 
           const html = `<!doctype html><html><head><meta charset="utf-8"><style>
             * { box-sizing: border-box; }
             body { margin: 0; background: #F4F5F7; font-family: Inter, "Segoe UI", Helvetica, Arial, sans-serif; color: #1F2937; }
@@ -954,12 +955,12 @@ jobs:
             </div>
           </div>
           </body></html>`;
-
+ 
           (async () => {
             const browser = await chromium.launch(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {});
             const page = await browser.newPage({ viewport: { width: 1800, height: 1000 }, deviceScaleFactor: 1.5 });
             await page.setContent(html);
-
+ 
             // Chart.js 2.9.4 + doughnutlabel -- same versions QuickChart uses
             const CHART_JS = process.env.CHART_JS_FILE
               ? { path: process.env.CHART_JS_FILE }
@@ -969,7 +970,7 @@ jobs:
               : { url: 'https://cdn.jsdelivr.net/npm/chartjs-plugin-doughnutlabel@2.0.3/dist/chartjs-plugin-doughnutlabel.js' };
             await page.addScriptTag(CHART_JS);
             await page.addScriptTag(DOUGHNUT);
-
+ 
             await page.evaluate(cfg => {
               Chart.defaults.global.defaultFontFamily = 'Inter, "Segoe UI", Helvetica, Arial, sans-serif';
               for (const [id, c] of Object.entries(cfg)) {
@@ -979,56 +980,56 @@ jobs:
                 new Chart(el, c);
               }
             }, cfg);
-
+ 
             await page.waitForTimeout(500);
             fs.mkdirSync(path.dirname(OUT), { recursive: true });
             await (await page.$('#board')).screenshot({ path: OUT });
             await browser.close();
             console.log('🖼️ Dashboard image written:', OUT, fs.statSync(OUT).size, 'bytes');
           })().catch(e => { console.log('⚠️ Could not render dashboard image:', e.message); process.exit(0); });
-
+ 
           NODE
-
+ 
           if [ -f "$OUT_FILE" ]; then
             echo "ready=true" >> "$GITHUB_OUTPUT"
           else
             echo "ready=false" >> "$GITHUB_OUTPUT"
           fi
-
-
+ 
+ 
       # ========================================================
       # 🌎 ALLURE ENVIRONMENT INFORMATION
       # ========================================================
-
+ 
       - name: Create Allure Environment Information
         if: ${{ !cancelled() }}
         run: |
-
+ 
           mkdir -p allure-results
-
+ 
           {
             echo "Environment=DEV"
             echo "Project=IDA-6 Automation"
             echo "Browser=Chromium"
-            echo "OS=Ubuntu Latest"
+            echo "OS=Ubuntu 24.04"
             echo "Node=$(node -v)"
             echo "Playwright=$(npx playwright --version)"
             echo "Base URL=https://dev.intelehealth.org"
             echo "Shards=10"
           } > allure-results/environment.properties
-
-
+ 
+ 
       # ========================================================
       # ⚙️ ALLURE EXECUTOR INFORMATION
       # ========================================================
-
+ 
       - name: Create Allure Executor Information
         if: ${{ !cancelled() }}
         run: |
-
+ 
           mkdir -p allure-results
-
-
+ 
+ 
           cat > allure-results/executor.json <<EXECUTOR_EOF
           {
             "name": "GitHub Actions",
@@ -1040,17 +1041,17 @@ jobs:
             "reportUrl": "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allure/"
           }
           EXECUTOR_EOF
-
-
+ 
+ 
       # ========================================================
       # 📊 INSTALL ALLURE COMMAND LINE
       # ========================================================
-
+ 
       - name: Install Allure Commandline
         if: ${{ !cancelled() }}
         run: npm install -g allure-commandline
-
-
+ 
+ 
       # ========================================================
       # 🧹 PRUNE HEAVY ALLURE ATTACHMENTS
       #
@@ -1058,96 +1059,96 @@ jobs:
       # by each shard, so nothing is lost -- they just aren't
       # embedded in the published report. Screenshots are kept.
       # ========================================================
-
+ 
       - name: Prune Heavy Allure Attachments
         if: ${{ !cancelled() }}
         run: |
-
+ 
           echo "========================================"
           echo "🧹 PRUNING ALLURE ATTACHMENTS"
           echo "========================================"
-
+ 
           if [ ! -d "allure-results" ]; then
             echo "ℹ️ No allure-results directory."
             exit 0
           fi
-
+ 
           echo "Before : $(du -sh allure-results | cut -f1)"
-
+ 
           find allure-results -type f -name "*.webm" -delete || true
           find allure-results -type f -name "*.zip" -delete || true
           find allure-results -type f -size +5M -delete || true
-
+ 
           echo "After  : $(du -sh allure-results | cut -f1)"
-
+ 
           echo "========================================"
-
-
+ 
+ 
       # ========================================================
       # 📊 GENERATE ALLURE REPORT
       # ========================================================
-
+ 
       - name: Generate Allure Report
         if: ${{ !cancelled() }}
         run: |
-
+ 
           echo "========================================"
           echo "📊 GENERATING ALLURE REPORT"
           echo "========================================"
-
-
+ 
+ 
           mkdir -p allure-results
-
+ 
           allure generate allure-results --clean -o allure-report
-
-
+ 
+ 
           mkdir -p allure-report/history
-
+ 
           if [ -d "allure-results/history" ]; then
             cp -r allure-results/history/* allure-report/history/ || true
           fi
-
-
+ 
+ 
       # ========================================================
       # 🧩 ASSEMBLE THE PUBLISHED SITE
       # ========================================================
-
+ 
       - name: Assemble GitHub Pages Site
         if: ${{ !cancelled() }}
         run: |
-
+ 
           rm -rf public
           mkdir -p public
-
+ 
           cp -r dashboard/. public/
-
+ 
           mkdir -p public/allure
           cp -r allure-report/. public/allure/
-
+ 
           touch public/.nojekyll
-
+ 
           echo "========================================"
           echo "📁 SITE CONTENTS"
           echo "========================================"
           ls -la public
-
+ 
           SITE_SIZE=$(du -sm public | cut -f1)
-
+ 
           echo "Site size: ${SITE_SIZE} MB"
-
+ 
           if [ "$SITE_SIZE" -gt 900 ]; then
             echo "⚠️ WARNING: the site is over 900 MB."
             echo "GitHub Pages caps sites at 1 GB and the push will fail."
           fi
-
+ 
           echo "========================================"
-
-
+ 
+ 
       # ========================================================
       # 📦 UPLOAD ARTIFACTS
       # (videos, traces, screenshots are uploaded per shard)
       # ========================================================
-
+ 
       - name: Upload Dashboard
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
@@ -1155,7 +1156,7 @@ jobs:
           name: ida6-dashboard
           path: dashboard
           if-no-files-found: ignore
-
+ 
       - name: Upload Playwright Results JSON
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
@@ -1163,7 +1164,7 @@ jobs:
           name: playwright-results-json
           path: results.json
           if-no-files-found: ignore
-
+ 
       - name: Upload Allure Report
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
@@ -1171,13 +1172,13 @@ jobs:
           name: allure-report
           path: allure-report
           if-no-files-found: ignore
-
-
+ 
+ 
       # ========================================================
       # 🌐 DEPLOY DASHBOARD + ALLURE TO GITHUB PAGES
       # (push only -- manual runs never overwrite the dashboard)
       # ========================================================
-
+ 
       - name: Deploy to GitHub Pages
         if: ${{ !cancelled() && github.event_name == 'push' }}
         uses: peaceiris/actions-gh-pages@v4
@@ -1185,12 +1186,12 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: public
           keep_files: false
-
-
+ 
+ 
       # ========================================================
       # 💬 SLACK - IDA-6 AUTOMATION COMPLETED
       # ========================================================
-
+ 
       - name: Slack - IDA-6 Automation Completed
         if: ${{ !cancelled() }}
         env:
@@ -1223,19 +1224,19 @@ jobs:
           ALLURE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allure/
           GITHUB_LOG_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-
+ 
           IST_TIME=$(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M:%S IST')
-
-
+ 
+ 
           if [ "$FAILED" = "0" ]; then
             HEADER="✅ IDA-6 Automation Completed"
           else
             HEADER="⚠️ IDA-6 Automation Completed — $FAILED Failed"
           fi
-
-
+ 
+ 
           BOARD_IMAGE=""
-
+ 
           if [ "$EVENT_NAME" = "push" ] && [ "$BOARD_READY" = "true" ]; then
             echo "⏳ Waiting for the dashboard image to be reachable..."
             for i in $(seq 1 24); do
@@ -1249,14 +1250,14 @@ jobs:
               sleep 5
             done
           fi
-
+ 
           if [ -n "$BOARD_IMAGE" ]; then
             echo "✅ Dashboard image: $BOARD_IMAGE"
           else
             echo "ℹ️ Dashboard image not reachable, using separate charts."
           fi
-
-
+ 
+ 
           PAYLOAD=$(jq -n \
             --arg header "$HEADER" \
             --arg board_image "$BOARD_IMAGE" \
@@ -1286,7 +1287,7 @@ jobs:
             --arg github_logs "$GITHUB_LOG_URL" \
             '{
               blocks: ([
-
+ 
                 {
                   type: "header",
                   text: {
@@ -1294,11 +1295,11 @@ jobs:
                     text: $header
                   }
                 },
-
+ 
                 {
                   type: "divider"
                 },
-
+ 
                 {
                   type: "section",
                   fields: [
@@ -1308,11 +1309,11 @@ jobs:
                     { type: "mrkdwn", text: "*Triggered By:*\n\($actor)" }
                   ]
                 },
-
+ 
                 {
                   type: "divider"
                 },
-
+ 
                 {
                   type: "section",
                   text: {
@@ -1320,7 +1321,7 @@ jobs:
                     text: "📊 *Automation Execution Summary*"
                   }
                 },
-
+ 
                 {
                   type: "section",
                   fields: [
@@ -1334,7 +1335,7 @@ jobs:
                     { type: "mrkdwn", text: "*🔢 Run Number:*\n#\($run_number)" }
                   ]
                 },
-
+ 
                 {
                   type: "section",
                   text: {
@@ -1342,46 +1343,46 @@ jobs:
                     text: "🔴 *Modules With Failures:*\n\($failing_modules)"
                   }
                 },
-
+ 
                 (if $board_image == "" then null else {
                   type: "image",
                   title: { type: "plain_text", text: "IDA-6 Test Dashboard — Run #\($run_number)" },
                   image_url: $board_image,
                   alt_text: "IDA-6 dashboard: results distribution, trend, module coverage table, results by module and failures by module"
                 } end),
-
+ 
                 (if $board_image != "" or $chart_distribution == "" then null else {
                   type: "image",
                   title: { type: "plain_text", text: "Test Execution Results Distribution" },
                   image_url: $chart_distribution,
                   alt_text: "Doughnut chart of passed, failed, flaky and skipped tests with the total in the centre"
                 } end),
-
+ 
                 (if $board_image != "" or $chart_trend == "" then null else {
                   type: "image",
                   title: { type: "plain_text", text: "Test Execution Results Trend" },
                   image_url: $chart_trend,
                   alt_text: "Stacked bar chart of results for recent runs with a pass-rate line"
                 } end),
-
+ 
                 (if $board_image != "" or $chart_modules == "" then null else {
                   type: "image",
                   title: { type: "plain_text", text: "Test Results by Module" },
                   image_url: $chart_modules,
                   alt_text: "Stacked bar chart of test results for each module"
                 } end),
-
+ 
                 (if $board_image != "" or $chart_failures == "" then null else {
                   type: "image",
                   title: { type: "plain_text", text: "Failures Distribution by Module" },
                   image_url: $chart_failures,
                   alt_text: "Doughnut chart of failed tests split by module"
                 } end),
-
+ 
                 {
                   type: "divider"
                 },
-
+ 
                 {
                   type: "section",
                   text: {
@@ -1389,7 +1390,7 @@ jobs:
                     text: "📝 *Commit Message:*\n\($commit_message)"
                   }
                 },
-
+ 
                 {
                   type: "section",
                   text: {
@@ -1397,7 +1398,7 @@ jobs:
                     text: "🔗 *Commit:*\n\($commit_url)"
                   }
                 },
-
+ 
                 {
                   type: "section",
                   text: {
@@ -1405,60 +1406,60 @@ jobs:
                     text: "🕒 *Execution Time:*\n\($execution_time)"
                   }
                 },
-
+ 
                 {
                   type: "divider"
                 },
-
+ 
                 {
                   type: "actions",
                   elements: [
-
+ 
                     {
                       type: "button",
                       style: "primary",
                       text: { type: "plain_text", text: "📈 IDA-6 Dashboard" },
                       url: $dashboard_url
                     },
-
+ 
                     {
                       type: "button",
                       style: "danger",
                       text: { type: "plain_text", text: "❌ Failed Tests" },
                       url: $failed_url
                     },
-
+ 
                     {
                       type: "button",
                       text: { type: "plain_text", text: "📊 Allure Report" },
                       url: $allure_url
                     },
-
+ 
                     {
                       type: "button",
                       text: { type: "plain_text", text: "📄 GitHub Logs" },
                       url: $github_logs
                     }
-
+ 
                   ]
                 }
-
+ 
               ] | map(select(. != null)))
             }'
           )
-
-
+ 
+ 
           echo "========================================"
           echo "📤 SENDING SLACK NOTIFICATION"
           echo "========================================"
-
-
+ 
+ 
           curl -X POST \
             -H "Content-Type: application/json" \
             --data "$PAYLOAD" \
             "$SLACK_WEBHOOK_URL"
-
-
+ 
+ 
           echo ""
           echo "========================================"
           echo "✅ IDA-6 AUTOMATION COMPLETED"
@@ -1472,3 +1473,4 @@ jobs:
           echo "Total     : $TOTAL"
           echo "Pass Rate : $PASS_RATE%"
           echo "========================================"
+ 
