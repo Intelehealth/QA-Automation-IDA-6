@@ -1,0 +1,3 @@
+setupToAbdominalPainAssessment - date of birth set by typing 01/01/2000.
+setupToAbdominalPainAssessment - date of birth set by typing 01/01/2000.
+TC_PE_039 — Edit icon on Jaundice card visible from summary screen: true

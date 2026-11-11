@@ -1,0 +1,5 @@
+where      : Joint pain = Yes should ask whether one or several joints are involved, and whether the pain moves to other parts of the body
+url        : https://dev.intelehealth.org/hwwebapp#/ayu
+question   : Question 5/10
+buttons    : ["Add Patient","Patient Details","Start Visit","Vitals","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","No","Yes","Yes","No","Submit"]
+paragraphs : ["Where is the palpable lump?*","Disseminated","Since when have you had this symptom?*","3 hours","How did the symptom start?*","Gradual","How has the node(s) swelling progressed?*","Static/No change","Question 5/10","Question 1/7","Is there jaundice?*","References:","Select any one","Question 1/8"]

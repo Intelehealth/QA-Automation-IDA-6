@@ -1,0 +1,5 @@
+where      : "Pain in any other location" = Yes should ask where the pain is
+url        : https://dev.intelehealth.org/hwwebapp#/ayu
+question   : Question 5/10
+buttons    : ["Add Patient","Patient Details","Start Visit","Vitals","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Submit"]
+paragraphs : ["Since when have you had this symptom?*","3 hours","Nature of fever*","All day/ Constant","In a day, when do you feel fever the most?*","Morning","Severity*","Moderate","Question 5/10","Question 1/10","Is there jaundice?*","References:","Select any one","Question 1/8"]

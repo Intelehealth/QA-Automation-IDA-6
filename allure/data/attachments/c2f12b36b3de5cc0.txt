@@ -1,0 +1,5 @@
+where      : option "since when" not offered
+url        : https://dev.intelehealth.org/hwwebapp#/ayu
+question   : Question 6/10
+buttons    : ["Add Patient","Patient Details","Start Visit","Vitals","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Submit"]
+paragraphs : ["Since when have you had this symptom?*","3 days","How many times each week do you have satisfactory bowel movements/pass stool?*","4","How much time does it take to pass stool?","10","What is the consistency of the stool?","Soft","Has the shape of the stool changed?","No","Question 6/10","Question 1/12","Is there jaundice?*","References:","Select any one","Question 1/8"]

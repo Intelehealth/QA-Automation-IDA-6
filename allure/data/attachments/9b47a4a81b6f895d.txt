@@ -1,0 +1,5 @@
+where      : Joint pain = Yes should offer the single-joint and multiple-joints boxes
+url        : https://dev.intelehealth.org/hwwebapp#/ayu
+question   : Question 9/18
+buttons    : ["Add Patient","Patient Details","Start Visit","Vitals","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Involvement","Migratory","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Submit"]
+paragraphs : ["Which part of the body has the rash?*","All over","Since when have you had rash?*","3 hours","Rate of rash spread*","within days","How has the rash spread?*","Centrifugal","Since when have you had fever?*","3 hours","How does fever change?*","All day/ Constant","Severity of Fever*","Moderate","In a day, when do you feel fever the most?","Morning","Question 9/18","Question 1/8","Is there jaundice?*","References:","Select any one","Question 1/8"]

@@ -1,0 +1,2 @@
+setupToAbdominalPainAssessment - date of birth set by typing 01/01/2000.
+TC_PE_042 — After refresh, Jaundice answer still visible: false. URL before refresh: https://dev.intelehealth.org/hwwebapp#/ayu, after: https://dev.intelehealth.org/hwwebapp#/ayu
