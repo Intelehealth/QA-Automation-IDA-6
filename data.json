@@ -12,8 +12,8 @@
     "allureUrl": "https://Intelehealth.github.io/QA-Automation-IDA-6/allure/",
     "baseUrl": "https://dev.intelehealth.org",
     "environment": "DEV",
-    "runTime": "2026-11-11 11:08:43 IST",
-    "generatedAt": "2026-11-11T05:38:43.209Z"
+    "runTime": "2026-11-11 11:14:28 IST",
+    "generatedAt": "2026-11-11T05:44:28.044Z"
   },
   "totals": {
     "passed": 0,
