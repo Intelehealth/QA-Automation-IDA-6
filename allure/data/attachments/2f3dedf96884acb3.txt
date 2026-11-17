@@ -1,0 +1,5 @@
+where      : option "since when" not offered
+url        : https://dev.intelehealth.org/hwwebapp#/ayu
+question   : Question 4/11
+buttons    : ["Add Patient","Patient Details","Start Visit","Vitals","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Submit"]
+paragraphs : ["Since when have you had this symptom?*","3 hours","Is it related to any specific time of the day?","Not related to any specific time of day","Is there nausea or cough preceding the vomiting or does it occur without warning?*","Preceded by nausea","Question 4/11","Question 1/17","Is there jaundice?*","References:","Select any one","Question 1/8"]
