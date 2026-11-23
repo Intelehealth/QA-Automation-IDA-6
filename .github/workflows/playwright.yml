@@ -68,11 +68,11 @@ jobs:
   # ============================================================
   # 🧪 IDA-6 AUTOMATION - SHARDED
   #
-  # The suite is split into 16 parallel jobs. Each one runs about
-  # 1/16 of the tests, so no job gets near the 5-hour timeout.
+  # The suite is split into 20 parallel jobs. Each one runs about
+  # 1/20 of the tests, so no job gets near the 5-hour timeout.
   #
   # Manual run with a test file typed in -> only 1 job runs that file.
-  # Push / PR / manual "all"             -> 16 shards.
+  # Push / PR / manual "all"             -> 20 shards.
   # ============================================================
 
   test:
@@ -83,7 +83,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: ${{ fromJSON((inputs.test_file || 'all') != 'all' && '[1]' || '[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]') }}
+        shard: ${{ fromJSON((inputs.test_file || 'all') != 'all' && '[1]' || '[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]') }}
 
     env:
       SHARD_TOTAL: ${{ strategy.job-total }}
@@ -798,196 +798,36 @@ jobs:
 
 
       # ========================================================
-      # 🖥️ RENDER ONE-SCREEN SLACK DASHBOARD IMAGE
+      # 🖥️ RENDER SLACK REPORT IMAGE
       #
-      # Draws every chart plus the module table on a single
-      # dashboard-style screen with headless Chromium and saves it as
-      #   dashboard/slack/run-<run number>.png
-      # The deploy step publishes it with the dashboard, and the
-      # Slack step posts it as one image.
+      # .github/dashboard/build-slack-image.js reads dashboard/data.json
+      # and draws a one-screen graphical report card (pass-rate gauge,
+      # count tiles with sparklines, results per run, module hotspots,
+      # protocol x stage heat map, failed tests) with headless Chromium.
+      # Saved as dashboard/slack/run-<run number>.png. The deploy step
+      # publishes it with the dashboard, and the Slack step posts it.
+      # Plain HTML + SVG -- nothing is downloaded while rendering.
       # ========================================================
 
-      - name: Render Slack Dashboard Image
+      - name: Render Slack Report Image
         id: board
         if: ${{ !cancelled() }}
         env:
+          DATA_FILE: dashboard/data.json
           OUT_FILE: dashboard/slack/run-${{ github.run_number }}.png
-          PROJECT: IDA-6 Automation
-          ENVIRONMENT: DEV
-          RUN_NUMBER: ${{ github.run_number }}
-          BRANCH: ${{ github.ref_name }}
-          ACTOR: ${{ github.actor }}
         run: |
 
           echo "========================================"
-          echo "🖥️ RENDERING SLACK DASHBOARD IMAGE"
+          echo "🖥️ RENDERING SLACK REPORT IMAGE"
           echo "========================================"
 
-          if [ ! -f "slack-charts.json" ]; then
-            echo "ℹ️ No chart data, skipping."
+          if [ ! -f "$DATA_FILE" ] || [ ! -f ".github/dashboard/build-slack-image.js" ]; then
+            echo "ℹ️ No dashboard data or image script, skipping."
             echo "ready=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
-          export RUN_TIME="$(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M IST')"
-
-          node <<'NODE'
-
-          const fs = require('fs');
-          const path = require('path');
-
-          let chromium;
-          try { ({ chromium } = require('@playwright/test')); }
-          catch (e) { ({ chromium } = require('playwright')); }
-
-          const src = JSON.parse(fs.readFileSync('slack-charts.json', 'utf8'));
-          const cfg = src.configs || {};
-          const t = src.totals || {};
-          const OUT = process.env.OUT_FILE || 'dashboard/slack/board.png';
-
-          const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-          const num = v => Number(v) || 0;
-
-          // the card already shows the title, so drop the in-chart one
-          for (const k of Object.keys(cfg)) {
-            cfg[k].options = cfg[k].options || {};
-            cfg[k].options.title = { display: false };
-            cfg[k].options.maintainAspectRatio = false;
-            cfg[k].options.animation = false;
-            cfg[k].options.responsive = true;
-          }
-
-          // ---- module table rows (like "Test Coverage by Configuration") ----
-          const mods = [...(src.modules || [])]
-            .map(m => {
-              const tot = num(m.passed) + num(m.failed) + num(m.flaky) + num(m.skipped);
-              return { name: m.name, tot, passed: num(m.passed), failed: num(m.failed), rate: tot ? num(m.passed) * 100 / tot : 0 };
-            })
-            .sort((a, b) => b.tot - a.tot)
-            .slice(0, 8);
-
-          const rateColor = r => (r >= 90 ? '#3BA23F' : r >= 70 ? '#E09514' : '#C9302C');
-
-          const tableRows = mods.map(m => `
-            <tr>
-              <td class="mod"><span class="dot" style="background:${m.failed ? '#C9302C' : '#3BA23F'}"></span>${esc(m.name)}</td>
-              <td>${m.tot}</td>
-              <td>${m.passed}</td>
-              <td class="${m.failed ? 'bad' : ''}">${m.failed}</td>
-              <td><div class="rate"><div class="bar"><i style="width:${m.rate.toFixed(1)}%;background:${rateColor(m.rate)}"></i></div>${m.rate.toFixed(1).replace(/\.0$/, '')}%</div></td>
-            </tr>`).join('');
-
-          const failed = num(t.failed);
-          const meta = {
-            project: process.env.PROJECT || 'IDA-6 Automation',
-            run: process.env.RUN_NUMBER || '',
-            branch: process.env.BRANCH || '',
-            actor: process.env.ACTOR || '',
-            time: process.env.RUN_TIME || '',
-            env: process.env.ENVIRONMENT || 'DEV'
-          };
-
-          const card = (title, body, cls = '') =>
-            `<section class="card ${cls}"><h2>${title}</h2>${body}</section>`;
-
-          const canvas = (id, h) => cfg[id]
-            ? `<div class="chart" style="height:${h}px"><canvas id="${id}"></canvas></div>`
-            : `<div class="empty" style="height:${h}px">No data</div>`;
-
-          const failuresBody = cfg.failures
-            ? canvas('failures', 330)
-            : `<div class="empty ok" style="height:330px"><b>0</b><span>failures — all modules green</span></div>`;
-
-          const html = `<!doctype html><html><head><meta charset="utf-8"><style>
-            * { box-sizing: border-box; }
-            body { margin: 0; background: #F4F5F7; font-family: Inter, "Segoe UI", Helvetica, Arial, sans-serif; color: #1F2937; }
-            #board { width: 1800px; background: #F4F5F7; }
-            .top { background: #1E2356; color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 16px 28px; }
-            .top .brand { font-size: 22px; font-weight: 700; }
-            .top .brand small { font-weight: 400; opacity: .75; margin-left: 10px; font-size: 16px; }
-            .top .status { font-size: 15px; padding: 6px 14px; border-radius: 16px; font-weight: 600;
-                           background: ${failed ? '#C9302C' : '#3BA23F'}; }
-            .bar2 { display: flex; gap: 12px; padding: 16px 28px 4px; flex-wrap: wrap; }
-            .chip { background: #fff; border: 1px solid #DDE1E7; border-radius: 6px; padding: 8px 14px; font-size: 15px; color: #6B7280; }
-            .chip b { color: #1F2937; font-weight: 600; margin-left: 6px; }
-            .grid { display: grid; gap: 18px; padding: 16px 28px 28px; }
-            .row1 { grid-template-columns: 1fr 1.25fr 1fr; }
-            .row2 { grid-template-columns: 2fr 1fr; padding-top: 0; }
-            .card { background: #fff; border: 1px solid #DDE1E7; border-radius: 8px; padding: 18px 20px; }
-            .card h2 { margin: 0 0 10px; font-size: 18px; font-weight: 600; }
-            .chart { position: relative; width: 100%; }
-            .empty { display: flex; align-items: center; justify-content: center; color: #9CA3AF; font-size: 16px; flex-direction: column; }
-            .empty.ok b { font-size: 56px; color: #3BA23F; }
-            table { width: 100%; border-collapse: collapse; font-size: 15px; }
-            th { text-align: left; font-size: 12px; letter-spacing: .04em; color: #6B7280; font-weight: 600; padding: 8px 6px; border-bottom: 1px solid #E6E8EC; }
-            td { padding: 10px 6px; border-bottom: 1px solid #F0F1F4; white-space: nowrap; }
-            td.mod { max-width: 190px; overflow: hidden; text-overflow: ellipsis; }
-            td.bad { color: #C9302C; font-weight: 600; }
-            .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 8px; }
-            .rate { display: flex; align-items: center; gap: 8px; }
-            .rate .bar { width: 60px; height: 6px; background: #EEF0F3; border-radius: 3px; overflow: hidden; }
-            .rate .bar i { display: block; height: 100%; }
-          </style></head><body>
-          <div id="board">
-            <div class="top">
-              <div class="brand">${esc(meta.project)}<small>Test Execution Report</small></div>
-              <div class="status">${failed ? failed + ' Failed' : 'All Passed'}</div>
-            </div>
-            <div class="bar2">
-              <div class="chip">Run<b>#${esc(meta.run)}</b></div>
-              <div class="chip">Branch<b>${esc(meta.branch)}</b></div>
-              <div class="chip">Environment<b>${esc(meta.env)}</b></div>
-              <div class="chip">Browser<b>Chromium</b></div>
-              <div class="chip">Triggered by<b>${esc(meta.actor)}</b></div>
-              <div class="chip">Executed<b>${esc(meta.time)}</b></div>
-              <div class="chip">Pass rate<b>${esc(t.passRate || 0)}%</b></div>
-            </div>
-            <div class="grid row1">
-              ${card('Test Execution Results Distribution', canvas('distribution', 330))}
-              ${card('Test Execution Results Trend', canvas('trend', 330))}
-              ${card('Test Coverage by Module',
-                `<table><thead><tr><th>MODULE</th><th>EXECUTED</th><th>PASSED</th><th>FAILED</th><th>PASS RATE</th></tr></thead><tbody>${tableRows}</tbody></table>`)}
-            </div>
-            <div class="grid row2">
-              ${card('Test Results by Module', canvas('modules', 330))}
-              ${card('Failures Distribution by Module', failuresBody)}
-            </div>
-          </div>
-          </body></html>`;
-
-          (async () => {
-            const browser = await chromium.launch(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {});
-            const page = await browser.newPage({ viewport: { width: 1800, height: 1000 }, deviceScaleFactor: 1.5 });
-            await page.setContent(html);
-
-            // Chart.js 2.9.4 + doughnutlabel -- same versions QuickChart uses
-            const CHART_JS = process.env.CHART_JS_FILE
-              ? { path: process.env.CHART_JS_FILE }
-              : { url: 'https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js' };
-            const DOUGHNUT = process.env.DOUGHNUT_FILE
-              ? { path: process.env.DOUGHNUT_FILE }
-              : { url: 'https://cdn.jsdelivr.net/npm/chartjs-plugin-doughnutlabel@2.0.3/dist/chartjs-plugin-doughnutlabel.js' };
-            await page.addScriptTag(CHART_JS);
-            await page.addScriptTag(DOUGHNUT);
-
-            await page.evaluate(cfg => {
-              Chart.defaults.global.defaultFontFamily = 'Inter, "Segoe UI", Helvetica, Arial, sans-serif';
-              for (const [id, c] of Object.entries(cfg)) {
-                const el = document.getElementById(id);
-                if (!el) continue;
-                if (c.options.legend && c.options.legend.labels) c.options.legend.labels.fontSize = Math.min(c.options.legend.labels.fontSize || 13, 13);
-                new Chart(el, c);
-              }
-            }, cfg);
-
-            await page.waitForTimeout(500);
-            fs.mkdirSync(path.dirname(OUT), { recursive: true });
-            await (await page.$('#board')).screenshot({ path: OUT });
-            await browser.close();
-            console.log('🖼️ Dashboard image written:', OUT, fs.statSync(OUT).size, 'bytes');
-          })().catch(e => { console.log('⚠️ Could not render dashboard image:', e.message); process.exit(0); });
-
-          NODE
+          node .github/dashboard/build-slack-image.js
 
           if [ -f "$OUT_FILE" ]; then
             echo "ready=true" >> "$GITHUB_OUTPUT"
@@ -1014,7 +854,7 @@ jobs:
             echo "Node=$(node -v)"
             echo "Playwright=$(npx playwright --version)"
             echo "Base URL=https://dev.intelehealth.org"
-            echo "Shards=16"
+            echo "Shards=20"
           } > allure-results/environment.properties
 
 
@@ -1345,9 +1185,9 @@ jobs:
 
                 (if $board_image == "" then null else {
                   type: "image",
-                  title: { type: "plain_text", text: "IDA-6 Test Dashboard — Run #\($run_number)" },
+                  title: { type: "plain_text", text: "IDA-6 Test Report — Run #\($run_number)" },
                   image_url: $board_image,
-                  alt_text: "IDA-6 dashboard: results distribution, trend, module coverage table, results by module and failures by module"
+                  alt_text: "IDA-6 test report: pass-rate gauge, test counts with trends, results per run, module hotspots, protocol validation heat map and failed tests"
                 } end),
 
                 (if $board_image != "" or $chart_distribution == "" then null else {

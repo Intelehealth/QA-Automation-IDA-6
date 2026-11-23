@@ -1,4 +1,3 @@
-
 # Playwright
 node_modules/
 /test-results/
@@ -6,3 +5,14 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Allure (created by test runs)
+/allure-results/
+/allure-report/
+
+# Dashboard output (CI builds a fresh copy every run)
+/dashboard/
+/public/
+/results.json
+/dashboard-history.json
+/slack-charts.json
