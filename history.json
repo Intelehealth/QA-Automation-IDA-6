@@ -1,15 +1,5 @@
 [
   {
-    "run": 58,
-    "date": "2026-10-12",
-    "passed": 721,
-    "failed": 38,
-    "flaky": 5,
-    "skipped": 0,
-    "total": 764,
-    "duration": 63689121
-  },
-  {
     "run": 59,
     "date": "2026-10-13",
     "passed": 767,
@@ -198,5 +188,43 @@
     "skipped": 0,
     "total": 1704,
     "duration": 155029698
+  },
+  {
+    "run": 79,
+    "date": "2026-11-23",
+    "passed": 1607,
+    "failed": 94,
+    "flaky": 3,
+    "skipped": 0,
+    "total": 1704,
+    "duration": 156869119,
+    "protocols": {
+      "Lymph Node Enlargement": 79.7,
+      "Constipation": 80.8,
+      "Vomiting": 84.1,
+      "Abnormal Bleeding": 89.4,
+      "Abdominal Pain": 86.7,
+      "Shoulder, Arm or Hand Pain": 93,
+      "Fever & Rash": 93.2,
+      "Palpitations": 94.1,
+      "Cough": 94.9,
+      "Jaundice": 95.2,
+      "Abdominal Distention": 95.7,
+      "Fever": 97.2,
+      "Burns": 97.6,
+      "Back & Neck Pain": 98.3,
+      "Leg, Knee or Hip Pain": 98.5,
+      "Animal Bites & Insect Stings": 100,
+      "Cold, Sneezing": 100,
+      "Diarrhea": 100,
+      "Dyspepsia": 100,
+      "Ear Pain": 100,
+      "Fatigue & General Weakness": 100,
+      "Genital Disease (Female)": 100,
+      "Headache": 100,
+      "Hypertension Screening": 100,
+      "Oral Pain": 100,
+      "Red or Painful Eye": 100
+    }
   }
 ]
