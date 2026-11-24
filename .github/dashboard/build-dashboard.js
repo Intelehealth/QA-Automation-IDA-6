@@ -493,6 +493,22 @@ section[id]{scroll-margin-top:14px}
 .st.bad{background:var(--fail-bg);color:#B32626}
 .st.flaky{background:var(--flaky-bg);color:#96650A}
 .st.na{background:transparent;color:#B8C0CD;font-weight:400}
+
+/* stage boxes: same style as the Slack protocol heat map */
+.cell{
+  height:44px;min-width:96px;border-radius:9px;border:1px solid transparent;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.15;
+}
+.cell b{font-size:14px;font-weight:750}
+.cell small{font-size:11px;opacity:.85;font-variant-numeric:tabular-nums}
+.cell.ok{background:var(--pass-bg);border-color:#BFE3CB;color:#1E7442}
+.cell.bad{border-color:#E48A8A;color:#8E1F1F}
+.cell.bad.deep{color:#FFFFFF;border-color:#C83333}
+.cell.fl{background:var(--flaky-bg);border-color:#EFCB86;color:#96650A}
+.cell.na{background:#F6F8FA;border-color:var(--line-soft);color:#B8C0CD}
+.cell.mini{display:inline-flex;height:22px;min-width:34px;border-radius:6px;vertical-align:middle;margin-right:4px}
+.cell.mini b{font-size:11.5px}
+td.cellcol{padding:6px 5px !important}
 th.c,td.c{text-align:center}
 tr.prow{cursor:pointer}
 tr.prow:hover td{background:#F8FAFD}
@@ -645,7 +661,7 @@ footer.foot{
     <div class="stage-key">
       <span><b>Stages</b> — where in the clinical flow each protocol's tests run:</span>
       <span>Assessment questions</span><span>Physical exam</span><span>Medical history</span><span>Visit summary</span><span>End-to-end visit</span>
-      <span style="margin-left:auto"><span class="st ok">&#10003;</span> all passed &nbsp; <span class="st bad">2</span> failed tests &nbsp; <span class="st flaky">1</span> flaky &nbsp; <span class="st na">–</span> no tests</span>
+      <span style="margin-left:auto"><span class="cell mini ok"><b>&#10003;</b></span> all passed &nbsp; <span class="cell mini bad" style="background:rgba(217,58,58,.35)"><b>2 &#10005;</b></span> failed (deeper red = bigger share failing) &nbsp; <span class="cell mini fl"><b>1 ~</b></span> flaky &nbsp; <span class="cell mini na"><b>–</b></span> no tests</span>
     </div>
   </section>
 
@@ -886,13 +902,20 @@ footer.foot{
     '</svg>';
   }
 
+  // One box per stage: count of failed (or flaky) tests on top, passed / executed below.
+  // Failed boxes get deeper red as a bigger share of that stage fails.
   function stageCell(s, label){
-    if (!s || !s.total) return '<span class="st na" title="No ' + esc(label) + ' tests">–</span>';
-    var passed = s.passed + s.flaky;
-    var tip = esc(label + ': ' + passed + ' of ' + (s.total - s.skipped) + ' passed');
-    if (s.failed) return '<span class="st bad" title="' + tip + '">' + s.failed + '</span>';
-    if (s.flaky) return '<span class="st flaky" title="' + tip + ' (' + s.flaky + ' flaky)">' + s.flaky + '</span>';
-    return '<span class="st ok" title="' + tip + '">&#10003;</span>';
+    if (!s || !s.total) return '<div class="cell na" title="No ' + esc(label) + ' tests">–</div>';
+    var ok = s.passed + s.flaky, ex = s.total - s.skipped;
+    var tip = esc(label + ': ' + ok + ' of ' + ex + ' passed');
+    if (s.failed) {
+      var sev = Math.min(1, s.failed / Math.max(1, ex));
+      var alpha = (0.12 + sev * 0.68).toFixed(2);
+      return '<div class="cell bad' + (sev >= 0.45 ? ' deep' : '') + '" style="background:rgba(217,58,58,' + alpha + ')" title="' + tip + '">' +
+        '<b>' + s.failed + ' &#10005;</b><small>' + ok + '/' + ex + '</small></div>';
+    }
+    if (s.flaky) return '<div class="cell fl" title="' + tip + ' (' + s.flaky + ' flaky)"><b>' + s.flaky + ' ~</b><small>' + ok + '/' + ex + '</small></div>';
+    return '<div class="cell ok" title="' + tip + '"><b>&#10003;</b><small>' + ok + '/' + ex + '</small></div>';
   }
 
   function renderProtocolKpis(){
@@ -985,7 +1008,7 @@ footer.foot{
             '<i class="f" style="width:' + w(p.failed) + '%"></i>' +
           '</div></td>' +
           STAGES.map(function (s) {
-            return '<td class="c" style="vertical-align:middle">' + stageCell(p.stages && p.stages[s.key], s.full) + '</td>';
+            return '<td class="c cellcol" style="vertical-align:middle">' + stageCell(p.stages && p.stages[s.key], s.full) + '</td>';
           }).join('') +
           '<td class="num" style="vertical-align:middle">' + (p.passed + p.flaky) + ' / ' + (p.total - p.skipped) + '</td>' +
           '<td class="num" style="vertical-align:middle;font-weight:650;color:' + rateColor + '">' + p.passRate + '%</td>' +
