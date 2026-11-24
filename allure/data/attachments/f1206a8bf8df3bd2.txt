@@ -1,0 +1,33 @@
+Smoke test, level "assessment" (Verify_Full_Assessment_Completes)
+Started 2026-11-24 08:39, running for 45m31s
+
+PROTOCOL                  RESULT    TESTS  PASSED  FAILED  TIME    NOTE
+Abdominal Distention      PASS      1      1       0       0m49s   
+Abdominal Pain            PASS      1      1       0       1m12s   
+Abnormal Bleeding         PASS      1      1       0       2m16s   
+Animal Bites              PASS      1      1       0       1m49s   
+Back And Neck Pain        PASS      1      1       0       1m43s   
+Burns                     PASS      1      1       0       1m37s   
+Cold And Sneezing         PASS      1      1       0       1m32s   
+Constipation              PASS      1      1       0       1m37s   
+Cough                     PASS      1      1       0       1m40s   
+Diarrhea                  PASS      1      1       0       1m28s   
+Dyspepsia                 PASS      1      1       0       1m37s   
+Ear Pain                  PASS      1      1       0       1m22s   
+Fatigue General Weakness  PASS      1      1       0       1m47s   
+Fever                     PASS      1      1       0       2m11s   
+Fever And Rash            PASS      1      1       0       2m24s   
+Foot Ankle Pain           PASS      1      1       0       1m47s   
+Genital Disease           PASS      1      1       0       1m38s   
+Headache                  PASS      1      1       0       1m47s   
+Hypertension Screening    PASS      1      1       0       1m25s   
+Jaundice                  PASS      1      1       0       1m22s   
+Leg Knee Hip Pain         PASS      1      1       0       1m42s   
+Lymph Node Enlargement    PASS      1      1       0       1m35s   
+Oral Pain                 PASS      1      1       0       1m35s   
+Palpitations              PASS      1      1       0       1m44s   
+Red Or Painful Eye        PASS      1      1       0       1m32s   
+Shoulder Arm Hand Pain    PASS      1      1       0       1m44s   
+Vomiting                  PASS      1      1       0       1m41s   
+
+27 of 27 protocols fully passed. Tests: 27 run, 27 passed, 0 failed.
