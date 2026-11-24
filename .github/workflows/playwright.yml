@@ -68,11 +68,11 @@ jobs:
   # ============================================================
   # 🧪 IDA-6 AUTOMATION - SHARDED
   #
-  # The suite is split into 20 parallel jobs. Each one runs about
-  # 1/20 of the tests, so no job gets near the 5-hour timeout.
+  # The suite is split into 25 parallel jobs. Each one runs about
+  # 1/25 of the tests, so no job gets near the 5-hour timeout.
   #
   # Manual run with a test file typed in -> only 1 job runs that file.
-  # Push / PR / manual "all"             -> 20 shards.
+  # Push / PR / manual "all"             -> 25 shards.
   # ============================================================
 
   test:
@@ -83,7 +83,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: ${{ fromJSON((inputs.test_file || 'all') != 'all' && '[1]' || '[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]') }}
+        shard: ${{ fromJSON((inputs.test_file || 'all') != 'all' && '[1]' || '[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]') }}
 
     env:
       SHARD_TOTAL: ${{ strategy.job-total }}
@@ -801,11 +801,13 @@ jobs:
       # 🖥️ RENDER SLACK REPORT IMAGE
       #
       # .github/dashboard/build-slack-image.js reads dashboard/data.json
-      # and draws a one-screen graphical report card (pass-rate gauge,
-      # count tiles with sparklines, results per run, module hotspots,
-      # protocol x stage heat map, failed tests) with headless Chromium.
-      # Saved as dashboard/slack/run-<run number>.png. The deploy step
-      # publishes it with the dashboard, and the Slack step posts it.
+      # and draws two WIDE images with headless Chromium (wide images show
+      # large in Slack; one tall image gets shrunk to a narrow strip):
+      #   dashboard/slack/run-<n>.png            summary: gauge, count tiles,
+      #                                          results per run, module
+      #                                          hotspots, failed tests
+      #   dashboard/slack/run-<n>-protocols.png  protocol x stage heat map
+      # The deploy step publishes both, and the Slack step posts both.
       # Plain HTML + SVG -- nothing is downloaded while rendering.
       # ========================================================
 
@@ -815,15 +817,17 @@ jobs:
         env:
           DATA_FILE: dashboard/data.json
           OUT_FILE: dashboard/slack/run-${{ github.run_number }}.png
+          PROTO_OUT_FILE: dashboard/slack/run-${{ github.run_number }}-protocols.png
         run: |
 
           echo "========================================"
-          echo "🖥️ RENDERING SLACK REPORT IMAGE"
+          echo "🖥️ RENDERING SLACK REPORT IMAGES"
           echo "========================================"
 
           if [ ! -f "$DATA_FILE" ] || [ ! -f ".github/dashboard/build-slack-image.js" ]; then
             echo "ℹ️ No dashboard data or image script, skipping."
             echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "proto_ready=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
@@ -833,6 +837,12 @@ jobs:
             echo "ready=true" >> "$GITHUB_OUTPUT"
           else
             echo "ready=false" >> "$GITHUB_OUTPUT"
+          fi
+
+          if [ -f "$PROTO_OUT_FILE" ]; then
+            echo "proto_ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "proto_ready=false" >> "$GITHUB_OUTPUT"
           fi
 
 
@@ -854,7 +864,7 @@ jobs:
             echo "Node=$(node -v)"
             echo "Playwright=$(npx playwright --version)"
             echo "Base URL=https://dev.intelehealth.org"
-            echo "Shards=20"
+            echo "Shards=25"
           } > allure-results/environment.properties
 
 
@@ -1055,6 +1065,9 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           BOARD_RAW_URL: https://raw.githubusercontent.com/${{ github.repository }}/gh-pages/slack/run-${{ github.run_number }}.png
           BOARD_PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/slack/run-${{ github.run_number }}.png
+          PROTO_READY: ${{ steps.board.outputs.proto_ready }}
+          PROTO_RAW_URL: https://raw.githubusercontent.com/${{ github.repository }}/gh-pages/slack/run-${{ github.run_number }}-protocols.png
+          PROTO_PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/slack/run-${{ github.run_number }}-protocols.png
           RUN_NUMBER: ${{ github.run_number }}
           COMMIT_MESSAGE: ${{ steps.commit.outputs.message }}
           COMMIT_URL: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
@@ -1097,9 +1110,32 @@ jobs:
           fi
 
 
+          # The protocol image is published in the same deploy, so it is
+          # normally reachable as soon as the summary image is.
+          PROTO_IMAGE=""
+
+          if [ -n "$BOARD_IMAGE" ] && [ "$PROTO_READY" = "true" ]; then
+            for i in $(seq 1 12); do
+              for U in "$PROTO_RAW_URL" "$PROTO_PAGES_URL"; do
+                CODE=$(curl -s -o /dev/null -w "%{http_code}" "$U" || true)
+                if [ "$CODE" = "200" ]; then
+                  PROTO_IMAGE="$U"
+                  break 2
+                fi
+              done
+              sleep 5
+            done
+          fi
+
+          if [ -n "$PROTO_IMAGE" ]; then
+            echo "✅ Protocol image: $PROTO_IMAGE"
+          fi
+
+
           PAYLOAD=$(jq -n \
             --arg header "$HEADER" \
             --arg board_image "$BOARD_IMAGE" \
+            --arg proto_image "$PROTO_IMAGE" \
             --arg project "$PROJECT" \
             --arg repository "$REPOSITORY" \
             --arg branch "$BRANCH" \
@@ -1187,7 +1223,14 @@ jobs:
                   type: "image",
                   title: { type: "plain_text", text: "IDA-6 Test Report — Run #\($run_number)" },
                   image_url: $board_image,
-                  alt_text: "IDA-6 test report: pass-rate gauge, test counts with trends, results per run, module hotspots, protocol validation heat map and failed tests"
+                  alt_text: "IDA-6 test report: pass-rate gauge, test counts with trends, results per run, module hotspots and failed tests"
+                } end),
+
+                (if $proto_image == "" then null else {
+                  type: "image",
+                  title: { type: "plain_text", text: "Protocol Validation — Run #\($run_number)" },
+                  image_url: $proto_image,
+                  alt_text: "Protocol validation heat map: every protocol by clinical stage with pass rate and trend"
                 } end),
 
                 (if $board_image != "" or $chart_distribution == "" then null else {

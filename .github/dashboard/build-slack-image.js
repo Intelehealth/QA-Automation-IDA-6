@@ -2,15 +2,16 @@
 /**
  * IDA-6 Automation — Slack report image
  *
- * Reads dashboard/data.json (written by build-dashboard.js) and renders a
- * graphical one-screen report card as a PNG for the Slack message:
+ * Reads dashboard/data.json (written by build-dashboard.js) and renders two
+ * wide (landscape) PNGs for the Slack message. Wide images show large in
+ * Slack; one tall image gets shrunk to a narrow strip.
  *
- *   header      run, branch, status, who / when
- *   overview    pass-rate gauge + 5 count tiles with sparklines and change vs last run
- *   trend       stacked results per run with a pass-rate line
- *   hotspots    modules ranked by failures
- *   protocols   protocol x clinical-stage heat map with pass rate and trend
- *   failures    the failed tests, grouped by protocol / module
+ *   1. Summary   OUT_FILE
+ *        header, pass-rate gauge, count tiles with sparklines and change vs
+ *        last run, results per run, module hotspots, failed tests
+ *   2. Protocols PROTO_OUT_FILE  (only when the run has protocol tests)
+ *        protocol x clinical-stage heat map, laid out in two columns once
+ *        there are more than 10 protocols, with pass rate and trend
  *
  * Everything is drawn with plain HTML + SVG, so nothing is downloaded at
  * render time (no chart library, no CDN).
@@ -21,6 +22,7 @@
  * Env vars (all optional):
  *   DATA_FILE      default dashboard/data.json
  *   OUT_FILE       default dashboard/slack/board.png
+ *   PROTO_OUT_FILE default: OUT_FILE with "-protocols" before .png
  *   HTML_OUT       also save the rendered HTML here (handy for tweaking the design)
  *   CHROMIUM_PATH  use this Chromium instead of Playwright's own
  */
@@ -30,6 +32,7 @@ const path = require('path');
 
 const DATA_FILE = process.env.DATA_FILE || 'dashboard/data.json';
 const OUT_FILE = process.env.OUT_FILE || 'dashboard/slack/board.png';
+const PROTO_OUT_FILE = process.env.PROTO_OUT_FILE || OUT_FILE.replace(/\.png$/i, '') + '-protocols.png';
 const HTML_OUT = process.env.HTML_OUT || '';
 
 /* ------------------------------------------------------------------ *
@@ -139,7 +142,7 @@ function gauge(rate, sub) {
 /** Small line + soft area under it */
 function sparkline(values, color, w = 150, h = 38, id = 's') {
   if (!values || values.length < 2) {
-    return `<div class="spark-empty">trend starts next run</div>`;
+    return `<div class="spark-empty">—</div>`;
   }
   let lo = Math.min(...values), hi = Math.max(...values);
   if (hi === lo) { hi += 1; lo -= 1; }
@@ -215,10 +218,13 @@ function trendChart(runs, w = 900, h = 300) {
  * Build the page
  * ------------------------------------------------------------------ */
 
-function buildHtml(data) {
+function buildHtml(data, mode) {
+  mode = mode || 'summary';
   const meta = data.meta || {};
   const t = data.totals || {};
-  const trend = (data.trend || []).slice(-10);
+  // Runs with no results (e.g. a run where every shard failed to start) would
+  // show as a fake drop to 0, so leave them out of the history.
+  const trend = (data.trend || []).filter((p) => num(p.total) > 0).slice(-10);
   const modules = data.modules || [];
   const protocols = data.protocols || [];
   const tests = data.tests || [];
@@ -253,7 +259,7 @@ function buildHtml(data) {
 
   /* count tiles */
   const tiles = [
-    { label: 'Total tests', v: total, sub: executed + ' executed', col: C.accent, d: delta(total, prev && num(prev.total), null), s: series('total') },
+    { label: 'Total tests', v: total, sub: pct(executed, total) + '% ran', col: C.accent, d: delta(total, prev && num(prev.total), null), s: series('total') },
     { label: 'Passed', v: passed, sub: pct(passed, total) + '%', col: C.pass, d: delta(passed, prev && num(prev.passed), false), s: series('passed') },
     { label: 'Failed', v: failed, sub: pct(failed, total) + '%', col: C.fail, d: delta(failed, prev && num(prev.failed), true), s: series('failed') },
     { label: 'Flaky', v: flaky, sub: pct(flaky, total) + '%', col: C.flaky, d: delta(flaky, prev && num(prev.flaky), true), s: series('flaky') },
@@ -303,7 +309,10 @@ function buildHtml(data) {
     return `<div class="pk">${items.map(([l, v, c]) => `<div><span>${l}</span><b style="color:${c}">${v}</b></div>`).join('')}</div>`;
   })();
 
-  const protoRows = protocols.map((p, i) => {
+  const twoCols = protocols.length > 10;
+  const nameMax = twoCols ? 26 : 30;
+  const sparkW = twoCols ? 84 : 120;
+  const protoRowList = protocols.map((p, i) => {
     const cells = STAGES.map((s) => {
       const st = (p.stages || {})[s.key] || { total: 0 };
       if (!st.total) return `<div class="cell na">—</div>`;
@@ -318,28 +327,36 @@ function buildHtml(data) {
     const pts = trend.filter((x) => x.protocols && x.protocols[p.name] != null).map((x) => num(x.protocols[p.name]));
     const col = rateColor(num(p.passRate));
     return `<div class="prow">
-      <div class="pn"><b>${esc(clip(p.name, 30))}</b><small>${num(p.total)} tests${num(p.failed) ? ` · <span style="color:${C.fail}">${num(p.failed)} failed</span>` : ''}${num(p.flaky) ? ` · ${num(p.flaky)} flaky` : ''}</small></div>
+      <div class="pn"><b>${esc(clip(p.name, nameMax))}</b><small>${num(p.total)} tests${num(p.failed) ? ` · <span style="color:${C.fail}">${num(p.failed)} failed</span>` : ''}${num(p.flaky) ? ` · ${num(p.flaky)} flaky` : ''}</small></div>
       ${cells}
       <div class="pr"><div class="prb"><i style="width:${num(p.passRate)}%;background:${col};box-shadow:0 0 10px ${col}88"></i></div><b style="color:${col}">${num(p.passRate)}%</b></div>
-      <div class="psp">${sparkline(pts, col, 120, 30, 'p' + i)}</div>
+      <div class="psp">${sparkline(pts, col, sparkW, 30, 'p' + i)}</div>
     </div>`;
-  }).join('');
+  });
+  const STAGE_SHORT = { qs: 'Questions', pe: 'Phys. exam', mh: 'Med. history', vs: 'Visit summary', e2e: 'End-to-end' };
+  const phead = `<div class="phead"><div>Protocol</div>${STAGES.map((s) => `<div>${twoCols ? STAGE_SHORT[s.key] : s.label}</div>`).join('')}<div>Pass rate</div><div>Trend</div></div>`;
+  const half = Math.ceil(protoRowList.length / 2);
+  const protoTable = twoCols
+    ? `<div class="pcols"><div>${phead}${protoRowList.slice(0, half).join('')}</div><div>${phead}${protoRowList.slice(half).join('')}</div></div>`
+    : phead + protoRowList.join('');
 
   /* failed tests list */
   const failedTests = tests.filter((x) => x.status === 'unexpected')
     .sort((a, b) => (a.protocol ? 0 : 1) - (b.protocol ? 0 : 1) || String(a.protocol || a.module).localeCompare(String(b.protocol || b.module)) || String(a.title).localeCompare(String(b.title)));
-  const FAIL_MAX = 10;
+  const FAIL_MAX = 12;
   const stageName = Object.fromEntries(STAGES.map((s) => [s.key, s.label]));
-  const failRows = failedTests.slice(0, FAIL_MAX).map((x) => {
+  const failRowsList = failedTests.slice(0, FAIL_MAX).map((x) => {
     const n = splitTitle(x.title);
     return `<div class="frow">
       <span class="fd"></span>
       <span class="fid">${esc(n.id)}</span>
-      <span class="ft">${esc(clip(n.text, 62))}</span>
-      <span class="ftag">${esc(clip(x.protocol || x.module, 26))}</span>
+      <span class="ft">${esc(clip(n.text, 44))}</span>
+      <span class="ftag">${esc(clip(x.protocol || x.module, 22))}</span>
       ${x.stage ? `<span class="ftag dim">${esc(stageName[x.stage] || '')}</span>` : '<span></span>'}
     </div>`;
-  }).join('') + (failedTests.length > FAIL_MAX ? `<div class="fmore">+ ${failedTests.length - FAIL_MAX} more failed tests on the dashboard</div>` : '');
+  });
+  const failRows = `<div class="flist">${failRowsList.join('')}</div>` +
+    (failedTests.length > FAIL_MAX ? `<div class="fmore">+ ${failedTests.length - FAIL_MAX} more failed tests on the dashboard</div>` : '');
 
   const flakyCount = tests.filter((x) => x.status === 'flaky').length;
 
@@ -352,10 +369,53 @@ function buildHtml(data) {
 
   const runsForTrend = trend.length ? trend : [{ run: meta.runNumber, date: '', passed, failed, flaky, skipped, total }];
 
+  const summaryBody = `
+    <div class="ov">
+      <div class="card gaugec">
+        ${gauge(rate, `${passed + flaky} of ${executed} executed passed`)}
+        <div class="gd">${delta(rate, prevRate, false)}</div>
+      </div>
+      <div class="card">
+        <div class="verdict"><b style="background:${failed ? C.fail : C.pass}">${failed ? '!' : '✓'}</b>${esc(verdict)}</div>
+        ${splitBar}
+        <div class="tiles">${tiles}</div>
+      </div>
+    </div>
+
+    <div class="row2">
+      <div class="card">
+        <div class="ct">Results per run<em>last ${runsForTrend.length} run${runsForTrend.length === 1 ? '' : 's'}</em></div>
+        ${trendChart(runsForTrend, 870, 290)}
+        <div class="legend"><span><b style="background:${C.pass}"></b>Passed</span><span><b style="background:${C.flaky}"></b>Flaky</span><span><b style="background:${C.fail}"></b>Failed</span><span><b style="background:${C.skip}"></b>Skipped</span><span><b class="ln" style="background:${C.cyan}"></b>Pass rate (right axis)</span></div>
+      </div>
+      <div class="card">
+        <div class="ct">Module hotspots<em>${modules.length} modules · ranked by failures</em></div>
+        ${hotRows || '<div class="empty">No modules in this run.</div>'}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ct">Failed tests<em>${failedTests.length} failed${flakyCount ? ` · ${flakyCount} flaky` : ''}</em></div>
+      ${failedTests.length ? failRows : `<div class="allgood"><b>✓</b>No failed tests in this run${flakyCount ? ` — ${flakyCount} passed on retry` : ''}.</div>`}
+    </div>
+
+`;
+
+  const protoBody = `
+    ${protocols.length ? `
+    <div class="card">
+      <div class="ct">Protocol validation<em>${failingProtocols.length ? `${failingProtocols.length} of ${protocols.length} protocols need attention` : `all ${protocols.length} protocols passing`}</em></div>
+      ${protoKpis}
+      ${protoTable}
+      <div class="pfoot"><span>Each cell = tests in that clinical stage</span><span>Trend — = history builds from the next run</span><span><span style="color:${C.pass}">✓</span> all passed</span><span><span style="color:${C.fail}">✕</span> failed (deeper red = bigger share failing)</span><span><span style="color:${C.flaky}">~</span> flaky</span><span>— no tests</span></div>
+    </div>` : ''}
+
+`;
+
   return `<!doctype html><html><head><meta charset="utf-8"><style>
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:${C.bg};font-family:Inter,"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;color:${C.ink};-webkit-font-smoothing:antialiased}
-  #board{width:1600px;padding:28px 30px 26px;position:relative;overflow:hidden;
+  #board{width:${mode === 'protocols' && twoCols ? 1900 : 1600}px;padding:28px 30px 26px;position:relative;overflow:hidden;
     background:
       radial-gradient(900px 420px at 8% -8%, rgba(91,140,255,.22), transparent 60%),
       radial-gradient(700px 380px at 105% 10%, rgba(56,189,248,.14), transparent 60%),
@@ -405,7 +465,7 @@ function buildHtml(data) {
   .td{font-size:12.5px;margin-top:2px;min-height:18px}
   .dl{color:${C.muted}} .dl.bd{color:${C.fail};font-weight:700} .dl.gd{color:${C.pass};font-weight:700} .dl.nt{color:${C.ink2};font-weight:700}
   .tsp{margin-top:4px;height:42px}
-  .spark-empty{font-size:12px;color:${C.muted};padding-top:12px}
+  .spark-empty{font-size:14px;color:${C.muted};padding-top:8px;text-align:center}
 
   /* trend + hotspots */
   .row2{display:grid;grid-template-columns:1.45fr 1fr;gap:18px;margin-bottom:18px}
@@ -426,10 +486,15 @@ function buildHtml(data) {
   .pk span{font-size:12px;color:${C.ink2};letter-spacing:.06em;text-transform:uppercase}
   .pk b{font-size:26px;font-weight:800}
   .phead,.prow{display:grid;grid-template-columns:270px repeat(5,1fr) 190px 130px;gap:8px;align-items:center}
+  .pcols{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+  .pcols .phead,.pcols .prow{grid-template-columns:205px repeat(5,1fr) 128px 90px;gap:6px}
+  .pcols .phead{font-size:11px;letter-spacing:.06em}
+  .pcols .pr b{min-width:50px;font-size:14px}
   .phead{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:${C.muted};font-weight:700;padding:0 0 8px}
   .phead div{text-align:center} .phead div:first-child{text-align:left}
   .prow{padding:6px 0;border-top:1px solid ${C.line}}
-  .pn b{display:block;font-size:15px;font-weight:700}
+  .pn{min-width:0}
+  .pn b{display:block;font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .pn small{font-size:12.5px;color:${C.muted}}
   .cell{height:44px;border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid transparent}
   .cell b{font-size:15px;font-weight:800;line-height:1.1} .cell small{font-size:11px;opacity:.8}
@@ -445,8 +510,8 @@ function buildHtml(data) {
   .pfoot{display:flex;gap:18px;font-size:12px;color:${C.muted};margin-top:12px}
 
   /* failures */
-  .frow{display:grid;grid-template-columns:12px 110px 1fr auto auto;gap:12px;align-items:center;padding:8px 0;border-bottom:1px dashed ${C.line};font-size:14px}
-  .frow:last-of-type{border-bottom:0}
+  .flist{display:grid;grid-template-columns:1fr 1fr;column-gap:34px}
+  .frow{display:grid;grid-template-columns:12px 96px 1fr auto auto;gap:12px;align-items:center;padding:8px 0;border-bottom:1px dashed ${C.line};font-size:14px}
   .fd{width:9px;height:9px;border-radius:50%;background:${C.fail};box-shadow:0 0 10px ${C.fail}}
   .fid{font-family:ui-monospace,Menlo,Consolas,monospace;color:${C.cyan};font-size:13px}
   .ft{color:${C.ink};white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -465,48 +530,12 @@ function buildHtml(data) {
     <div class="hdr">
       <div class="logo">QA</div>
       <div class="ttl"><small>${esc(String(meta.project || 'IDA-6 Automation').toUpperCase())} · TEST REPORT</small>
-        <h1>Run #${esc(meta.runNumber)} <span>· ${esc(meta.branch || '')}</span></h1></div>
+        <h1>Run #${esc(meta.runNumber)} <span>· ${mode === 'protocols' ? 'Protocol validation' : esc(meta.branch || '')}</span></h1></div>
       <div class="stat ${status.cls}">${status.text}</div>
     </div>
     <div class="chips">${chips}</div>
 
-    <div class="ov">
-      <div class="card gaugec">
-        ${gauge(rate, `${passed + flaky} of ${executed} executed passed`)}
-        <div class="gd">${delta(rate, prevRate, false)}</div>
-      </div>
-      <div class="card">
-        <div class="verdict"><b style="background:${failed ? C.fail : C.pass}">${failed ? '!' : '✓'}</b>${esc(verdict)}</div>
-        ${splitBar}
-        <div class="tiles">${tiles}</div>
-      </div>
-    </div>
-
-    <div class="row2">
-      <div class="card">
-        <div class="ct">Results per run<em>last ${runsForTrend.length} run${runsForTrend.length === 1 ? '' : 's'}</em></div>
-        ${trendChart(runsForTrend, 870, 290)}
-        <div class="legend"><span><b style="background:${C.pass}"></b>Passed</span><span><b style="background:${C.flaky}"></b>Flaky</span><span><b style="background:${C.fail}"></b>Failed</span><span><b style="background:${C.skip}"></b>Skipped</span><span><b class="ln" style="background:${C.cyan}"></b>Pass rate (right axis)</span></div>
-      </div>
-      <div class="card">
-        <div class="ct">Module hotspots<em>${modules.length} modules · ranked by failures</em></div>
-        ${hotRows || '<div class="empty">No modules in this run.</div>'}
-      </div>
-    </div>
-
-    ${protocols.length ? `
-    <div class="card" style="margin-bottom:18px">
-      <div class="ct">Protocol validation<em>${failingProtocols.length ? `${failingProtocols.length} of ${protocols.length} protocols need attention` : `all ${protocols.length} protocols passing`}</em></div>
-      ${protoKpis}
-      <div class="phead"><div>Protocol</div>${STAGES.map((s) => `<div>${s.label}</div>`).join('')}<div>Pass rate</div><div>Trend</div></div>
-      ${protoRows}
-      <div class="pfoot"><span>Each cell = tests in that clinical stage</span><span><span style="color:${C.pass}">✓</span> all passed</span><span><span style="color:${C.fail}">✕</span> failed (deeper red = bigger share failing)</span><span><span style="color:${C.flaky}">~</span> flaky</span><span>— no tests</span></div>
-    </div>` : ''}
-
-    <div class="card">
-      <div class="ct">Failed tests<em>${failedTests.length} failed${flakyCount ? ` · ${flakyCount} flaky` : ''}</em></div>
-      ${failedTests.length ? failRows : `<div class="allgood"><b>✓</b>No failed tests in this run${flakyCount ? ` — ${flakyCount} passed on retry` : ''}.</div>`}
-    </div>
+    ${mode === 'protocols' ? protoBody : summaryBody}
 
     <div class="foot">
       ${meta.commitSha ? `<span>Commit <b>${esc(meta.commitSha)}</b>${meta.commitMessage ? ' — ' + esc(clip(meta.commitMessage, 90)) : ''}</span>` : ''}
@@ -521,14 +550,29 @@ function buildHtml(data) {
  * Main
  * ------------------------------------------------------------------ */
 
+async function render(page, html, out, width) {
+  await page.setViewportSize({ width, height: 1200 });
+  await page.setContent(html, { waitUntil: 'load' });
+  await page.waitForTimeout(300);
+  fs.mkdirSync(path.dirname(out), { recursive: true });
+  await (await page.$('#board')).screenshot({ path: out });
+  const box = await (await page.$('#board')).boundingBox();
+  console.log('🖼️ Slack image written:', out, fs.statSync(out).size, 'bytes', Math.round(box.width) + 'x' + Math.round(box.height));
+}
+
 async function main() {
   if (!fs.existsSync(DATA_FILE)) {
     console.log(`ℹ️ ${DATA_FILE} not found — no Slack image.`);
     return;
   }
   const data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
-  const html = buildHtml(data);
-  if (HTML_OUT) fs.writeFileSync(HTML_OUT, html);
+  const summaryHtml = buildHtml(data, 'summary');
+  const hasProtocols = (data.protocols || []).length > 0;
+  const protoHtml = hasProtocols ? buildHtml(data, 'protocols') : '';
+  if (HTML_OUT) {
+    fs.writeFileSync(HTML_OUT, summaryHtml);
+    if (hasProtocols) fs.writeFileSync(HTML_OUT.replace(/\.html?$/i, '') + '-protocols.html', protoHtml);
+  }
 
   let chromium;
   try { ({ chromium } = require('@playwright/test')); }
@@ -536,13 +580,14 @@ async function main() {
 
   const browser = await chromium.launch(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {});
   const page = await browser.newPage({ viewport: { width: 1600, height: 1200 }, deviceScaleFactor: 1.25 });
-  await page.setContent(html, { waitUntil: 'load' });
-  await page.waitForTimeout(300);
 
-  fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true });
-  await (await page.$('#board')).screenshot({ path: OUT_FILE });
+  await render(page, summaryHtml, OUT_FILE, 1600);
+  if (hasProtocols) {
+    await render(page, protoHtml, PROTO_OUT_FILE, (data.protocols || []).length > 10 ? 1900 : 1600);
+  } else if (fs.existsSync(PROTO_OUT_FILE)) {
+    fs.unlinkSync(PROTO_OUT_FILE);
+  }
   await browser.close();
-  console.log('🖼️ Slack image written:', OUT_FILE, fs.statSync(OUT_FILE).size, 'bytes');
 }
 
 main().catch((e) => {
