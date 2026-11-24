@@ -39,21 +39,135 @@ const HTML_OUT = process.env.HTML_OUT || '';
  * Theme
  * ------------------------------------------------------------------ */
 
-const C = {
-  bg: '#080D1A',
-  card: '#0F172A',
-  card2: '#131D35',
-  line: 'rgba(120,150,230,.16)',
-  ink: '#E7ECF7',
-  ink2: '#A9B4CC',
-  muted: '#6E7A96',
-  pass: '#22D3A0',
-  fail: '#FF4D6D',
-  flaky: '#FFB547',
-  skip: '#7C8BA8',
-  accent: '#5B8CFF',
-  cyan: '#38BDF8',
+/*
+ * Pick a look with THEME=<name> (env var). Each theme changes colours,
+ * fonts, corners and background; the layout and data stay the same.
+ *
+ *   neon      dark navy, glowing neon accents (original)
+ *   hud       mission-control: near-black, amber, monospace, sharp corners
+ *   aurora    light frosted glass on a soft colour wash
+ *   graphite  flat charcoal with electric lime, no glow
+ */
+const THEMES = {
+  neon: {
+    bg: '#080D1A', card: '#0F172A', card2: '#131D35', line: 'rgba(120,150,230,.16)',
+    ink: '#E7ECF7', ink2: '#A9B4CC', muted: '#6E7A96',
+    pass: '#22D3A0', fail: '#FF4D6D', flaky: '#FFB547', skip: '#7C8BA8', accent: '#5B8CFF', cyan: '#38BDF8',
+    onColor: '#0B1020', badText: '#FFE3E8', tagText: '#FFC2CD',
+    font: 'Inter,"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif',
+    mono: 'ui-monospace,Menlo,Consolas,monospace',
+    radius: 16, glow: 1, grid: true, logo: 'QA',
+    extraCss: '',
+  },
+  hud: {
+    bg: '#050607', card: '#0B0D0F', card2: '#101316', line: 'rgba(255,159,28,.20)',
+    ink: '#F2E9DC', ink2: '#B9AC98', muted: '#7A7064',
+    pass: '#7CFF6B', fail: '#FF3B30', flaky: '#FFD60A', skip: '#6F6A63', accent: '#FF9F1C', cyan: '#FF9F1C',
+    onColor: '#050607', badText: '#FFE1DE', tagText: '#FFB3AD',
+    font: '"JetBrains Mono","DejaVu Sans Mono",ui-monospace,Menlo,Consolas,monospace',
+    mono: '"JetBrains Mono","DejaVu Sans Mono",ui-monospace,Menlo,Consolas,monospace',
+    radius: 2, glow: 0.6, grid: false, logo: '◢◤',
+    extraCss: `
+      #board{background:
+        repeating-linear-gradient(0deg, rgba(255,159,28,.035) 0 1px, transparent 1px 4px),
+        radial-gradient(1200px 500px at 50% -20%, rgba(255,159,28,.10), transparent 60%), #050607 !important}
+      #board::before{display:none}
+      .card{background:#0B0D0F !important;box-shadow:none !important;position:relative;
+        border:1px solid rgba(255,159,28,.22) !important}
+      .card::before,.card::after{content:"";position:absolute;width:14px;height:14px;border-color:#FF9F1C;border-style:solid}
+      .card::before{left:-1px;top:-1px;border-width:2px 0 0 2px}
+      .card::after{right:-1px;bottom:-1px;border-width:0 2px 2px 0}
+      .ct{color:#FF9F1C;letter-spacing:.22em}
+      .ct::before{border-radius:0;background:#FF9F1C;box-shadow:none;width:10px;height:3px}
+      .logo{background:transparent !important;border:2px solid #FF9F1C;color:#FF9F1C !important;box-shadow:none !important;font-size:16px}
+      .ttl small{color:#FF9F1C}
+      .ttl h1{font-weight:700;letter-spacing:.02em;text-transform:uppercase;font-size:26px}
+      .chip{background:transparent !important;border-color:rgba(255,159,28,.3) !important;text-transform:uppercase;font-size:11.5px !important;letter-spacing:.08em}
+      .stat{border-radius:2px !important}
+      .tile{background:#08090A !important}
+      .tile::before{height:2px !important}
+      .tv{font-weight:700 !important}
+      .split{border-radius:0 !important;height:10px !important}
+      .prb,.prb i,.hb{border-radius:0 !important}
+      .cell{border-radius:2px !important}
+      .pk div{background:#08090A !important}
+    `,
+  },
+  aurora: {
+    bg: '#EEF0F7', card: '#FFFFFF', card2: '#FFFFFF', line: 'rgba(40,40,80,.10)',
+    ink: '#14142B', ink2: '#4E4B66', muted: '#8A87A0',
+    pass: '#0E9F6E', fail: '#E11D48', flaky: '#D97706', skip: '#94A3B8', accent: '#6D28D9', cyan: '#6D28D9',
+    onColor: '#FFFFFF', badText: '#881337', tagText: '#9F1239',
+    font: '"Plus Jakarta Sans","Segoe UI",Inter,system-ui,-apple-system,Helvetica,Arial,sans-serif',
+    mono: 'ui-monospace,Menlo,Consolas,monospace',
+    radius: 22, glow: 0, grid: false, logo: 'QA',
+    extraCss: `
+      #board{background:
+        radial-gradient(700px 420px at 0% 0%, rgba(167,139,250,.45), transparent 60%),
+        radial-gradient(600px 380px at 100% 0%, rgba(253,186,116,.45), transparent 60%),
+        radial-gradient(800px 500px at 60% 110%, rgba(125,211,252,.40), transparent 60%),
+        #EEF0F7 !important}
+      #board::before{display:none}
+      .card{background:rgba(255,255,255,.72) !important;border:1px solid rgba(255,255,255,.9) !important;
+        box-shadow:0 1px 0 rgba(255,255,255,.8) inset, 0 20px 50px rgba(60,50,120,.12) !important;backdrop-filter:blur(14px)}
+      .ct{color:#4E4B66}
+      .ct::before{background:linear-gradient(135deg,#8B5CF6,#F97316);box-shadow:none;border-radius:50%}
+      .logo{background:linear-gradient(135deg,#8B5CF6,#F97316) !important;box-shadow:0 10px 24px rgba(139,92,246,.35) !important}
+      .ttl small{color:#6D28D9}
+      .chip{background:rgba(255,255,255,.7) !important;border-color:rgba(255,255,255,.95) !important;box-shadow:0 2px 8px rgba(60,50,120,.06)}
+      .stat.bad{background:#E11D48 !important;color:#fff !important;border-color:#E11D48 !important;box-shadow:0 10px 24px rgba(225,29,72,.3) !important}
+      .stat.good{background:#0E9F6E !important;color:#fff !important;border-color:#0E9F6E !important;box-shadow:0 10px 24px rgba(14,159,110,.3) !important}
+      .tile,.pk div{background:rgba(255,255,255,.85) !important;border-color:rgba(40,40,80,.08) !important}
+      .cell.ok{color:#047857 !important}
+      .cell.fl{color:#B45309 !important}
+    `,
+  },
+  graphite: {
+    bg: '#111214', card: '#1A1B1E', card2: '#1F2024', line: 'rgba(255,255,255,.08)',
+    ink: '#F4F4F2', ink2: '#B4B5B0', muted: '#76777A',
+    pass: '#C6FF00', fail: '#FF2E88', flaky: '#FFB800', skip: '#5E6066', accent: '#C6FF00', cyan: '#C6FF00',
+    onColor: '#111214', badText: '#FFFFFF', tagText: '#FFB3D4',
+    font: '"Space Grotesk","Segoe UI",Inter,system-ui,-apple-system,Helvetica,Arial,sans-serif',
+    mono: 'ui-monospace,Menlo,Consolas,monospace',
+    radius: 26, glow: 0, grid: false, logo: '●',
+    extraCss: `
+      #board{background:#111214 !important}
+      #board::before{display:none}
+      .card{background:#1A1B1E !important;border:0 !important;box-shadow:none !important}
+      .ct{color:#F4F4F2;letter-spacing:.08em}
+      .ct::before{border-radius:50%;background:#C6FF00;box-shadow:none}
+      .logo{background:#C6FF00 !important;color:#111214 !important;box-shadow:none !important;border-radius:50% !important;font-size:26px}
+      .ttl small{color:#C6FF00}
+      .ttl h1{font-size:34px}
+      .chip{background:#1F2024 !important;border:0 !important;border-radius:999px !important;padding:7px 14px !important}
+      .stat{box-shadow:none !important;border:0 !important}
+      .stat.bad{background:#FF2E88 !important;color:#111214 !important}
+      .stat.good{background:#C6FF00 !important;color:#111214 !important}
+      .stat::before{background:#111214 !important;box-shadow:none !important}
+      .tile{background:#232428 !important;border:0 !important;border-radius:20px !important}
+      .tile::before{left:14px !important;right:auto !important;top:14px !important;width:8px !important;height:8px !important;border-radius:50%;box-shadow:none !important}
+      .tl{padding-left:16px}
+      .tv{font-size:40px !important}
+      .pk div{background:#232428 !important;border:0 !important;border-radius:18px !important}
+      .cell{border:0 !important;border-radius:12px !important}
+      .cell.ok{background:rgba(198,255,0,.10) !important}
+      .cell.bad{box-shadow:none !important}
+      .split{height:18px !important;border-radius:9px !important}
+      .ftag{border:0 !important;border-radius:999px !important}
+    `,
+  },
 };
+
+const THEME = (process.env.THEME || 'neon').toLowerCase();
+const C = THEMES[THEME] || THEMES.neon;
+
+/** "#RRGGBB" + alpha -> rgba(), so each theme's colours drive every tint */
+function hexA(hex, a) {
+  const h = String(hex).replace('#', '');
+  if (h.length !== 6) return hex;
+  const n = parseInt(h, 16);
+  return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`;
+}
 
 const STAGES = [
   { key: 'qs', label: 'Questions' },
@@ -127,11 +241,11 @@ function gauge(rate, sub) {
   }
   return `<svg width="${size}" height="${size + 14}" viewBox="0 0 ${size} ${size + 14}">
     <defs>
-      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="${6 * C.glow}" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
       <linearGradient id="gg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="${C.cyan}"/><stop offset="1" stop-color="${col}"/></linearGradient>
     </defs>
     ${ticks}
-    <path d="${arcPath(cx, cy, r, start, start + sweep)}" fill="none" stroke="rgba(124,139,168,.18)" stroke-width="18" stroke-linecap="round"/>
+    <path d="${arcPath(cx, cy, r, start, start + sweep)}" fill="none" stroke="${hexA(C.skip, .18)}" stroke-width="18" stroke-linecap="round"/>
     ${rate > 0 ? `<path d="${arcPath(cx, cy, r, start, Math.max(start + 0.5, end))}" fill="none" stroke="url(#gg)" stroke-width="18" stroke-linecap="round" filter="url(#glow)"/>` : ''}
     <text x="${cx}" y="${cy + 4}" text-anchor="middle" font-size="52" font-weight="800" fill="${C.ink}" letter-spacing="-1">${rate}<tspan font-size="26" fill="${C.ink2}">%</tspan></text>
     <text x="${cx}" y="${cy + 34}" text-anchor="middle" font-size="14" fill="${C.ink2}" letter-spacing="3">PASS RATE</text>
@@ -207,7 +321,7 @@ function trendChart(runs, w = 900, h = 300) {
   const dots = rates.map((v, i) => `<circle cx="${cx(i)}" cy="${yr(v)}" r="4.5" fill="${C.card}" stroke="${C.cyan}" stroke-width="2.5"/>`).join('');
 
   return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
-    <defs><filter id="lg" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+    <defs><filter id="lg" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="${3 * C.glow}" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
     ${grid}${bars}
     ${runs.length > 1 ? `<polyline points="${line}" fill="none" stroke="${C.cyan}" stroke-width="2.5" filter="url(#lg)"/>` : ''}
     ${dots}
@@ -319,7 +433,7 @@ function buildHtml(data, mode) {
       const ok = num(st.passed) + num(st.flaky), ex = num(st.total) - num(st.skipped);
       if (st.failed) {
         const sev = Math.min(1, num(st.failed) / Math.max(1, ex));
-        return `<div class="cell bad" style="background:rgba(255,77,109,${(0.18 + sev * 0.5).toFixed(2)})"><b>${num(st.failed)} ✕</b><small>${ok}/${ex}</small></div>`;
+        return `<div class="cell bad" style="background:${hexA(C.fail, (0.18 + sev * 0.5).toFixed(2))}"><b>${num(st.failed)} ✕</b><small>${ok}/${ex}</small></div>`;
       }
       if (st.flaky) return `<div class="cell fl"><b>${num(st.flaky)} ~</b><small>${ok}/${ex}</small></div>`;
       return `<div class="cell ok"><b>✓</b><small>${ok}/${ex}</small></div>`;
@@ -414,17 +528,17 @@ function buildHtml(data, mode) {
 
   return `<!doctype html><html><head><meta charset="utf-8"><style>
   *{box-sizing:border-box;margin:0;padding:0}
-  body{background:${C.bg};font-family:Inter,"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;color:${C.ink};-webkit-font-smoothing:antialiased}
+  body{background:${C.bg};font-family:${C.font};color:${C.ink};-webkit-font-smoothing:antialiased}
   #board{width:${mode === 'protocols' && twoCols ? 1900 : 1600}px;padding:28px 30px 26px;position:relative;overflow:hidden;
     background:
-      radial-gradient(900px 420px at 8% -8%, rgba(91,140,255,.22), transparent 60%),
-      radial-gradient(700px 380px at 105% 10%, rgba(56,189,248,.14), transparent 60%),
+      radial-gradient(900px 420px at 8% -8%, ${hexA(C.accent, .22)}, transparent 60%),
+      radial-gradient(700px 380px at 105% 10%, ${hexA(C.cyan, .14)}, transparent 60%),
       linear-gradient(${C.line} 1px, transparent 1px) 0 0/40px 40px,
       linear-gradient(90deg, ${C.line} 1px, transparent 1px) 0 0/40px 40px,
       ${C.bg};}
-  #board::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(8,13,26,.55), rgba(8,13,26,.92) 40%);pointer-events:none}
+  #board::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, ${hexA(C.bg, .55)}, ${hexA(C.bg, .92)} 40%);pointer-events:none}
   #board>*{position:relative}
-  .card{background:linear-gradient(180deg, rgba(19,29,53,.92), rgba(15,23,42,.94));border:1px solid ${C.line};border-radius:16px;padding:18px 20px;box-shadow:0 0 0 1px rgba(0,0,0,.2), 0 18px 40px rgba(0,0,0,.35)}
+  .card{background:linear-gradient(180deg, ${hexA(C.card2, .92)}, ${hexA(C.card, .94)});border:1px solid ${C.line};border-radius:${C.radius}px;padding:18px 20px;box-shadow:0 0 0 1px rgba(0,0,0,.2), 0 18px 40px rgba(0,0,0,.35)}
   .ct{display:flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:${C.ink2};font-weight:700;margin-bottom:14px}
   .ct::before{content:"";width:8px;height:8px;border-radius:2px;background:${C.cyan};box-shadow:0 0 10px ${C.cyan}}
   .ct em{margin-left:auto;font-style:normal;letter-spacing:.02em;text-transform:none;font-weight:500;color:${C.muted};font-size:13px}
@@ -432,16 +546,16 @@ function buildHtml(data, mode) {
   /* header */
   .hdr{display:flex;align-items:center;gap:20px;margin-bottom:18px}
   .logo{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-weight:900;font-size:18px;color:#fff;
-    background:linear-gradient(135deg, ${C.accent}, ${C.cyan});box-shadow:0 0 24px rgba(91,140,255,.55)}
+    background:linear-gradient(135deg, ${C.accent}, ${C.cyan});box-shadow:0 0 24px ${hexA(C.accent, .55)}}
   .ttl small{display:block;font-size:12px;letter-spacing:.24em;color:${C.cyan};font-weight:700;margin-bottom:3px}
   .ttl h1{font-size:30px;font-weight:800;letter-spacing:-.02em}
   .ttl h1 span{color:${C.ink2};font-weight:500}
   .stat{margin-left:auto;padding:10px 20px;border-radius:999px;font-weight:800;letter-spacing:.12em;font-size:16px;display:flex;align-items:center;gap:10px}
   .stat::before{content:"";width:10px;height:10px;border-radius:50%;background:currentColor;box-shadow:0 0 12px currentColor}
-  .stat.bad{color:${C.fail};background:rgba(255,77,109,.12);border:1px solid rgba(255,77,109,.45);box-shadow:0 0 28px rgba(255,77,109,.25)}
-  .stat.good{color:${C.pass};background:rgba(34,211,160,.12);border:1px solid rgba(34,211,160,.45);box-shadow:0 0 28px rgba(34,211,160,.25)}
+  .stat.bad{color:${C.fail};background:${hexA(C.fail, .12)};border:1px solid ${hexA(C.fail, .45)};box-shadow:0 0 28px ${hexA(C.fail, .25)}}
+  .stat.good{color:${C.pass};background:${hexA(C.pass, .12)};border:1px solid ${hexA(C.pass, .45)};box-shadow:0 0 28px ${hexA(C.pass, .25)}}
   .chips{display:flex;flex-wrap:wrap;gap:8px;margin:-4px 0 18px}
-  .chip{font-size:13px;color:${C.ink};background:rgba(91,140,255,.08);border:1px solid ${C.line};border-radius:8px;padding:6px 11px}
+  .chip{font-size:13px;color:${C.ink};background:${hexA(C.accent, .08)};border:1px solid ${C.line};border-radius:8px;padding:6px 11px}
   .chip i{font-style:normal;color:${C.muted};margin-right:7px}
 
   /* overview */
@@ -449,15 +563,15 @@ function buildHtml(data, mode) {
   .gaugec{display:flex;flex-direction:column;align-items:center;justify-content:center}
   .gaugec .gd{font-size:13px;margin-top:-4px}
   .verdict{font-size:19px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:10px}
-  .verdict b{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:15px;color:#0B1020}
-  .split{display:flex;height:14px;border-radius:7px;overflow:hidden;background:rgba(124,139,168,.18)}
+  .verdict b{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:15px;color:${C.onColor}}
+  .split{display:flex;height:14px;border-radius:7px;overflow:hidden;background:${hexA(C.skip, .18)}}
   .split i{display:block;height:100%}
   .splitkey{display:flex;gap:24px;margin:10px 0 16px;font-size:14px;color:${C.ink2}}
   .splitkey b{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:7px;vertical-align:-1px}
   .splitkey em{font-style:normal;color:${C.ink};font-weight:700;margin:0 4px}
   .splitkey u{text-decoration:none;color:${C.muted}}
   .tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-  .tile{background:rgba(8,13,26,.55);border:1px solid ${C.line};border-radius:12px;padding:12px 14px 6px;position:relative;overflow:hidden}
+  .tile{background:${hexA(C.bg, .55)};border:1px solid ${C.line};border-radius:12px;padding:12px 14px 6px;position:relative;overflow:hidden}
   .tile::before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:var(--c);box-shadow:0 0 14px var(--c)}
   .tl{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:${C.ink2};font-weight:600}
   .tv{font-size:36px;font-weight:800;letter-spacing:-.02em;margin-top:2px;line-height:1.1}
@@ -475,14 +589,14 @@ function buildHtml(data, mode) {
   .hrow{display:grid;grid-template-columns:210px 1fr 48px 62px;align-items:center;gap:12px;padding:8px 0;border-bottom:1px dashed ${C.line}}
   .hrow:last-child{border-bottom:0}
   .hn{font-size:14px;color:${C.ink};white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .hb{display:flex;height:10px;border-radius:5px;overflow:hidden;background:rgba(124,139,168,.15)}
+  .hb{display:flex;height:10px;border-radius:5px;overflow:hidden;background:${hexA(C.skip, .15)}}
   .hb i{display:block;height:100%}
   .hv{font-size:13px;font-weight:800;text-align:right}
   .hr{font-size:14px;font-weight:800;text-align:right}
 
   /* protocols */
   .pk{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:14px}
-  .pk div{background:rgba(8,13,26,.55);border:1px solid ${C.line};border-radius:10px;padding:10px 14px;display:flex;flex-direction:column}
+  .pk div{background:${hexA(C.bg, .55)};border:1px solid ${C.line};border-radius:10px;padding:10px 14px;display:flex;flex-direction:column}
   .pk span{font-size:12px;color:${C.ink2};letter-spacing:.06em;text-transform:uppercase}
   .pk b{font-size:26px;font-weight:800}
   .phead,.prow{display:grid;grid-template-columns:270px repeat(5,1fr) 190px 130px;gap:8px;align-items:center}
@@ -498,13 +612,13 @@ function buildHtml(data, mode) {
   .pn small{font-size:12.5px;color:${C.muted}}
   .cell{height:44px;border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid transparent}
   .cell b{font-size:15px;font-weight:800;line-height:1.1} .cell small{font-size:11px;opacity:.8}
-  .cell.ok{background:rgba(34,211,160,.10);border-color:rgba(34,211,160,.28);color:${C.pass}}
-  .cell.bad{border-color:rgba(255,77,109,.6);color:#FFE3E8;box-shadow:inset 0 0 14px rgba(255,77,109,.25)}
-  .cell.fl{background:rgba(255,181,71,.13);border-color:rgba(255,181,71,.45);color:${C.flaky}}
-  .cell.na{background:rgba(124,139,168,.06);color:${C.muted}}
+  .cell.ok{background:${hexA(C.pass, .10)};border-color:${hexA(C.pass, .28)};color:${C.pass}}
+  .cell.bad{border-color:${hexA(C.fail, .6)};color:${C.badText};box-shadow:inset 0 0 14px ${hexA(C.fail, .25)}}
+  .cell.fl{background:${hexA(C.flaky, .13)};border-color:${hexA(C.flaky, .45)};color:${C.flaky}}
+  .cell.na{background:${hexA(C.skip, .06)};color:${C.muted}}
   .pr{display:flex;align-items:center;gap:10px;padding-left:6px}
   .pr b{font-size:15px;font-weight:800;min-width:54px;text-align:right}
-  .prb{flex:1;height:8px;border-radius:4px;background:rgba(124,139,168,.18);overflow:hidden}
+  .prb{flex:1;height:8px;border-radius:4px;background:${hexA(C.skip, .18)};overflow:hidden}
   .prb i{display:block;height:100%;border-radius:4px}
   .psp{display:flex;justify-content:center}
   .pfoot{display:flex;gap:18px;font-size:12px;color:${C.muted};margin-top:12px}
@@ -513,22 +627,23 @@ function buildHtml(data, mode) {
   .flist{display:grid;grid-template-columns:1fr 1fr;column-gap:34px}
   .frow{display:grid;grid-template-columns:12px 96px 1fr auto auto;gap:12px;align-items:center;padding:8px 0;border-bottom:1px dashed ${C.line};font-size:14px}
   .fd{width:9px;height:9px;border-radius:50%;background:${C.fail};box-shadow:0 0 10px ${C.fail}}
-  .fid{font-family:ui-monospace,Menlo,Consolas,monospace;color:${C.cyan};font-size:13px}
+  .fid{font-family:${C.mono};color:${C.cyan};font-size:13px}
   .ft{color:${C.ink};white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .ftag{font-size:12px;padding:3px 9px;border-radius:6px;background:rgba(255,77,109,.12);border:1px solid rgba(255,77,109,.35);color:#FFC2CD;white-space:nowrap}
-  .ftag.dim{background:rgba(124,139,168,.1);border-color:${C.line};color:${C.ink2}}
+  .ftag{font-size:12px;padding:3px 9px;border-radius:6px;background:${hexA(C.fail, .12)};border:1px solid ${hexA(C.fail, .35)};color:${C.tagText};white-space:nowrap}
+  .ftag.dim{background:${hexA(C.skip, .1)};border-color:${C.line};color:${C.ink2}}
   .fmore{font-size:13px;color:${C.muted};padding-top:10px}
   .allgood{display:flex;align-items:center;gap:14px;font-size:17px;color:${C.pass};padding:14px 0}
-  .allgood b{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(34,211,160,.15);border:1px solid rgba(34,211,160,.5);box-shadow:0 0 20px rgba(34,211,160,.35)}
+  .allgood b{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:${hexA(C.pass, .15)};border:1px solid ${hexA(C.pass, .5)};box-shadow:0 0 20px ${hexA(C.pass, .35)}}
   .empty{color:${C.muted};font-size:14px;padding:30px 0;text-align:center}
 
   .foot{display:flex;gap:22px;flex-wrap:wrap;font-size:12.5px;color:${C.muted};margin-top:16px}
   .foot b{color:${C.ink2};font-weight:600}
+  ${C.extraCss}
   </style></head><body>
   <div id="board">
 
     <div class="hdr">
-      <div class="logo">QA</div>
+      <div class="logo">${esc(C.logo)}</div>
       <div class="ttl"><small>${esc(String(meta.project || 'IDA-6 Automation').toUpperCase())} · TEST REPORT</small>
         <h1>Run #${esc(meta.runNumber)} <span>· ${mode === 'protocols' ? 'Protocol validation' : esc(meta.branch || '')}</span></h1></div>
       <div class="stat ${status.cls}">${status.text}</div>

@@ -815,6 +815,8 @@ jobs:
         id: board
         if: ${{ !cancelled() }}
         env:
+          # Look of the Slack images: neon | hud | aurora | graphite
+          THEME: neon
           DATA_FILE: dashboard/data.json
           OUT_FILE: dashboard/slack/run-${{ github.run_number }}.png
           PROTO_OUT_FILE: dashboard/slack/run-${{ github.run_number }}-protocols.png
@@ -1130,6 +1132,7 @@ jobs:
           if [ -n "$PROTO_IMAGE" ]; then
             echo "✅ Protocol image: $PROTO_IMAGE"
           fi
+
 
 
           PAYLOAD=$(jq -n \
