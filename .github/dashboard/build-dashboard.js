@@ -330,8 +330,10 @@ function buildTrend(counts, protocols) {
     protocols: protocolRates,
   };
 
-  history = history.filter((p) => p && p.run !== point.run);
-  history.push(point);
+  // Leave out runs with no results (e.g. every shard failed to start),
+  // otherwise the trend shows a fake drop to zero.
+  history = history.filter((p) => p && p.run !== point.run && Number(p.total) > 0);
+  if (point.total > 0) history.push(point);
   history.sort((a, b) => a.run - b.run);
 
   return history.slice(-MAX_TREND_POINTS);

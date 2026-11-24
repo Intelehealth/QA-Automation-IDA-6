@@ -21,7 +21,8 @@ import { test, expect } from '@playwright/test';
 // Questions 1 to 8 are REQUIRED.
 //
 // FOLLOW-UPS
-//   Question 1: each site opens a multi-select of its own (not required): the two
+//   Question 1: each site opens a multi-select of its own (marked not required in the
+//   questionnaire, but see "WHAT A RUN SHOWED" below): the two
 //   feet offer five foot problems (the same five), the two ankles offer four sides
 //   ("lateral", "medial", "back", "front", all in lower case). Several sites and
 //   several details can be chosen.
@@ -50,11 +51,17 @@ import { test, expect } from '@playwright/test';
 //              redness, deformity, tenderness, pain on movement) but not their
 //              questions, so that step is answered by an adaptive handler.
 //
+// WHAT A RUN SHOWED
+//   A site chosen ALONE does not advance: Submit does nothing until each chosen site
+//   has at least one detail (a foot problem or an ankle side), although the
+//   questionnaire marks those lists as not required. So every test that answers
+//   question 1 picks a detail too (answerSite).
+//
 // DEFAULT PATH
 //   The optional question 9 is answered with a real value, not skipped, so that a
 //   refused Skip cannot block every later test (this has happened on another
 //   protocol). Skip is tested on its own. Question 1 is answered with "Right foot"
-//   alone (its follow-up is optional), and every other required question with an
+//   and the detail "Pain between toes", and every other required question with an
 //   option that has no follow-up.
 //
 // Console output is hidden by quiet:true in playwright.config.js, so
@@ -1381,8 +1388,8 @@ async function answerSingleChoice(page, n, option) {
   await continueToNext(page, n);
 }
 
-// Multi-select questions (1 and 4): several answers can be chosen, so they end
-// with Submit.
+// Multi-select question 4: several answers can be chosen, so it ends with Submit.
+// (Question 1 is answered by answerSite.)
 async function answerMulti(page, n, options, { advance = true } = {}) {
   await waitForQuestion(page, n);
 
@@ -1490,6 +1497,29 @@ async function answerSymptomRow(page, name, answer = 'No') {
 }
 
 // ------------------------------------------------------------
+// Question 1/10 - the site. Each chosen site opens a list of details (the foot
+// problems or the ankle sides). The questionnaire marks those lists as NOT required,
+// but a run showed the app does not move on with a site chosen alone: Submit did
+// nothing until each chosen site had at least one detail. So every site is answered
+// together with a detail.
+//   selections = [[site, detail], ...]
+// Two sites in one call must have DIFFERENT detail labels (both feet offer the same
+// five problems, so "Pain between toes" under two feet would be ambiguous): use a
+// foot and an ankle.
+// ------------------------------------------------------------
+async function answerSite(page, selections = [['Right foot', 'Pain between toes']]) {
+  await waitForQuestion(page, 1);
+
+  for (const [site, detail] of selections) {
+    await chooseOption(page, site);
+    await page.waitForTimeout(800);
+    await chooseOption(page, detail);
+  }
+
+  await continueToNext(page, 1);
+}
+
+// ------------------------------------------------------------
 // Question 5/10 - "Do you have the following symptom(s)?*" - a Yes/No checklist
 // (9 rows), then Submit. Rows are numbered ("2. Swelling in the painful area"), so
 // rows are found by name with the number ignored. REQUIRED.
@@ -1540,7 +1570,7 @@ async function openSymptom(page, name) {
 
 async function completeFootAnkleAssessment(page, overrides = {}) {
   const {
-    site = ['Right foot'],
+    site = [['Right foot', 'Pain between toes']],
     number = '3',
     durationType = 'Hours',
     trauma = 'No',
@@ -1555,7 +1585,7 @@ async function completeFootAnkleAssessment(page, overrides = {}) {
     additionalInfo = {}
   } = overrides;
 
-  await answerMulti(page, 1, site);
+  await answerSite(page, site);
   await answerDuration(page, 2, number, durationType);
   await answerSingleChoice(page, 3, trauma);
   await answerMulti(page, 4, character);
@@ -1575,7 +1605,7 @@ async function completeFootAnkleAssessment(page, overrides = {}) {
 // stands on question `n`. The optional question 9 is answered, not skipped.
 async function setupAndGoTo(page, n, { gender = 'Male' } = {}) {
   await setupToFootAnkleAssessment(page, { gender });
-  if (n > 1) await answerMulti(page, 1, ['Right foot']);
+  if (n > 1) await answerSite(page);
   if (n > 2) await answerDuration(page, 2);
   if (n > 3) await answerSingleChoice(page, 3, 'No');
   if (n > 4) await answerMulti(page, 4, ['Dull aching']);
@@ -2507,18 +2537,18 @@ test('TC_FA_008_Verify_Ankle_With_A_Side_Chosen_Advances', async ({ page }) => {
   await waitForQuestion(page, 2);
 });
 
-// TC_FA_009 - several sites can be chosen together (multi-select)
+// TC_FA_009 - several sites can be chosen together (multi-select), each with a detail
 test('TC_FA_009_Verify_Several_Sites_Can_Be_Chosen_Together', async ({ page }) => {
   await setupAndGoTo(page, 1);
-  await answerMulti(page, 1, ['Right foot', 'Left foot']);
+  await answerSite(page, [['Right foot', 'Pain between toes'], ['Right ankle', ANKLE_OPTIONS[0]]]);
 
   await waitForQuestion(page, 2);
 });
 
-// TC_FA_010 - a site alone (its follow-up is optional) plus Submit advances to the duration
-test('TC_FA_010_Verify_Site_Alone_Advances_To_Duration', async ({ page }) => {
+// TC_FA_010 - the left ankle with a side chosen plus Submit advances to the duration
+test('TC_FA_010_Verify_Left_Ankle_With_A_Side_Chosen_Advances_To_Duration', async ({ page }) => {
   await setupAndGoTo(page, 1);
-  await answerMulti(page, 1, ['Left ankle']);
+  await answerSite(page, [['Left ankle', ANKLE_OPTIONS[1]]]);
 
   await waitForQuestion(page, 2);
   await expectHeading(page, 'Since when have you had this symptom?');
